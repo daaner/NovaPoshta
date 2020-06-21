@@ -1,0 +1,43 @@
+{
+    "name": "daaner/novaposhta",
+    "description": "NovaPoshta (API 2.0) for Laravel 7+",
+    "keywords": [
+        "daaner",
+        "novaposhta",
+        "ukraine delivery",
+        "laravel-np",
+        "delivery"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daan",
+            "email": "daan@ukr.net"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.5",
+        "laravel/framework": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Daaner\\NovaPoshta\\Facades\\": "src/Facades",
+            "Daaner\\NovaPoshta\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Daaner\\NovaPoshta\\NovaPoshtaServiceProvider"
+            ],
+            "aliases": {
+                "NovaPoshta": "Daaner\\NovaPoshta\\Facades\\NovaPoshta"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
