@@ -42,17 +42,20 @@ php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvid
 После публикации ресурсов поправьте файл `config/novaposhta.php` и заполните `.env` новыми полями.
 
 - Создайте аккаунт на сайте [novaposhta.ua](https://novaposhta.ua)
-- Скопируйте `Ключ API` в настройках безопасности в разделе `Мои ключи API` и добавьте в соответствующий параметр в `config/novaposhta.php`
+- Скопируйте `Ключ API` в настройках безопасности в разделе `Мои ключи API` и добавьте в соответствующий параметр в `config/novaposhta.php` либо в .env файл
+- `point` поддерживается только `json` (вряд ли добавится `xml`)
+- `dev` режим отладки запросов. Включает в каждом ответе весь респонс от запроса (не оставляйте на продакшене)
+
 
 
 ## Использование и API
+### TrackingDocument
 
-### API
-#### TrackingDocument
 ```php
 use Daaner\NovaPoshta\Models\TrackingDocument;
 ```
-- `getStatusDocuments($documents)` - кастомное использовение по документации сайта
+
+#### `getStatusDocuments($documents)` - кастомное использовение по документации сайта
 ```php
 $doc = array();
 
@@ -74,7 +77,38 @@ array:3 [▼
 ]
 ```
 
+#### `checkTTN($ttns, $phone = null)` - проверка одной/массива накладных с необязательным указанием общего телефона
+```php
+$data = ['20450xxxx701xx', '20450xxxx227xx', '20450xxxx886xx'];
+$np = new TrackingDocument;
+$info = $np->checkTTN($data);
+//или
+$info = $np->checkTTN($data, '380671234567');
+```
 
+#### `getStatusTTN($ttns)` - быстрая проверка одной/массива накладных с получением статуса и возвратной накладной `NewTTN` (при возврате)
+```php
+$data = ['20450xxxx701xx', '20450xxxx227xx', '20450xxxx886xx'];
+$np = new TrackingDocument;
+$info = $np->getStatusTTN($data);
+
+dd($info);
+array:3 [▼
+  "success" => true
+  "result" => array:3 [▼
+    0 => array:5 [▶]
+    1 => array:5 [▶]
+    2 => array:5 [▼
+      "Number" => "20450xxxx886xx"
+      "StatusCode" => "102"
+      "Status" => "Відмова від отримання"
+      "StatusLocale" => "Возврат посылки по времени (102)"
+      "NewTTN" => "59000xxxx606xx"
+    ]
+  ]
+  "info" => array:2 [▶]
+]
+```
 
 
 ## Поддержка моделей / методов

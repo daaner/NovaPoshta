@@ -92,8 +92,6 @@ class NovaPoshta implements NovaPoshtaInterface
 
       $answer = $response->json();
 
-      // dd($answer);
-
       if (!isset($answer['success']) || !isset($answer['data']) || empty($answer['data'])) {
         // что-то не так в ответе
         $info = __('novaposhta::novaposhta.error_answer');
