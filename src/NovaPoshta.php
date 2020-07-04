@@ -91,6 +91,10 @@ class NovaPoshta implements NovaPoshtaInterface
       }
 
       $answer = $response->json();
+      if (!$auth && isset($answer[0])) {
+        //костыль для НовойПочты. Спасибо Вам большое :)
+        $answer = $answer[0];
+      }
 
       if (!isset($answer['success']) || !isset($answer['data']) || empty($answer['data'])) {
         // что-то не так в ответе
@@ -116,6 +120,10 @@ class NovaPoshta implements NovaPoshtaInterface
         }
       } else {
         $info = $answer['warnings'];
+      }
+
+      if (!$info) {
+        $info = $answer['info'];
       }
 
       $return = [

@@ -23,7 +23,7 @@ class TrackingDocument extends NovaPoshta
       'Documents' => $documents
     ];
 
-    return $this->getResponse($this->model, $this->calledMethod, $methodProperties);
+    return $this->getResponse($this->model, $this->calledMethod, $methodProperties, false);
   }
 
   /**
@@ -55,8 +55,8 @@ class TrackingDocument extends NovaPoshta
     * @param string|array $ttn
     * @return array
     */
-  public function getStatusTTN($ttns) {
-    $answer = $this->checkTTN($ttns);
+  public function getStatusTTN($ttns, $phone = null) {
+    $answer = $this->checkTTN($ttns, $phone);
     $statuses = array();
 
     if ($answer['success'] && !empty($answer['result'])) {
@@ -66,7 +66,11 @@ class TrackingDocument extends NovaPoshta
           'StatusCode' => $status['StatusCode'],
           'Status' => $status['Status'],
           'StatusLocale' => trans('novaposhta::novaposhta.statusCode.' . $status['StatusCode']),
-          'NewTTN' => isset($status['LastCreatedOnTheBasisNumber']) && $status['LastCreatedOnTheBasisNumber'] ? $status['LastCreatedOnTheBasisNumber'] : null,
+          'ActualDeliveryDate' => isset($status['ActualDeliveryDate']) ? $status['ActualDeliveryDate'] : null,
+
+          // проверка на существование поля обратной доставки и получения номера накладной
+          // если длина значения > 11 - это номер возврата денег. ПОэтому проверка четко на 11 символов
+          'NewTTN' => isset($status['LastCreatedOnTheBasisNumber']) && $status['LastCreatedOnTheBasisNumber'] && strlen($status['LastCreatedOnTheBasisNumber']) == 11 ? $status['LastCreatedOnTheBasisNumber'] : null,
         ]);
       }
     }

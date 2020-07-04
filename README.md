@@ -49,87 +49,47 @@ php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvid
 
 
 ## Использование и API
-### TrackingDocument
-
+### TrackingDocument (не требует ключа API)
 ```php
 use Daaner\NovaPoshta\Models\TrackingDocument;
 ```
+- `getStatusDocuments($documents)` - получение полной информации по ТТН / массиву (свой телефон для каждой ТТН) (по официальной документации)
+- `checkTTN($ttns, $phone = null)` - проверка одной/массива накладных с необязательным указанием общего телефона (не официальный ф-ционал)
+- `getStatusTTN($ttns, $phone = null)` - получение статуса и обратной ТТН (ТТН пересылки) для одной/массива накладных с необязательным указанием общего телефона (не официальный ф-ционал)
 
-#### `getStatusDocuments($documents)` - кастомное использовение по документации сайта
+
+### Address (требует ключа API)
 ```php
-$doc = array();
-
-//в массиве одна или несколько ТТН с отдельными телефонами
-array_push($doc, ['DocumentNumber' => 'ttn1', 'Phone' => 'phone1']);
-array_push($doc, ['DocumentNumber' => 'ttn2', 'Phone' => 'phone2']);
-
-$np = new TrackingDocument;
-$getStatusDocuments = $np->getStatusDocuments($doc);
-
-dd($getStatusDocuments);
-array:3 [▼
-  "success" => true
-  "result" => array:2 [▼
-    0 => array:13 [▶]
-    1 => array:75 [▶]
-  ]
-  "info" => array:1 [▶]
-]
+use Daaner\NovaPoshta\Models\Address;
 ```
+- `getAreas()` - получение списка областей
+- `getCities()` - получение списка городов либо выборка (поиском или Ref)
+- `getWarehouses($cityName)` - получение списка отделений по городу
+- `getWarehouseTypes($cityName)` - получение типов отделений в населенном пункте
+- `getWarehouseSettlements($settlementRef)` - получение списка отделений по населенному пункту из справочника Settlements
+- `searchSettlements($search)` - поиск населенных пунктов из справочника Settlements
+- `searchSettlementStreets($ref, $street)` - поиск улиц в населенных пунктах
 
-#### `checkTTN($ttns, $phone = null)` - проверка одной/массива накладных с необязательным указанием общего телефона
-```php
-$data = ['20450xxxx701xx', '20450xxxx227xx', '20450xxxx886xx'];
-$np = new TrackingDocument;
-$info = $np->checkTTN($data);
-//или
-$info = $np->checkTTN($data, '380671234567');
-```
 
-#### `getStatusTTN($ttns)` - быстрая проверка одной/массива накладных с получением статуса и возвратной накладной `NewTTN` (при возврате)
-```php
-$data = ['20450xxxx701xx', '20450xxxx227xx', '20450xxxx886xx'];
-$np = new TrackingDocument;
-$info = $np->getStatusTTN($data);
 
-dd($info);
-array:3 [▼
-  "success" => true
-  "result" => array:3 [▼
-    0 => array:5 [▶]
-    1 => array:5 [▶]
-    2 => array:5 [▼
-      "Number" => "20450xxxx886xx"
-      "StatusCode" => "102"
-      "Status" => "Відмова від отримання"
-      "StatusLocale" => "Возврат посылки по времени (102)"
-      "NewTTN" => "59000xxxx606xx"
-    ]
-  ]
-  "info" => array:2 [▶]
-]
-```
+
 
 
 ## Поддержка моделей / методов
-#### Address
-- searchSettlements
-
-
-### Добавить
--
+### Хелперы
+- `setLimit(100)` - лимит запроса записей (вызывать до главного метода `$np->setLimit(5)->getCities()`)
+- `setPage(3)` - смена страницы при лимите (вызывать до главного метода `$np->setLimit(5)->setPage(2)->getCities()`)
 
 
 ## Changelog
-
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-## Contributing
 
+## Contributing
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Credits
 
+## Credits
 - [Daan](https://github.com/daaner)
 - [All Contributors](../../contributors)
 
