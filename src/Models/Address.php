@@ -4,15 +4,16 @@ namespace Daaner\NovaPoshta\Models;
 
 use Daaner\NovaPoshta\NovaPoshta;
 use Daaner\NovaPoshta\Traits\Limit;
+use Daaner\NovaPoshta\Traits\WarehousesFilter;
 
 class Address extends NovaPoshta
 {
 
-  use Limit;
+  use Limit, WarehousesFilter;
 
   protected $model = 'Address';
   protected $calledMethod;
-  protected $methodProperties;
+  protected $methodProperties = [];
 
 
   public function getAreas() {
@@ -25,7 +26,6 @@ class Address extends NovaPoshta
 
   public function getCities($find = null, $string = true) {
     $this->calledMethod = 'getCities';
-    $this->methodProperties = [];
     $this->addLimit();
     $this->getPage();
 
@@ -43,7 +43,7 @@ class Address extends NovaPoshta
 
   public function getWarehouses($cityRef, $string = true) {
     $this->calledMethod = 'getWarehouses';
-    $this->methodProperties = [];
+    $this->getTypeOfWarehouseRef();
 
     if ($string) {
       $this->methodProperties['CityName'] = $cityRef;
@@ -57,7 +57,6 @@ class Address extends NovaPoshta
 
   public function getWarehouseTypes($cityRef, $string = true) {
     $this->calledMethod = 'getWarehouseTypes';
-    $this->methodProperties = [];
 
     if ($string) {
       $this->methodProperties['CityName'] = $cityRef;
@@ -71,7 +70,8 @@ class Address extends NovaPoshta
 
   public function getWarehouseSettlements($settlementRef) {
     $this->calledMethod = 'getWarehouses';
-    $this->methodProperties = [];
+    $this->getTypeOfWarehouseRef();
+
     $this->methodProperties['SettlementRef'] = $settlementRef;
 
     return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
@@ -80,8 +80,8 @@ class Address extends NovaPoshta
 
   public function searchSettlements($search) {
     $this->calledMethod = 'searchSettlements';
-    $this->methodProperties = [];
     $this->addLimit();
+
     $this->methodProperties['CityName'] = $search;
 
     return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
@@ -90,15 +90,46 @@ class Address extends NovaPoshta
 
   public function searchSettlementStreets($ref, $street = null) {
     $this->calledMethod = 'searchSettlementStreets';
-    $this->methodProperties = [];
     $this->addLimit();
+    $this->getPage();
 
     $this->methodProperties['SettlementRef'] = $ref;
     $this->methodProperties['StreetName'] = $street;
 
-    //test
-    // dump($this->methodProperties);
     return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+  }
+
+
+  public function getStreet($city, $find = null) {
+    $this->calledMethod = 'getStreet';
+    $this->addLimit();
+    $this->getPage();
+
+    $this->methodProperties['CityRef'] = $city;
+    if ($find) {
+      $this->methodProperties['FindByString'] = $find;
+    }
+
+    return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+  }
+
+
+  //Counterparty API
+  public function save() {
+    $this->calledMethod = 'save';
+    
+  }
+
+
+  public function update() {
+    $this->calledMethod = 'update';
+
+  }
+
+
+  public function delete() {
+    $this->calledMethod = 'delete';
+
   }
 
 }

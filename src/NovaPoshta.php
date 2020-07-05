@@ -50,11 +50,11 @@ class NovaPoshta implements NovaPoshtaInterface
     /**
      * @param string $model
      * @param string $calledMethod
-     * @param array $data
+     * @param array $methodProperties
      * @param bool $auth
      * @return array
      */
-    public function getResponse($model, $calledMethod, $data, $auth = true)
+    public function getResponse($model, $calledMethod, $methodProperties, $auth = true)
     {
       $url = $this->url . '/' . $model . '/' . $calledMethod;
       $body = [];
@@ -64,12 +64,12 @@ class NovaPoshta implements NovaPoshtaInterface
           'apiKey' => $this->api,
           'modelName' => $model,
           'calledMethod' => $calledMethod,
-          'methodProperties' => $data,
+          'methodProperties' => $methodProperties,
         ];
       } else {
         $body['modelName'] = $model;
         $body['calledMethod'] = $calledMethod;
-        $body['methodProperties'] = $data;
+        $body['methodProperties'] = $methodProperties;
       }
 
       $response = Http::timeout(3)
@@ -129,6 +129,9 @@ class NovaPoshta implements NovaPoshtaInterface
       ];
 
       if ($this->dev) {
+        //test and dev
+        dump($model . ' / ' . $calledMethod, $methodProperties);
+
         $return['dev'] = $answer;
       }
 

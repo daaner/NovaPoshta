@@ -49,7 +49,7 @@ php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvid
 
 
 ## Использование и API
-### TrackingDocument (не требует ключа API) ['подробнее'](/docs/TrackingDocument.md)
+### TrackingDocument (не требует ключа API) [(подробнее)](/docs/TrackingDocument.md)
 ```php
 use Daaner\NovaPoshta\Models\TrackingDocument;
 ```
@@ -58,7 +58,7 @@ use Daaner\NovaPoshta\Models\TrackingDocument;
 - `getStatusTTN($ttns, $phone = null)` - получение статуса и обратной ТТН (ТТН пересылки) для одной/массива накладных с необязательным указанием общего телефона (не официальный ф-ционал)
 
 
-### Address (требует ключа API) ['подробнее'](./docs/Address.md)
+### Address (требует ключа API) [(подробнее)](./docs/Address.md)
 ```php
 use Daaner\NovaPoshta\Models\Address;
 ```
@@ -69,6 +69,7 @@ use Daaner\NovaPoshta\Models\Address;
 - `getWarehouseSettlements($settlementRef)` - получение списка отделений по населенному пункту из справочника Settlements
 - `searchSettlements($search)` - поиск населенных пунктов из справочника Settlements
 - `searchSettlementStreets($ref, $street)` - поиск улиц в населенных пунктах
+- `getStreet($city, $find = null)` - поиск улиц в городе по CityRef
 
 
 
@@ -76,9 +77,14 @@ use Daaner\NovaPoshta\Models\Address;
 
 
 ## Поддержка моделей / методов
-### Хелперы
+### Хелперы (более детальные хелперы можно увидеть в документации к модели)
 - `setLimit(100)` - лимит запроса записей (вызывать до главного метода `$np->setLimit(5)->getCities()`)
 - `setPage(3)` - смена страницы при лимите (вызывать до главного метода `$np->setLimit(5)->setPage(2)->getCities()`)
+
+
+
+### Тестируется добавление (уже почти нигде не нужно)
+`$this->methodProperties['Language'] = 'ru';`
 
 
 ## Changelog

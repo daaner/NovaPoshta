@@ -44,6 +44,11 @@ $warehouses = $adr->getWarehouses('Киев');
 //или по "CityRef"
 $warehouses = $adr->getWarehouses('a9522a7e-eaf5-11e7-ba66-005056b2fc3d', false);
 
+//не обязательные фильтры применяются
+$adr->filterBicycleParking();
+$adr->filterPostFinance();
+$adr->setTypeOfWarehouseRef('9a68df70-0267-42a8-bb5c-37f427e36ee4');
+
 dd($warehouses);
 ```
 
@@ -51,6 +56,12 @@ dd($warehouses);
 ```php
 $adr = new Address;
 $warehouses = $adr->getWarehouseSettlements('e71405ee-4b33-11e4-ab6d-005056801329');
+
+//не обязательные фильтры применяются
+$adr->filterBicycleParking();
+$adr->filterPostFinance();
+$adr->setTypeOfWarehouseRef('9a68df70-0267-42a8-bb5c-37f427e36ee4');
+$adr->setTypeOfWarehouseRef('9a68df70-0267-42a8-bb5c-37f427e36ee4');
 
 dd($warehouses);
 ```
@@ -81,6 +92,20 @@ $adr = new Address;
 //работает ф-ция лимита, но можно и без нее
 $adr->setLimit(20);
 $streets = $adr->searchSettlementStreets('e718a680-4b33-11e4-ab6d-005056801329', 'Шевченк');
+
+dd($streets);
+```
+
+### `getStreet($city, $find = null)` - [поиск](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d8db0a0fe4f08e8f7ce47) улиц в в городе по CityRef
+```php
+$adr = new Address;
+$streets = $adr->getStreet('a9522a7e-eaf5-11e7-ba66-005056b2fc3d');
+//или
+$streets = $adr->getStreet('a9522a7e-eaf5-11e7-ba66-005056b2fc3d', 'Абри');
+
+//работает ф-ция лимита, но можно и без нее
+$this->addLimit();
+$this->getPage();
 
 dd($streets);
 ```
