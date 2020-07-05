@@ -19,6 +19,9 @@ class TrackingDocument extends NovaPoshta
   public function getStatusDocuments($documents) {
     $this->calledMethod = 'getStatusDocuments';
 
+    if (is_array($documents) == false) {
+      $documents = explode(" ", $documents);
+    }
     $methodProperties = [
       'Documents' => $documents
     ];
@@ -36,14 +39,16 @@ class TrackingDocument extends NovaPoshta
     * @return array
     */
   public function checkTTN($ttns, $phone = null) {
-    $documents = array();
+    $documents = [];
 
     if (is_array($ttns)) {
       foreach ($ttns as $key => $ttn) {
-        array_push($documents, ['DocumentNumber' => $ttn, 'Phone' => $phone]);
+        $documents[$key]['DocumentNumber'] = $ttn;
+        $documents[$key]['Phone'] = $phone;
       }
     } else {
-      array_push($documents, ['DocumentNumber' => $ttns, 'Phone' => $phone]);
+      $documents[0]['DocumentNumber'] = $ttns;
+      $documents[0]['Phone'] = $phone;
     }
 
     return $this->getStatusDocuments($documents);
@@ -57,21 +62,19 @@ class TrackingDocument extends NovaPoshta
     */
   public function getStatusTTN($ttns, $phone = null) {
     $answer = $this->checkTTN($ttns, $phone);
-    $statuses = array();
+    $statuses = [];
 
     if ($answer['success'] && !empty($answer['result'])) {
       foreach ($answer['result'] as $key => $status) {
-        array_push($statuses, [
-          'Number' => $status['Number'],
-          'StatusCode' => $status['StatusCode'],
-          'Status' => $status['Status'],
-          'StatusLocale' => trans('novaposhta::novaposhta.statusCode.' . $status['StatusCode']),
-          'ActualDeliveryDate' => isset($status['ActualDeliveryDate']) ? $status['ActualDeliveryDate'] : null,
+        $statuses[$key]['Number'] = $status['Number'];
+        $statuses[$key]['StatusCode'] = $status['StatusCode'];
+        $statuses[$key]['Status'] = $status['Status'];
+        $statuses[$key]['StatusLocale'] = trans('novaposhta::novaposhta.statusCode.' . $status['StatusCode']);
+        $statuses[$key]['ActualDeliveryDate'] = isset($status['ActualDeliveryDate']) ? $status['ActualDeliveryDate'] : null;
 
-          // проверка на существование поля обратной доставки и получения номера накладной
-          // если длина значения > 11 - это номер возврата денег. ПОэтому проверка четко на 11 символов
-          'NewTTN' => isset($status['LastCreatedOnTheBasisNumber']) && $status['LastCreatedOnTheBasisNumber'] && strlen($status['LastCreatedOnTheBasisNumber']) == 11 ? $status['LastCreatedOnTheBasisNumber'] : null,
-        ]);
+        // проверка на существование поля обратной доставки и получения номера накладной
+        // если длина значения > 11 - это номер возврата денег. ПОэтому проверка четко на 11 символов
+        $statuses[$key]['NewTTN'] = isset($status['LastCreatedOnTheBasisNumber']) && $status['LastCreatedOnTheBasisNumber'] && strlen($status['LastCreatedOnTheBasisNumber']) == 11 ? $status['LastCreatedOnTheBasisNumber'] : null;
       }
     }
 

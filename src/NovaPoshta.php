@@ -57,7 +57,7 @@ class NovaPoshta implements NovaPoshtaInterface
     public function getResponse($model, $calledMethod, $data, $auth = true)
     {
       $url = $this->url . '/' . $model . '/' . $calledMethod;
-      $body = array();
+      $body = [];
 
       if ($auth) {
         $body = [
@@ -67,11 +67,9 @@ class NovaPoshta implements NovaPoshtaInterface
           'methodProperties' => $data,
         ];
       } else {
-        array_push($body, [
-          'modelName' => $model,
-          'calledMethod' => $calledMethod,
-          'methodProperties' => $data,
-        ]);
+        $body['modelName'] = $model;
+        $body['calledMethod'] = $calledMethod;
+        $body['methodProperties'] = $data;
       }
 
       $response = Http::timeout(3)
@@ -110,12 +108,10 @@ class NovaPoshta implements NovaPoshtaInterface
       if ($answer['errors']) {
         $info = $answer['errors'];
         if ($answer['errorCodes']) {
-          $info = array();
+          $info = [];
           foreach ($answer['errorCodes'] as $key => $err) {
-            array_push($info, [
-              'StatusCode' => $err,
-              'StatusLocale' => __('novaposhta::novaposhta.statusCode.' . $err),
-            ]);
+            $info['StatusCode'] = $err;
+            $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.' . $err);
           }
         }
       } else {

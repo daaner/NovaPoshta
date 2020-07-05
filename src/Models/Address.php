@@ -25,7 +25,7 @@ class Address extends NovaPoshta
 
   public function getCities($find = null, $string = true) {
     $this->calledMethod = 'getCities';
-    $this->methodProperties = array();
+    $this->methodProperties = [];
     $this->addLimit();
     $this->getPage();
 
@@ -43,7 +43,7 @@ class Address extends NovaPoshta
 
   public function getWarehouses($cityRef, $string = true) {
     $this->calledMethod = 'getWarehouses';
-    $this->methodProperties = array();
+    $this->methodProperties = [];
 
     if ($string) {
       $this->methodProperties['CityName'] = $cityRef;
@@ -57,7 +57,7 @@ class Address extends NovaPoshta
 
   public function getWarehouseTypes($cityRef, $string = true) {
     $this->calledMethod = 'getWarehouseTypes';
-    $this->methodProperties = array();
+    $this->methodProperties = [];
 
     if ($string) {
       $this->methodProperties['CityName'] = $cityRef;
@@ -71,7 +71,7 @@ class Address extends NovaPoshta
 
   public function getWarehouseSettlements($settlementRef) {
     $this->calledMethod = 'getWarehouses';
-    $this->methodProperties = array();
+    $this->methodProperties = [];
     $this->methodProperties['SettlementRef'] = $settlementRef;
 
     return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
@@ -80,7 +80,7 @@ class Address extends NovaPoshta
 
   public function searchSettlements($search) {
     $this->calledMethod = 'searchSettlements';
-    $this->methodProperties = array();
+    $this->methodProperties = [];
     $this->addLimit();
     $this->methodProperties['CityName'] = $search;
 
@@ -90,13 +90,14 @@ class Address extends NovaPoshta
 
   public function searchSettlementStreets($ref, $street = null) {
     $this->calledMethod = 'searchSettlementStreets';
-    $this->methodProperties = array();
+    $this->methodProperties = [];
     $this->addLimit();
 
     $this->methodProperties['SettlementRef'] = $ref;
     $this->methodProperties['StreetName'] = $street;
 
-    dump($this->methodProperties);
+    //test
+    // dump($this->methodProperties);
     return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
   }
 

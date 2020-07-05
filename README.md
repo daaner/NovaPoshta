@@ -49,7 +49,7 @@ php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvid
 
 
 ## Использование и API
-### TrackingDocument (не требует ключа API)
+### TrackingDocument (не требует ключа API) ['подробнее'](/docs/TrackingDocument.md)
 ```php
 use Daaner\NovaPoshta\Models\TrackingDocument;
 ```
@@ -58,7 +58,7 @@ use Daaner\NovaPoshta\Models\TrackingDocument;
 - `getStatusTTN($ttns, $phone = null)` - получение статуса и обратной ТТН (ТТН пересылки) для одной/массива накладных с необязательным указанием общего телефона (не официальный ф-ционал)
 
 
-### Address (требует ключа API)
+### Address (требует ключа API) ['подробнее'](./docs/Address.md)
 ```php
 use Daaner\NovaPoshta\Models\Address;
 ```
