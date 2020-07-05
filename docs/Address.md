@@ -44,7 +44,7 @@ $warehouses = $adr->getWarehouses('Киев');
 //или по "CityRef"
 $warehouses = $adr->getWarehouses('a9522a7e-eaf5-11e7-ba66-005056b2fc3d', false);
 
-//не обязательные фильтры применяются
+//необязательные фильтры применяются
 $adr->filterBicycleParking();
 $adr->filterPostFinance();
 $adr->setTypeOfWarehouseRef('9a68df70-0267-42a8-bb5c-37f427e36ee4');
@@ -57,7 +57,7 @@ dd($warehouses);
 $adr = new Address;
 $warehouses = $adr->getWarehouseSettlements('e71405ee-4b33-11e4-ab6d-005056801329');
 
-//не обязательные фильтры применяются
+//необязательные фильтры применяются
 $adr->filterBicycleParking();
 $adr->filterPostFinance();
 $adr->setTypeOfWarehouseRef('9a68df70-0267-42a8-bb5c-37f427e36ee4');
@@ -79,7 +79,7 @@ dd($warehouseTypes);
 ### `searchSettlements($search)` - [поиск](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/58e5ebeceea27017bc851d67) населенных пунктов из справочника Settlements
 ```php
 $adr = new Address;
-//работает ф-ция лимита, но можно и без нее
+//работает ф-ция лимита, но можно и без нее, setPage - НЕ применяется
 $adr->setLimit(20);
 $settlements = $adr->searchSettlements('Дне');
 
@@ -89,7 +89,7 @@ dd($settlements);
 ### `searchSettlementStreets($ref, $street)` - [поиск](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/58e5f369eea27017540b58ac) улиц в населенных пунктах
 ```php
 $adr = new Address;
-//работает ф-ция лимита, но можно и без нее
+//работает ф-ция лимита, но можно и без нее, setPage - НЕ применяется
 $adr->setLimit(20);
 $streets = $adr->searchSettlementStreets('e718a680-4b33-11e4-ab6d-005056801329', 'Шевченк');
 
@@ -103,7 +103,7 @@ $streets = $adr->getStreet('a9522a7e-eaf5-11e7-ba66-005056b2fc3d');
 //или
 $streets = $adr->getStreet('a9522a7e-eaf5-11e7-ba66-005056b2fc3d', 'Абри');
 
-//работает ф-ция лимита, но можно и без нее
+//работает ф-ция лимита и страниц, но можно и без них
 $this->addLimit();
 $this->getPage();
 

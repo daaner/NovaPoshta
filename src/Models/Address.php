@@ -91,7 +91,6 @@ class Address extends NovaPoshta
   public function searchSettlementStreets($ref, $street = null) {
     $this->calledMethod = 'searchSettlementStreets';
     $this->addLimit();
-    $this->getPage();
 
     $this->methodProperties['SettlementRef'] = $ref;
     $this->methodProperties['StreetName'] = $street;
@@ -117,7 +116,7 @@ class Address extends NovaPoshta
   //Counterparty API
   public function save() {
     $this->calledMethod = 'save';
-    
+
   }
 
 
