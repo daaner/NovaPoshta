@@ -57,6 +57,7 @@ class NovaPoshta implements NovaPoshtaInterface
     {
         $url = $this->url.'/'.$model.'/'.$calledMethod;
         $body = [];
+        $info = '';
 
         if ($auth) {
             $body = [
@@ -104,20 +105,22 @@ class NovaPoshta implements NovaPoshtaInterface
         }
 
         // ошибки либо уведомления
-        if ($answer['errors']) {
+        if (isset($answer['warnings']) && isset($answer['warnings'])) {
+          $info = $answer['warnings'];
+
+          if ($answer['errors']) {
             $info = $answer['errors'];
             if ($answer['errorCodes']) {
-                $info = [];
-                foreach ($answer['errorCodes'] as $key => $err) {
-                    $info['StatusCode'] = $err;
-                    $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.'.$err);
-                }
+              $info = [];
+              foreach ($answer['errorCodes'] as $key => $err) {
+                $info['StatusCode'] = $err;
+                $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.'.$err);
+              }
             }
-        } else {
-            $info = $answer['warnings'];
+          }
         }
 
-        if (! $info) {
+        if (! $info && isset($answer['info'])) {
             $info = $answer['info'];
         }
 

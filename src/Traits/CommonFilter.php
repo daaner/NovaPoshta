@@ -4,7 +4,6 @@ namespace Daaner\NovaPoshta\Traits;
 
 trait CommonFilter
 {
-    protected $methodProperties;
     protected $length;
     protected $width;
     protected $height;

@@ -6,7 +6,6 @@ trait Limit
 {
     protected $limit;
     protected $page;
-    protected $methodProperties;
 
     /**
      * @return this
