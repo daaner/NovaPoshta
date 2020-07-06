@@ -47,7 +47,7 @@ dd($list);
 ```
 
 
-### `getCargoDescriptionList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838908) справочника описаний груза
+### `getCargoDescriptionList($find = null)` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838908) справочника описаний груза
 ```php
 $c = new Common;
 //работает пагинация, но не поддерживается лимит и язык
@@ -153,7 +153,7 @@ dd($list);
 ```
 
 
-### `getTimeIntervals($cityRef, $dateTime = null)` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890f) справочника видов временных интервалов
+### `getTimeIntervals($recipientCityRef, $dateTime = null)` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890f) справочника видов временных интервалов
 ```php
 $c = new Common;
 //не поддерживается лимит, пагинация и локализация
