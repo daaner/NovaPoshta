@@ -69,10 +69,16 @@ $data = $np->getResponse($model, $calledMethod, $methodProperties, $auth = true)
 ## Использование API по конкретным моделям
 
 #### CommonGeneral (требует ключа API) [(подробнее)](/docs/CommonGeneral.md) - API Справочники
+```php
+use Daaner\NovaPoshta\Models\CommonGeneral;
+```
 - `getMessageCodeText()` - справочник перечня ошибок
 
 
 #### Common (требует ключа API) [(подробнее)](/docs/Common.md) - API Справочники
+```php
+use Daaner\NovaPoshta\Models\Common;
+```
 - `getTimeIntervals($recipientCityRef, $dateTime = null)` - справочник видов временных интервалов (не требует API ключа)
 - `getCargoTypes()` - справочник видов груза
 - `getBackwardDeliveryCargoTypes()` - справочник видов обратной доставки груза
