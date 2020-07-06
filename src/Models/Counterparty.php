@@ -57,7 +57,6 @@ class Counterparty extends NovaPoshta
     $this->methodProperties['Phone'] = $phone;
     $this->methodProperties['Email'] = $email;
 
-    // dd($this->methodProperties);
     return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
   }
 

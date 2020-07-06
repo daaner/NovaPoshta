@@ -11,7 +11,7 @@ return [
 
     /**
      * @see https://devcenter.novaposhta.ua/
-     * Supported: "json", "xml" (XML - еще не поддерживается)
+     * Supported: "json", "xml" (XML - еще не поддерживается и вряд ли будет)
      *
      */
     'point' => env('NP_POINT', 'json'),
