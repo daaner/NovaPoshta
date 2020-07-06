@@ -68,11 +68,11 @@ $data = $np->getResponse($model, $calledMethod, $methodProperties, $auth = true)
 
 ## Использование API по конкретным моделям
 
-### CommonGeneral (требует ключа API) [(подробнее)](/docs/CommonGeneral.md) - API Справочники
+#### CommonGeneral (требует ключа API) [(подробнее)](/docs/CommonGeneral.md) - API Справочники
 - `getMessageCodeText()` - справочник перечня ошибок
 
 
-### Common (требует ключа API) [(подробнее)](/docs/Common.md) - API Справочники
+#### Common (требует ключа API) [(подробнее)](/docs/Common.md) - API Справочники
 - `getTimeIntervals($cityRef, $dateTime = null)` - справочник видов временных интервалов (не требует API ключа)
 - `getCargoTypes()` - справочник видов груза
 - `getBackwardDeliveryCargoTypes()` - справочник видов обратной доставки груза
@@ -89,7 +89,7 @@ $data = $np->getResponse($model, $calledMethod, $methodProperties, $auth = true)
 
 
 
-### TrackingDocument (не требует ключа API) [(подробнее)](/docs/TrackingDocument.md)
+#### TrackingDocument (не требует ключа API) [(подробнее)](/docs/TrackingDocument.md)
 ```php
 use Daaner\NovaPoshta\Models\TrackingDocument;
 ```
@@ -98,7 +98,7 @@ use Daaner\NovaPoshta\Models\TrackingDocument;
 - `getStatusTTN($ttns, $phone = null)` - получение статуса и обратной ТТН (ТТН пересылки) для одной/массива накладных с необязательным указанием общего телефона (не официальный ф-ционал)
 
 
-### Address (требует ключа API) [(подробнее)](./docs/Address.md)
+#### Address (требует ключа API) [(подробнее)](./docs/Address.md)
 ```php
 use Daaner\NovaPoshta\Models\Address;
 ```
@@ -112,7 +112,7 @@ use Daaner\NovaPoshta\Models\Address;
 - `getStreet($city, $find = null)` - поиск улиц в городе по CityRef
 
 
-### Counterparty (требует ключа API) [(подробнее)](./docs/Counterparty.md)
+#### Counterparty (требует ключа API) [(подробнее)](./docs/Counterparty.md)
 ```php
 use Daaner\NovaPoshta\Models\Counterparty;
 ```
@@ -122,7 +122,7 @@ use Daaner\NovaPoshta\Models\Counterparty;
 
 
 ## Поддержка моделей / методов
-### Хелперы (более детальные хелперы можно увидеть в документации к модели)
+#### Хелперы (более детальные хелперы можно увидеть в документации к модели)
 Хелперы вызываются до главного метода обращения:
 ```php
 $foo = new Common;
