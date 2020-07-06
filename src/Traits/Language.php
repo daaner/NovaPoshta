@@ -5,6 +5,7 @@ namespace Daaner\NovaPoshta\Traits;
 trait Language
 {
     protected $language;
+    protected $methodProperties;
 
     /**
      * @return this

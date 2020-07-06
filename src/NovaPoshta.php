@@ -31,7 +31,7 @@ class NovaPoshta implements NovaPoshtaInterface
      */
     public function getApi()
     {
-        if (is_null($this->api)) {
+        if (! $this->api) {
             $this->api = config('novaposhta.api_key');
         }
 
@@ -83,7 +83,7 @@ class NovaPoshta implements NovaPoshtaInterface
             return [
                 'success' => false,
                 'result' => null,
-                'info' => __('novaposhta::novaposhta.error_data'),
+                'info' => trans('novaposhta::novaposhta.error_data'),
             ];
         }
 
@@ -95,7 +95,7 @@ class NovaPoshta implements NovaPoshtaInterface
 
         if (! isset($answer['success']) || ! isset($answer['data']) || empty($answer['data'])) {
             // что-то не так в ответе
-            $info = __('novaposhta::novaposhta.error_answer');
+            $info = trans('novaposhta::novaposhta.error_answer');
             $success = false;
             $result = null;
         } else {

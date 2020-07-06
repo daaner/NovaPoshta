@@ -4,11 +4,9 @@ namespace Daaner\NovaPoshta\Traits;
 
 trait Limit
 {
-    /**
-     * @see
-     */
     protected $limit;
     protected $page;
+    protected $methodProperties;
 
     /**
      * @return int

@@ -19,7 +19,7 @@ class TrackingDocument extends NovaPoshta
     {
         $this->calledMethod = 'getStatusDocuments';
 
-        if (is_array($documents) == false) {
+        if (is_array($documents) === false) {
             $documents = explode(' ', $documents);
         }
         $methodProperties = [

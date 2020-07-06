@@ -5,6 +5,7 @@ namespace Daaner\NovaPoshta\Traits;
 trait WarehousesFilter
 {
     protected $typeOfWarehouseRef;
+    protected $methodProperties;
 
     public function filterBicycleParking()
     {
