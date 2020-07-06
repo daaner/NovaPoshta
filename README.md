@@ -49,6 +49,43 @@ php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvid
 
 
 ## Использование и API
+- `setAPI($apiKey)` - установка API ключа, отличного от значения по умолчанию
+```php
+$cp = new Counterparty;
+$cp->setAPI('391e241b2c********************e7');
+```
+- `getResponse($model, $calledMethod, $methodProperties, $auth = true)` - кастомная отправка данных, если добавится новые методы
+```php
+use NovaPoshta;
+$model = 'TrackingDocument'; //нужная модель
+$calledMethod = 'getStatusDocuments'; //нужный метод
+$methodProperties = [
+  //данные по документации
+];
+$np = new NovaPoshta;
+$data = $np->getResponse($model, $calledMethod, $methodProperties, $auth = true);
+```
+
+## Использование API по конкретным моделям
+
+### CommonGeneral (требует ключа API) [(подробнее)](/docs/CommonGeneral.md) - API Справочники
+- `getMessageCodeText()` - справочник перечня ошибок
+
+
+### Common (требует ключа API) [(подробнее)](/docs/Common.md) - API Справочники
+- `getPalletsList()` - справочник видов паллет
+- `getTypesOfPayers()` - справочник видов плательщиков доставки
+- `getTypesOfPayersForRedelivery()` - справочник видов плательщиков обратной доставки
+- `getPackList()` - справочник видов упаковки
+- `getTiresWheelsList()` - справочник видов шин и дисков
+- `getCargoDescriptionList()` - справочник описаний груза
+- `getServiceTypes()` - справочник технологий доставки
+- `getTypesOfCounterparties()` справочник типов контрагентов
+- `getPaymentForms()` справочник форм оплаты
+- `getOwnershipFormsList()` справочник форм собственности
+
+
+
 ### TrackingDocument (не требует ключа API) [(подробнее)](/docs/TrackingDocument.md)
 ```php
 use Daaner\NovaPoshta\Models\TrackingDocument;
@@ -72,19 +109,33 @@ use Daaner\NovaPoshta\Models\Address;
 - `getStreet($city, $find = null)` - поиск улиц в городе по CityRef
 
 
+### Counterparty (требует ключа API) [(подробнее)](./docs/Counterparty.md)
+```php
+use Daaner\NovaPoshta\Models\Counterparty;
+```
+- `getCounterpartyContactPerson($ref)` - загрузить список контактных лиц Контрагента
 
 
 
 
 ## Поддержка моделей / методов
 ### Хелперы (более детальные хелперы можно увидеть в документации к модели)
-- `setLimit(100)` - лимит запроса записей (вызывать до главного метода `$np->setLimit(5)->getCities()`)
-- `setPage(3)` - смена страницы при лимите (вызывать до главного метода `$np->setLimit(5)->setPage(2)->getCities()`)
+Хелперы вызываются до главного метода обращения:
+```php
+$foo = new Common;
+$foo->setLanguage('ru');
+$list = $foo->getPaymentForms();
 
+$bar = new Address;
+$bar->setLimit(5)->setPage(2);
+$cities = $bar->getCities();
+```
 
+- `setLanguage('ru')` - переключает локализацию (только `ru` и `ua`), по умолчанию локализация украинская.
+Очень много моделей имеют в ответе дубляж на русском. В некоторых справочниках нет русской локализации.
+- `setLimit(100)` - лимит запроса записей
+- `setPage(3)` - пагинация при лимите
 
-### Тестируется добавление (уже почти нигде не нужно)
-`$this->methodProperties['Language'] = 'ru';`
 
 
 ## Changelog

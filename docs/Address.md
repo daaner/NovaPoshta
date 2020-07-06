@@ -23,7 +23,6 @@ $cities = $adr->getCities();
 
 dd($cities);
 
-
 //Можно искать по имени. Опять же можно использовать пагинацию, но списки не большие, поэтому можно и без нее
 $adr = new Address;
 $cities = $adr->getCities('Днепр');
@@ -36,6 +35,7 @@ $city = $adr->getCities('ed5ca607-b33f-11e3-9fa0-0050568002cf', false);
 
 dd($city);
 ```
+
 
 ### `getWarehouses($cityName)` - [получение](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d8211a0fe4f08e8f7ce45) списка отделений в городах
 ```php
@@ -52,6 +52,7 @@ $adr->setTypeOfWarehouseRef('9a68df70-0267-42a8-bb5c-37f427e36ee4');
 dd($warehouses);
 ```
 
+
 ### `getWarehouseSettlements($settlementRef)` - [получение](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d8211a0fe4f08e8f7ce45) списка отделений в населенном пункте
 ```php
 $adr = new Address;
@@ -66,6 +67,7 @@ $adr->setTypeOfWarehouseRef('9a68df70-0267-42a8-bb5c-37f427e36ee4');
 dd($warehouses);
 ```
 
+
 ### `getWarehouseTypes($cityName)` - [получение](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d8211a0fe4f08e8f7ce45) типов отделений в населенном пункте
 ```php
 $adr = new Address;
@@ -75,6 +77,7 @@ $warehouseTypes = $adr->getWarehouseTypes('a9522a7e-eaf5-11e7-ba66-005056b2fc3d'
 
 dd($warehouseTypes);
 ```
+
 
 ### `searchSettlements($search)` - [поиск](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/58e5ebeceea27017bc851d67) населенных пунктов из справочника Settlements
 ```php
@@ -86,6 +89,7 @@ $settlements = $adr->searchSettlements('Дне');
 dd($settlements);
 ```
 
+
 ### `searchSettlementStreets($ref, $street)` - [поиск](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/58e5f369eea27017540b58ac) улиц в населенных пунктах
 ```php
 $adr = new Address;
@@ -95,6 +99,7 @@ $streets = $adr->searchSettlementStreets('e718a680-4b33-11e4-ab6d-005056801329',
 
 dd($streets);
 ```
+
 
 ### `getStreet($city, $find = null)` - [поиск](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d8db0a0fe4f08e8f7ce47) улиц в в городе по CityRef
 ```php
