@@ -28,5 +28,3 @@ Email too long
 
 
 */
-
-];
