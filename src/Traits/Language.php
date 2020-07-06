@@ -4,7 +4,6 @@ namespace Daaner\NovaPoshta\Traits;
 
 trait Language
 {
-
     protected $language;
 
     /**
@@ -23,7 +22,7 @@ trait Language
     public function getLanguage()
     {
         if ($this->language && $this->language !== 'ua') {
-          $this->methodProperties['Language'] = $this->language;
+            $this->methodProperties['Language'] = $this->language;
         }
 
         return $this;

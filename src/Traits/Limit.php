@@ -10,7 +10,6 @@ trait Limit
     protected $limit;
     protected $page;
 
-
     /**
      * @return int
      */
@@ -37,11 +36,11 @@ trait Limit
     public function addLimit()
     {
         if ($this->limit === 0) {
-          return $this;
+            return $this;
         }
 
-        if (!$this->limit) {
-          $this->limit = config('novaposhta.page_limit');
+        if (! $this->limit) {
+            $this->limit = config('novaposhta.page_limit');
         }
 
         $this->methodProperties['Limit'] = $this->limit;
@@ -55,13 +54,11 @@ trait Limit
     public function getPage()
     {
         if ($this->page === 0) {
-          return $this;
+            return $this;
         }
 
         $this->methodProperties['Page'] = $this->page;
 
         return $this;
     }
-
-
 }

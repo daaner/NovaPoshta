@@ -4,7 +4,6 @@ namespace Daaner\NovaPoshta\Traits;
 
 trait CounterpartyProperty
 {
-
     protected $counterpartyType;
     protected $counterpartyProperty;
 
@@ -33,8 +32,8 @@ trait CounterpartyProperty
      */
     public function getCounterpartyType()
     {
-        if (!$this->counterpartyType) {
-          $this->counterpartyType = 'PrivatePerson';
+        if (! $this->counterpartyType) {
+            $this->counterpartyType = 'PrivatePerson';
         }
 
         $this->methodProperties['CounterpartyType'] = $this->counterpartyType;
@@ -47,16 +46,12 @@ trait CounterpartyProperty
      */
     public function getCounterpartyProperty()
     {
-        if (!$this->counterpartyProperty) {
-          $this->counterpartyProperty = 'Recipient';
+        if (! $this->counterpartyProperty) {
+            $this->counterpartyProperty = 'Recipient';
         }
 
         $this->methodProperties['CounterpartyProperty'] = $this->counterpartyProperty;
 
         return $this;
     }
-
-
-
-
 }

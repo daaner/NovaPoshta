@@ -3,66 +3,60 @@
 namespace Daaner\NovaPoshta\Models;
 
 use Daaner\NovaPoshta\NovaPoshta;
-use Daaner\NovaPoshta\Traits\Limit;
 use Daaner\NovaPoshta\Traits\CounterpartyProperty;
+use Daaner\NovaPoshta\Traits\Limit;
 
 class Counterparty extends NovaPoshta
 {
+    use Limit, CounterpartyProperty;
 
-  use Limit, CounterpartyProperty;
+    protected $model = 'Counterparty';
+    protected $calledMethod;
+    protected $methodProperties = [];
 
-  protected $model = 'Counterparty';
-  protected $calledMethod;
-  protected $methodProperties = [];
+    public function getCounterparties($counterpartyProperty = null, $find = null)
+    {
+        $this->calledMethod = 'getCounterparties';
+        $this->getPage();
+        $this->addLimit();
 
+        //Sender or Recipient
+        if (! $counterpartyProperty) {
+            $counterpartyProperty = 'Sender';
+        }
 
-  public function getCounterparties($counterpartyProperty = null, $find = null) {
-    $this->calledMethod = 'getCounterparties';
-    $this->getPage();
-    $this->addLimit();
+        $this->methodProperties['CounterpartyProperty'] = $counterpartyProperty;
+        if ($find) {
+            $this->methodProperties['FindByString'] = $find;
+        }
 
-    //Sender or Recipient
-    if (!$counterpartyProperty) {
-      $counterpartyProperty = 'Sender';
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    $this->methodProperties['CounterpartyProperty'] = $counterpartyProperty;
-    if ($find) {
-      $this->methodProperties['FindByString'] = $find;
+    public function getCounterpartyContactPerson($ref)
+    {
+        $this->calledMethod = 'getCounterpartyContactPersons';
+        $this->getPage();
+        $this->addLimit();
+
+        $this->methodProperties['Ref'] = $ref;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
-  }
+    public function save($lastName, $firstName, $middleName, $phone, $email = null)
+    {
+        $this->calledMethod = 'save';
+        $this->getCounterpartyType();
+        $this->getCounterpartyProperty();
 
+        $this->methodProperties['LastName'] = $lastName;
+        $this->methodProperties['FirstName'] = $firstName;
+        $this->methodProperties['MiddleName'] = $middleName;
+        $this->methodProperties['Phone'] = $phone;
+        $this->methodProperties['Email'] = $email;
 
-  public function getCounterpartyContactPerson($ref) {
-    $this->calledMethod = 'getCounterpartyContactPersons';
-    $this->getPage();
-    $this->addLimit();
-
-    $this->methodProperties['Ref'] = $ref;
-
-    return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
-  }
-
-
-  public function save($lastName, $firstName, $middleName = null, $phone, $email = null) {
-    $this->calledMethod = 'save';
-    $this->getCounterpartyType();
-    $this->getCounterpartyProperty();
-
-    $this->methodProperties['LastName'] = $lastName;
-    $this->methodProperties['FirstName'] = $firstName;
-    $this->methodProperties['MiddleName'] = $middleName;
-    $this->methodProperties['Phone'] = $phone;
-    $this->methodProperties['Email'] = $email;
-
-    // dd($this->methodProperties);
-    return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
-  }
-
-
-
-
-
+        // dd($this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
 }
