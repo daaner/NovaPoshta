@@ -7,6 +7,8 @@ use Daaner\NovaPoshta\Traits\Language;
 use Daaner\NovaPoshta\Traits\Limit;
 use Daaner\NovaPoshta\Traits\CommonFilter;
 
+use Carbon\Carbon;
+
 class Common extends NovaPoshta
 {
 
@@ -99,6 +101,34 @@ class Common extends NovaPoshta
     $this->calledMethod = 'getPalletsList';
 
     return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+  }
+
+
+  public function getBackwardDeliveryCargoTypes() {
+    $this->calledMethod = 'getBackwardDeliveryCargoTypes';
+    $this->getLanguage();
+
+    return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+  }
+
+
+  public function getCargoTypes() {
+    $this->calledMethod = 'getCargoTypes';
+    $this->getLanguage();
+
+    return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+  }
+
+
+  public function getTimeIntervals($recipientCityRef, $dateTime = null) {
+    $this->calledMethod = 'getTimeIntervals';
+
+    $this->methodProperties['RecipientCityRef'] = $recipientCityRef;
+    if ($dateTime) {
+      $this->methodProperties['DateTime'] = $dateTime;
+    }
+
+    return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
   }
 
 }

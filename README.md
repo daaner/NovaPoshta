@@ -73,6 +73,9 @@ $data = $np->getResponse($model, $calledMethod, $methodProperties, $auth = true)
 
 
 ### Common (требует ключа API) [(подробнее)](/docs/Common.md) - API Справочники
+- `getTimeIntervals($cityRef, $dateTime = null)` - справочник видов временных интервалов (не требует API ключа)
+- `getCargoTypes()` - справочник видов груза
+- `getBackwardDeliveryCargoTypes()` - справочник видов обратной доставки груза
 - `getPalletsList()` - справочник видов паллет
 - `getTypesOfPayers()` - справочник видов плательщиков доставки
 - `getTypesOfPayersForRedelivery()` - справочник видов плательщиков обратной доставки

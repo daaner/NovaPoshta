@@ -125,3 +125,42 @@ $list = $c->getPalletsList();
 
 dd($list);
 ```
+
+
+### `getBackwardDeliveryCargoTypes()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838907) справочника видов обратной доставки груза
+```php
+$c = new Common;
+//не поддерживается лимит, пагинация
+//локализация справочника (ru/ua)
+$c->setLanguage('ru');
+
+$list = $c->getBackwardDeliveryCargoTypes();
+
+dd($list);
+```
+
+
+### `getCargoTypes()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838909) справочника видов груза
+```php
+$c = new Common;
+//не поддерживается лимит, пагинация
+//локализация справочника (ru/ua)
+$c->setLanguage('ru');
+
+$list = $c->getCargoTypes();
+
+dd($list);
+```
+
+
+### `getTimeIntervals($cityRef, $dateTime = null)` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890f) справочника видов временных интервалов
+```php
+$c = new Common;
+//не поддерживается лимит, пагинация и локализация
+
+$list = $c->getTimeIntervals('8d5a980d-391c-11dd-90d9-001a92567626');
+//либо
+$list = $c->getTimeIntervals('8d5a980d-391c-11dd-90d9-001a92567626', Carbon::tomorrow()->format('d.m.Y'));
+
+dd($list);
+```
