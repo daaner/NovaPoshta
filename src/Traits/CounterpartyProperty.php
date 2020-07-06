@@ -6,6 +6,7 @@ trait CounterpartyProperty
 {
     protected $counterpartyType;
     protected $counterpartyProperty;
+    protected $methodProperties;
 
     /**
      * @return this

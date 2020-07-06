@@ -12,7 +12,7 @@ class TrackingDocument extends NovaPoshta
     /**
      * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55702cbba0fe4f0cf4fc53ee
      *
-     * @param array $documents
+     * @param string|array $documents
      * @return array
      */
     public function getStatusDocuments($documents)

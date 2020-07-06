@@ -9,7 +9,7 @@ trait Limit
     protected $methodProperties;
 
     /**
-     * @return int
+     * @return this
      */
     public function setLimit($limit)
     {
@@ -19,7 +19,7 @@ trait Limit
     }
 
     /**
-     * @return int
+     * @return this
      */
     public function setPage($page)
     {
@@ -29,7 +29,7 @@ trait Limit
     }
 
     /**
-     * @return int
+     * @return this
      */
     public function addLimit()
     {
@@ -47,7 +47,7 @@ trait Limit
     }
 
     /**
-     * @return int
+     * @return this
      */
     public function getPage()
     {

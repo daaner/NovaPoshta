@@ -1,5 +1,12 @@
 # Laravel 7 NovaPoshta API 2.0
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/daaner/novaposhta/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/daaner/novaposhta/?branch=master)
+[![Laravel Support](https://img.shields.io/badge/Laravel-7+-brightgreen.svg)]()
+[![PHP Support](https://img.shields.io/badge/PHP-7.2.5+-brightgreen.svg)]()
+
+[![Latest Stable Version](https://poser.pugx.org/phpunit/phpunit/v)](//packagist.org/packages/phpunit/phpunit) [![Total Downloads](https://poser.pugx.org/phpunit/phpunit/downloads)](//packagist.org/packages/phpunit/phpunit) [![Latest Unstable Version](https://poser.pugx.org/phpunit/phpunit/v/unstable)](//packagist.org/packages/phpunit/phpunit) [![License](https://poser.pugx.org/phpunit/phpunit/license)](//packagist.org/packages/phpunit/phpunit)
+
+
 Управление отправками NovaPoshta ([novaposhta.ua](https://novaposhta.ua/)) с помощью Laravel 7+ framework ([Laravel](https://laravel.com)).
 
 Удобный пакет для отправки и проверки ТТН через сервис NovaPoshta.ua
