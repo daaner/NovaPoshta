@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Http;
 
 class NovaPoshta implements NovaPoshtaInterface
 {
-
     protected $baseUri;
     protected $point;
 
@@ -20,11 +19,11 @@ class NovaPoshta implements NovaPoshtaInterface
      */
     public function __construct()
     {
-      $this->baseUri = config('novaposhta.base_uri');
-      $this->point = config('novaposhta.point');
-      $this->dev = config('novaposhta.dev');
-      $this->getApi();
-      $this->url = $this->baseUri . $this->point;
+        $this->baseUri = config('novaposhta.base_uri');
+        $this->point = config('novaposhta.point');
+        $this->dev = config('novaposhta.dev');
+        $this->getApi();
+        $this->url = $this->baseUri.$this->point;
     }
 
     /**
@@ -32,19 +31,19 @@ class NovaPoshta implements NovaPoshtaInterface
      */
     public function getApi()
     {
-      if (is_null($this->api)) {
-        $this->api = config('novaposhta.api_key');
-      }
+        if (is_null($this->api)) {
+            $this->api = config('novaposhta.api_key');
+        }
 
-      return $this->api;
+        return $this->api;
     }
 
     /**
-      * @param string $api
-      */
+     * @param string $api
+     */
     public function setApi($api)
     {
-      $this->api = $api;
+        $this->api = $api;
     }
 
     /**
@@ -56,85 +55,85 @@ class NovaPoshta implements NovaPoshtaInterface
      */
     public function getResponse($model, $calledMethod, $methodProperties, $auth = true)
     {
-      $url = $this->url . '/' . $model . '/' . $calledMethod;
-      $body = [];
+        $url = $this->url.'/'.$model.'/'.$calledMethod;
+        $body = [];
 
-      if ($auth) {
-        $body = [
-          'apiKey' => $this->api,
-          'modelName' => $model,
-          'calledMethod' => $calledMethod,
-          'methodProperties' => $methodProperties,
-        ];
-      } else {
-        $body['modelName'] = $model;
-        $body['calledMethod'] = $calledMethod;
-        $body['methodProperties'] = $methodProperties;
-      }
+        if ($auth) {
+            $body = [
+                'apiKey' => $this->api,
+                'modelName' => $model,
+                'calledMethod' => $calledMethod,
+                'methodProperties' => $methodProperties,
+            ];
+        } else {
+            $body['modelName'] = $model;
+            $body['calledMethod'] = $calledMethod;
+            $body['methodProperties'] = $methodProperties;
+        }
 
-      $response = Http::timeout(3)
+        $response = Http::timeout(3)
         ->retry(2, 200)
         ->withHeaders([
-          'Accept' => 'application/json',
-          'Content-Type' => 'application/json'
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
         ])
         ->post($url, $body);
 
-      if ($response->failed()) {
-        return [
-          'success' => false,
-          'result' => null,
-          'info' => __('novaposhta::novaposhta.error_data'),
-        ];
-      }
-
-      $answer = $response->json();
-      if (!$auth && isset($answer[0])) {
-        //костыль для НовойПочты. Спасибо Вам большое :)
-        $answer = $answer[0];
-      }
-
-      if (!isset($answer['success']) || !isset($answer['data']) || empty($answer['data'])) {
-        // что-то не так в ответе
-        $info = __('novaposhta::novaposhta.error_answer');
-        $success = false;
-        $result = null;
-      } else {
-        $success = $answer['success'];
-        $result = $answer['data'];
-      }
-
-      // ошибки либо уведомления
-      if ($answer['errors']) {
-        $info = $answer['errors'];
-        if ($answer['errorCodes']) {
-          $info = [];
-          foreach ($answer['errorCodes'] as $key => $err) {
-            $info['StatusCode'] = $err;
-            $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.' . $err);
-          }
+        if ($response->failed()) {
+            return [
+                'success' => false,
+                'result' => null,
+                'info' => __('novaposhta::novaposhta.error_data'),
+            ];
         }
-      } else {
-        $info = $answer['warnings'];
-      }
 
-      if (!$info) {
-        $info = $answer['info'];
-      }
+        $answer = $response->json();
+        if (! $auth && isset($answer[0])) {
+            //костыль для НовойПочты. Спасибо Вам большое :)
+            $answer = $answer[0];
+        }
 
-      $return = [
-        'success' => $success,
-        'result' => $result,
-        'info' => $info,
-      ];
+        if (! isset($answer['success']) || ! isset($answer['data']) || empty($answer['data'])) {
+            // что-то не так в ответе
+            $info = __('novaposhta::novaposhta.error_answer');
+            $success = false;
+            $result = null;
+        } else {
+            $success = $answer['success'];
+            $result = $answer['data'];
+        }
 
-      if ($this->dev) {
-        //test and dev
-        dump($model . ' / ' . $calledMethod, $methodProperties);
+        // ошибки либо уведомления
+        if ($answer['errors']) {
+            $info = $answer['errors'];
+            if ($answer['errorCodes']) {
+                $info = [];
+                foreach ($answer['errorCodes'] as $key => $err) {
+                    $info['StatusCode'] = $err;
+                    $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.'.$err);
+                }
+            }
+        } else {
+            $info = $answer['warnings'];
+        }
 
-        $return['dev'] = $answer;
-      }
+        if (! $info) {
+            $info = $answer['info'];
+        }
 
-      return $return;
+        $return = [
+            'success' => $success,
+            'result' => $result,
+            'info' => $info,
+        ];
+
+        if ($this->dev) {
+            //test and dev
+            dump($model.' / '.$calledMethod, $methodProperties);
+
+            $return['dev'] = $answer;
+        }
+
+        return $return;
     }
 }

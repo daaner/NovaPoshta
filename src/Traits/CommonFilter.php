@@ -4,12 +4,10 @@ namespace Daaner\NovaPoshta\Traits;
 
 trait CommonFilter
 {
-
     protected $length;
     protected $width;
     protected $height;
     protected $volumetricWeight;
-
 
     /**
      * @return this
@@ -57,7 +55,7 @@ trait CommonFilter
     public function getLength()
     {
         if ($this->length) {
-          $this->methodProperties['Length'] = $this->length;
+            $this->methodProperties['Length'] = $this->length;
         }
 
         return $this;
@@ -69,7 +67,7 @@ trait CommonFilter
     public function getWidth()
     {
         if ($this->width) {
-          $this->methodProperties['Width'] = $this->width;
+            $this->methodProperties['Width'] = $this->width;
         }
 
         return $this;
@@ -81,7 +79,7 @@ trait CommonFilter
     public function getHeight()
     {
         if ($this->height) {
-          $this->methodProperties['Height'] = $this->height;
+            $this->methodProperties['Height'] = $this->height;
         }
 
         return $this;
@@ -93,13 +91,9 @@ trait CommonFilter
     public function getVolumetricWeight()
     {
         if ($this->volumetricWeight) {
-          $this->methodProperties['VolumetricWeight'] = $this->volumetricWeight;
+            $this->methodProperties['VolumetricWeight'] = $this->volumetricWeight;
         }
 
         return $this;
     }
-
-
-
-
 }

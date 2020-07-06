@@ -4,9 +4,7 @@ namespace Daaner\NovaPoshta\Traits;
 
 trait WarehousesFilter
 {
-
     protected $typeOfWarehouseRef;
-
 
     public function filterBicycleParking()
     {
@@ -41,13 +39,9 @@ trait WarehousesFilter
     public function getTypeOfWarehouseRef()
     {
         if ($this->typeOfWarehouseRef) {
-          $this->methodProperties['TypeOfWarehouseRef'] = $this->typeOfWarehouseRef;
+            $this->methodProperties['TypeOfWarehouseRef'] = $this->typeOfWarehouseRef;
         }
 
         return $this;
     }
-
-
-
-
 }
