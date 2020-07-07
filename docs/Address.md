@@ -19,7 +19,7 @@ use Daaner\NovaPoshta\Models\Address;
 
 ---
 
-### `getAreas`
+### `getAreas()`
 [Получение](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d9130a0fe4f08e8f7ce48) списка областей
 ```php
 $adr = new Address;
@@ -58,7 +58,7 @@ dd($city);
 ***
 
 
-### `getWarehouses`
+### `getWarehouses()`
 [Получение](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d8211a0fe4f08e8f7ce45) списка отделений в городах
 ```php
 $adr = new Address;
@@ -77,7 +77,7 @@ dd($warehouses);
 ***
 
 
-### `getWarehouseSettlements`
+### `getWarehouseSettlements()`
 [Получение](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d8211a0fe4f08e8f7ce45) списка отделений в населенном пункте
 ```php
 $adr = new Address;
@@ -109,7 +109,7 @@ dd($warehouseTypes);
 ***
 
 
-### `searchSettlements`
+### `searchSettlements()`
 [Поиск](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/58e5ebeceea27017bc851d67) населенных пунктов из справочника Settlements
 ```php
 $adr = new Address;

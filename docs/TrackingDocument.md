@@ -4,7 +4,18 @@
 use Daaner\NovaPoshta\Models\TrackingDocument;
 ```
 
-### `getStatusDocuments($documents)` - [получение](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55702cbba0fe4f0cf4fc53ee) полной информации по ТТН
+## Содержание
+
+
+## Все методы модели
+- [getStatusDocuments()](#getStatusDocuments)
+- [checkTTN()](#checkTTN)
+- [getStatusTTN()](#getStatusTTN)
+
+---
+
+### `getStatusDocuments()`
+[Получение](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55702cbba0fe4f0cf4fc53ee) полной информации по ТТН
 ```php
 $doc = array();
 
@@ -25,9 +36,12 @@ array:3 [▼
   "info" => array:1 [▶]
 ]
 ```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
 
 
-### `checkTTN($ttns, $phone = null)` - проверка одной/массива накладных с необязательным указанием общего телефона
+### `checkTTN()`
+Проверка одной/массива накладных с необязательным указанием общего телефона
 ```php
 $data = ['20450xxxx701xx', '20450xxxx227xx', '20450xxxx886xx'];
 $np = new TrackingDocument;
@@ -35,9 +49,12 @@ $info = $np->checkTTN($data);
 //или
 $info = $np->checkTTN($data, '380671234567');
 ```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
 
 
-### `getStatusTTN($ttns, $phone = null)` - быстрая проверка одной/массива накладных с получением статуса и возвратной накладной `NewTTN` (при возврате)
+### `getStatusTTN()`
+Быстрая проверка одной/массива накладных с получением статуса и возвратной накладной `NewTTN` (при возврате)
 ```php
 $data = ['20450xxxx701xx', '20450xxxx227xx', '20450xxxx886xx'];
 $np = new TrackingDocument;
@@ -61,3 +78,4 @@ array:3 [▼
   "info" => array:2 [▶]
 ]
 ```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)

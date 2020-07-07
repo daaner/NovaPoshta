@@ -1,5 +1,9 @@
 # Документация по пакету НоваПошта для Laravel 7+
 
-## Краткая информация
+## Поддерживаемые модели
 
-[Онлайн поиск в справочнике населенных пунктов](Address.md#searchSettlements)
+[Модель Address](Address.md)
+[Модель Common](Common.md)
+[Модель CommonGeneral](CommonGeneral.md)
+[Модель Counterparty](Counterparty.md)
+[Модель TrackingDocument](TrackingDocument.md)

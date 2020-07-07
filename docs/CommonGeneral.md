@@ -2,7 +2,7 @@
 ```php
 use Daaner\NovaPoshta\Models\CommonGeneral;
 ```
-<a name="content"></a>
+
 ## Содержание
 - [x] [Виды временных интервалов](Common.md#getTimeIntervals)
 - [x] [Виды груза](Common.md#getCargoTypes)
@@ -20,19 +20,18 @@ use Daaner\NovaPoshta\Models\CommonGeneral;
 - [x] [Формы собственности](Common.md#getOwnershipFormsList)
 
 
-<a name="content-method"></a>
 ## Все методы модели
 - [getMessageCodeText()](#getMessageCodeText)
 
 
 ---
 
-<a name="getMessageCodeText"></a>
-### `getMessageCodeText()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/58f0730deea270153c8be3cd) справочника перечня ошибок
+### `getMessageCodeText()`
+[Получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/58f0730deea270153c8be3cd) справочника перечня ошибок
 ```php
 $cg = new CommonGeneral;
 $lg = $cg->getMessageCodeText();
 
 dd($lg);
 ```
-[Содержание](#content) [Методы модели](#content-method)
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)

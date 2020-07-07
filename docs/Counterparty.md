@@ -4,7 +4,15 @@
 use Daaner\NovaPoshta\Models\Counterparty;
 ```
 
-### `getCounterparties($find = null)` - [получение](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd789a0fe4f105c08760f) списка Контрагентов отправителей/получателей/третье лицо
+## Содержание
+
+
+## Все методы модели
+
+---
+
+### `getCounterparties()`
+[Получение](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd789a0fe4f105c08760f) списка Контрагентов отправителей/получателей/третье лицо
 ```php
 $cp = new Counterparty;
 
@@ -21,9 +29,12 @@ $agent = $cp->getCounterparties('Талісман');
 
 dd($agent);
 ```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
 
 
-### `getCounterpartyContactPerson($ref)` - [загрузить](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fe424a0fe4f105c087612) список контактных лиц Контрагента
+### `getCounterpartyContactPerson()`
+[Загрузить](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fe424a0fe4f105c087612) список контактных лиц Контрагента
 ```php
 $cp = new Counterparty;
 
@@ -35,9 +46,12 @@ $agent = $cp->getCounterpartyContactPerson('5953fb16-08d8-11e4-8958-0025909b4e33
 
 dd($agent);
 ```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
 
 
-### `save($firstName, $lastName = null, $middleName = null, $phone = null, $email = null)` - [создать](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557ebbd3a0fe4f02fc455b2e) Контрагента или [создать](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/5761559da0fe4f19fcad6546) Контрагента с типом (юридическое лицо) или организацию либо [создать](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/576156f6a0fe4f19fcad6547) Контрагента с типом третьего лица (данные подтягиваются из информации кода ЕДРПОУ)
+### `save()`
+[Создать](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557ebbd3a0fe4f02fc455b2e) Контрагента или [создать](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/5761559da0fe4f19fcad6546) Контрагента с типом (юридическое лицо) или организацию либо [создать](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/576156f6a0fe4f19fcad6547) Контрагента с типом третьего лица (данные подтягиваются из информации кода ЕДРПОУ)
 ```php
 $cp = new Counterparty;
 
@@ -56,6 +70,7 @@ $cp->setCounterpartyProperty('Recipient');
 $cp->setCounterpartyProperty('Sender');
 
 //PrivatePerson
+//$firstName, $lastName = null, $middleName = null, $phone = null, $email = null
 $agent = $cp->save("Иван", "Иванов", "Иванович", "380675554433", "ivanov@gmail.com");
 
 //Для создания контрагента с юридическим лицом обязательно указать OwnershipForm
@@ -77,9 +92,12 @@ $agent = $cp->save("Тут неважно какой текст");
 
 dd($agent);
 ```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
 
 
-### `getCounterpartyOptions($ref)` - [загрузить](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55801976a0fe4f105c087614) параметры Контрагента
+### `getCounterpartyOptions()`
+[Загрузить](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55801976a0fe4f105c087614) параметры Контрагента
 ```php
 $cp = new Counterparty;
 
@@ -87,3 +105,4 @@ $agent = $cp->getCounterpartyOptions("16b39437-c037-11ea-8513-b88303659df5");
 
 dd($agent);
 ```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
