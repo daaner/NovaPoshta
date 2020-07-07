@@ -56,7 +56,6 @@ php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvid
 - `dev` режим отладки запросов. Включает в каждом ответе весь респонс от запроса (не оставляйте на продакшене)
 
 
-
 ## Использование и API
 - `setAPI($apiKey)` - установка API ключа, отличного от значения по умолчанию
 ```php
@@ -74,76 +73,6 @@ $methodProperties = [
 $np = new NovaPoshta;
 $data = $np->getResponse($model, $calledMethod, $methodProperties, $auth = true);
 ```
-
-## Использование API по конкретным моделям
-[Статус](STATUS.md) обертки над API новой почты
-
-#### CommonGeneral (требует ключа API) [(подробнее)](/docs/CommonGeneral.md) - API Справочники
-```php
-use Daaner\NovaPoshta\Models\CommonGeneral;
-```
-- `getMessageCodeText()` - справочник перечня ошибок
-
-
-#### Common (требует ключа API) [(подробнее)](/docs/Common.md) - API Справочники
-```php
-use Daaner\NovaPoshta\Models\Common;
-```
-- `getTimeIntervals($recipientCityRef, $dateTime = null)` - справочник видов временных интервалов (не требует API ключа)
-- `getCargoTypes()` - справочник видов груза
-- `getBackwardDeliveryCargoTypes()` - справочник видов обратной доставки груза
-- `getPalletsList()` - справочник видов паллет
-- `getTypesOfPayers()` - справочник видов плательщиков доставки
-- `getTypesOfPayersForRedelivery()` - справочник видов плательщиков обратной доставки
-- `getPackList()` - справочник видов упаковки
-- `getTiresWheelsList()` - справочник видов шин и дисков
-- `getCargoDescriptionList($find = null)` - справочник описаний груза
-- `getServiceTypes()` - справочник технологий доставки
-- `getTypesOfCounterparties()` справочник типов контрагентов
-- `getPaymentForms()` справочник форм оплаты
-- `getOwnershipFormsList()` справочник форм собственности
-
-
-
-#### TrackingDocument (не требует ключа API) [(подробнее)](/docs/TrackingDocument.md)
-```php
-use Daaner\NovaPoshta\Models\TrackingDocument;
-```
-- `getStatusDocuments($documents)` - получение полной информации по ТТН / массиву (свой телефон для каждой ТТН) (по официальной документации)
-- `checkTTN($ttns, $phone = null)` - проверка одной/массива накладных с необязательным указанием общего телефона (не официальный ф-ционал)
-- `getStatusTTN($ttns, $phone = null)` - получение статуса и обратной ТТН (ТТН пересылки) для одной/массива накладных с необязательным указанием общего телефона (не официальный ф-ционал)
-
-
-#### Address (требует ключа API) [(подробнее)](./docs/Address.md)
-```php
-use Daaner\NovaPoshta\Models\Address;
-```
-- `getAreas()` - получение списка областей
-- `getCities()` - получение списка городов либо выборка (поиском или Ref)
-- `getWarehouses($cityName)` - получение списка отделений по городу
-- `getWarehouseTypes($cityName)` - получение типов отделений в населенном пункте
-- `getWarehouseSettlements($settlementRef)` - получение списка отделений по населенному пункту из справочника Settlements
-- `searchSettlements($search)` - поиск населенных пунктов из справочника Settlements
-- `searchSettlementStreets($ref, $street)` - поиск улиц в населенных пунктах
-- `getStreet($city, $find = null)` - поиск улиц в городе по CityRef
-
-
-#### Counterparty (требует ключа API) [(подробнее)](./docs/Counterparty.md)
-```php
-use Daaner\NovaPoshta\Models\Counterparty;
-```
-- `getCounterpartyContactPerson($ref)` - загрузить список контактных лиц Контрагента
-
-
-
-#### ContactPerson (требует ключа API) [(подробнее)](./docs/ContactPerson.md)
-```php
-use Daaner\NovaPoshta\Models\ContactPerson;
-```
-
-
-
-
 
 
 ## Поддержка моделей / методов
@@ -165,6 +94,128 @@ $cities = $bar->getCities();
 - `setPage(3)` - пагинация при лимите
 
 
+
+
+## Статус обертки над API новой почты
+[Официальная документация API Новой почты](https://devcenter.novaposhta.ua/docs/services/)
+
+
+### [API Адреса](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43)
+#### Работа с адресами
+- [x] [Онлайн поиск в справочнике населенных пунктов](/docs/Address.md#searchSettlements)
+- [x] [Онлайн поиск улиц в справочнике населенных пунктов](/docs/Address.md#searchSettlementStreets)
+- [ ] [Создать адрес контрагента (отправитель/получатель)](/docs/Address.md#)
+- [ ] [Редактировать адрес контрагента (отправитель/получатель)](/docs/Address.md#)
+- [ ] [Удалить адрес контрагента (отправитель/получатель)](/docs/Address.md#)
+- [x] [Справочник городов компании](/docs/Address.md#getCities)
+- [ ] [Справочник населенных пунктов Украины](/docs/Address.md#)
+- [x] [Справочник географических областей Украины](/docs/Address.md#getAreas)
+- [x] [Справочник отделений и типов отделений](/docs/Address.md#getWarehouses)
+- [x] [Справочник улиц компании](/docs/Address.md#getStreet)
+
+
+### [API Контрагенты](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d)
+#### Работа с данными Контрагента
+- [ ] Создать Контрагента
+- [ ] Создать контактное лицо Контрагента
+- [ ] Создать Контрагента с типом (юридическое лицо) организация
+- [ ] Создать Контрагента с типом третьего лица
+- [ ] Загрузить список адресов Контрагентов
+- [ ] Загрузить параметры Контрагента
+- [ ] Загрузить список контактных лиц Контрагента
+- [ ] Загрузить список Контрагентов отправителей/получателей/третье лицо
+- [ ] Обновить данные Контрагента
+- [ ] Обновить данные контактного лица Контрагента
+- [ ] Удалить Контрагента получателя
+- [ ] Удалить Контактное лицо Контрагента
+
+
+### [API Печатные формы](https://devcenter.novaposhta.ua/docs/services/556d7280a0fe4f08e8f7ce40)
+#### Это коллекция методов для получения печатных форм документов.
+- [ ] Маркировки - печатная форма
+- [ ] Реестры - печатная форма
+- [ ] Экспресс-накладная - печатные формы
+
+
+### [API Реестры](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e)
+#### Работа с реестрами экспресс-накладных
+- [ ] Добавить экспресс-накладные
+- [ ] Загрузить информацию по одному реестру
+- [ ] Загрузить список реестров
+- [ ] Удалить (расформировать) реестр отправлений
+- [ ] Удалить экспресс-накладные из реестра
+
+
+### [API Справочники](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed)
+#### Работа со справочниками.
+- [x] [Виды временных интервалов](/docs/Common.md#getTimeIntervals)
+- [x] [Виды груза](/docs/Common.md#getCargoTypes)
+- [x] [Виды обратной доставки груза](/docs/Common.md#getBackwardDeliveryCargoTypes)
+- [x] [Виды паллет](/docs/Common.md#getPalletsList)
+- [x] [Виды плательщиков](/docs/Common.md#getTypesOfPayers)
+- [x] [Виды плательщиков обратной доставки](/docs/Common.md#getTypesOfPayersForRedelivery)
+- [x] [Виды упаковки](/docs/Common.md#getPackList)
+- [x] [Виды шин и дисков](/docs/Common.md#getTiresWheelsList)
+- [x] [Описания груза](/docs/Common.md#getCargoDescriptionList)
+- [x] [Перечень ошибок](/docs/CommonGeneral.md#getMessageCodeText)
+- [x] [Технологии доставки](/docs/Common.md#getServiceTypes)
+- [x] [Типы контрагентов](/docs/Common.md#getTypesOfCounterparties)
+- [x] [Формы оплаты](/docs/Common.md#getPaymentForms)
+- [x] [Формы собственности](/docs/Common.md#getOwnershipFormsList)
+
+
+### [API Услуга возврат отправления](https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649)
+#### Возможность самостоятельного оформления Клиентом услуги «Возврат отправления» при использовании API. Услуга доступна только для клиентов отправителей.
+- [ ] Проверка возможности создания заявки на возврат
+- [ ] Получение списка причин возврата
+- [ ] Получение списка подтипов причины возврата
+- [ ] Создание заявки на возврат
+- [ ] Получение списка заявок на возврат
+- [ ] Удаление заявки на возврат
+
+
+### [API Услуга Изменение данных](https://devcenter.novaposhta.ua/docs/services/59eef733ff2c200ce4f6f904)
+#### Возможность самостоятельного оформления Клиентом услуги «Изменение данных» при использовании API.
+- [ ] Проверка возможности создания заявки по изменению данных
+- [ ] Создание заявки по изменению данных
+- [ ] Удаление заявки
+- [ ] Получение списка заявок
+
+
+### [API Услуга переадресация отправления](https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1)
+#### Возможность самостоятельного оформления Клиентом услуги «Переадресация» при использовании API. Услуга доступна для клиентов отправителей и получателей.
+- [ ] Проверка возможности создания заявки на переадресацию отправления
+- [ ] Создание заявки переадресация отправления (отделение/адрес)
+- [ ] Удаление заявки
+- [ ] Получение списка заявок
+
+
+### [API Экспресс-накладная](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e)
+#### Работа с экспресс-накладными
+- [ ] Рассчитать стоимость услуг
+- [ ] Прогноз даты доставки груза
+- [ ] Создать экспресс-накладную
+- [ ] Создать экспресс-накладную на адрес
+- [ ] Создать экспресс-накладную на отделение
+- [ ] Создать экспресс-накладную на почтомат "Нова пошта"
+- [ ] Создать экспресс-накладную с обратной доставкой
+- [ ] Редактировать экспресс-накладную
+- [x] Трекинг
+- [ ] Получить список ЭН
+- [ ] Удалить экспресс-накладную
+- [ ] Формирование запроса для получения полного отчета по накладным
+- [ ] Формирование запросов на создание ЭН с дополнительными услугами
+- [ ] Формирование запросов на создание ЭН с различными видами груза
+
+
+***
+
+### Пропущенный функционал (не вижу потребности или не могу проверить)
+- Создание Контрагента с типом юрлицо или третье лицо
+  - не добавлена возможность указывать `CityRef`
+
+
+***
 
 ## Changelog
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
