@@ -111,10 +111,9 @@ trait CounterpartyProperty
         return $this;
     }
 
-
     /**
      * Вынесенная логика для удаления контактов
-     * используется для создания / изменения данных организаций или третьих лиц
+     * используется для создания / изменения данных организаций или третьих лиц.
      * @return this
      */
     public function makeOrganization()
@@ -126,6 +125,4 @@ trait CounterpartyProperty
 
         return $this;
     }
-
-
 }
