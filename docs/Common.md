@@ -4,6 +4,7 @@ use Daaner\NovaPoshta\Models\Common;
 ```
 
 <a name="content"></a>
+
 ## Содержание
 - [x] [Виды временных интервалов](Common.md#gettimeintervals)
 - [x] [Виды груза](Common.md#getcargotypes)
@@ -21,6 +22,7 @@ use Daaner\NovaPoshta\Models\Common;
 - [x] [Формы собственности](Common.md#getownershipformslist)
 
 <a name="content-method"></a>
+
 ## Все методы модели
 - [getTimeIntervals($recipientCityRef, $dateTime = null)](#gettimeintervals)
 - [getCargoTypes()](#getcargotypes)
@@ -40,6 +42,7 @@ use Daaner\NovaPoshta\Models\Common;
 ---
 
 <a name="getownershipformslist"></a>
+
 #### `getOwnershipFormsList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890b) справочника форм собственности
 ```php
 $c = new Common;
@@ -53,6 +56,7 @@ dd($list);
 
 
 <a name="getpaymentforms"></a>
+
 #### `getPaymentForms()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890d) справочника формы оплаты
 ```php
 $c = new Common;
@@ -67,6 +71,7 @@ dd($list);
 
 
 <a name="gettypesofcounterparties"></a>
+
 #### `getTypesOfCounterparties()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838912) справочника типов контрагентов
 ```php
 $c = new Common;
@@ -81,6 +86,7 @@ dd($list);
 
 
 <a name="getservicetypes"></a>
+
 #### `getServiceTypes()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890e) справочника технологий доставки
 ```php
 $c = new Common;
@@ -95,6 +101,7 @@ dd($list);
 
 
 <a name="getcargodescriptionlist"></a>
+
 #### `getCargoDescriptionList($find = null)` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838908) справочника описаний груза
 ```php
 $c = new Common;
@@ -112,6 +119,7 @@ dd($list);
 
 
 <a name="gettireswheelslist"></a>
+
 #### `getTiresWheelsList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838910) справочника видов шин и дисков
 ```php
 $c = new Common;
@@ -125,6 +133,7 @@ dd($list);
 
 
 <a name="getpacklist"></a>
+
 #### `getPackList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/582b1069a0fe4f0298618f06) справочника видов упаковки
 ```php
 $c = new Common;
@@ -147,6 +156,7 @@ dd($list);
 
 
 <a name="gettypesofpayersforredelivery"></a>
+
 #### `getTypesOfPayersForRedelivery()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838914) справочника видов плательщиков обратной доставки
 ```php
 $c = new Common;
@@ -163,6 +173,7 @@ dd($list);
 
 
 <a name="gettypesofpayers"></a>
+
 #### `getTypesOfPayers()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913) справочника видов плательщиков доставки
 ```php
 $c = new Common;
@@ -179,6 +190,7 @@ dd($list);
 
 
 <a name="getpalletslist"></a>
+
 #### `getPalletsList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913) справочника видов паллет
 ```php
 $c = new Common;
@@ -193,6 +205,7 @@ dd($list);
 
 
 <a name="getbackwarddeliverycargotypes"></a>
+
 #### `getBackwardDeliveryCargoTypes()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838907) справочника видов обратной доставки груза
 ```php
 $c = new Common;
@@ -209,6 +222,7 @@ dd($list);
 
 
 <a name="getcargotypes"></a>
+
 #### `getCargoTypes()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838909) справочника видов груза
 ```php
 $c = new Common;
@@ -225,6 +239,7 @@ dd($list);
 
 
 <a name="gettimeintervals"></a>
+
 #### `getTimeIntervals($recipientCityRef, $dateTime = null)` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890f) справочника видов временных интервалов
 ```php
 $c = new Common;
