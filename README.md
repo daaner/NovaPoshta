@@ -76,7 +76,7 @@ $data = $np->getResponse($model, $calledMethod, $methodProperties, $auth = true)
 ```
 
 ## Использование API по конкретным моделям
-[Статус](/docs/STATUS.md) обертки над API новой почты
+[Статус](STATUS.md) обертки над API новой почты
 
 #### CommonGeneral (требует ключа API) [(подробнее)](/docs/CommonGeneral.md) - API Справочники
 ```php
