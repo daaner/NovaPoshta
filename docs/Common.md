@@ -49,6 +49,7 @@ $list = $c->getOwnershipFormsList();
 dd($list);
 ```
 [Содержание](#content) [Содержание по методам](#content-method)
+
 ---
 
 
@@ -63,7 +64,7 @@ $list = $c->getPaymentForms();
 dd($list);
 ```
 [Содержание](#content) [Содержание по методам](#content-method)
----
+***
 
 
 <a name="getTypesOfCounterparties"></a>
