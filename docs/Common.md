@@ -39,7 +39,7 @@ use Daaner\NovaPoshta\Models\Common;
 
 
 <a name="getOwnershipFormsList"></a>
-### `getOwnershipFormsList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890b) справочника форм собственности
+#### `getOwnershipFormsList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890b) справочника форм собственности
 ```php
 $c = new Common;
 //локализация справочника не поддерживается Новой Почтой
@@ -51,7 +51,7 @@ dd($list);
 
 
 <a name="getPaymentForms"></a>
-### `getPaymentForms()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890d) справочника формы оплаты
+#### `getPaymentForms()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890d) справочника формы оплаты
 ```php
 $c = new Common;
 //локализация справочника (ru/ua)
@@ -64,7 +64,7 @@ dd($list);
 
 
 <a name="getTypesOfCounterparties"></a>
-### `getTypesOfCounterparties()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838912) справочника типов контрагентов
+#### `getTypesOfCounterparties()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838912) справочника типов контрагентов
 ```php
 $c = new Common;
 //локализация справочника (ru/ua)
@@ -77,7 +77,7 @@ dd($list);
 
 
 <a name="getServiceTypes"></a>
-### `getServiceTypes()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890e) справочника технологий доставки
+#### `getServiceTypes()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890e) справочника технологий доставки
 ```php
 $c = new Common;
 //локализация справочника (ru/ua)
@@ -90,7 +90,7 @@ dd($list);
 
 
 <a name="getCargoDescriptionList"></a>
-### `getCargoDescriptionList($find = null)` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838908) справочника описаний груза
+#### `getCargoDescriptionList($find = null)` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838908) справочника описаний груза
 ```php
 $c = new Common;
 //работает пагинация, но не поддерживается лимит и язык
@@ -106,7 +106,7 @@ dd($list);
 
 
 <a name="getTiresWheelsList"></a>
-### `getTiresWheelsList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838910) справочника видов шин и дисков
+#### `getTiresWheelsList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838910) справочника видов шин и дисков
 ```php
 $c = new Common;
 //не поддерживается лимит, пагинация и язык
@@ -118,7 +118,7 @@ dd($list);
 
 
 <a name="getPackList"></a>
-### `getPackList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/582b1069a0fe4f0298618f06) справочника видов упаковки
+#### `getPackList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/582b1069a0fe4f0298618f06) справочника видов упаковки
 ```php
 $c = new Common;
 //не поддерживается лимит, пагинация и язык
@@ -139,7 +139,7 @@ dd($list);
 
 
 <a name="getTypesOfPayersForRedelivery"></a>
-### `getTypesOfPayersForRedelivery()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838914) справочника видов плательщиков обратной доставки
+#### `getTypesOfPayersForRedelivery()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838914) справочника видов плательщиков обратной доставки
 ```php
 $c = new Common;
 //не поддерживается лимит, пагинация
@@ -154,7 +154,7 @@ dd($list);
 
 
 <a name="getTypesOfPayers"></a>
-### `getTypesOfPayers()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913) справочника видов плательщиков доставки
+#### `getTypesOfPayers()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913) справочника видов плательщиков доставки
 ```php
 $c = new Common;
 //не поддерживается лимит, пагинация
@@ -169,7 +169,7 @@ dd($list);
 
 
 <a name="getPalletsList"></a>
-### `getPalletsList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913) справочника видов паллет
+#### `getPalletsList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913) справочника видов паллет
 ```php
 $c = new Common;
 //не поддерживается лимит, пагинация и локализация
@@ -182,7 +182,7 @@ dd($list);
 
 
 <a name="getBackwardDeliveryCargoTypes"></a>
-### `getBackwardDeliveryCargoTypes()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838907) справочника видов обратной доставки груза
+#### `getBackwardDeliveryCargoTypes()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838907) справочника видов обратной доставки груза
 ```php
 $c = new Common;
 //не поддерживается лимит, пагинация
@@ -197,7 +197,7 @@ dd($list);
 
 
 <a name="getCargoTypes"></a>
-### `getCargoTypes()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838909) справочника видов груза
+#### `getCargoTypes()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838909) справочника видов груза
 ```php
 $c = new Common;
 //не поддерживается лимит, пагинация
@@ -212,7 +212,7 @@ dd($list);
 
 
 <a name="getTimeIntervals"></a>
-### `getTimeIntervals($recipientCityRef, $dateTime = null)` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890f) справочника видов временных интервалов
+#### `getTimeIntervals($recipientCityRef, $dateTime = null)` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890f) справочника видов временных интервалов
 ```php
 $c = new Common;
 //не поддерживается лимит, пагинация и локализация
@@ -223,4 +223,4 @@ $list = $c->getTimeIntervals('8d5a980d-391c-11dd-90d9-001a92567626', Carbon::tom
 
 dd($list);
 ```
-[Содержание](#content) [Содержание по методам](#content-method)
+<p style='text-align: right;'>[Содержание](#content) [Содержание по методам](#content-method)</p>
