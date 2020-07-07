@@ -49,25 +49,24 @@ class Counterparty extends NovaPoshta
         $this->getEDRPOU();
 
         if ($this->counterpartyProperty !== 'ThirdPerson') {
-          $this->methodProperties['FirstName'] = $firstName;
+            $this->methodProperties['FirstName'] = $firstName;
         }
 
         if ($lastName) {
-          $this->methodProperties['LastName'] = $lastName;
+            $this->methodProperties['LastName'] = $lastName;
         }
         if ($middleName) {
-          $this->methodProperties['MiddleName'] = $middleName;
+            $this->methodProperties['MiddleName'] = $middleName;
         }
         if ($phone) {
-          $this->methodProperties['Phone'] = $phone;
+            $this->methodProperties['Phone'] = $phone;
         }
         if ($email) {
-          $this->methodProperties['Email'] = $email;
+            $this->methodProperties['Email'] = $email;
         }
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
-
 
     public function getCounterpartyOptions($ref)
     {
@@ -78,7 +77,6 @@ class Counterparty extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-
     public function getCounterpartyAddresses($ref)
     {
         $this->calledMethod = 'getCounterpartyAddresses';
@@ -88,5 +86,4 @@ class Counterparty extends NovaPoshta
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
-
 }
