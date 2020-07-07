@@ -76,6 +76,7 @@ $data = $np->getResponse($model, $calledMethod, $methodProperties, $auth = true)
 ```
 
 ## Использование API по конкретным моделям
+[Статус](/docs/STATUS.md) обертки над API новой почты
 
 #### CommonGeneral (требует ключа API) [(подробнее)](/docs/CommonGeneral.md) - API Справочники
 ```php
@@ -132,6 +133,15 @@ use Daaner\NovaPoshta\Models\Address;
 use Daaner\NovaPoshta\Models\Counterparty;
 ```
 - `getCounterpartyContactPerson($ref)` - загрузить список контактных лиц Контрагента
+
+
+
+#### ContactPerson (требует ключа API) [(подробнее)](./docs/ContactPerson.md)
+```php
+use Daaner\NovaPoshta\Models\ContactPerson;
+```
+
+
 
 
 

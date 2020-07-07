@@ -14,18 +14,14 @@ class Counterparty extends NovaPoshta
     protected $calledMethod;
     protected $methodProperties = [];
 
-    public function getCounterparties($counterpartyProperty = null, $find = null)
+    public function getCounterparties($find = null)
     {
         $this->calledMethod = 'getCounterparties';
         $this->getPage();
         $this->addLimit();
 
-        //Sender or Recipient
-        if (! $counterpartyProperty) {
-            $counterpartyProperty = 'Sender';
-        }
+        $this->getCounterpartyProperty();
 
-        $this->methodProperties['CounterpartyProperty'] = $counterpartyProperty;
         if ($find) {
             $this->methodProperties['FindByString'] = $find;
         }
@@ -44,18 +40,53 @@ class Counterparty extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    public function save($lastName, $firstName, $middleName, $phone, $email = null)
+    public function save($firstName, $lastName = null, $middleName = null, $phone = null, $email = null)
     {
         $this->calledMethod = 'save';
         $this->getCounterpartyType();
         $this->getCounterpartyProperty();
+        $this->getOwnershipForm();
+        $this->getEDRPOU();
 
-        $this->methodProperties['LastName'] = $lastName;
-        $this->methodProperties['FirstName'] = $firstName;
-        $this->methodProperties['MiddleName'] = $middleName;
-        $this->methodProperties['Phone'] = $phone;
-        $this->methodProperties['Email'] = $email;
+        if ($this->counterpartyProperty !== 'ThirdPerson') {
+          $this->methodProperties['FirstName'] = $firstName;
+        }
+
+        if ($lastName) {
+          $this->methodProperties['LastName'] = $lastName;
+        }
+        if ($middleName) {
+          $this->methodProperties['MiddleName'] = $middleName;
+        }
+        if ($phone) {
+          $this->methodProperties['Phone'] = $phone;
+        }
+        if ($email) {
+          $this->methodProperties['Email'] = $email;
+        }
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
+
+
+    public function getCounterpartyOptions($ref)
+    {
+        $this->calledMethod = 'getCounterpartyOptions';
+
+        $this->methodProperties['Ref'] = $ref;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
+
+    public function getCounterpartyAddresses($ref)
+    {
+        $this->calledMethod = 'getCounterpartyAddresses';
+        $this->getCounterpartyProperty();
+
+        $this->methodProperties['Ref'] = $ref;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
 }
