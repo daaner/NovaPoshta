@@ -2,8 +2,8 @@
 
 ## Поддерживаемые модели
 
-[Модель Address](Address.md)
-[Модель Common](Common.md)
-[Модель CommonGeneral](CommonGeneral.md)
-[Модель Counterparty](Counterparty.md)
-[Модель TrackingDocument](TrackingDocument.md)
+* [Модель Address](Address.md)
+* [Модель Common](Common.md)
+* [Модель CommonGeneral](CommonGeneral.md)
+* [Модель Counterparty](Counterparty.md)
+* [Модель TrackingDocument](TrackingDocument.md)
