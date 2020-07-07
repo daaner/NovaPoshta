@@ -1,6 +1,6 @@
 # Статус обертки над API новой почты
 
-[Официальная документация](https://devcenter.novaposhta.ua/docs/services/)
+[Официальная документация API Новой почты](https://devcenter.novaposhta.ua/docs/services/)
 
 
 ## [API Адреса](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43)
@@ -51,20 +51,20 @@
 
 ## [API Справочники](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed)
 ### Работа со справочниками.
-- [x] Виды временных интервалов
-- [x] Виды груза
-- [x] Виды обратной доставки груза
-- [x] Виды паллет
-- [x] Виды плательщиков
-- [x] Виды плательщиков обратной доставки
-- [x] Виды упаковки
-- [x] Виды шин и дисков
-- [x] Описания груза
+- [x] [Виды временных интервалов](/docs/Common.md#getTimeIntervals)
+- [x] [Виды груза](/docs/Common.md#getCargoTypes)
+- [x] [Виды обратной доставки груза](/docs/Common.md#getBackwardDeliveryCargoTypes)
+- [x] [Виды паллет](/docs/Common.md#getPalletsList)
+- [x] [Виды плательщиков](/docs/Common.md#getTypesOfPayers)
+- [x] [Виды плательщиков обратной доставки](/docs/Common.md#getTypesOfPayersForRedelivery)
+- [x] [Виды упаковки](/docs/Common.md#getPackList)
+- [x] [Виды шин и дисков](/docs/Common.md#getTiresWheelsList)
+- [x] [Описания груза](/docs/Common.md#getCargoDescriptionList)
 - [x] [Перечень ошибок](/docs/CommonGeneral.md#getMessageCodeText)
-- [x] Технологии доставки
-- [x] Типы контрагентов
-- [x] Формы оплаты
-- [x] Формы собственности
+- [x] [Технологии доставки](/docs/Common.md#getServiceTypes)
+- [x] [Типы контрагентов](/docs/Common.md#getTypesOfCounterparties)
+- [x] [Формы оплаты](/docs/Common.md#getPaymentForms)
+- [x] [Формы собственности](/docs/Common.md#getOwnershipFormsList)
 
 
 ## [API Услуга возврат отправления](https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649)

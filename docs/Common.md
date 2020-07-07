@@ -3,19 +3,20 @@
 use Daaner\NovaPoshta\Models\Common;
 ```
 
-- [getOwnershipFormsList()](#getOwnershipFormsList)
-- [getPaymentForms()](#getPaymentForms)
-- [getTypesOfCounterparties()](#getTypesOfCounterparties)
-- [getServiceTypes()](#getServiceTypes)
-- [getCargoDescriptionList($find = null)](#getCargoDescriptionList)
-- [getTiresWheelsList()](#getTiresWheelsList)
-- [getPackList()](#getPackList)
-- [getTypesOfPayersForRedelivery()](#getTypesOfPayersForRedelivery)
-- [getTypesOfPayers()](#getTypesOfPayers)
-- [getPalletsList()](#getPalletsList)
-- [getBackwardDeliveryCargoTypes()](#getBackwardDeliveryCargoTypes)
-- [getCargoTypes()](#getCargoTypes)
 - [getTimeIntervals($recipientCityRef, $dateTime = null)](#getTimeIntervals)
+- [getCargoTypes()](#getCargoTypes)
+- [getBackwardDeliveryCargoTypes()](#getBackwardDeliveryCargoTypes)
+- [getPalletsList()](#getPalletsList)
+- [getTypesOfPayers()](#getTypesOfPayers)
+- [getTypesOfPayersForRedelivery()](#getTypesOfPayersForRedelivery)
+- [getPackList()](#getPackList)
+- [getTiresWheelsList()](#getTiresWheelsList)
+- [getCargoDescriptionList($find = null)](#getCargoDescriptionList)
+- [getServiceTypes()](#getServiceTypes)
+- [getTypesOfCounterparties()](#getTypesOfCounterparties)
+- [getPaymentForms()](#getPaymentForms)
+- [getOwnershipFormsList()](#getOwnershipFormsList)
+
 
 
 <a name="getOwnershipFormsList"></a>
