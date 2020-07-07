@@ -20,19 +20,19 @@ use Daaner\NovaPoshta\Models\Common;
 - [x] [Формы собственности](Common.md#getOwnershipFormsList)
 
 ## Все методы модели
-- [getTimeIntervals($recipientCityRef, $dateTime = null)](#getTimeIntervals)
-- [getCargoTypes()](#getCargoTypes)
-- [getBackwardDeliveryCargoTypes()](#getBackwardDeliveryCargoTypes)
-- [getPalletsList()](#getPalletsList)
-- [getTypesOfPayers()](#getTypesOfPayers)
-- [getTypesOfPayersForRedelivery()](#getTypesOfPayersForRedelivery)
-- [getPackList()](#getPackList)
-- [getTiresWheelsList()](#getTiresWheelsList)
-- [getCargoDescriptionList($find = null)](#getCargoDescriptionList)
-- [getServiceTypes()](#getServiceTypes)
-- [getTypesOfCounterparties()](#getTypesOfCounterparties)
-- [getPaymentForms()](#getPaymentForms)
-- [getOwnershipFormsList()](#getOwnershipFormsList)
+- [`getTimeIntervals($recipientCityRef, $dateTime = null)`](#getTimeIntervals)
+- [`getCargoTypes()`](#getCargoTypes)
+- [`getBackwardDeliveryCargoTypes()`](#getBackwardDeliveryCargoTypes)
+- [`getPalletsList()`](#getPalletsList)
+- [`getTypesOfPayers()`](#getTypesOfPayers)
+- [`getTypesOfPayersForRedelivery()`](#getTypesOfPayersForRedelivery)
+- [`getPackList()`](#getPackList)
+- [`getTiresWheelsList()`](#getTiresWheelsList)
+- [`getCargoDescriptionList($find = null)`](#getCargoDescriptionList)
+- [`getServiceTypes()`](#getServiceTypes)
+- [`getTypesOfCounterparties()`](#getTypesOfCounterparties)
+- [`getPaymentForms()`](#getPaymentForms)
+- [`getOwnershipFormsList()`](#getOwnershipFormsList)
 
 
 ---
