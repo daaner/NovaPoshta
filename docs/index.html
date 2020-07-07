@@ -1,0 +1,38 @@
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Нова Пошта Украина для Laravel 7+</title>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+</head>
+<body>
+  <div id="app">Загрузка...</div>
+  <script>
+    window.$docsify = {
+      el: '#app',
+      loadSidebar: true,
+      repo: 'daaner/novaposhta',
+      homepage: 'README.md',
+      auto2top: true,
+
+      search: 'auto',
+
+      search: {
+        maxAge: 86400000, // Expiration time, the default one day
+        // paths: [], // or 'auto'
+        placeholder: 'Поиск',
+        noData: 'Нет данных!',
+
+        // Headline depth, 1 - 6
+        depth: 2,
+        hideOtherSidebarContent: false, // whether or not to hide other sidebar content
+        namespace: 'daaner-novaposhta',
+      }
+    }
+  </script>
+
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+</body>
+</html>
