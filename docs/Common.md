@@ -5,20 +5,20 @@ use Daaner\NovaPoshta\Models\Common;
 
 <a name="content"></a>
 ## Содержание
-- [x] [Виды временных интервалов](Common.md#getTimeIntervals)
-- [x] [Виды груза](Common.md#getCargoTypes)
-- [x] [Виды обратной доставки груза](Common.md#getBackwardDeliveryCargoTypes)
-- [x] [Виды паллет](Common.md#getPalletsList)
-- [x] [Виды плательщиков](Common.md#getTypesOfPayers)
-- [x] [Виды плательщиков обратной доставки](Common.md#getTypesOfPayersForRedelivery)
-- [x] [Виды упаковки](Common.md#getPackList)
-- [x] [Виды шин и дисков](Common.md#getTiresWheelsList)
-- [x] [Описания груза](Common.md#getCargoDescriptionList)
-- [x] [Перечень ошибок](CommonGeneral.md#getMessageCodeText)
-- [x] [Технологии доставки](Common.md#getServiceTypes)
-- [x] [Типы контрагентов](Common.md#getTypesOfCounterparties)
-- [x] [Формы оплаты](Common.md#getPaymentForms)
-- [x] [Формы собственности](Common.md#getOwnershipFormsList)
+- [x] [Виды временных интервалов](Common#getTimeIntervals)
+- [x] [Виды груза](Common#getCargoTypes)
+- [x] [Виды обратной доставки груза](Common#getBackwardDeliveryCargoTypes)
+- [x] [Виды паллет](Common#getPalletsList)
+- [x] [Виды плательщиков](Common#getTypesOfPayers)
+- [x] [Виды плательщиков обратной доставки](Common#getTypesOfPayersForRedelivery)
+- [x] [Виды упаковки](Common#getPackList)
+- [x] [Виды шин и дисков](Common#getTiresWheelsList)
+- [x] [Описания груза](Common#getCargoDescriptionList)
+- [x] [Перечень ошибок](CommonGeneral#getMessageCodeText)
+- [x] [Технологии доставки](Common#getServiceTypes)
+- [x] [Типы контрагентов](Common#getTypesOfCounterparties)
+- [x] [Формы оплаты](Common#getPaymentForms)
+- [x] [Формы собственности](Common#getOwnershipFormsList)
 
 <a name="content-method"></a>
 ## Все методы модели
