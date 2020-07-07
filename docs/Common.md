@@ -5,41 +5,41 @@ use Daaner\NovaPoshta\Models\Common;
 
 <a name="content"></a>
 ## Содержание
-- [x] [Виды временных интервалов](Common#getTimeIntervals)
-- [x] [Виды груза](Common#getCargoTypes)
-- [x] [Виды обратной доставки груза](Common#getBackwardDeliveryCargoTypes)
-- [x] [Виды паллет](Common#getPalletsList)
-- [x] [Виды плательщиков](Common#getTypesOfPayers)
-- [x] [Виды плательщиков обратной доставки](Common#getTypesOfPayersForRedelivery)
-- [x] [Виды упаковки](Common#getPackList)
-- [x] [Виды шин и дисков](Common#getTiresWheelsList)
-- [x] [Описания груза](Common#getCargoDescriptionList)
-- [x] [Перечень ошибок](CommonGeneral#getMessageCodeText)
-- [x] [Технологии доставки](Common#getServiceTypes)
-- [x] [Типы контрагентов](Common#getTypesOfCounterparties)
-- [x] [Формы оплаты](Common#getPaymentForms)
-- [x] [Формы собственности](Common#getOwnershipFormsList)
+- [x] [Виды временных интервалов](Common.md#gettimeintervals)
+- [x] [Виды груза](Common.md#getcargotypes)
+- [x] [Виды обратной доставки груза](Common.md#getbackwarddeliverycargotypes)
+- [x] [Виды паллет](Common.md#getpalletslist)
+- [x] [Виды плательщиков](Common.md#gettypesofpayers)
+- [x] [Виды плательщиков обратной доставки](Common.md#gettypesofpayersforredelivery)
+- [x] [Виды упаковки](Common.md#getpacklist)
+- [x] [Виды шин и дисков](Common.md#gettireswheelslist)
+- [x] [Описания груза](Common.md#getcargodescriptionlist)
+- [x] [Перечень ошибок](CommonGeneral.md#getmessagecodetext)
+- [x] [Технологии доставки](Common.md#getservicetypes)
+- [x] [Типы контрагентов](Common.md#gettypesofcounterparties)
+- [x] [Формы оплаты](Common.md#getpaymentforms)
+- [x] [Формы собственности](Common.md#getownershipformslist)
 
 <a name="content-method"></a>
 ## Все методы модели
-- [getTimeIntervals($recipientCityRef, $dateTime = null)](#getTimeIntervals)
-- [getCargoTypes()](#getCargoTypes)
-- [getBackwardDeliveryCargoTypes()](#getBackwardDeliveryCargoTypes)
-- [getPalletsList()](#getPalletsList)
-- [getTypesOfPayers()](#getTypesOfPayers)
-- [getTypesOfPayersForRedelivery()](#getTypesOfPayersForRedelivery)
-- [getPackList()](#getPackList)
-- [getTiresWheelsList()](#getTiresWheelsList)
-- [getCargoDescriptionList($find = null)](#getCargoDescriptionList)
-- [getServiceTypes()](#getServiceTypes)
-- [getTypesOfCounterparties()](#getTypesOfCounterparties)
-- [getPaymentForms()](#getPaymentForms)
-- [getOwnershipFormsList()](#getOwnershipFormsList)
+- [getTimeIntervals($recipientCityRef, $dateTime = null)](#gettimeintervals)
+- [getCargoTypes()](#getcargotypes)
+- [getBackwardDeliveryCargoTypes()](#getbackwarddeliverycargotypes)
+- [getPalletsList()](#getpalletslist)
+- [getTypesOfPayers()](#gettypesofpayers)
+- [getTypesOfPayersForRedelivery()](#gettypesofpayersforredelivery)
+- [getPackList()](#getpacklist)
+- [getTiresWheelsList()](#gettireswheelslist)
+- [getCargoDescriptionList($find = null)](#getcargodescriptionlist)
+- [getServiceTypes()](#getservicetypes)
+- [getTypesOfCounterparties()](#gettypesofcounterparties)
+- [getPaymentForms()](#getpaymentforms)
+- [getOwnershipFormsList()](#getownershipformslist)
 
 
 ---
 
-<a name="getOwnershipFormsList"></a>
+<a name="getownershipformslist"></a>
 #### `getOwnershipFormsList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890b) справочника форм собственности
 ```php
 $c = new Common;
@@ -48,11 +48,11 @@ $list = $c->getOwnershipFormsList();
 
 dd($list);
 ```
-[Содержание](#content) [Методы модели](#content-method)
+[Содержание](Common.md#content) [Методы модели](Common.md#content-method)
 ***
 
 
-<a name="getPaymentForms"></a>
+<a name="getpaymentforms"></a>
 #### `getPaymentForms()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890d) справочника формы оплаты
 ```php
 $c = new Common;
@@ -62,11 +62,11 @@ $list = $c->getPaymentForms();
 
 dd($list);
 ```
-[Содержание](#content) [Методы модели](#content-method)
+[Содержание](Common.md#content) [Методы модели](Common.md#content-method)
 ***
 
 
-<a name="getTypesOfCounterparties"></a>
+<a name="gettypesofcounterparties"></a>
 #### `getTypesOfCounterparties()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838912) справочника типов контрагентов
 ```php
 $c = new Common;
@@ -76,11 +76,11 @@ $list = $c->getTypesOfCounterparties();
 
 dd($list);
 ```
-[Содержание](#content) [Методы модели](#content-method)
+[Содержание](Common.md#content) [Методы модели](Common.md#content-method)
 ***
 
 
-<a name="getServiceTypes"></a>
+<a name="getservicetypes"></a>
 #### `getServiceTypes()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890e) справочника технологий доставки
 ```php
 $c = new Common;
@@ -90,11 +90,11 @@ $list = $c->getServiceTypes();
 
 dd($list);
 ```
-[Содержание](#content) [Методы модели](#content-method)
+[Содержание](Common.md#content) [Методы модели](Common.md#content-method)
 ***
 
 
-<a name="getCargoDescriptionList"></a>
+<a name="getcargodescriptionlist"></a>
 #### `getCargoDescriptionList($find = null)` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838908) справочника описаний груза
 ```php
 $c = new Common;
@@ -107,11 +107,11 @@ $list = $c->getCargoDescriptionList('Од');
 
 dd($list);
 ```
-[Содержание](#content) [Методы модели](#content-method)
+[Содержание](Common.md#content) [Методы модели](Common.md#content-method)
 ***
 
 
-<a name="getTiresWheelsList"></a>
+<a name="gettireswheelslist"></a>
 #### `getTiresWheelsList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838910) справочника видов шин и дисков
 ```php
 $c = new Common;
@@ -120,11 +120,11 @@ $list = $c->getTiresWheelsList();
 
 dd($list);
 ```
-[Содержание](#content) [Методы модели](#content-method)
+[Содержание](Common.md#content) [Методы модели](Common.md#content-method)
 ***
 
 
-<a name="getPackList"></a>
+<a name="getpacklist"></a>
 #### `getPackList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/582b1069a0fe4f0298618f06) справочника видов упаковки
 ```php
 $c = new Common;
@@ -142,11 +142,11 @@ $list = $c->getPackList();
 
 dd($list);
 ```
-[Содержание](#content) [Методы модели](#content-method)
+[Содержание](Common.md#content) [Методы модели](Common.md#content-method)
 ***
 
 
-<a name="getTypesOfPayersForRedelivery"></a>
+<a name="gettypesofpayersforredelivery"></a>
 #### `getTypesOfPayersForRedelivery()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838914) справочника видов плательщиков обратной доставки
 ```php
 $c = new Common;
@@ -158,11 +158,11 @@ $list = $c->getTypesOfPayersForRedelivery();
 
 dd($list);
 ```
-[Содержание](#content) [Методы модели](#content-method)
+[Содержание](Common.md#content) [Методы модели](Common.md#content-method)
 ***
 
 
-<a name="getTypesOfPayers"></a>
+<a name="gettypesofpayers"></a>
 #### `getTypesOfPayers()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913) справочника видов плательщиков доставки
 ```php
 $c = new Common;
@@ -174,11 +174,11 @@ $list = $c->getTypesOfPayers();
 
 dd($list);
 ```
-[Содержание](#content) [Методы модели](#content-method)
+[Содержание](Common.md#content) [Методы модели](Common.md#content-method)
 ***
 
 
-<a name="getPalletsList"></a>
+<a name="getpalletslist"></a>
 #### `getPalletsList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913) справочника видов паллет
 ```php
 $c = new Common;
@@ -188,11 +188,11 @@ $list = $c->getPalletsList();
 
 dd($list);
 ```
-[Содержание](#content) [Методы модели](#content-method)
+[Содержание](Common.md#content) [Методы модели](Common.md#content-method)
 ***
 
 
-<a name="getBackwardDeliveryCargoTypes"></a>
+<a name="getbackwarddeliverycargotypes"></a>
 #### `getBackwardDeliveryCargoTypes()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838907) справочника видов обратной доставки груза
 ```php
 $c = new Common;
@@ -204,11 +204,11 @@ $list = $c->getBackwardDeliveryCargoTypes();
 
 dd($list);
 ```
-[Содержание](#content) [Методы модели](#content-method)
+[Содержание](Common.md#content) [Методы модели](Common.md#content-method)
 ***
 
 
-<a name="getCargoTypes"></a>
+<a name="getcargotypes"></a>
 #### `getCargoTypes()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838909) справочника видов груза
 ```php
 $c = new Common;
@@ -220,11 +220,11 @@ $list = $c->getCargoTypes();
 
 dd($list);
 ```
-[Содержание](#content) [Методы модели](#content-method)
+[Содержание](Common.md#content) [Методы модели](Common.md#content-method)
 ***
 
 
-<a name="getTimeIntervals"></a>
+<a name="gettimeintervals"></a>
 #### `getTimeIntervals($recipientCityRef, $dateTime = null)` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890f) справочника видов временных интервалов
 ```php
 $c = new Common;
@@ -236,4 +236,4 @@ $list = $c->getTimeIntervals('8d5a980d-391c-11dd-90d9-001a92567626', Carbon::tom
 
 dd($list);
 ```
-[Содержание](#content) [Методы модели](#content-method)
+[Содержание](Common.md#content) [Методы модели](Common.md#content-method)
