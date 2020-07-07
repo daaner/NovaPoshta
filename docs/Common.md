@@ -223,4 +223,4 @@ $list = $c->getTimeIntervals('8d5a980d-391c-11dd-90d9-001a92567626', Carbon::tom
 
 dd($list);
 ```
-<p style='text-align: right;'>[Содержание](#content) [Содержание по методам](#content-method)</p>
+[Содержание](#content) [Содержание по методам](#content-method)
