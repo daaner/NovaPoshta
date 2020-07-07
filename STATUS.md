@@ -3,7 +3,8 @@
 [Официальная документация](https://devcenter.novaposhta.ua/docs/services/)
 
 
-## [API Адреса](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43) Работа с адресами
+## [API Адреса](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43)
+### Работа с адресами
 - [ ] Онлайн поиск в справочнике населенных пунктов
 - [ ] Онлайн поиск улиц в справочнике населенных пунктов
 - [ ] Создать адрес контрагента (отправитель/получатель)
@@ -16,7 +17,8 @@
 - [ ] Справочник улиц компании
 
 
-## [API Контрагенты](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d) Работа с данными Контрагента
+## [API Контрагенты](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d)
+#### Работа с данными Контрагента
 - [ ] Создать Контрагента
 - [ ] Создать контактное лицо Контрагента
 - [ ] Создать Контрагента с типом (юридическое лицо) организация
