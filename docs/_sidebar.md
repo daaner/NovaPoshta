@@ -1,14 +1,14 @@
 - API Адреса
-    - [Онлайн поиск в справочнике населенных пунктов](/docs/Address.md#searchSettlements)
-    - [Онлайн поиск улиц в справочнике населенных пунктов](/docs/Address.md#searchSettlementStreets)
-    - [Создать адрес контрагента (отправитель/получатель)](/docs/Address.md#)
-    - [Редактировать адрес контрагента (отправитель/получатель)](/docs/Address.md#)
-    - [Удалить адрес контрагента (отправитель/получатель)](/docs/Address.md#)
-    - [Справочник городов компании](/docs/Address.md#getCities)
-    - [Справочник населенных пунктов Украины](/docs/Address.md#)
-    - [Справочник географических областей Украины](/docs/Address.md#getAreas)
-    - [Справочник отделений и типов отделений](/docs/Address.md#getWarehouses)
-    - [Справочник улиц компании](/docs/Address.md#getStreet)
+    - [Онлайн поиск в справочнике населенных пунктов](Address.md#searchSettlements)
+    - [Онлайн поиск улиц в справочнике населенных пунктов](Address.md#searchSettlementStreets)
+    - [Создать адрес контрагента (отправитель/получатель)](Address.md#)
+    - [Редактировать адрес контрагента (отправитель/получатель)](Address.md#)
+    - [Удалить адрес контрагента (отправитель/получатель)](Address.md#)
+    - [Справочник городов компании](Address.md#getCities)
+    - [Справочник населенных пунктов Украины](Address.md#)
+    - [Справочник географических областей Украины](Address.md#getAreas)
+    - [Справочник отделений и типов отделений](Address.md#getWarehouses)
+    - [Справочник улиц компании](Address.md#getStreet)
 
 - API Контрагенты
     - Создать Контрагента
@@ -40,20 +40,20 @@
 
 
 - API Справочники
-    - [Виды временных интервалов](/docs/Common.md#getTimeIntervals)
-    - [Виды груза](/docs/Common.md#getCargoTypes)
-    - [Виды обратной доставки груза](/docs/Common.md#getBackwardDeliveryCargoTypes)
-    - [Виды паллет](/docs/Common.md#getPalletsList)
-    - [Виды плательщиков](/docs/Common.md#getTypesOfPayers)
-    - [Виды плательщиков обратной доставки](/docs/Common.md#getTypesOfPayersForRedelivery)
-    - [Виды упаковки](/docs/Common.md#getPackList)
-    - [Виды шин и дисков](/docs/Common.md#getTiresWheelsList)
-    - [Описания груза](/docs/Common.md#getCargoDescriptionList)
-    - [Перечень ошибок](/docs/CommonGeneral.md#getMessageCodeText)
-    - [Технологии доставки](/docs/Common.md#getServiceTypes)
-    - [Типы контрагентов](/docs/Common.md#getTypesOfCounterparties)
-    - [Формы оплаты](/docs/Common.md#getPaymentForms)
-    - [Формы собственности](/docs/Common.md#getOwnershipFormsList)
+    - [Виды временных интервалов](Common.md#getTimeIntervals)
+    - [Виды груза](Common.md#getCargoTypes)
+    - [Виды обратной доставки груза](Common.md#getBackwardDeliveryCargoTypes)
+    - [Виды паллет](Common.md#getPalletsList)
+    - [Виды плательщиков](Common.md#getTypesOfPayers)
+    - [Виды плательщиков обратной доставки](Common.md#getTypesOfPayersForRedelivery)
+    - [Виды упаковки](Common.md#getPackList)
+    - [Виды шин и дисков](Common.md#getTiresWheelsList)
+    - [Описания груза](Common.md#getCargoDescriptionList)
+    - [Перечень ошибок](CommonGeneral.md#getMessageCodeText)
+    - [Технологии доставки](Common.md#getServiceTypes)
+    - [Типы контрагентов](Common.md#getTypesOfCounterparties)
+    - [Формы оплаты](Common.md#getPaymentForms)
+    - [Формы собственности](Common.md#getOwnershipFormsList)
 
 
 - API Услуга возврат отправления

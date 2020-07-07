@@ -5,20 +5,20 @@ use Daaner\NovaPoshta\Models\Common;
 
 <a name="content"></a>
 ## Содержание
-- [x] [Виды временных интервалов](/docs/Common.md#getTimeIntervals)
-- [x] [Виды груза](/docs/Common.md#getCargoTypes)
-- [x] [Виды обратной доставки груза](/docs/Common.md#getBackwardDeliveryCargoTypes)
-- [x] [Виды паллет](/docs/Common.md#getPalletsList)
-- [x] [Виды плательщиков](/docs/Common.md#getTypesOfPayers)
-- [x] [Виды плательщиков обратной доставки](/docs/Common.md#getTypesOfPayersForRedelivery)
-- [x] [Виды упаковки](/docs/Common.md#getPackList)
-- [x] [Виды шин и дисков](/docs/Common.md#getTiresWheelsList)
-- [x] [Описания груза](/docs/Common.md#getCargoDescriptionList)
-- [x] [Перечень ошибок](/docs/CommonGeneral.md#getMessageCodeText)
-- [x] [Технологии доставки](/docs/Common.md#getServiceTypes)
-- [x] [Типы контрагентов](/docs/Common.md#getTypesOfCounterparties)
-- [x] [Формы оплаты](/docs/Common.md#getPaymentForms)
-- [x] [Формы собственности](/docs/Common.md#getOwnershipFormsList)
+- [x] [Виды временных интервалов](Common.md#getTimeIntervals)
+- [x] [Виды груза](Common.md#getCargoTypes)
+- [x] [Виды обратной доставки груза](Common.md#getBackwardDeliveryCargoTypes)
+- [x] [Виды паллет](Common.md#getPalletsList)
+- [x] [Виды плательщиков](Common.md#getTypesOfPayers)
+- [x] [Виды плательщиков обратной доставки](Common.md#getTypesOfPayersForRedelivery)
+- [x] [Виды упаковки](Common.md#getPackList)
+- [x] [Виды шин и дисков](Common.md#getTiresWheelsList)
+- [x] [Описания груза](Common.md#getCargoDescriptionList)
+- [x] [Перечень ошибок](CommonGeneral.md#getMessageCodeText)
+- [x] [Технологии доставки](Common.md#getServiceTypes)
+- [x] [Типы контрагентов](Common.md#getTypesOfCounterparties)
+- [x] [Формы оплаты](Common.md#getPaymentForms)
+- [x] [Формы собственности](Common.md#getOwnershipFormsList)
 
 <a name="content-method"></a>
 ## Все методы модели
