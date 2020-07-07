@@ -51,7 +51,9 @@ dd($agent);
 
 
 ### `save()`
-[Создать](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557ebbd3a0fe4f02fc455b2e) Контрагента или [создать](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/5761559da0fe4f19fcad6546) Контрагента с типом (юридическое лицо) или организацию либо [создать](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/576156f6a0fe4f19fcad6547) Контрагента с типом третьего лица (данные подтягиваются из информации кода ЕДРПОУ)
+[Создать](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557ebbd3a0fe4f02fc455b2e) Контрагента
+[Создать](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/5761559da0fe4f19fcad6546) Контрагента с типом (юридическое лицо) или организацию
+[Создать](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/576156f6a0fe4f19fcad6547) Контрагента с типом третьего лица (данные подтягиваются из информации кода ЕДРПОУ)
 ```php
 $cp = new Counterparty;
 
