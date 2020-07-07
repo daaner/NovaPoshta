@@ -37,6 +37,7 @@ use Daaner\NovaPoshta\Models\Common;
 - [getOwnershipFormsList()](#getOwnershipFormsList)
 
 
+---
 
 <a name="getOwnershipFormsList"></a>
 #### `getOwnershipFormsList()` - [получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890b) справочника форм собственности
@@ -48,6 +49,7 @@ $list = $c->getOwnershipFormsList();
 dd($list);
 ```
 [Содержание](#content) [Содержание по методам](#content-method)
+---
 
 
 <a name="getPaymentForms"></a>
@@ -61,6 +63,7 @@ $list = $c->getPaymentForms();
 dd($list);
 ```
 [Содержание](#content) [Содержание по методам](#content-method)
+---
 
 
 <a name="getTypesOfCounterparties"></a>
@@ -74,6 +77,7 @@ $list = $c->getTypesOfCounterparties();
 dd($list);
 ```
 [Содержание](#content) [Содержание по методам](#content-method)
+---
 
 
 <a name="getServiceTypes"></a>
@@ -87,6 +91,7 @@ $list = $c->getServiceTypes();
 dd($list);
 ```
 [Содержание](#content) [Содержание по методам](#content-method)
+---
 
 
 <a name="getCargoDescriptionList"></a>
@@ -103,6 +108,7 @@ $list = $c->getCargoDescriptionList('Од');
 dd($list);
 ```
 [Содержание](#content) [Содержание по методам](#content-method)
+---
 
 
 <a name="getTiresWheelsList"></a>
@@ -115,6 +121,7 @@ $list = $c->getTiresWheelsList();
 dd($list);
 ```
 [Содержание](#content) [Содержание по методам](#content-method)
+---
 
 
 <a name="getPackList"></a>
@@ -136,6 +143,7 @@ $list = $c->getPackList();
 dd($list);
 ```
 [Содержание](#content) [Содержание по методам](#content-method)
+---
 
 
 <a name="getTypesOfPayersForRedelivery"></a>
@@ -151,6 +159,7 @@ $list = $c->getTypesOfPayersForRedelivery();
 dd($list);
 ```
 [Содержание](#content) [Содержание по методам](#content-method)
+---
 
 
 <a name="getTypesOfPayers"></a>
@@ -166,6 +175,7 @@ $list = $c->getTypesOfPayers();
 dd($list);
 ```
 [Содержание](#content) [Содержание по методам](#content-method)
+---
 
 
 <a name="getPalletsList"></a>
@@ -179,6 +189,7 @@ $list = $c->getPalletsList();
 dd($list);
 ```
 [Содержание](#content) [Содержание по методам](#content-method)
+---
 
 
 <a name="getBackwardDeliveryCargoTypes"></a>
@@ -194,6 +205,7 @@ $list = $c->getBackwardDeliveryCargoTypes();
 dd($list);
 ```
 [Содержание](#content) [Содержание по методам](#content-method)
+---
 
 
 <a name="getCargoTypes"></a>
@@ -209,6 +221,7 @@ $list = $c->getCargoTypes();
 dd($list);
 ```
 [Содержание](#content) [Содержание по методам](#content-method)
+---
 
 
 <a name="getTimeIntervals"></a>
