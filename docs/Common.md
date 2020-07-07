@@ -21,7 +21,7 @@ use Daaner\NovaPoshta\Models\Common;
 - [x] [Формы собственности](/docs/Common.md#getOwnershipFormsList)
 
 <a name="content-method"></a>
-## Содержание по методам
+## Все методы модели
 - [getTimeIntervals($recipientCityRef, $dateTime = null)](#getTimeIntervals)
 - [getCargoTypes()](#getCargoTypes)
 - [getBackwardDeliveryCargoTypes()](#getBackwardDeliveryCargoTypes)
@@ -48,9 +48,8 @@ $list = $c->getOwnershipFormsList();
 
 dd($list);
 ```
-[Содержание](#content) [Содержание по методам](#content-method)
-
----
+[Содержание](#content) [Методы модели](#content-method)
+***
 
 
 <a name="getPaymentForms"></a>
@@ -63,7 +62,7 @@ $list = $c->getPaymentForms();
 
 dd($list);
 ```
-[Содержание](#content) [Содержание по методам](#content-method)
+[Содержание](#content) [Методы модели](#content-method)
 ***
 
 
@@ -77,8 +76,8 @@ $list = $c->getTypesOfCounterparties();
 
 dd($list);
 ```
-[Содержание](#content) [Содержание по методам](#content-method)
----
+[Содержание](#content) [Методы модели](#content-method)
+***
 
 
 <a name="getServiceTypes"></a>
@@ -91,8 +90,8 @@ $list = $c->getServiceTypes();
 
 dd($list);
 ```
-[Содержание](#content) [Содержание по методам](#content-method)
----
+[Содержание](#content) [Методы модели](#content-method)
+***
 
 
 <a name="getCargoDescriptionList"></a>
@@ -108,8 +107,8 @@ $list = $c->getCargoDescriptionList('Од');
 
 dd($list);
 ```
-[Содержание](#content) [Содержание по методам](#content-method)
----
+[Содержание](#content) [Методы модели](#content-method)
+***
 
 
 <a name="getTiresWheelsList"></a>
@@ -121,8 +120,8 @@ $list = $c->getTiresWheelsList();
 
 dd($list);
 ```
-[Содержание](#content) [Содержание по методам](#content-method)
----
+[Содержание](#content) [Методы модели](#content-method)
+***
 
 
 <a name="getPackList"></a>
@@ -143,8 +142,8 @@ $list = $c->getPackList();
 
 dd($list);
 ```
-[Содержание](#content) [Содержание по методам](#content-method)
----
+[Содержание](#content) [Методы модели](#content-method)
+***
 
 
 <a name="getTypesOfPayersForRedelivery"></a>
@@ -159,8 +158,8 @@ $list = $c->getTypesOfPayersForRedelivery();
 
 dd($list);
 ```
-[Содержание](#content) [Содержание по методам](#content-method)
----
+[Содержание](#content) [Методы модели](#content-method)
+***
 
 
 <a name="getTypesOfPayers"></a>
@@ -175,8 +174,8 @@ $list = $c->getTypesOfPayers();
 
 dd($list);
 ```
-[Содержание](#content) [Содержание по методам](#content-method)
----
+[Содержание](#content) [Методы модели](#content-method)
+***
 
 
 <a name="getPalletsList"></a>
@@ -189,8 +188,8 @@ $list = $c->getPalletsList();
 
 dd($list);
 ```
-[Содержание](#content) [Содержание по методам](#content-method)
----
+[Содержание](#content) [Методы модели](#content-method)
+***
 
 
 <a name="getBackwardDeliveryCargoTypes"></a>
@@ -205,8 +204,8 @@ $list = $c->getBackwardDeliveryCargoTypes();
 
 dd($list);
 ```
-[Содержание](#content) [Содержание по методам](#content-method)
----
+[Содержание](#content) [Методы модели](#content-method)
+***
 
 
 <a name="getCargoTypes"></a>
@@ -221,8 +220,8 @@ $list = $c->getCargoTypes();
 
 dd($list);
 ```
-[Содержание](#content) [Содержание по методам](#content-method)
----
+[Содержание](#content) [Методы модели](#content-method)
+***
 
 
 <a name="getTimeIntervals"></a>
@@ -237,4 +236,4 @@ $list = $c->getTimeIntervals('8d5a980d-391c-11dd-90d9-001a92567626', Carbon::tom
 
 dd($list);
 ```
-[Содержание](#content) [Содержание по методам](#content-method)
+[Содержание](#content) [Методы модели](#content-method)
