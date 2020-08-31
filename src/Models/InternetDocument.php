@@ -3,9 +3,9 @@
 namespace Daaner\NovaPoshta\Models;
 
 use Daaner\NovaPoshta\NovaPoshta;
-use Daaner\NovaPoshta\Traits\Limit;
 use Daaner\NovaPoshta\Traits\DateTimes;
 use Daaner\NovaPoshta\Traits\DocumentList;
+use Daaner\NovaPoshta\Traits\Limit;
 
 class InternetDocument extends NovaPoshta
 {
@@ -31,7 +31,6 @@ class InternetDocument extends NovaPoshta
         $this->getDateTime();
         $this->getDateTimeFromTo();
         // $this->getFullList();
-
 
         // $methodProperties = [
         //     'GetFullList' => 0,

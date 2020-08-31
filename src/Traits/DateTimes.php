@@ -49,7 +49,7 @@ trait DateTimes
      */
     public function getDateTime()
     {
-        if ($this->dateTime && (!$this->dateTimeFrom || !$this->dateTimeTo)) {
+        if ($this->dateTime && (! $this->dateTimeFrom || ! $this->dateTimeTo)) {
             $this->methodProperties['DateTime'] = $this->dateTime;
         }
 
@@ -62,10 +62,10 @@ trait DateTimes
     public function getDateTimeFromTo()
     {
         if ($this->dateTimeFrom || $this->dateTimeTo) {
-            if (!$this->dateTimeTo) {
+            if (! $this->dateTimeTo) {
                 $this->dateTimeTo = Carbon::now()->format($this->format);
             }
-            if (!$this->dateTimeFrom) {
+            if (! $this->dateTimeFrom) {
                 $this->dateTimeFrom = $this->dateTimeTo;
             }
 
