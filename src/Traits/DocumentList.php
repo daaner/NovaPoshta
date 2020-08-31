@@ -4,7 +4,6 @@ namespace Daaner\NovaPoshta\Traits;
 
 trait DocumentList
 {
-
     /**
      * @return this
      */
@@ -34,5 +33,4 @@ trait DocumentList
 
         return $this;
     }
-
 }
