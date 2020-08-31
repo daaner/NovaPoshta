@@ -7,6 +7,7 @@ trait Language
     protected $language;
 
     /**
+     * @param string $lang
      * @return this
      */
     public function setLanguage($lang)

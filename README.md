@@ -64,7 +64,7 @@ php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvid
 $cp = new Counterparty;
 $cp->setAPI('391e241b2c********************e7');
 ```
-- `getResponse($model, $calledMethod, $methodProperties, $auth = true)` - кастомная отправка данных, если добавится новые методы
+- `getResponse($model, $calledMethod, $methodProperties, $auth = true)` - кастомная отправка данных, если добавятся новые методы
 ```php
 use NovaPoshta;
 $model = 'TrackingDocument'; //нужная модель

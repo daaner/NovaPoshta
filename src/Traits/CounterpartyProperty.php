@@ -10,6 +10,7 @@ trait CounterpartyProperty
     protected $EDRPOU;
 
     /**
+     * @param string $counterpartyType
      * @return this
      */
     public function setCounterpartyType($counterpartyType)
@@ -20,6 +21,7 @@ trait CounterpartyProperty
     }
 
     /**
+     * @param string $counterpartyProperty
      * @return this
      */
     public function setCounterpartyProperty($counterpartyProperty)
@@ -30,6 +32,7 @@ trait CounterpartyProperty
     }
 
     /**
+     * @param string $ownershipForm
      * @return this
      */
     public function setOwnershipForm($ownershipForm)
@@ -40,6 +43,7 @@ trait CounterpartyProperty
     }
 
     /**
+     * @param string $EDRPOU
      * @return this
      */
     public function setEDRPOU($EDRPOU)

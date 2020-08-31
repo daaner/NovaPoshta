@@ -6,6 +6,9 @@ trait WarehousesFilter
 {
     protected $typeOfWarehouseRef;
 
+    /**
+     * @return this
+     */
     public function filterBicycleParking()
     {
         $this->methodProperties['BicycleParking'] = 1;
@@ -24,6 +27,7 @@ trait WarehousesFilter
     }
 
     /**
+     * @param string $typeOfWarehouseRef
      * @return this
      */
     public function setTypeOfWarehouseRef($typeOfWarehouseRef)
