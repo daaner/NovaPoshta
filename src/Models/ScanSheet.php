@@ -4,7 +4,6 @@ namespace Daaner\NovaPoshta\Models;
 
 use Daaner\NovaPoshta\NovaPoshta;
 
-
 class ScanSheet extends NovaPoshta
 {
     protected $model = 'ScanSheet';
