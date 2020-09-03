@@ -16,6 +16,7 @@ use Daaner\NovaPoshta\Models\LoyaltyUser;
 
 ### `getLoyaltyInfoByApiKey()`
 __НЕ ДОКУМЕНТИРОВАНО В ОФИЦИАЛЬНОЙ ДОКУМЕНТАЦИИ__
+
 Возвращает статус баланса, номер бонусной карты и остальные данные по пользователю
 ```php
 $np = new LoyaltyUser;
