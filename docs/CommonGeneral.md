@@ -1,4 +1,5 @@
 # CommonGeneral - API Справочники
+
 ```php
 use Daaner\NovaPoshta\Models\CommonGeneral;
 ```
