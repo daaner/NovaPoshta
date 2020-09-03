@@ -1,5 +1,10 @@
 # Описание
 
+- Официально не документировано
+  - [Получение данных по бонусной карте](LoyaltyUser.md#getLoyaltyInfoByApiKey)
+  - [Краткий список накладных реестра](ScanSheet.md#getScanSheetDocuments)
+
+
 - API Адреса
   - [Онлайн поиск в справочнике населенных пунктов](Address.md#searchSettlements)
   - [Онлайн поиск улиц в справочнике населенных пунктов](Address.md#searchSettlementStreets)
@@ -37,8 +42,9 @@
   - Добавить экспресс-накладные
   - [Загрузить информацию по одному реестру](ScanSheet.md#getScanSheet)
   - [Загрузить список реестров](ScanSheet.md#getScanSheetList)
+  - [Обновить описание реестра](ScanSheet.md#updateScanSheet)
   - Удалить (расформировать) реестр отправлений
-  - Удалить экспресс-накладные из реестра
+  - [Удалить экспресс-накладные из реестра](ScanSheet.md#removeDocuments)
 
 
 - API Справочники

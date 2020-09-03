@@ -15,10 +15,35 @@
 
 ***
 
+## Поддержка
+Поддерживается Laravel 7+ (HTTP фасад)
+PHP >= 7.2.5
+
+## Установка
+``` bash
+composer require daaner/novaposhta
+```
+
+Для последней не релизной версии обновите ваш `composer.json`
+```bash
+"daaner/novaposhta": "dev-master"
+# и выполните
+composer update daaner/novaposhta
+```
+
+Выполните публикацию конфига и локализационных файлов командой:
+``` bash
+php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvider"
+```
+
+##
+
 ## Поддерживаемые модели
 
 * [Модель Address](Address.md)
 * [Модель Common](Common.md)
 * [Модель CommonGeneral](CommonGeneral.md)
 * [Модель Counterparty](Counterparty.md)
+* [Модель LoyaltyUser](LoyaltyUser.md)
+* [Модель ScanSheet](ScanSheet.md)
 * [Модель TrackingDocument](TrackingDocument.md)

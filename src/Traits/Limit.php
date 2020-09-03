@@ -34,15 +34,13 @@ trait Limit
      */
     public function addLimit()
     {
-        if ($this->limit === 0) {
-            return $this;
+        if ($this->limit) {
+            $this->methodProperties['Limit'] = $this->limit;
         }
 
-        if (! $this->limit) {
-            $this->limit = config('novaposhta.page_limit');
-        }
-
-        $this->methodProperties['Limit'] = $this->limit;
+        // if (! $this->limit) {
+        //     $this->limit = config('novaposhta.page_limit');
+        // }
 
         return $this;
     }
@@ -52,11 +50,9 @@ trait Limit
      */
     public function getPage()
     {
-        if ($this->page === 0) {
-            return $this;
+        if ($this->page) {
+            $this->methodProperties['Page'] = $this->page;
         }
-
-        $this->methodProperties['Page'] = $this->page;
 
         return $this;
     }

@@ -34,19 +34,16 @@ composer require daaner/novaposhta
 Daaner\NovaPoshta\NovaPoshtaServiceProvider::class,
 ```
 
-
 Добавьте фасад `NovaPoshta` в массив в `config/app.php`:
-
 ```php
 'NovaPoshta' => Daaner\NovaPoshta\Facades\NovaPoshta::class,
 ```
 
-
 Выполните публикацию конфига и локализационных файлов командой:
-
 ``` bash
 php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvider"
 ```
+
 
 ## Конфигураци
 
@@ -97,6 +94,12 @@ $cities = $bar->getCities();
 
 
 
+## Официально не документированный ф-ционал
+- [x] [Получение данных по бонусной карте](/docs/LoyaltyUser.md#getLoyaltyInfoByApiKey)
+- [x] [Обновить описание реестра](/docs/ScanSheet.md#updateScanSheet) (официально не документировано)
+- [x] [Краткий список накладных реестра](/docs/ScanSheet.md#getScanSheetDocuments) (официально не документировано)
+
+
 
 ## Статус обертки над API новой почты
 [Официальная документация API Новой почты](https://devcenter.novaposhta.ua/docs/services/)
@@ -142,10 +145,12 @@ $cities = $bar->getCities();
 ### [API Реестры](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e)
 #### Работа с реестрами экспресс-накладных
 - [ ] Добавить экспресс-накладные
-- [ ] Загрузить информацию по одному реестру
-- [ ] Загрузить список реестров
+- [x] [Загрузить информацию по одному реестру](/docs/ScanSheet.md#getScanSheet)
+- [x] [Загрузить список реестров](/docs/ScanSheet.md#getScanSheetList)
+- [x] [Обновить описание реестра](/docs/ScanSheet.md#updateScanSheet)
+- [x] [Краткий список накладных реестра](/docs/ScanSheet.md#getScanSheetDocuments)
 - [ ] Удалить (расформировать) реестр отправлений
-- [ ] Удалить экспресс-накладные из реестра
+- [x] [Удалить экспресс-накладные из реестра](/docs/ScanSheet.md#removeDocuments)
 
 
 ### [API Справочники](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed)

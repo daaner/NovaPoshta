@@ -3,9 +3,12 @@
 namespace Daaner\NovaPoshta\Models;
 
 use Daaner\NovaPoshta\NovaPoshta;
+use Daaner\NovaPoshta\Traits\Limit;
 
 class ScanSheet extends NovaPoshta
 {
+    use Limit;
+
     protected $model = 'ScanSheet';
     protected $calledMethod;
     protected $methodProperties = null;
@@ -34,6 +37,66 @@ class ScanSheet extends NovaPoshta
 
         $this->methodProperties = [];
         $this->methodProperties['Ref'] = $ref;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+    }
+
+    /**
+     * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c6474a0fe4f08e8f7ce2e
+     *
+     * @param string||array $documents
+     * @param string||null $ref
+     * @return array
+     */
+    public function removeDocuments($documents, $ref = null)
+    {
+        $this->calledMethod = 'removeDocuments';
+
+        $this->methodProperties = [];
+        if ($ref) {
+            $this->methodProperties['Ref'] = $ref;
+        }
+
+        if (is_array($documents) === false) {
+            $documents = explode(' ', /** @scrutinizer ignore-type */ $documents);
+        }
+
+        $this->methodProperties['DocumentRefs'] = $documents;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+    }
+
+    /**
+     * Не документировано
+     *
+     * @param string $ref
+     * @return array
+     */
+    public function getScanSheetDocuments($ref)
+    {
+        $this->methodProperties = [];
+        $this->getPage();
+        $this->addLimit();
+
+        $this->calledMethod = 'getScanSheetDocuments';
+        $this->methodProperties['Ref'] = $ref;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+    }
+
+    /**
+     * Не документировано
+     *
+     * @param string $ref
+     * @return array
+     */
+    public function updateScanSheet($ref, $description)
+    {
+        $this->methodProperties = [];
+
+        $this->calledMethod = 'updateScanSheet';
+        $this->methodProperties['Ref'] = $ref;
+        $this->methodProperties['Description'] = $description;
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
