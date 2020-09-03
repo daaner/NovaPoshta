@@ -67,7 +67,7 @@ class ScanSheet extends NovaPoshta
     }
 
     /**
-     * Не документировано
+     * Не документировано.
      *
      * @param string $ref
      * @return array
@@ -85,7 +85,7 @@ class ScanSheet extends NovaPoshta
     }
 
     /**
-     * Не документировано
+     * Не документировано.
      *
      * @param string $ref
      * @return array

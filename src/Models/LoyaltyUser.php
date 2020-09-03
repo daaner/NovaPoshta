@@ -6,13 +6,12 @@ use Daaner\NovaPoshta\NovaPoshta;
 
 class LoyaltyUser extends NovaPoshta
 {
-
     protected $model = 'LoyaltyUser';
     protected $calledMethod;
     protected $methodProperties = null;
 
     /**
-     * Не документировано
+     * Не документировано.
      *
      * @return array
      */
@@ -22,5 +21,4 @@ class LoyaltyUser extends NovaPoshta
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
-
 }
