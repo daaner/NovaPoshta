@@ -1,7 +1,7 @@
 # Laravel 7 NovaPoshta API 2.0
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/daaner/novaposhta/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/daaner/novaposhta/?branch=master)
-[![Laravel Support](https://img.shields.io/badge/Laravel-7+-brightgreen.svg)]()
+[![Laravel Support](https://img.shields.io/badge/Laravel-7-8+-brightgreen.svg)]()
 [![PHP Support](https://img.shields.io/badge/PHP-7.2.5+-brightgreen.svg)]()
 [![Official Site](https://img.shields.io/badge/official-site-blue.svg)](https://daaner.github.io/NovaPoshta/)
 
@@ -18,6 +18,8 @@
 
 #### Laravel > 7, PHP >= 7.2.5
 Минимальная версия Laravel `7.0`, для более низкой версии нужно использовать `guzzle/guzzle`
+
+Работает на Laravel 8+
 
 
 ## Установка
@@ -109,11 +111,11 @@ $cities = $bar->getCities();
 #### Работа с адресами
 - [x] [Онлайн поиск в справочнике населенных пунктов](/docs/Address.md#searchSettlements)
 - [x] [Онлайн поиск улиц в справочнике населенных пунктов](/docs/Address.md#searchSettlementStreets)
-- [ ] [Создать адрес контрагента (отправитель/получатель)](/docs/Address.md#)
-- [ ] [Редактировать адрес контрагента (отправитель/получатель)](/docs/Address.md#)
-- [ ] [Удалить адрес контрагента (отправитель/получатель)](/docs/Address.md#)
+- [x] [Создать адрес контрагента (отправитель/получатель)](/docs/Address.md#)
+- [x] [Редактировать адрес контрагента (отправитель/получатель)](/docs/Address.md#)
+- [x] [Удалить адрес контрагента (отправитель/получатель)](/docs/Address.md#)
 - [x] [Справочник городов компании](/docs/Address.md#getCities)
-- [ ] [Справочник населенных пунктов Украины](/docs/Address.md#)
+- [x] [Справочник населенных пунктов Украины](/docs/Address.md#searchSettlements)
 - [x] [Справочник географических областей Украины](/docs/Address.md#getAreas)
 - [x] [Справочник отделений и типов отделений](/docs/Address.md#getWarehouses)
 - [x] [Справочник улиц компании](/docs/Address.md#getStreet)
