@@ -2,8 +2,6 @@
 
 namespace Daaner\NovaPoshta\Traits;
 
-use Carbon\Carbon;
-
 trait InternetDocumentProperty
 {
     protected $PayerType;
@@ -16,7 +14,6 @@ trait InternetDocumentProperty
     protected $BackwardDeliveryData;
     protected $Note;
     protected $AdditionalInformation;
-
 
     /**
      * @param string $PayerType
@@ -41,7 +38,6 @@ trait InternetDocumentProperty
         return $this;
     }
 
-
     /**
      * @param string $ServiceType
      * Устанавливаем тип доставки. По умолчанию значение из конфига
@@ -64,7 +60,6 @@ trait InternetDocumentProperty
 
         return $this;
     }
-
 
     /**
      * @param string $PaymentMethod
@@ -89,7 +84,6 @@ trait InternetDocumentProperty
         return $this;
     }
 
-
     /**
      * @param string $CargoType
      * Устанавливаем тип груза. По умолчанию значение из конфига
@@ -113,7 +107,6 @@ trait InternetDocumentProperty
         return $this;
     }
 
-
     /**
      * @param string $Description
      * Устанавливаем описание груза. По умолчанию из конфига
@@ -129,7 +122,6 @@ trait InternetDocumentProperty
 
         return $this;
     }
-
 
     /**
      * @param string $SeatsAmount
@@ -154,7 +146,6 @@ trait InternetDocumentProperty
         return $this;
     }
 
-
     /**
      * @param string $Cost
      * Устанавливаем стоимость груза. По умолчанию значение из конфига
@@ -176,7 +167,6 @@ trait InternetDocumentProperty
 
         return $this;
     }
-
 
     /**
      * @param string $Note
@@ -200,7 +190,6 @@ trait InternetDocumentProperty
         return $this;
     }
 
-
     /**
      * @param string $AdditionalInformation
      * Описание к ТТН для отображения в кабинете
@@ -221,7 +210,6 @@ trait InternetDocumentProperty
 
         return $this;
     }
-
 
     /**
      * @param string||integer $RedeliveryString
@@ -257,5 +245,4 @@ trait InternetDocumentProperty
 
         return $this;
     }
-
 }

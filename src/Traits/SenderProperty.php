@@ -55,5 +55,4 @@ trait SenderProperty
 
         return $this;
     }
-
 }

@@ -4,7 +4,6 @@ namespace Daaner\NovaPoshta\Traits;
 
 trait RecipientProperty
 {
-
     protected $RecipientType;
 
     /**
@@ -53,7 +52,6 @@ trait RecipientProperty
         return $this;
     }
 
-
     /**
      * @param string $SeatsAmount
      * Устанавливаем тип груза. По умолчанию значение из конфига
@@ -76,5 +74,4 @@ trait RecipientProperty
 
         return $this;
     }
-
 }
