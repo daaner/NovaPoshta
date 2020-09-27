@@ -53,6 +53,11 @@ trait DateTimes
             $this->methodProperties['DateTime'] = $this->dateTime;
         }
 
+        if (! $this->dateTime) {
+          $this->dateTime = Carbon::now()->format($this->format);
+          $this->methodProperties['DateTime'] = $this->dateTime;
+        }
+
         return $this;
     }
 
