@@ -6,7 +6,6 @@ trait OptionsSeatProperty
 {
     protected $OptionsSeat;
 
-
     /**
      * @param string||array $OptionsSeat
      * Параметр груза для каждого места отправления
@@ -42,7 +41,6 @@ trait OptionsSeatProperty
         return $this;
     }
 
-
     /**
      * @param string $Weight
      * Устанавливаем вес груза. По умолчанию значение из конфига
@@ -66,5 +64,4 @@ trait OptionsSeatProperty
 
         return $this;
     }
-
 }
