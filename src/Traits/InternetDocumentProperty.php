@@ -125,8 +125,7 @@ trait InternetDocumentProperty
 
     /**
      * @param string $SeatsAmount
-     * Устанавливаем тип груза. По умолчанию значение из конфига
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838909
+     * Кол-во мест груза по умолчанию
      * @return this
      */
     public function setSeatsAmount($SeatsAmount)
