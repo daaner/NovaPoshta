@@ -89,7 +89,7 @@ class NovaPoshta implements NovaPoshtaInterface
         }
 
         $answer = $response->json();
-        if ($auth == false && isset($answer[0])) {
+        if ($auth === false && isset($answer[0])) {
             //костыль для НовойПочты. Спасибо Вам большое :)
             $answer = $answer[0];
         }
