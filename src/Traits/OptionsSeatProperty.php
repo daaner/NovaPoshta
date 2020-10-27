@@ -5,9 +5,10 @@ namespace Daaner\NovaPoshta\Traits;
 trait OptionsSeatProperty
 {
     protected $OptionsSeat;
+    protected $Weight;
 
     /**
-     * @param string||array $OptionsSeat
+     * @param string|array $OptionsSeat
      * Параметр груза для каждого места отправления
      * Перебираем значение массива и вказываем нужные объемы
      * Если не указывать значение из конфига в 1 кг

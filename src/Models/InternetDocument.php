@@ -42,6 +42,7 @@ class InternetDocument extends NovaPoshta
     /**
      * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/556ef753a0fe4f02049c664f
      *
+     * @param string|null $description
      * @return array
      */
     public function save($description = null)
@@ -72,7 +73,7 @@ class InternetDocument extends NovaPoshta
     /**
      * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55701fa5a0fe4f0cf4fc53ec
      *
-     * @param string||array $DocumentRefs
+     * @param string|array $DocumentRefs
      * @return array
      */
     public function delete($DocumentRefs)

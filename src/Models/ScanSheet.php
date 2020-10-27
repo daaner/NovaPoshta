@@ -44,8 +44,8 @@ class ScanSheet extends NovaPoshta
     /**
      * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c6474a0fe4f08e8f7ce2e
      *
-     * @param string||array $documents
-     * @param string||null $ref
+     * @param string|array $documents
+     * @param string|null $ref
      * @return array
      */
     public function removeDocuments($documents, $ref = null)
@@ -58,10 +58,10 @@ class ScanSheet extends NovaPoshta
         }
 
         if (is_array($documents) === false) {
-            $documents = explode(' ', /** @scrutinizer ignore-type */ $documents);
+            $documents = explode(', ', /** @scrutinizer ignore-type */ $documents);
         }
 
-        $this->methodProperties['DocumentRefs'] = $documents;
+        $this->methodProperties['DocumentRefs'] = array_values($documents);
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
@@ -88,6 +88,7 @@ class ScanSheet extends NovaPoshta
      * Не документировано.
      *
      * @param string $ref
+     * @param string|int $description
      * @return array
      */
     public function updateScanSheet($ref, $description)

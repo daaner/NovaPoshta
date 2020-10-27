@@ -6,10 +6,11 @@ use Daaner\NovaPoshta\NovaPoshta;
 use Daaner\NovaPoshta\Traits\CommonFilter;
 use Daaner\NovaPoshta\Traits\Language;
 use Daaner\NovaPoshta\Traits\Limit;
+use Daaner\NovaPoshta\Traits\DateTimes;
 
 class Common extends NovaPoshta
 {
-    use Language, Limit, CommonFilter;
+    use Language, Limit, CommonFilter, DateTimes;
 
     protected $model = 'Common';
     protected $calledMethod;
@@ -46,6 +47,10 @@ class Common extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
+    /**
+      * @param string|null $find
+      * @return array
+      */
     public function getCargoDescriptionList($find = null)
     {
         $this->calledMethod = 'getCargoDescriptionList';
@@ -116,13 +121,19 @@ class Common extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
+    /**
+      * @param string $recipientCityRef
+      * @param string|Carbon|date|null $find
+      * @return array
+      */
     public function getTimeIntervals($recipientCityRef, $dateTime = null)
     {
         $this->calledMethod = 'getTimeIntervals';
 
         $this->methodProperties['RecipientCityRef'] = $recipientCityRef;
-        if ($dateTime) {
-            $this->methodProperties['DateTime'] = $dateTime;
+
+        if ($dateTime && $this->checkDate($dateTime)) {
+            $this->methodProperties['DateTime'] = $this->checkDate($dateTime);
         }
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);

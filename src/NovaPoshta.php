@@ -44,13 +44,15 @@ class NovaPoshta implements NovaPoshtaInterface
     public function setApi($api)
     {
         $this->api = $api;
+
+        return $this;
     }
 
     /**
      * @param string $model
      * @param string $calledMethod
      * @param array $methodProperties
-     * @param bool $auth
+     * @param bool|null $auth
      * @return array
      */
     public function getResponse($model, $calledMethod, $methodProperties, $auth = true)
@@ -60,12 +62,10 @@ class NovaPoshta implements NovaPoshtaInterface
         $info = '';
 
         if ($auth) {
-            $body = [
-                'apiKey' => $this->api,
-                'modelName' => $model,
-                'calledMethod' => $calledMethod,
-                'methodProperties' => $methodProperties,
-            ];
+            $body['apiKey'] = $this->api;
+            $body['modelName'] = $model;
+            $body['calledMethod'] = $calledMethod;
+            $body['methodProperties'] = $methodProperties;
         } else {
             $body['modelName'] = $model;
             $body['calledMethod'] = $calledMethod;
@@ -73,12 +73,12 @@ class NovaPoshta implements NovaPoshtaInterface
         }
 
         $response = Http::timeout(3)
-        ->retry(2, 200)
-        ->withHeaders([
-            'Accept' => 'application/json',
-            'Content-Type' => 'application/json',
-        ])
-        ->post($url, $body);
+            ->retry(2, 200)
+            ->withHeaders([
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+            ])
+            ->post($url, $body);
 
         if ($response->failed()) {
             return [

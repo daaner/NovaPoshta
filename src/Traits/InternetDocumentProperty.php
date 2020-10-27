@@ -211,12 +211,12 @@ trait InternetDocumentProperty
     }
 
     /**
-     * @param string||integer $RedeliveryString
-     * @param string||null $PayerType
-     * @param string||null $CargoType
-     * @param array||null $addition
+     * @param string|integer $RedeliveryString
+     * @param string|null $PayerType
+     * @param string|null $CargoType
+     * @param array|null $addition
      * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/575fe852a0fe4f0aa0754760
-     * Услуга опбатной доставки. По умолчанию значения из конфига
+     * Услуга обратной доставки. По умолчанию значения из конфига
      * @return this
      */
     public function setBackwardDeliveryData($RedeliveryString, $PayerType = null, $CargoType = null)

@@ -12,7 +12,7 @@ trait DateTimes
     protected $format = 'd.m.Y';
 
     /**
-     * @param string||Carbon||date $dateTime
+     * @param string|Carbon|date $dateTime
      * @return this
      */
     public function setDateTime($dateTime)
@@ -23,7 +23,7 @@ trait DateTimes
     }
 
     /**
-     * @param string||Carbon||date $dateTimeFrom
+     * @param string|Carbon|date $dateTimeFrom
      * @return this
      */
     public function setDateTimeFrom($dateTimeFrom)
@@ -34,7 +34,7 @@ trait DateTimes
     }
 
     /**
-     * @param string||Carbon||date $dateTimeTo
+     * @param string|Carbon|date $dateTimeTo
      * @return this
      */
     public function setDateTimeTo($dateTimeTo)
@@ -82,20 +82,20 @@ trait DateTimes
     }
 
     /**
-     * @param string||Carbon||date $date
+     * @param string|Carbon|date $date
      * @return $date
      */
     public function checkDate($date)
     {
-        if ($date instanceof Carbon) {
+          if ($date instanceof Carbon) {
             $date = $date->format($this->format);
-        } else {
+          } else {
             try {
-                $date = Carbon::parse($date)->format($this->format);
+              $date = Carbon::parse($date)->format($this->format);
             } catch (\Exception $e) {
-                $date = null;
+              $date = Carbon::now()->format($this->format);
             }
-        }
+          }
 
         return $date;
     }

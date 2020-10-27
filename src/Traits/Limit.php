@@ -29,15 +29,14 @@ trait Limit
         return $this;
     }
 
-    /**
-     * @return this
-     */
     public function addLimit()
     {
         if ($this->limit) {
             $this->methodProperties['Limit'] = $this->limit;
         }
 
+        // nit: Daan
+        // подумать, нужно ли по умолчанию лимит передавать из конфига
         // if (! $this->limit) {
         //     $this->limit = config('novaposhta.page_limit');
         // }
@@ -45,9 +44,6 @@ trait Limit
         return $this;
     }
 
-    /**
-     * @return this
-     */
     public function getPage()
     {
         if ($this->page) {

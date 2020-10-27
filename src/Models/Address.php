@@ -23,6 +23,11 @@ class Address extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
+    /**
+     * @param string|null $find
+     * @param boolean|null $string
+     * @return array
+     */
     public function getCities($find = null, $string = true)
     {
         $this->calledMethod = 'getCities';
@@ -40,6 +45,11 @@ class Address extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
+    /**
+     * @param string $cityRef
+     * @param boolean|null $string
+     * @return array
+     */
     public function getWarehouses($cityRef, $string = true)
     {
         $this->calledMethod = 'getWarehouses';
@@ -54,6 +64,11 @@ class Address extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
+    /**
+     * @param string $cityRef
+     * @param boolean|null $string
+     * @return array
+     */
     public function getWarehouseTypes($cityRef, $string = true)
     {
         $this->calledMethod = 'getWarehouseTypes';
@@ -67,6 +82,10 @@ class Address extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
+    /**
+     * @param string $settlementRef
+     * @return array
+     */
     public function getWarehouseSettlements($settlementRef)
     {
         $this->calledMethod = 'getWarehouses';
@@ -77,6 +96,10 @@ class Address extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
+    /**
+     * @param string $search
+     * @return array
+     */
     public function searchSettlements($search)
     {
         $this->calledMethod = 'searchSettlements';
@@ -87,6 +110,11 @@ class Address extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
+    /**
+     * @param string $ref
+     * @param string $street
+     * @return array
+     */
     public function searchSettlementStreets($ref, $street)
     {
         $this->calledMethod = 'searchSettlementStreets';
@@ -98,6 +126,10 @@ class Address extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
+    /**
+     * @param string|null $find
+     * @return array
+     */
     public function getSettlements($find = null)
     {
         $this->calledMethod = 'getSettlements';
@@ -118,6 +150,11 @@ class Address extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
+    /**
+     * @param string $city
+     * @param string|null $find
+     * @return array
+     */
     public function getStreet($city, $find = null)
     {
         $this->calledMethod = 'getStreet';

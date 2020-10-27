@@ -60,6 +60,7 @@ class TrackingDocument extends NovaPoshta
      * Получение статусов одной ТТН или массива.
      *
      * @param string|array $ttn
+     * @param string|int|null $phone
      * @return array
      */
     public function getStatusTTN($ttns, $phone = null)
