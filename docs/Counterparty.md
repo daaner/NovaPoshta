@@ -5,9 +5,20 @@ use Daaner\NovaPoshta\Models\Counterparty;
 ```
 
 ## Содержание
-
+- [x] [Загрузить список контрагентов](Counterparty.md#getCounterparties)
+- [x] [Загрузить список контактных лиц Контрагента](Counterparty.md#getCounterpartyContactPerson)
+- [x] [Создать Контрагента](Counterparty.md#save)
+- [x] [Загрузить параметры Контрагента](Counterparty.md#getCounterpartyOptions)
+- [x] [Загрузить список адресов Контрагентов](Counterparty.md#getCounterpartyAddresses)
+- [x] [Получение данных об Контрагенте по номеру телефона](Counterparty.md#getCatalogCounterparty)
 
 ## Все методы модели
+- [getCounterparties($find = null)](#getCounterparties)
+- [getCounterpartyContactPerson($ref)](#getCounterpartyContactPerson)
+- [save($firstName, $lastName = null, $middleName = null, $phone = null, $email = null)](#save)
+- [getCounterpartyOptions($ref)](#getCounterpartyOptions)
+- [getCounterpartyAddresses($ref)](#getCounterpartyAddresses)
+- [getCatalogCounterparty($phone, $lastName)](#getCatalogCounterparty)
 
 ---
 
@@ -108,3 +119,35 @@ $agent = $cp->getCounterpartyOptions("16b39437-c037-11ea-8513-b88303659df5");
 dd($agent);
 ```
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `getCounterpartyAddresses()`
+[Загрузить](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fdcb4a0fe4f105c087611) список адресов Контрагентов
+```php
+$cp = new Counterparty;
+//по умолчанию Recipient
+$cp->setCounterpartyProperty('Sender'); // или насильно Recipient
+$agent = $cp->getCounterpartyOptions("16b39437-c037-11ea-8513-b88303659df5");
+
+dd($agent);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `getCatalogCounterparty()`
+__НЕ ДОКУМЕНТИРОВАНО В ОФИЦИАЛЬНОЙ ДОКУМЕНТАЦИИ__
+
+Получение данных об Контрагенте по номеру телефона (ФИО и прочее)
+
+```php
+$cp = new Counterparty;
+
+//обязателен телефон в формате и минимум три символа фамилии
+$fullname = $cp->getCatalogCounterparty("0965775815", 'іва');
+
+dd($fullname);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
