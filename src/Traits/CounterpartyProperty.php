@@ -122,10 +122,11 @@ trait CounterpartyProperty
      */
     public function makeOrganization()
     {
-        $lastName = '';
-        $middleName = '';
-        $phone = '';
-        $email = '';
+        //need clear data
+        // $lastName = '';
+        // $middleName = '';
+        // $phone = '';
+        // $email = '';
 
         return $this;
     }
