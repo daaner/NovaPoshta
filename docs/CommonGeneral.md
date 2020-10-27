@@ -5,24 +5,13 @@ use Daaner\NovaPoshta\Models\CommonGeneral;
 ```
 
 ## Содержание
-- [x] [Виды временных интервалов](Common.md#getTimeIntervals)
-- [x] [Виды груза](Common.md#getCargoTypes)
-- [x] [Виды обратной доставки груза](Common.md#getBackwardDeliveryCargoTypes)
-- [x] [Виды паллет](Common.md#getPalletsList)
-- [x] [Виды плательщиков](Common.md#getTypesOfPayers)
-- [x] [Виды плательщиков обратной доставки](Common.md#getTypesOfPayersForRedelivery)
-- [x] [Виды упаковки](Common.md#getPackList)
-- [x] [Виды шин и дисков](Common.md#getTiresWheelsList)
-- [x] [Описания груза](Common.md#getCargoDescriptionList)
 - [x] [Перечень ошибок](CommonGeneral.md#getMessageCodeText)
-- [x] [Технологии доставки](Common.md#getServiceTypes)
-- [x] [Типы контрагентов](Common.md#getTypesOfCounterparties)
-- [x] [Формы оплаты](Common.md#getPaymentForms)
-- [x] [Формы собственности](Common.md#getOwnershipFormsList)
+
 
 
 ## Все методы модели
 - [getMessageCodeText()](#getMessageCodeText)
+- [prolongateKey($ApiKey, $month = 12)](#prolongateKey)
 
 
 ---
@@ -36,3 +25,20 @@ $lg = $cg->getMessageCodeText();
 dd($lg);
 ```
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `prolongateKey()`
+__НЕ ДОКУМЕНТИРОВАНО В ОФИЦИАЛЬНОЙ ДОКУМЕНТАЦИИ__
+
+Данная ф-ция НЕ РАБОТАЕТ, потому как требует авторизацию JWT.
+Возможно в будущем она будет доступна и через API
+
+```php
+$cg = new CommonGeneral;
+$api = $cg->prolongateKey('c9b*****ffd', 3);
+
+dd($api);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***

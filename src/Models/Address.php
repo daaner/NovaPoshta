@@ -132,19 +132,26 @@ class Address extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
+    //dev
     //Counterparty API
     public function save()
     {
         $this->calledMethod = 'save';
+
+        return false;
     }
 
     public function update()
     {
         $this->calledMethod = 'update';
+
+        return false;
     }
 
     public function delete()
     {
         $this->calledMethod = 'delete';
+
+        return false;
     }
 }
