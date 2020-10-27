@@ -83,20 +83,20 @@ trait DateTimes
 
     /**
      * @param string|Carbon|date $date
-     * @return $date
+     * @return $formated_date
      */
     public function checkDate($date)
     {
         if ($date instanceof Carbon) {
-            $date = $date->format($this->format);
+            $formated_date = $date->format($this->format);
         } else {
             try {
-                $date = Carbon::parse($date)->format($this->format);
+                $formated_date = Carbon::parse($date)->format($this->format);
             } catch (\Exception $e) {
-                $date = Carbon::now()->format($this->format);
+                $formated_date = Carbon::now()->format($this->format);
             }
         }
 
-        return $date;
+        return $formated_date;
     }
 }
