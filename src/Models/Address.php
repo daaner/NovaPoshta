@@ -3,9 +3,9 @@
 namespace Daaner\NovaPoshta\Models;
 
 use Daaner\NovaPoshta\NovaPoshta;
+use Daaner\NovaPoshta\Traits\AddressSettlementProperty;
 use Daaner\NovaPoshta\Traits\Limit;
 use Daaner\NovaPoshta\Traits\WarehousesFilter;
-use Daaner\NovaPoshta\Traits\AddressSettlementProperty;
 
 class Address extends NovaPoshta
 {
