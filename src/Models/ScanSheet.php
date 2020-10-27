@@ -61,7 +61,7 @@ class ScanSheet extends NovaPoshta
             $documents = explode(', ', /** @scrutinizer ignore-type */ $documents);
         }
 
-        $this->methodProperties['DocumentRefs'] = array_values($documents);
+        $this->methodProperties['DocumentRefs'] = array_values(/** @scrutinizer ignore-type */ $documents);
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }

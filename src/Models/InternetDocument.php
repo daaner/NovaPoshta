@@ -81,10 +81,10 @@ class InternetDocument extends NovaPoshta
         $this->calledMethod = 'delete';
 
         if (is_array($DocumentRefs) === false) {
-            $DocumentRefs = explode(', ', $DocumentRefs);
+            $DocumentRefs = explode(', ', /** @scrutinizer ignore-type */ $DocumentRefs);
         }
 
-        $this->methodProperties['DocumentRefs'] = array_values($DocumentRefs);
+        $this->methodProperties['DocumentRefs'] = array_values(/** @scrutinizer ignore-type */ $DocumentRefs);
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }

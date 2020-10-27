@@ -124,7 +124,7 @@ class Common extends NovaPoshta
 
     /**
      * @param string $recipientCityRef
-     * @param string|Carbon|date|null $find
+     * @param string|Carbon|null $find
      * @return array
      */
     public function getTimeIntervals($recipientCityRef, $dateTime = null)

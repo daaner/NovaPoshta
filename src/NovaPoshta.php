@@ -52,7 +52,7 @@ class NovaPoshta implements NovaPoshtaInterface
      * @param string $model
      * @param string $calledMethod
      * @param array $methodProperties
-     * @param bool|null $auth
+     * @param bool $auth
      * @return array
      */
     public function getResponse($model, $calledMethod, $methodProperties, $auth = true)
@@ -89,7 +89,7 @@ class NovaPoshta implements NovaPoshtaInterface
         }
 
         $answer = $response->json();
-        if (! $auth && isset($answer[0])) {
+        if ($auth == false && isset($answer[0])) {
             //костыль для НовойПочты. Спасибо Вам большое :)
             $answer = $answer[0];
         }
