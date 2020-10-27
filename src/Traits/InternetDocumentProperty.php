@@ -211,7 +211,7 @@ trait InternetDocumentProperty
     }
 
     /**
-     * @param string|integer $RedeliveryString
+     * @param string|int $RedeliveryString
      * @param string|null $PayerType
      * @param string|null $CargoType
      * @param array|null $addition

@@ -25,7 +25,7 @@ class Address extends NovaPoshta
 
     /**
      * @param string|null $find
-     * @param boolean|null $string
+     * @param bool|null $string
      * @return array
      */
     public function getCities($find = null, $string = true)
@@ -47,7 +47,7 @@ class Address extends NovaPoshta
 
     /**
      * @param string $cityRef
-     * @param boolean|null $string
+     * @param bool|null $string
      * @return array
      */
     public function getWarehouses($cityRef, $string = true)
@@ -66,7 +66,7 @@ class Address extends NovaPoshta
 
     /**
      * @param string $cityRef
-     * @param boolean|null $string
+     * @param bool|null $string
      * @return array
      */
     public function getWarehouseTypes($cityRef, $string = true)

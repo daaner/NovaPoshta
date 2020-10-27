@@ -4,9 +4,9 @@ namespace Daaner\NovaPoshta\Models;
 
 use Daaner\NovaPoshta\NovaPoshta;
 use Daaner\NovaPoshta\Traits\CommonFilter;
+use Daaner\NovaPoshta\Traits\DateTimes;
 use Daaner\NovaPoshta\Traits\Language;
 use Daaner\NovaPoshta\Traits\Limit;
-use Daaner\NovaPoshta\Traits\DateTimes;
 
 class Common extends NovaPoshta
 {
@@ -48,9 +48,9 @@ class Common extends NovaPoshta
     }
 
     /**
-      * @param string|null $find
-      * @return array
-      */
+     * @param string|null $find
+     * @return array
+     */
     public function getCargoDescriptionList($find = null)
     {
         $this->calledMethod = 'getCargoDescriptionList';
@@ -122,10 +122,10 @@ class Common extends NovaPoshta
     }
 
     /**
-      * @param string $recipientCityRef
-      * @param string|Carbon|date|null $find
-      * @return array
-      */
+     * @param string $recipientCityRef
+     * @param string|Carbon|date|null $find
+     * @return array
+     */
     public function getTimeIntervals($recipientCityRef, $dateTime = null)
     {
         $this->calledMethod = 'getTimeIntervals';
