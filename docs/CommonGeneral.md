@@ -6,7 +6,7 @@ use Daaner\NovaPoshta\Models\CommonGeneral;
 
 ## Содержание
 - [x] [Перечень ошибок](CommonGeneral.md#getMessageCodeText)
-
+- [x] [Продление API ключа](CommonGeneral.md#prolongateKey) - не работает
 
 
 ## Все методы модели

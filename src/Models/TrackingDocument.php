@@ -20,7 +20,7 @@ class TrackingDocument extends NovaPoshta
         $this->calledMethod = 'getStatusDocuments';
 
         if (is_array($documents) === false) {
-            $documents = explode(' ', /** @scrutinizer ignore-type */ $documents);
+            $documents = explode(', ', /** @scrutinizer ignore-type */ $documents);
         }
         $methodProperties = [
             'Documents' => $documents,
@@ -43,7 +43,8 @@ class TrackingDocument extends NovaPoshta
         $documents = [];
 
         if (is_array($ttns)) {
-            foreach ($ttns as $key => $ttn) {
+            $docs = array_values($ttns);
+            foreach ($docs as $key => $ttn) {
                 $documents[$key]['DocumentNumber'] = $ttn;
                 $documents[$key]['Phone'] = $phone;
             }
@@ -75,7 +76,7 @@ class TrackingDocument extends NovaPoshta
                 $statuses[$key]['ActualDeliveryDate'] = isset($status['ActualDeliveryDate']) ? $status['ActualDeliveryDate'] : null;
 
                 // проверка на существование поля обратной доставки и получения номера накладной
-                // если длина значения > 11 - это номер возврата денег. ПОэтому проверка четко на 11 символов
+                // если длина значения > 11 - это номер возврата денег. Поэтому проверка четко на 11 символов
                 $statuses[$key]['NewTTN'] = isset($status['LastCreatedOnTheBasisNumber']) && $status['LastCreatedOnTheBasisNumber'] && strlen($status['LastCreatedOnTheBasisNumber']) == 11 ? $status['LastCreatedOnTheBasisNumber'] : null;
             }
         }

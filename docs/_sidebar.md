@@ -16,3 +16,4 @@
   - [Получение данных по бонусной карте](LoyaltyUser.md#getLoyaltyInfoByApiKey)
   - [Обновить описание реестра](ScanSheet.md#updateScanSheet)
   - [Краткий список накладных реестра](ScanSheet.md#getScanSheetDocuments)
+  - [Получение данных об Контрагенте по номеру телефона](Counterparty.md#getCatalogCounterparty)

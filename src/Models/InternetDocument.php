@@ -35,13 +35,8 @@ class InternetDocument extends NovaPoshta
         //DateTime
         $this->getDateTime();
         $this->getDateTimeFromTo();
-        // $this->getFullList();
 
-        // $methodProperties = [
-        //     'GetFullList' => 0,
-        // ];
-
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
     /**
@@ -71,6 +66,26 @@ class InternetDocument extends NovaPoshta
         $this->getNote();
         $this->getAdditionalInformation();
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
+
+    /**
+     * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55701fa5a0fe4f0cf4fc53ec
+     *
+     * @param string||array $DocumentRefs
+     * @return array
+     */
+    public function delete($DocumentRefs)
+    {
+        $this->calledMethod = 'delete';
+
+        if (is_array($DocumentRefs) === false) {
+            $DocumentRefs = explode(', ', /** @scrutinizer ignore-type */ $DocumentRefs);
+        }
+
+        $this->methodProperties['DocumentRefs'] = array_values($DocumentRefs);
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
 }

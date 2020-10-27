@@ -5,7 +5,9 @@ use Daaner\NovaPoshta\Models\TrackingDocument;
 ```
 
 ## Содержание
-
+- [x] [Получение полной инфо об ЭН](TrackingDocument.md#getStatusDocuments)
+- [x] [Проверка одной/массива ЭН](TrackingDocument.md#checkTTN)
+- [x] [Быстрая проверка одной/массива ЭН](TrackingDocument.md#getStatusTTN)
 
 ## Все методы модели
 - [getStatusDocuments()](#getStatusDocuments)
@@ -17,9 +19,12 @@ use Daaner\NovaPoshta\Models\TrackingDocument;
 ### `getStatusDocuments()`
 [Получение](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55702cbba0fe4f0cf4fc53ee) полной информации по ТТН
 ```php
-$doc = array();
 
-//в массиве одна или несколько ТТН с отдельными телефонами
+$doc = '20450296339688';
+// либо
+$doc = '20450296339688, 20450296339742';
+//либо в массиве одна или несколько ТТН с отдельными телефонами
+$doc = array();
 array_push($doc, ['DocumentNumber' => 'ttn1', 'Phone' => 'phone1']);
 array_push($doc, ['DocumentNumber' => 'ttn2', 'Phone' => 'phone2']);
 
@@ -27,14 +32,6 @@ $np = new TrackingDocument;
 $getStatusDocuments = $np->getStatusDocuments($doc);
 
 dd($getStatusDocuments);
-array:3 [▼
-  "success" => true
-  "result" => array:2 [▼
-    0 => array:13 [▶]
-    1 => array:75 [▶]
-  ]
-  "info" => array:1 [▶]
-]
 ```
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)
 ***
@@ -43,7 +40,15 @@ array:3 [▼
 ### `checkTTN()`
 Проверка одной/массива накладных с необязательным указанием общего телефона
 ```php
+// Берутся только значения массива как ЭН
 $data = ['20450xxxx701xx', '20450xxxx227xx', '20450xxxx886xx'];
+// либо
+$data = [
+  15 => '20450xxxx701xx',
+  "100500" => '20450xxxx227xx',
+  '20450xxxx886xx'
+];
+
 $np = new TrackingDocument;
 $info = $np->checkTTN($data);
 //или
@@ -61,21 +66,5 @@ $np = new TrackingDocument;
 $info = $np->getStatusTTN($data);
 
 dd($info);
-array:3 [▼
-  "success" => true
-  "result" => array:3 [▼
-    0 => array:6 [▶]
-    1 => array:6 [▶]
-    2 => array:6 [▼
-      "Number" => "20450xxxx886xx"
-      "StatusCode" => "102"
-      "Status" => "Відмова від отримання"
-      "StatusLocale" => "Возврат посылки по времени (102)"
-      "ActualDeliveryDate" => "2020-07-01 00:00:00"
-      "NewTTN" => "59000xxxx606xx"
-    ]
-  ]
-  "info" => array:2 [▶]
-]
 ```
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)
