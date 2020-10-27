@@ -9,7 +9,6 @@ trait AddressSettlementProperty
     protected $Ref;
     protected $Warehouse = false;
 
-
     /**
      * @param string $AreaRef
      * @return this
@@ -100,5 +99,4 @@ trait AddressSettlementProperty
 
         return $this;
     }
-
 }

@@ -87,12 +87,13 @@ class Counterparty extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    public function getCatalogCounterparty($phone, $lastname) {
-      $this->calledMethod = 'getCatalogCounterparty';
+    public function getCatalogCounterparty($phone, $lastname)
+    {
+        $this->calledMethod = 'getCatalogCounterparty';
 
-      $this->methodProperties['Phone'] = $phone;
-      $this->methodProperties['LastName'] = $lastname;
+        $this->methodProperties['Phone'] = $phone;
+        $this->methodProperties['LastName'] = $lastname;
 
-      return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 }
