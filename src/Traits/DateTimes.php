@@ -87,15 +87,15 @@ trait DateTimes
      */
     public function checkDate($date)
     {
-          if ($date instanceof Carbon) {
+        if ($date instanceof Carbon) {
             $date = $date->format($this->format);
-          } else {
+        } else {
             try {
-              $date = Carbon::parse($date)->format($this->format);
+                $date = Carbon::parse($date)->format($this->format);
             } catch (\Exception $e) {
-              $date = Carbon::now()->format($this->format);
+                $date = Carbon::now()->format($this->format);
             }
-          }
+        }
 
         return $date;
     }

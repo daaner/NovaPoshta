@@ -15,9 +15,9 @@ class Counterparty extends NovaPoshta
     protected $methodProperties = [];
 
     /**
-      * @param string|null $find
-      * @return array
-      */
+     * @param string|null $find
+     * @return array
+     */
     public function getCounterparties($find = null)
     {
         $this->calledMethod = 'getCounterparties';
@@ -34,9 +34,9 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-      * @param string $ref
-      * @return array
-      */
+     * @param string $ref
+     * @return array
+     */
     public function getCounterpartyContactPerson($ref)
     {
         $this->calledMethod = 'getCounterpartyContactPersons';
@@ -49,13 +49,13 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-      * @param string $firstName
-      * @param string|null $lastName
-      * @param string|null $middleName
-      * @param string|int|null $phone
-      * @param string|null $email
-      * @return array
-      */
+     * @param string $firstName
+     * @param string|null $lastName
+     * @param string|null $middleName
+     * @param string|int|null $phone
+     * @param string|null $email
+     * @return array
+     */
     public function save($firstName, $lastName = null, $middleName = null, $phone = null, $email = null)
     {
         $this->calledMethod = 'save';
@@ -85,9 +85,9 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-      * @param string $ref
-      * @return array
-      */
+     * @param string $ref
+     * @return array
+     */
     public function getCounterpartyOptions($ref)
     {
         $this->calledMethod = 'getCounterpartyOptions';
@@ -98,9 +98,9 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-      * @param string $ref
-      * @return array
-      */
+     * @param string $ref
+     * @return array
+     */
     public function getCounterpartyAddresses($ref)
     {
         $this->calledMethod = 'getCounterpartyAddresses';
@@ -112,10 +112,10 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-      * @param string|int $phone
-      * @param string $lastname
-      * @return array
-      */
+     * @param string|int $phone
+     * @param string $lastname
+     * @return array
+     */
     public function getCatalogCounterparty($phone, $lastname)
     {
         $this->calledMethod = 'getCatalogCounterparty';
