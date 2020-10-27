@@ -30,7 +30,7 @@ __ВНИМАНИЕ__
 #### Laravel > 7, PHP >= 7.2.5
 Минимальная версия Laravel `7.0`, для более низкой версии нужно использовать `guzzle/guzzle`
 
-Работает на Laravel 8+
+Работает на Laravel 7+
 
 
 ## Установка
@@ -109,8 +109,9 @@ $cities = $bar->getCities();
 
 ## Официально не документированный ф-ционал
 - [x] [Получение данных по бонусной карте](/docs/LoyaltyUser.md#getLoyaltyInfoByApiKey)
-- [x] [Обновить описание реестра](/docs/ScanSheet.md#updateScanSheet) (официально не документировано)
-- [x] [Краткий список накладных реестра](/docs/ScanSheet.md#getScanSheetDocuments) (официально не документировано)
+- [x] [Обновить описание реестра](/docs/ScanSheet.md#updateScanSheet)
+- [x] [Краткий список накладных реестра](/docs/ScanSheet.md#getScanSheetDocuments)
+- [x] [Получение данных об Контрагенте по номеру телефона](Counterparty.md#getCatalogCounterparty)
 
 
 
@@ -126,7 +127,7 @@ $cities = $bar->getCities();
 - [x] [Редактировать адрес контрагента (отправитель/получатель)](/docs/Address.md#)
 - [x] [Удалить адрес контрагента (отправитель/получатель)](/docs/Address.md#)
 - [x] [Справочник городов компании](/docs/Address.md#getCities)
-- [x] [Справочник населенных пунктов Украины](/docs/Address.md#searchSettlements)
+- [x] [Справочник населенных пунктов Украины](/docs/Address.md#getSettlements)
 - [x] [Справочник географических областей Украины](/docs/Address.md#getAreas)
 - [x] [Справочник отделений и типов отделений](/docs/Address.md#getWarehouses)
 - [x] [Справочник улиц компании](/docs/Address.md#getStreet)
@@ -134,14 +135,14 @@ $cities = $bar->getCities();
 
 ### [API Контрагенты](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d)
 #### Работа с данными Контрагента
-- [ ] Создать Контрагента
+- [x] [Создать Контрагента](Counterparty.md#save)
 - [ ] Создать контактное лицо Контрагента
-- [ ] Создать Контрагента с типом (юридическое лицо) организация
-- [ ] Создать Контрагента с типом третьего лица
-- [ ] Загрузить список адресов Контрагентов
-- [ ] Загрузить параметры Контрагента
-- [ ] Загрузить список контактных лиц Контрагента
-- [ ] Загрузить список Контрагентов отправителей/получателей/третье лицо
+- [x] [Создать Контрагента с типом (юридическое лицо) организация](Counterparty.md#save)
+- [x] [Создать Контрагента с типом третьего лица](Counterparty.md#save)
+- [x] [Загрузить список адресов Контрагентов](Counterparty.md#getCounterpartyAddresses)
+- [x] [Загрузить параметры Контрагента](Counterparty.md#getCounterpartyOptions)
+- [x] [Загрузить список контактных лиц Контрагента](Counterparty.md#getCounterpartyContactPerson)
+- [x] [Загрузить список контрагентов](Counterparty.md#getCounterparties)
 - [ ] Обновить данные Контрагента
 - [ ] Обновить данные контактного лица Контрагента
 - [ ] Удалить Контрагента получателя

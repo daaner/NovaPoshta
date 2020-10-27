@@ -5,10 +5,11 @@ namespace Daaner\NovaPoshta\Models;
 use Daaner\NovaPoshta\NovaPoshta;
 use Daaner\NovaPoshta\Traits\Limit;
 use Daaner\NovaPoshta\Traits\WarehousesFilter;
+use Daaner\NovaPoshta\Traits\AddressSettlementProperty;
 
 class Address extends NovaPoshta
 {
-    use Limit, WarehousesFilter;
+    use Limit, WarehousesFilter, AddressSettlementProperty;
 
     protected $model = 'Address';
     protected $calledMethod;
@@ -86,13 +87,33 @@ class Address extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    public function searchSettlementStreets($ref, $street = null)
+    public function searchSettlementStreets($ref, $street)
     {
         $this->calledMethod = 'searchSettlementStreets';
         $this->addLimit();
 
         $this->methodProperties['SettlementRef'] = $ref;
         $this->methodProperties['StreetName'] = $street;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
+    public function getSettlements($find = null)
+    {
+        $this->calledMethod = 'getSettlements';
+        $this->methodProperties = null;
+        $this->addLimit();
+        $this->getPage();
+
+        //add AddressSettlementProperty
+        $this->getAreaRef();
+        $this->getRegionRef();
+        $this->getWarehouse();
+        $this->getRef();
+
+        if ($find) {
+            $this->methodProperties['FindByString'] = $find;
+        }
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
