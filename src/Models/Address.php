@@ -46,19 +46,23 @@ class Address extends NovaPoshta
     }
 
     /**
-     * @param string $cityRef
+     * @param string|null $cityRef
      * @param bool|null $string
      * @return array
      */
-    public function getWarehouses($cityRef, $string = true)
+    public function getWarehouses($cityRef = null, $string = true)
     {
         $this->calledMethod = 'getWarehouses';
+        $this->addLimit();
+        $this->getPage();
         $this->getTypeOfWarehouseRef();
 
-        if ($string) {
+        if ($cityRef) {
+          if ($string) {
             $this->methodProperties['CityName'] = $cityRef;
-        } else {
+          } else {
             $this->methodProperties['CityRef'] = $cityRef;
+          }
         }
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);

@@ -18,7 +18,7 @@ use Daaner\NovaPoshta\Models\Address;
 ## Все методы модели
 - [getAreas()](#getAreas)
 - [getCities($find = null, $string = true)](#getCities)
-- [getWarehouses($cityRef, $string = true)](#getWarehouses)
+- [getWarehouses($cityRef = null, $string = true)](#getWarehouses)
 - [getWarehouseTypes($cityName)](#getWarehouseTypes)
 - [getWarehouseSettlements($settlementRef)](#getWarehouseSettlements)
 - [searchSettlements($search)](#searchSettlements)
@@ -73,6 +73,9 @@ dd($city);
 [Получение](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d8211a0fe4f08e8f7ce45) списка отделений в городах
 ```php
 $adr = new Address;
+//получить все (используйте лимит и пагинацию, данных много)
+$warehouses = $adr->getWarehouses();
+//или
 $warehouses = $adr->getWarehouses('Киев');
 //или по "CityRef"
 $warehouses = $adr->getWarehouses('a9522a7e-eaf5-11e7-ba66-005056b2fc3d', false);
