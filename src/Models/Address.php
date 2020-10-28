@@ -58,11 +58,11 @@ class Address extends NovaPoshta
         $this->getTypeOfWarehouseRef();
 
         if ($cityRef) {
-          if ($string) {
-            $this->methodProperties['CityName'] = $cityRef;
-          } else {
-            $this->methodProperties['CityRef'] = $cityRef;
-          }
+            if ($string) {
+                $this->methodProperties['CityName'] = $cityRef;
+            } else {
+                $this->methodProperties['CityRef'] = $cityRef;
+            }
         }
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
