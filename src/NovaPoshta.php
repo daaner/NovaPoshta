@@ -4,6 +4,7 @@ namespace Daaner\NovaPoshta;
 
 use Daaner\NovaPoshta\Contracts\NovaPoshtaInterface;
 use Illuminate\Support\Facades\Http;
+use Log;
 
 class NovaPoshta implements NovaPoshtaInterface
 {
@@ -132,7 +133,12 @@ class NovaPoshta implements NovaPoshtaInterface
 
         if ($this->dev) {
             //test and dev
-            dump($model.' / '.$calledMethod, $methodProperties);
+            Log::debug('= = = = = = = = = = = = = = = = = = = =');
+            Log::debug($model.' / '.$calledMethod);
+            Log::debug('--------------------');
+            Log::notice($methodProperties);
+            
+            // dump($model.' / '.$calledMethod, $methodProperties);
 
             $return['dev'] = $answer;
         }
