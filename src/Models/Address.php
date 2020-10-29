@@ -138,7 +138,16 @@ class Address extends NovaPoshta
     {
         $this->calledMethod = 'getSettlements';
         $this->methodProperties = null;
-        $this->addLimit();
+
+        /**
+          * nit:Daan
+          * $this->addLimit();
+          *
+          * Нужен лимит 150, иначе значение totalCount имеет не верный формат
+          * Устанавливаю насильно, возможно позже исправят
+          */
+        $this->methodProperties['Limit'] = 150;
+
         $this->getPage();
 
         //add AddressSettlementProperty
