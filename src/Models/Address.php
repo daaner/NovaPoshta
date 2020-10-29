@@ -140,12 +140,12 @@ class Address extends NovaPoshta
         $this->methodProperties = null;
 
         /**
-          * nit:Daan
-          * $this->addLimit();
-          *
-          * Нужен лимит 150, иначе значение totalCount имеет не верный формат
-          * Устанавливаю насильно, возможно позже исправят
-          */
+         * nit:Daan
+         * $this->addLimit();.
+         *
+         * Нужен лимит 150, иначе значение totalCount имеет не верный формат
+         * Устанавливаю насильно, возможно позже исправят
+         */
         $this->methodProperties['Limit'] = 150;
 
         $this->getPage();
