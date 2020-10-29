@@ -137,7 +137,7 @@ class NovaPoshta implements NovaPoshtaInterface
             Log::debug($model.' / '.$calledMethod);
             Log::debug('--------------------');
             Log::notice($methodProperties);
-            
+
             // dump($model.' / '.$calledMethod, $methodProperties);
 
             $return['dev'] = $answer;
