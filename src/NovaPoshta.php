@@ -132,13 +132,18 @@ class NovaPoshta implements NovaPoshtaInterface
         ];
 
         if ($this->dev) {
-            //test and dev
+            /**
+             * Test and Dev
+             */
             Log::debug('= = = = = = = = = = = = = = = = = = = =');
             Log::debug($model.' / '.$calledMethod.' // apiKey: '.$auth);
             Log::debug('--------------------');
-            Log::notice($methodProperties);
 
-            // dump($model.' / '.$calledMethod, $methodProperties);
+            try {
+                Log::notice(json_encode($methodProperties));
+            } catch (\Exception $e) {
+                Log::notice('method json_encode error');
+            }
 
             $return['dev'] = $answer;
         }
