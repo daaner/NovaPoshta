@@ -134,7 +134,7 @@ class NovaPoshta implements NovaPoshtaInterface
         if ($this->dev) {
             //test and dev
             Log::debug('= = = = = = = = = = = = = = = = = = = =');
-            Log::debug($model . ' / ' . $calledMethod . ' // apiKey: ' . $auth);
+            Log::debug($model.' / '.$calledMethod.' // apiKey: '.$auth);
             Log::debug('--------------------');
             Log::notice($methodProperties);
 
