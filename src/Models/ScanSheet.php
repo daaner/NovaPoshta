@@ -3,8 +3,8 @@
 namespace Daaner\NovaPoshta\Models;
 
 use Daaner\NovaPoshta\NovaPoshta;
-use Daaner\NovaPoshta\Traits\Limit;
 use Daaner\NovaPoshta\Traits\DateTimes;
+use Daaner\NovaPoshta\Traits\Limit;
 
 class ScanSheet extends NovaPoshta
 {
@@ -52,11 +52,11 @@ class ScanSheet extends NovaPoshta
         $this->methodProperties['DocumentRefs'] = array_values(/** @scrutinizer ignore-type */ $DocumentRefs);
 
         if ($Ref) {
-          $this->methodProperties['Ref'] = $Ref;
+            $this->methodProperties['Ref'] = $Ref;
         }
 
         if ($Date) {
-          $this->methodProperties['Date'] = checkDate($Date);
+            $this->methodProperties['Date'] = checkdate($Date);
         }
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
