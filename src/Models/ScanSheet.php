@@ -4,10 +4,11 @@ namespace Daaner\NovaPoshta\Models;
 
 use Daaner\NovaPoshta\NovaPoshta;
 use Daaner\NovaPoshta\Traits\Limit;
+use Daaner\NovaPoshta\Traits\DateTimes;
 
 class ScanSheet extends NovaPoshta
 {
-    use Limit;
+    use Limit, DateTimes;
 
     protected $model = 'ScanSheet';
     protected $calledMethod;
@@ -36,9 +37,11 @@ class ScanSheet extends NovaPoshta
      * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c4786a0fe4f0634657b65
      *
      * @param string|array $DocumentRefs
+     * @param string|null $Ref
+     * @param string|Carbon|null $Date
      * @return array
      */
-    public function insertDocuments($DocumentRefs)
+    public function insertDocuments($DocumentRefs, $Ref = null, $Date = null)
     {
         $this->calledMethod = 'insertDocuments';
 
@@ -47,6 +50,14 @@ class ScanSheet extends NovaPoshta
         }
 
         $this->methodProperties['DocumentRefs'] = array_values(/** @scrutinizer ignore-type */ $DocumentRefs);
+
+        if ($Ref) {
+          $this->methodProperties['Ref'] = $Ref;
+        }
+
+        if ($Date) {
+          $this->methodProperties['Date'] = checkDate($Date);
+        }
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }

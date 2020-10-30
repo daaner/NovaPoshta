@@ -20,7 +20,7 @@ use Daaner\NovaPoshta\Models\ScanSheet;
 - [removeDocuments()](#removeDocuments)
 - [updateScanSheet()](#updateScanSheet)
 - [getScanSheetDocuments()](#getScanSheetDocuments)
-- [insertDocuments($DocumentRefs)](#insertDocuments)
+- [insertDocuments($DocumentRefs, $Ref = null, $Date = null)](#insertDocuments)
 - [deleteScanSheet($ScanSheetRefs)](#deleteScanSheet)
 
 ---
@@ -123,6 +123,14 @@ $DocumentRefs = [
   '3d***-1ca6-***-b8***f5'
 ];
 
+//не обязательно, но можно указать в какой реестр помещать
+$Ref = 'Ref реестра';
+
+//дата реестра больше текущей
+$Date = '2020-10-30';
+
+$addScanSheet = $np->insertDocuments($DocumentRefs, $Ref, $Date);
+//либо
 $addScanSheet = $np->insertDocuments($DocumentRefs);
 
 dd($addScanSheet);

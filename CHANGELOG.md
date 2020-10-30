@@ -4,7 +4,7 @@ All notable changes to `NovaPoshta` will be documented in this file
 
 ### 2020-10-30
 - [Add] `deleteScanSheet` in ScanSheet ($ScanSheetRefs)
-- [Add] `insertDocuments` in ScanSheet ($DocumentRefs)
+- [Add] `insertDocuments` in ScanSheet ($DocumentRefs, $Ref = null, $Date = null)
 
 ### 2020-10-22
 - [Fix] `getWarehouses` in Address ($cityRef = null)
