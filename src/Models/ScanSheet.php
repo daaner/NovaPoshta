@@ -5,6 +5,7 @@ namespace Daaner\NovaPoshta\Models;
 use Daaner\NovaPoshta\NovaPoshta;
 use Daaner\NovaPoshta\Traits\DateTimes;
 use Daaner\NovaPoshta\Traits\Limit;
+use Carbon\Carbon;
 
 class ScanSheet extends NovaPoshta
 {
