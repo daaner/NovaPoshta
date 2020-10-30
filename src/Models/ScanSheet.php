@@ -14,6 +14,44 @@ class ScanSheet extends NovaPoshta
     protected $methodProperties = null;
 
     /**
+     * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c6a2da0fe4f08e8f7ce2f
+     *
+     * @param string|array $ScanSheetRefs
+     * @return array
+     */
+    public function deleteScanSheet($ScanSheetRefs)
+    {
+        $this->calledMethod = 'deleteScanSheet';
+
+        if (is_array($ScanSheetRefs) === false) {
+            $ScanSheetRefs = explode(', ', /** @scrutinizer ignore-type */ $ScanSheetRefs);
+        }
+
+        $this->methodProperties['ScanSheetRefs'] = array_values(/** @scrutinizer ignore-type */ $ScanSheetRefs);
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+    }
+
+    /**
+     * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c4786a0fe4f0634657b65
+     *
+     * @param string|array $DocumentRefs
+     * @return array
+     */
+    public function insertDocuments($DocumentRefs)
+    {
+        $this->calledMethod = 'insertDocuments';
+
+        if (is_array($DocumentRefs) === false) {
+            $DocumentRefs = explode(', ', /** @scrutinizer ignore-type */ $DocumentRefs);
+        }
+
+        $this->methodProperties['DocumentRefs'] = array_values(/** @scrutinizer ignore-type */ $DocumentRefs);
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+    }
+
+    /**
      * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c7734a0fe4f08e8f7ce31
      *
      * @return array

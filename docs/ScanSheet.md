@@ -10,6 +10,8 @@ use Daaner\NovaPoshta\Models\ScanSheet;
 - [x] [Удалить экспресс-накладные из реестра](ScanSheet.md#removeDocuments)
 - [x] [Обновить описание реестра](ScanSheet.md#updateScanSheet) (официально не документировано)
 - [x] [Краткий список накладных реестра](ScanSheet.md#getScanSheetDocuments) (официально не документировано)
+- [x] [Добавить экспресс-накладные в реестр](ScanSheet.md#insertDocuments)
+- [x] [Удалить (расформировать) реестр отправлений](ScanSheet.md#deleteScanSheet)
 
 
 ## Все методы модели
@@ -18,6 +20,8 @@ use Daaner\NovaPoshta\Models\ScanSheet;
 - [removeDocuments()](#removeDocuments)
 - [updateScanSheet()](#updateScanSheet)
 - [getScanSheetDocuments()](#getScanSheetDocuments)
+- [insertDocuments($DocumentRefs)](#insertDocuments)
+- [deleteScanSheet($ScanSheetRefs)](#deleteScanSheet)
 
 ---
 
@@ -100,6 +104,50 @@ $ref = 'd1****54-****-****-****-b8830****df5';
 $scansheet = $np->getScanSheetDocuments($ref);
 
 dd($scansheet);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `insertDocuments()`
+[Добавить](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c4786a0fe4f0634657b65) экспресс-накладные в реестр (требует ключ API)
+
+```php
+$np = new ScanSheet;
+
+$DocumentRefs = '3d***-1aa6-***-b8***f5';
+// либо
+$DocumentRefs = [
+  15 => '3d***-1aa6-***-b8***f5',
+  "100500" => '3d***-1baa6-***-b8***f5',
+  '3d***-1ca6-***-b8***f5'
+];
+
+$addScanSheet = $np->insertDocuments($DocumentRefs);
+
+dd($addScanSheet);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `deleteScanSheet()`
+[Удалить (расформировать)](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c6a2da0fe4f08e8f7ce2f) реестр отправлений (требует ключ API)
+
+```php
+$np = new ScanSheet;
+
+$ScanSheetRefs = '3d***-1aa6-***-b8***f5';
+// либо
+$ScanSheetRefs = [
+  15 => '3d***-1aa6-***-b8***f5',
+  "100500" => '3d***-1baa6-***-b8***f5',
+  '3d***-1ca6-***-b8***f5'
+];
+
+$deleteScanSheet = $np->deleteScanSheet($ScanSheetRefs);
+
+dd($deleteScanSheet);
 ```
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)
 ***

@@ -6,6 +6,7 @@
         "novaposhta",
         "ukraine-delivery",
         "laravel-np",
+        "laravel-novaposhta",
         "delivery"
     ],
     "license": "MIT",

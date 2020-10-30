@@ -10,9 +10,9 @@ use Daaner\NovaPoshta\Models\TrackingDocument;
 - [x] [Быстрая проверка одной/массива ЭН](TrackingDocument.md#getStatusTTN)
 
 ## Все методы модели
-- [getStatusDocuments()](#getStatusDocuments)
-- [checkTTN()](#checkTTN)
-- [getStatusTTN()](#getStatusTTN)
+- [getStatusDocuments($documents)](#getStatusDocuments)
+- [checkTTN($ttns, $phone = null)](#checkTTN)
+- [getStatusTTN($ttns, $phone = null)](#getStatusTTN)
 
 ---
 

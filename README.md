@@ -13,7 +13,7 @@
 
 Управление отправками NovaPoshta ([novaposhta.ua](https://novaposhta.ua/)) с помощью Laravel 7+ framework ([Laravel](https://laravel.com)).
 
-Удобный пакет для отправки и проверки ТТН через сервис NovaPoshta.ua
+Удобный пакет для отправки и проверки ТТН через сервис [NovaPoshta.ua](https://novaposhta.ua/)
 
 
 __ВНИМАНИЕ__
@@ -161,12 +161,12 @@ $cities = $bar->getCities();
 
 ### [API Реестры](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e)
 #### Работа с реестрами экспресс-накладных
-- [ ] Добавить экспресс-накладные
+- [x] [Добавить экспресс-накладные в реестр](ScanSheet.md#insertDocuments)
 - [x] [Загрузить информацию по одному реестру](/docs/ScanSheet.md#getScanSheet)
 - [x] [Загрузить список реестров](/docs/ScanSheet.md#getScanSheetList)
 - [x] [Обновить описание реестра](/docs/ScanSheet.md#updateScanSheet)
 - [x] [Краткий список накладных реестра](/docs/ScanSheet.md#getScanSheetDocuments)
-- [ ] Удалить (расформировать) реестр отправлений
+- [x] [Удалить (расформировать) реестр отправлений](ScanSheet.md#deleteScanSheet)
 - [x] [Удалить экспресс-накладные из реестра](/docs/ScanSheet.md#removeDocuments)
 
 
