@@ -56,7 +56,7 @@ class ScanSheet extends NovaPoshta
         }
 
         if ($Date) {
-            $this->methodProperties['Date'] = checkdate($Date);
+            $this->methodProperties['Date'] = $this->checkDate($Date);
         }
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
