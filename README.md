@@ -111,7 +111,7 @@ $cities = $bar->getCities();
 - [x] [Получение данных по бонусной карте](/docs/LoyaltyUser.md#getLoyaltyInfoByApiKey)
 - [x] [Обновить описание реестра](/docs/ScanSheet.md#updateScanSheet)
 - [x] [Краткий список накладных реестра](/docs/ScanSheet.md#getScanSheetDocuments)
-- [x] [Получение данных об Контрагенте по номеру телефона](Counterparty.md#getCatalogCounterparty)
+- [x] [Получение данных об Контрагенте по номеру телефона](/docs/Counterparty.md#getCatalogCounterparty)
 
 
 
@@ -161,12 +161,12 @@ $cities = $bar->getCities();
 
 ### [API Реестры](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e)
 #### Работа с реестрами экспресс-накладных
-- [x] [Добавить экспресс-накладные в реестр](ScanSheet.md#insertDocuments)
+- [x] [Добавить экспресс-накладные в реестр](/docs/ScanSheet.md#insertDocuments)
 - [x] [Загрузить информацию по одному реестру](/docs/ScanSheet.md#getScanSheet)
 - [x] [Загрузить список реестров](/docs/ScanSheet.md#getScanSheetList)
 - [x] [Обновить описание реестра](/docs/ScanSheet.md#updateScanSheet)
 - [x] [Краткий список накладных реестра](/docs/ScanSheet.md#getScanSheetDocuments)
-- [x] [Удалить (расформировать) реестр отправлений](ScanSheet.md#deleteScanSheet)
+- [x] [Удалить (расформировать) реестр отправлений](/docs/ScanSheet.md#deleteScanSheet)
 - [x] [Удалить экспресс-накладные из реестра](/docs/ScanSheet.md#removeDocuments)
 
 
