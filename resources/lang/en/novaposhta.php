@@ -14,7 +14,7 @@ return [
         '5' => 'Parcel en route',
         '6' => 'Parcel in the recipient city',
         '7' => 'The parcel arrived at the department',
-        '8' => 'The parcel arrived at the department (8)',
+        '8' => 'The parcel arrived at the postomat',
         '9' => 'Parcel received',
         '10' => 'Parcel received, money sent',
         '11' => 'Parcel received, money received',
