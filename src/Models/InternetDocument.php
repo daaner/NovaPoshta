@@ -93,7 +93,6 @@ class InternetDocument extends NovaPoshta
         $this->getSeatsAmount();
         $this->getCost();
         $this->getWeight();
-        $this->getOptionsSeat();
 
         //Отправитель и другое
         $this->getSender();

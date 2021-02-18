@@ -31,7 +31,7 @@ trait InternetDocumentProperty
 
 	public function getRef()
 	{
-		if (!$this->PayerType) {
+		if (!$this->Ref) {
 			return $this;
 		}
 		$this->methodProperties['Ref'] = $this->Ref;
