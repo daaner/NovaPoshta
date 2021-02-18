@@ -72,6 +72,40 @@ class InternetDocument extends NovaPoshta
     }
 
     /**
+     * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/556ef753a0fe4f02049c664f
+     *
+     * @param string|null $description
+     * @return array
+     */
+    public function edit($description = null)
+    {
+        $this->calledMethod = 'update';
+
+        $this->getRef();
+
+        $this->getPayerType();
+        $this->getServiceType();
+        $this->getPaymentMethod();
+        $this->getCargoType();
+
+        $this->getDateTime();
+        $this->setDescription($description);
+        $this->getSeatsAmount();
+        $this->getCost();
+        $this->getWeight();
+        $this->getOptionsSeat();
+
+        //Отправитель и другое
+        $this->getSender();
+        $this->getRecipientType();
+        $this->getBackwardDeliveryData();
+        $this->getNote();
+        $this->getAdditionalInformation();
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
+    /**
      * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55701fa5a0fe4f0cf4fc53ec
      *
      * @param string|array $DocumentRefs

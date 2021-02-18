@@ -4,6 +4,7 @@ namespace Daaner\NovaPoshta\Traits;
 
 trait InternetDocumentProperty
 {
+    protected $Ref;
     protected $PayerType;
     protected $ServiceType;
     protected $PaymentMethod;
@@ -15,11 +16,34 @@ trait InternetDocumentProperty
     protected $Note;
     protected $AdditionalInformation;
 
+
+	/**
+	 * @param string $Ref
+	 *
+	 * @return $this
+	 */
+	public function setRef(string $Ref)
+	{
+		$this->Ref = $Ref;
+
+		return $this;
+	}
+
+	public function getRef()
+	{
+		if (!$this->PayerType) {
+			return $this;
+		}
+		$this->methodProperties['Ref'] = $this->Ref;
+
+		return $this;
+	}
+
     /**
      * @param string $PayerType
      * Устанавливаем значение плательщика. По умолчанию значение из конфига
      * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913
-     * @return this
+     * @return $this
      */
     public function setPayerType($PayerType)
     {
@@ -42,7 +66,7 @@ trait InternetDocumentProperty
      * @param string $ServiceType
      * Устанавливаем тип доставки. По умолчанию значение из конфига
      * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890e
-     * @return this
+     * @return $this
      */
     public function setServiceType($ServiceType)
     {
@@ -65,7 +89,7 @@ trait InternetDocumentProperty
      * @param string $PaymentMethod
      * Устанавливаем форму оплаты. По умолчанию значение из конфига
      * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890d
-     * @return this
+     * @return $this
      */
     public function setPaymentMethod($PaymentMethod)
     {
