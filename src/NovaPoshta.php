@@ -95,11 +95,14 @@ class NovaPoshta implements NovaPoshtaInterface
             $answer = $answer[0];
         }
 
-        if (! isset($answer['success']) || ! isset($answer['data']) || empty($answer['data'])) {
+        if (!isset($answer['success']) || !isset($answer['data']) || empty($answer['data'])) {
             // что-то не так в ответе
             $info = trans('novaposhta::novaposhta.error_answer');
             $success = false;
             $result = null;
+        } elseif ($response) {
+	        $success = true;
+	        $result = $response;
         } else {
             $success = $answer['success'];
             $result = $answer['data'];
