@@ -126,7 +126,7 @@ class InternetDocument extends NovaPoshta
 	/**
 	 * printDocument method of InternetDocument model.
 	 *
-	 * @param array|string $documentRefs Array of Documents IDs
+	 * @param array|string $DocumentRefs Array of Documents IDs
 	 * @param string       $type         (pdf|html)
 	 *
 	 * @return mixed
