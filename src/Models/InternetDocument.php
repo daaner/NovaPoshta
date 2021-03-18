@@ -13,7 +13,8 @@ use Daaner\NovaPoshta\Traits\SenderProperty;
 
 class InternetDocument extends NovaPoshta
 {
-    use Limit, DateTimes, DocumentList; //getDocumentList
+    use Limit, DateTimes; //getDocumentList || getMoneyTransferDocuments
+    use DocumentList; //getDocumentList
     use InternetDocumentProperty, SenderProperty, OptionsSeatProperty, RecipientProperty; //save
 
     protected $model = 'InternetDocument';
@@ -86,6 +87,22 @@ class InternetDocument extends NovaPoshta
 
         $this->methodProperties['DocumentRefs'] = array_values(/** @scrutinizer ignore-type */ $DocumentRefs);
 
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
+    /**
+     * @param string|array $DocumentRefs
+     * @return array
+     */
+    public function getMoneyTransferDocuments($dateFrom = null, $dateTo = null)
+    {
+        $this->calledMethod = 'getMoneyTransferDocuments';
+
+        $this->addLimit();
+        $this->getPage();
+        $this->getDateFromTo($dateFrom, $dateTo);
+
+        // dd($this->methodProperties);
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 }

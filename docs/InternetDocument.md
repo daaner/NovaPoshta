@@ -8,12 +8,14 @@ use Daaner\NovaPoshta\Models\InternetDocument;
 - [x] [Получение списка всех ЭН](InternetDocument.md#getDocumentList)
 - [x] [Создать экспресс-накладную](InternetDocument.md#save)
 - [x] [Удалить экспресс-накладные](InternetDocument.md#delete)
+- [x] [Получить денежные переводы](InternetDocument.md#getMoneyTransferDocuments)
 
 
 ## Все методы модели
 - [getDocumentList()](#getDocumentList)
 - [save($description = null)](#save)
 - [delete($description = null)](#delete)
+- [getMoneyTransferDocuments($from = null, $to = null)](#getMoneyTransferDocuments)
 
 ---
 
@@ -138,6 +140,31 @@ $documents = [
 $deleted = $intDoc->delete($documents);
 
 dd($deleted);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+### `getMoneyTransferDocuments()`
+__НЕ ДОКУМЕНТИРОВАНО В ОФИЦИАЛЬНОЙ ДОКУМЕНТАЦИИ__
+Получить данные о платежах за определенный период
+
+```php
+$intDoc = new InternetDocument;
+
+//можно переопределить API, иначе возьмет данные с конфига
+$intDoc->setAPI('c74***25'); //не обязательно
+
+$intDoc->setLimit(100); //не обязательно
+$intDoc->setPage(2);    //не обязательно
+
+$transfer = $intDoc->getMoneyTransferDocuments();
+
+//либо можно указать диапазон
+$from = '2021-01-01 00:00:00'; //Carbon, string, date, null
+$from = '2021-02-01 00:00:00'; //Carbon, string, date, null
+$transfer = $intDoc->getMoneyTransferDocuments($from, $to);
+
+dd($transfer);
 ```
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)
 ***

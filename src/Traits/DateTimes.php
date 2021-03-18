@@ -10,6 +10,7 @@ trait DateTimes
     protected $dateTimeFrom;
     protected $dateTimeTo;
     protected $format = 'd.m.Y';
+    protected $formatTime = 'd.m.Y H:i:s';
 
     /**
      * @param string|Carbon|date $dateTime
@@ -77,6 +78,50 @@ trait DateTimes
             $this->methodProperties['DateTimeFrom'] = $this->dateTimeFrom;
             $this->methodProperties['DateTimeTo'] = $this->dateTimeTo;
         }
+
+        return $this;
+    }
+
+    /**
+     * Странно, но тут с минутами и секундами
+     * @param string|Carbon|date|null $from
+     * @param string|Carbon|date|null $to
+     * @return this
+     */
+    public function getDateFromTo($from = null, $to = null)
+    {
+        // DateFrom
+        if ($from) {
+            if ($from instanceof Carbon) {
+                $from = $from->format($this->formatTime);
+            } else {
+                try {
+                    $from = Carbon::parse($from)->format($this->formatTime);
+                } catch (\Exception $e) {
+                    $from = Carbon::now()->addMonth(-3)->format($this->formatTime);
+                }
+            }
+        } else {
+            $from = Carbon::now()->addMonth(-3)->format($this->formatTime);
+        }
+
+        // DateTo
+        if ($to) {
+            if ($to instanceof Carbon) {
+                $to = $to->format($this->formatTime);
+            } else {
+                try {
+                    $to = Carbon::parse($to)->format($this->formatTime);
+                } catch (\Exception $e) {
+                    $to = Carbon::now()->format($this->formatTime);
+                }
+            }
+        } else {
+            $to = Carbon::now()->format($this->formatTime);
+        }
+
+        $this->methodProperties['DateFrom'] = $from;
+        $this->methodProperties['DateTo'] = $to;
 
         return $this;
     }

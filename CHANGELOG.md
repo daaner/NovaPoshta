@@ -2,6 +2,10 @@
 
 All notable changes to `NovaPoshta` will be documented in this file
 
+### 2021-03-18
+- [Add] `getMoneyTransferDocuments` in InternetDocument
+
+
 ### 2020-10-30
 - [Add] `deleteScanSheet` in ScanSheet ($ScanSheetRefs)
 - [Add] `insertDocuments` in ScanSheet ($DocumentRefs, $Ref = null, $Date = null)
