@@ -83,7 +83,7 @@ trait DateTimes
     }
 
     /**
-     * Странно, но тут с минутами и секундами
+     * Странно, но тут с минутами и секундами.
      * @param string|Carbon|date|null $from
      * @param string|Carbon|date|null $to
      * @return this
