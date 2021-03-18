@@ -122,4 +122,26 @@ class InternetDocument extends NovaPoshta
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
+
+	/**
+	 * printDocument method of InternetDocument model.
+	 *
+	 * @param array|string $documentRefs Array of Documents IDs
+	 * @param string       $type         (pdf|html)
+	 *
+	 * @return mixed
+	 */
+	public function printDocument($DocumentRefs, $type = 'html')
+	{
+		$this->calledMethod = 'printDocument';
+
+		if (is_array($DocumentRefs) === false) {
+			$DocumentRefs = explode(', ', /** @scrutinizer ignore-type */ $DocumentRefs);
+		}
+
+		$this->methodProperties['DocumentRefs'] = array_values(/** @scrutinizer ignore-type */ $DocumentRefs);
+		$this->methodProperties['type'] = $type;
+
+		return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+	}
 }
