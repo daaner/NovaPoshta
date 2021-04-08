@@ -96,9 +96,12 @@ trait DateTimes
                 $from = $from->format($this->formatTime);
             } else {
                 try {
-                    $from = Carbon::parse($from)->format($this->formatTime);
+                    $from = Carbon::parse($from)
+                        ->format($this->formatTime);
                 } catch (\Exception $e) {
-                    $from = Carbon::now()->addMonth(-3)->format($this->formatTime);
+                    $from = Carbon::now()
+                        ->/** @scrutinizer ignore-call */addMonth(-3)
+                        ->format($this->formatTime);
                 }
             }
         } else {
