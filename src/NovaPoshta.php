@@ -73,8 +73,8 @@ class NovaPoshta implements NovaPoshtaInterface
             $body['methodProperties'] = $methodProperties;
         }
 
-        $response = Http::timeout(3)
-            ->retry(2, 200)
+        $response = Http::timeout(config('turbosms.http_response_timeout', 3))
+            ->retry(config('turbosms.http_retry_max_time', 2), config('turbosms.http_retry_delay', 200))
             ->withHeaders([
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',

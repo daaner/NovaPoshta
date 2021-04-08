@@ -199,4 +199,15 @@ return [
         ],
     ],
 
+    /**
+     * Тонкая настройка HTTP client.
+     *
+     * http_response_timeout - maximum number of seconds to wait for a response
+     * http_retry_max_time - the maximum number of times the request should be attempted
+     * http_retry_delay - the number of milliseconds that Laravel should wait in between attempts
+     */
+    'http_response_timeout' => 3,
+    'http_retry_max_time' => 2,
+    'http_retry_delay' => 200,
+
 ];
