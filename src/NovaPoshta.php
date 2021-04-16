@@ -30,7 +30,7 @@ class NovaPoshta implements NovaPoshtaInterface
     /**
      * @return string
      */
-    public function getApi():string
+    public function getApi(): string
     {
         if (! $this->api) {
             $this->api = config('novaposhta.api_key');
@@ -42,7 +42,7 @@ class NovaPoshta implements NovaPoshtaInterface
     /**
      * @param string $api
      */
-    public function setApi(string $api):self
+    public function setApi(string $api): self
     {
         $this->api = $api;
 
@@ -56,7 +56,7 @@ class NovaPoshta implements NovaPoshtaInterface
      * @param bool $auth
      * @return array
      */
-    public function getResponse(string $model, string $calledMethod, array $methodProperties, bool $auth = true):array
+    public function getResponse(string $model, string $calledMethod, array $methodProperties, bool $auth = true): array
     {
         $url = $this->url.'/'.$model.'/'.$calledMethod;
         $body = [];
