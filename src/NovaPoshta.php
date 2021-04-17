@@ -56,7 +56,7 @@ class NovaPoshta implements NovaPoshtaInterface
      * @param bool $auth
      * @return array
      */
-    public function getResponse(string $model, string $calledMethod, array $methodProperties, bool $auth = true): array
+    public function getResponse(string $model, string $calledMethod, $methodProperties, bool $auth = true): array
     {
         $url = $this->url.'/'.$model.'/'.$calledMethod;
         $body = [];
