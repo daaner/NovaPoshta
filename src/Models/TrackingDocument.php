@@ -11,9 +11,10 @@ class TrackingDocument extends NovaPoshta
 
     /**
      * Получение полной информации по ТТН/ТТНкам.
+     *
      * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55702cbba0fe4f0cf4fc53ee
      *
-     * @param string|array $documents
+     * @param  string|array  $documents
      * @return array
      */
     public function getStatusDocuments($documents): array
@@ -34,9 +35,10 @@ class TrackingDocument extends NovaPoshta
      * Проверка единичной ТТН или массива. Телефон, если указан, подставляется один для всех.
      *
      * Номер ТТН либо массив ТТНок
-     * @param string|array $ttns
-     * Номер телефона получателя или отправителя
-     * @param string|null $phone
+     *
+     * @param  string|array  $ttns
+     *                              Номер телефона получателя или отправителя
+     * @param  string|null  $phone
      * @return array
      */
     public function checkTTN($ttns, ?string $phone = null): array
@@ -60,8 +62,8 @@ class TrackingDocument extends NovaPoshta
     /**
      * Получение статусов одной ТТН или массива.
      *
-     * @param string|array $ttns
-     * @param string|int|null $phone
+     * @param  string|array  $ttns
+     * @param  string|int|null  $phone
      * @return array
      */
     public function getStatusTTN($ttns, $phone = null): array

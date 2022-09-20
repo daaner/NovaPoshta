@@ -15,7 +15,7 @@ class Counterparty extends NovaPoshta
     protected $methodProperties = [];
 
     /**
-     * @param string|null $find
+     * @param  string|null  $find
      * @return array
      */
     public function getCounterparties(?string $find): array
@@ -34,7 +34,7 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-     * @param string $ref
+     * @param  string  $ref
      * @return array
      */
     public function getCounterpartyContactPerson(string $ref): array
@@ -49,11 +49,11 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-     * @param string $firstName
-     * @param string|null $lastName
-     * @param string|null $middleName
-     * @param string|int|null $phone
-     * @param string|null $email
+     * @param  string  $firstName
+     * @param  string|null  $lastName
+     * @param  string|null  $middleName
+     * @param  string|int|null  $phone
+     * @param  string|null  $email
      * @return array
      */
     public function save(
@@ -62,8 +62,7 @@ class Counterparty extends NovaPoshta
         ?string $middleName = null,
         $phone = null,
         ?string $email = null
-    ): array
-    {
+    ): array {
         $this->calledMethod = 'save';
         $this->getCounterpartyType();
         $this->getCounterpartyProperty();
@@ -91,7 +90,7 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-     * @param string $ref
+     * @param  string  $ref
      * @return array
      */
     public function getCounterpartyOptions(string $ref): array
@@ -104,7 +103,7 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-     * @param string $ref
+     * @param  string  $ref
      * @return array
      */
     public function getCounterpartyAddresses(string $ref): array
@@ -118,8 +117,8 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-     * @param string|int $phone
-     * @param string $lastname
+     * @param  string|int  $phone
+     * @param  string  $lastname
      * @return array
      */
     public function getCatalogCounterparty($phone, string $lastname): array

@@ -61,7 +61,7 @@ class Common extends NovaPoshta
     }
 
     /**
-     * @param string|null $find
+     * @param  string|null  $find
      * @return array
      */
     public function getCargoDescriptionList(?string $find = null): array
@@ -156,8 +156,8 @@ class Common extends NovaPoshta
     }
 
     /**
-     * @param string $recipientCityRef
-     * @param string|Carbon|null $dateTime
+     * @param  string  $recipientCityRef
+     * @param  string|Carbon|null  $dateTime
      * @return array
      */
     public function getTimeIntervals(string $recipientCityRef, $dateTime = null): array
