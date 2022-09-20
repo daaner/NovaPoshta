@@ -11,9 +11,9 @@ trait SenderProperty
     protected $SendersPhone;
 
     /**
-     * Устанавливаем значение отправителя. Если не указывать - значение конфига
+     * Устанавливаем значение отправителя. Если не указывать - значение конфига.
      *
-     * @param array $sender
+     * @param  array  $sender
      * @return $this
      */
     public function setSender(array $sender)

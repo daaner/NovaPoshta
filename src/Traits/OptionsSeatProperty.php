@@ -13,9 +13,10 @@ trait OptionsSeatProperty
      * Параметр груза для каждого места отправления.
      * Перебираем значение массива и указываем нужные объемы.
      * Если не указывать значение из конфига в 1 кг.
+     *
      * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/57484280a0fe4f33f0d4dd77
      *
-     * @param string|array $OptionsSeat
+     * @param  string|array  $OptionsSeat
      * @return $this
      */
     public function setOptionsSeat($OptionsSeat)
@@ -61,7 +62,7 @@ trait OptionsSeatProperty
      * nit:Daan
      * Не обязательно, если выставляем OptionsSeat, но пока оставлю тут
      *
-     * @param string $weight
+     * @param  string  $weight
      * @return $this
      */
     public function setWeight(string $weight)

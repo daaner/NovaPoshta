@@ -21,9 +21,10 @@ class CommonGeneral extends NovaPoshta
     }
 
     /**
-     * Пока еще не работает, требует JWT авторизацию
-     * @param string $ApiKey
-     * @param int|null $month
+     * Пока еще не работает, требует JWT авторизацию.
+     *
+     * @param  string  $ApiKey
+     * @param  int|null  $month
      * @return array
      */
     public function prolongateKey(string $ApiKey, ?int $month = 12): array

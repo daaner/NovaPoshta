@@ -31,8 +31,8 @@ class Address extends NovaPoshta
     /**
      * Получение списка городов.
      *
-     * @param string|null $find
-     * @param bool|null $string
+     * @param  string|null  $find
+     * @param  bool|null  $string
      * @return array
      */
     public function getCities(?string $find = null, ?bool $string = true): array
@@ -53,8 +53,8 @@ class Address extends NovaPoshta
     }
 
     /**
-     * @param string|null $cityRef
-     * @param bool|null $string
+     * @param  string|null  $cityRef
+     * @param  bool|null  $string
      * @return array
      */
     public function getWarehouses(?string $cityRef = null, ?bool $string = true): array
@@ -76,8 +76,8 @@ class Address extends NovaPoshta
     }
 
     /**
-     * @param string $cityRef
-     * @param bool|null $string
+     * @param  string  $cityRef
+     * @param  bool|null  $string
      * @return array
      */
     public function getWarehouseTypes(string $cityRef, ?bool $string = true): array
@@ -94,7 +94,7 @@ class Address extends NovaPoshta
     }
 
     /**
-     * @param string $settlementRef
+     * @param  string  $settlementRef
      * @return array
      */
     public function getWarehouseSettlements(string $settlementRef): array
@@ -108,7 +108,7 @@ class Address extends NovaPoshta
     }
 
     /**
-     * @param string $search
+     * @param  string  $search
      * @return array
      */
     public function searchSettlements(string $search): array
@@ -122,8 +122,8 @@ class Address extends NovaPoshta
     }
 
     /**
-     * @param string $ref
-     * @param string $street
+     * @param  string  $ref
+     * @param  string  $street
      * @return array
      */
     public function searchSettlementStreets(string $ref, string $street): array
@@ -138,7 +138,7 @@ class Address extends NovaPoshta
     }
 
     /**
-     * @param string|null $find
+     * @param  string|null  $find
      * @return array
      */
     public function getSettlements(?string $find = null): array
@@ -171,8 +171,8 @@ class Address extends NovaPoshta
     }
 
     /**
-     * @param string $city
-     * @param string|null $find
+     * @param  string  $city
+     * @param  string|null  $find
      * @return array
      */
     public function getStreet(string $city, ?string $find = null): array
@@ -191,7 +191,7 @@ class Address extends NovaPoshta
 
     /**
      * DEV!
-     * Counterparty API
+     * Counterparty API.
      */
     public function save()
     {

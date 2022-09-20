@@ -16,10 +16,11 @@ trait InternetDocumentProperty
     protected $AdditionalInformation;
 
     /**
-     * Устанавливаем значение плательщика. По умолчанию значение конфига
+     * Устанавливаем значение плательщика. По умолчанию значение конфига.
+     *
      * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913
      *
-     * @param string $PayerType
+     * @param  string  $PayerType
      * @return $this
      */
     public function setPayerType(string $PayerType)
@@ -40,10 +41,11 @@ trait InternetDocumentProperty
     }
 
     /**
-     * Устанавливаем тип доставки. По умолчанию значение конфига
+     * Устанавливаем тип доставки. По умолчанию значение конфига.
+     *
      * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890e
      *
-     * @param string $ServiceType
+     * @param  string  $ServiceType
      * @return $this
      */
     public function setServiceType(string $ServiceType)
@@ -64,10 +66,11 @@ trait InternetDocumentProperty
     }
 
     /**
-     * Устанавливаем форму оплаты. По умолчанию значение конфига
+     * Устанавливаем форму оплаты. По умолчанию значение конфига.
+     *
      * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890d
      *
-     * @param string $PaymentMethod
+     * @param  string  $PaymentMethod
      * @return $this
      */
     public function setPaymentMethod(string $PaymentMethod)
@@ -88,10 +91,11 @@ trait InternetDocumentProperty
     }
 
     /**
-     * Устанавливаем тип груза. По умолчанию значение конфига
+     * Устанавливаем тип груза. По умолчанию значение конфига.
+     *
      * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838909
      *
-     * @param string $CargoType
+     * @param  string  $CargoType
      * @return $this
      */
     public function setCargoType(string $CargoType)
@@ -114,7 +118,7 @@ trait InternetDocumentProperty
     /**
      * Устанавливаем описание груза. По умолчанию из конфига.
      *
-     * @param string|null $description
+     * @param  string|null  $description
      * @return $this
      */
     public function setDescription(?string $description)
@@ -125,9 +129,9 @@ trait InternetDocumentProperty
     }
 
     /**
-     * Кол-во мест груза по умолчанию
+     * Кол-во мест груза по умолчанию.
      *
-     * @param string $SeatsAmount
+     * @param  string  $SeatsAmount
      * @return $this
      */
     public function setSeatsAmount(string $SeatsAmount)
@@ -150,7 +154,7 @@ trait InternetDocumentProperty
     /**
      * Устанавливаем стоимость груза. По умолчанию значение конфига.
      *
-     * @param string $cost
+     * @param  string  $cost
      * @return $this
      */
     public function setCost(string $cost)
@@ -174,7 +178,7 @@ trait InternetDocumentProperty
      * Описание к адресу для курьера или отделения.
      * Применяется в основном, если нет текущей улицы при адресной доставке.
      *
-     * @param string $note
+     * @param  string  $note
      * @return $this
      */
     public function setNote(string $note)
@@ -197,9 +201,9 @@ trait InternetDocumentProperty
     }
 
     /**
-     * Описание к ТТН для отображения в кабинете
+     * Описание к ТТН для отображения в кабинете.
      *
-     * @param string $AdditionalInformation
+     * @param  string  $AdditionalInformation
      * @return $this
      */
     public function setAdditionalInformation(string $AdditionalInformation)
@@ -223,11 +227,12 @@ trait InternetDocumentProperty
 
     /**
      * Услуга обратной доставки. По умолчанию значения конфига.
+     *
      * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/575fe852a0fe4f0aa0754760
      *
-     * @param string|int $RedeliveryString
-     * @param string|null $PayerType
-     * @param string|null $CargoType
+     * @param  string|int  $RedeliveryString
+     * @param  string|null  $PayerType
+     * @param  string|null  $CargoType
      * @return $this
      */
     public function setBackwardDeliveryData($RedeliveryString, ?string $PayerType = null, ?string $CargoType = null)
