@@ -17,14 +17,20 @@ class Common extends NovaPoshta
     protected $calledMethod;
     protected $methodProperties = null;
 
-    public function getOwnershipFormsList()
+    /**
+     * @return array
+     */
+    public function getOwnershipFormsList(): array
     {
         $this->calledMethod = 'getOwnershipFormsList';
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    public function getPaymentForms()
+    /**
+     * @return array
+     */
+    public function getPaymentForms(): array
     {
         $this->calledMethod = 'getPaymentForms';
         $this->getLanguage();
@@ -32,7 +38,10 @@ class Common extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    public function getTypesOfCounterparties()
+    /**
+     * @return array
+     */
+    public function getTypesOfCounterparties(): array
     {
         $this->calledMethod = 'getTypesOfCounterparties';
         $this->getLanguage();
@@ -40,7 +49,10 @@ class Common extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    public function getServiceTypes()
+    /**
+     * @return array
+     */
+    public function getServiceTypes(): array
     {
         $this->calledMethod = 'getServiceTypes';
         $this->getLanguage();
@@ -52,7 +64,7 @@ class Common extends NovaPoshta
      * @param string|null $find
      * @return array
      */
-    public function getCargoDescriptionList($find = null)
+    public function getCargoDescriptionList(?string $find = null): array
     {
         $this->calledMethod = 'getCargoDescriptionList';
         $this->getPage();
@@ -64,14 +76,20 @@ class Common extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    public function getTiresWheelsList()
+    /**
+     * @return array
+     */
+    public function getTiresWheelsList(): array
     {
         $this->calledMethod = 'getTiresWheelsList';
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    public function getPackList()
+    /**
+     * @return array
+     */
+    public function getPackList(): array
     {
         $this->calledMethod = 'getPackList';
 
@@ -83,7 +101,10 @@ class Common extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    public function getTypesOfPayersForRedelivery()
+    /**
+     * @return array
+     */
+    public function getTypesOfPayersForRedelivery(): array
     {
         $this->calledMethod = 'getTypesOfPayersForRedelivery';
         $this->getLanguage();
@@ -91,7 +112,10 @@ class Common extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    public function getTypesOfPayers()
+    /**
+     * @return array
+     */
+    public function getTypesOfPayers(): array
     {
         $this->calledMethod = 'getTypesOfPayers';
         $this->getLanguage();
@@ -99,14 +123,20 @@ class Common extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    public function getPalletsList()
+    /**
+     * @return array
+     */
+    public function getPalletsList(): array
     {
         $this->calledMethod = 'getPalletsList';
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    public function getBackwardDeliveryCargoTypes()
+    /**
+     * @return array
+     */
+    public function getBackwardDeliveryCargoTypes(): array
     {
         $this->calledMethod = 'getBackwardDeliveryCargoTypes';
         $this->getLanguage();
@@ -114,7 +144,10 @@ class Common extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    public function getCargoTypes()
+    /**
+     * @return array
+     */
+    public function getCargoTypes(): array
     {
         $this->calledMethod = 'getCargoTypes';
         $this->getLanguage();
@@ -124,17 +157,17 @@ class Common extends NovaPoshta
 
     /**
      * @param string $recipientCityRef
-     * @param string|Carbon|null $find
+     * @param string|Carbon|null $dateTime
      * @return array
      */
-    public function getTimeIntervals($recipientCityRef, $dateTime = null)
+    public function getTimeIntervals(string $recipientCityRef, $dateTime = null): array
     {
         $this->calledMethod = 'getTimeIntervals';
 
         $this->methodProperties['RecipientCityRef'] = $recipientCityRef;
 
-        if ($dateTime && $this->checkDate($dateTime)) {
-            $this->methodProperties['DateTime'] = $this->checkDate($dateTime);
+        if ($dateTime && $newDate = $this->checkDate($dateTime)) {
+            $this->methodProperties['DateTime'] = $newDate;
         }
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);

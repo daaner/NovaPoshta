@@ -3,6 +3,8 @@
 namespace Daaner\NovaPoshta\Traits;
 
 use Carbon\Carbon;
+use Exception;
+use Illuminate\Support\Facades\Date;
 
 trait DateTimes
 {
@@ -14,18 +16,16 @@ trait DateTimes
 
     /**
      * @param string|Carbon|date $dateTime
-     * @return this
+     * @return void
      */
-    public function setDateTime($dateTime)
+    public function setDateTime($dateTime): void
     {
         $this->dateTime = $this->checkDate($dateTime);
-
-        return $this;
     }
 
     /**
      * @param string|Carbon|date $dateTimeFrom
-     * @return this
+     * @return $this
      */
     public function setDateTimeFrom($dateTimeFrom)
     {
@@ -36,7 +36,7 @@ trait DateTimes
 
     /**
      * @param string|Carbon|date $dateTimeTo
-     * @return this
+     * @return $this
      */
     public function setDateTimeTo($dateTimeTo)
     {
@@ -46,7 +46,7 @@ trait DateTimes
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getDateTime()
     {
@@ -63,7 +63,7 @@ trait DateTimes
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getDateTimeFromTo()
     {
@@ -86,9 +86,9 @@ trait DateTimes
      * Странно, но тут с минутами и секундами.
      * @param string|Carbon|date|null $from
      * @param string|Carbon|date|null $to
-     * @return this
+     * @return void
      */
-    public function getDateFromTo($from = null, $to = null)
+    public function getDateFromTo($from = null, $to = null): void
     {
         // DateFrom
         if ($from) {
@@ -98,7 +98,7 @@ trait DateTimes
                 try {
                     $from = Carbon::parse($from)
                         ->format($this->formatTime);
-                } catch (\Exception $e) {
+                } catch (Exception $e) {
                     $from = Carbon::now()
                         ->/** @scrutinizer ignore-call */addMonth(-3)
                         ->format($this->formatTime);
@@ -115,7 +115,7 @@ trait DateTimes
             } else {
                 try {
                     $to = Carbon::parse($to)->format($this->formatTime);
-                } catch (\Exception $e) {
+                } catch (Exception $e) {
                     $to = Carbon::now()->format($this->formatTime);
                 }
             }
@@ -125,22 +125,20 @@ trait DateTimes
 
         $this->methodProperties['DateFrom'] = $from;
         $this->methodProperties['DateTo'] = $to;
-
-        return $this;
     }
 
     /**
      * @param string|Carbon $date
      * @return string $date
      */
-    public function checkDate($date)
+    public function checkDate($date): string
     {
         if ($date instanceof Carbon) {
             $date = $date->format($this->format);
         } else {
             try {
                 $date = Carbon::parse($date)->format($this->format);
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $date = Carbon::now()->format($this->format);
             }
         }

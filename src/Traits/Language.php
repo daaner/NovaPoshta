@@ -8,9 +8,9 @@ trait Language
 
     /**
      * @param string $lang
-     * @return this
+     * @return $this
      */
-    public function setLanguage($lang)
+    public function setLanguage(string $lang)
     {
         $this->language = $lang;
 
@@ -18,7 +18,7 @@ trait Language
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getLanguage()
     {

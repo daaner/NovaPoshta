@@ -1,0 +1,12 @@
+/node_modules
+/vendor
+.phpunit.result.cache
+npm-debug.log
+yarn-error.log
+.DS_Store
+yarn.lock
+_ide_helper.php
+.idea
+.phpstorm.*
+_ide_helper_*
+composer.lock

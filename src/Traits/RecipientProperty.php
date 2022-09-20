@@ -7,11 +7,12 @@ trait RecipientProperty
     protected $RecipientType;
 
     /**
-     * @param string $Recipient
-     * Устанавливаем значение получателя
-     * @return this
+     * Устанавливаем значение получателя.
+     *
+     * @param array $Recipient
+     * @return $this
      */
-    public function setRecipient($Recipient)
+    public function setRecipient(array $Recipient)
     {
         if (isset($Recipient['RecipientsPhone'])) {
             $this->methodProperties['RecipientsPhone'] = $Recipient['RecipientsPhone'];
@@ -43,34 +44,37 @@ trait RecipientProperty
             $this->methodProperties['RecipientCityName'] = $Recipient['RecipientCityName'];
             $this->methodProperties['RecipientAddressName'] = $Recipient['RecipientAddressName'];
 
-            $this->methodProperties['RecipientArea'] = isset($Recipient['RecipientArea']) ? $Recipient['RecipientArea'] : '';
-            $this->methodProperties['RecipientAreaRegions'] = isset($Recipient['RecipientAreaRegions']) ? $Recipient['RecipientAreaRegions'] : '';
-            $this->methodProperties['RecipientHouse'] = isset($Recipient['RecipientHouse']) ? $Recipient['RecipientHouse'] : '';
-            $this->methodProperties['RecipientFlat'] = isset($Recipient['RecipientFlat']) ? $Recipient['RecipientFlat'] : '';
+            $this->methodProperties['RecipientArea'] = $Recipient['RecipientArea'] ?? '';
+            $this->methodProperties['RecipientAreaRegions'] = $Recipient['RecipientAreaRegions'] ?? '';
+            $this->methodProperties['RecipientHouse'] = $Recipient['RecipientHouse'] ?? '';
+            $this->methodProperties['RecipientFlat'] = $Recipient['RecipientFlat'] ?? '';
         }
 
         return $this;
     }
 
     /**
-     * @param string $SeatsAmount
-     * Устанавливаем тип груза. По умолчанию значение из конфига
+     * Устанавливаем тип груза.
      * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838909
-     * @return this
+     *
+     * @param string $RecipientType
+     * @return $this
      */
-    public function setRecipientType($RecipientType)
+    public function setRecipientType(string $RecipientType)
     {
         $this->RecipientType = $RecipientType;
 
         return $this;
     }
 
+    /**
+     * Тип груза. По умолчанию значение конфига.
+     *
+     * @return $this
+     */
     public function getRecipientType()
     {
-        if (! $this->RecipientType) {
-            $this->RecipientType = config('novaposhta.recipient_type');
-        }
-        $this->methodProperties['RecipientType'] = $this->RecipientType;
+        $this->methodProperties['RecipientType'] = $this->RecipientType ?: config('novaposhta.recipient_type');
 
         return $this;
     }

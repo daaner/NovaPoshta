@@ -3,8 +3,9 @@
 namespace Daaner\NovaPoshta;
 
 use Daaner\NovaPoshta\Contracts\NovaPoshtaInterface;
+use Exception;
 use Illuminate\Support\Facades\Http;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class NovaPoshta implements NovaPoshtaInterface
 {
@@ -15,6 +16,7 @@ class NovaPoshta implements NovaPoshtaInterface
     protected $url;
     protected $dev;
 
+
     /**
      * NovaPoshta constructor main settings.
      */
@@ -24,30 +26,33 @@ class NovaPoshta implements NovaPoshtaInterface
         $this->point = config('novaposhta.point');
         $this->dev = config('novaposhta.dev');
         $this->getApi();
-        $this->url = $this->baseUri.$this->point;
+        $this->url = $this->baseUri . $this->point;
     }
+
 
     /**
      * @return string
      */
     public function getApi(): string
     {
-        if (! $this->api) {
+        if (!$this->api) {
             $this->api = config('novaposhta.api_key');
         }
 
         return $this->api;
     }
 
+
     /**
+     * Устанавливаем другой API ключ
+     *
      * @param string $api
      */
-    public function setApi(string $api): self
+    public function setApi(string $api): void
     {
         $this->api = $api;
-
-        return $this;
     }
+
 
     /**
      * @param string $model
@@ -56,9 +61,9 @@ class NovaPoshta implements NovaPoshtaInterface
      * @param bool $auth
      * @return array
      */
-    public function getResponse(string $model, string $calledMethod, $methodProperties, bool $auth = true): array
+    public function getResponse(string $model, string $calledMethod, array $methodProperties, bool $auth = true): array
     {
-        $url = $this->url.'/'.$model.'/'.$calledMethod;
+        $url = $this->url . '/' . $model . '/' . $calledMethod;
         $body = [];
         $info = '';
 
@@ -88,12 +93,16 @@ class NovaPoshta implements NovaPoshtaInterface
 
         $answer = $response->json();
         if ($auth === false && isset($answer[0])) {
-            //костыль для НовойПочты. Спасибо Вам большое :)
+            /**
+             * костыль для Новой Почты. Спасибо Вам большое :)
+             */
             $answer = $answer[0];
         }
 
-        if (! isset($answer['success']) || ! isset($answer['data']) || empty($answer['data'])) {
-            // что-то не так в ответе
+        if (!isset($answer['success']) || !isset($answer['data']) || empty($answer['data'])) {
+            /**
+             * Что-то не так в ответе
+             */
             $info = trans('novaposhta::novaposhta.error_answer');
             $success = false;
             $result = null;
@@ -102,23 +111,25 @@ class NovaPoshta implements NovaPoshtaInterface
             $result = $answer['data'];
         }
 
-        // ошибки либо уведомления
-        if (isset($answer['warnings']) && isset($answer['warnings'])) {
+        /**
+         * Ошибки, либо уведомления
+         */
+        if (isset($answer['warnings']) && $answer['warnings']) {
             $info = $answer['warnings'];
 
             if ($answer['errors']) {
                 $info = $answer['errors'];
                 if ($answer['errorCodes']) {
                     $info = [];
-                    foreach ($answer['errorCodes'] as $key => $err) {
+                    foreach ($answer['errorCodes'] as $err) {
                         $info['StatusCode'] = $err;
-                        $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.'.$err);
+                        $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.' . $err);
                     }
                 }
             }
         }
 
-        if (! $info && isset($answer['info'])) {
+        if (!$info && isset($answer['info'])) {
             $info = $answer['info'];
         }
 
@@ -133,12 +144,12 @@ class NovaPoshta implements NovaPoshtaInterface
              * Test and Dev.
              */
             Log::debug('= = = = = = = = = = = = = = = = = = = =');
-            Log::debug($model.' / '.$calledMethod.' // apiKey: '.$auth);
+            Log::debug($model . ' / ' . $calledMethod . ' // apiKey: ' . $auth);
             Log::debug('--------------------');
 
             try {
                 Log::notice(json_encode($methodProperties));
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 Log::notice('method json_encode error');
             }
 

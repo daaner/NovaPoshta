@@ -15,7 +15,12 @@ class Address extends NovaPoshta
     protected $calledMethod;
     protected $methodProperties = [];
 
-    public function getAreas()
+    /**
+     * Получение списка областей.
+     *
+     * @return array
+     */
+    public function getAreas(): array
     {
         $this->calledMethod = 'getAreas';
         $this->methodProperties = null;
@@ -24,11 +29,13 @@ class Address extends NovaPoshta
     }
 
     /**
+     * Получение списка городов.
+     *
      * @param string|null $find
      * @param bool|null $string
      * @return array
      */
-    public function getCities($find = null, $string = true)
+    public function getCities(?string $find = null, ?bool $string = true): array
     {
         $this->calledMethod = 'getCities';
         $this->addLimit();
@@ -50,7 +57,7 @@ class Address extends NovaPoshta
      * @param bool|null $string
      * @return array
      */
-    public function getWarehouses($cityRef = null, $string = true)
+    public function getWarehouses(?string $cityRef = null, ?bool $string = true): array
     {
         $this->calledMethod = 'getWarehouses';
         $this->addLimit();
@@ -73,7 +80,7 @@ class Address extends NovaPoshta
      * @param bool|null $string
      * @return array
      */
-    public function getWarehouseTypes($cityRef, $string = true)
+    public function getWarehouseTypes(string $cityRef, ?bool $string = true): array
     {
         $this->calledMethod = 'getWarehouseTypes';
 
@@ -90,7 +97,7 @@ class Address extends NovaPoshta
      * @param string $settlementRef
      * @return array
      */
-    public function getWarehouseSettlements($settlementRef)
+    public function getWarehouseSettlements(string $settlementRef): array
     {
         $this->calledMethod = 'getWarehouses';
         $this->getTypeOfWarehouseRef();
@@ -104,7 +111,7 @@ class Address extends NovaPoshta
      * @param string $search
      * @return array
      */
-    public function searchSettlements($search)
+    public function searchSettlements(string $search): array
     {
         $this->calledMethod = 'searchSettlements';
         $this->addLimit();
@@ -119,7 +126,7 @@ class Address extends NovaPoshta
      * @param string $street
      * @return array
      */
-    public function searchSettlementStreets($ref, $street)
+    public function searchSettlementStreets(string $ref, string $street): array
     {
         $this->calledMethod = 'searchSettlementStreets';
         $this->addLimit();
@@ -134,7 +141,7 @@ class Address extends NovaPoshta
      * @param string|null $find
      * @return array
      */
-    public function getSettlements($find = null)
+    public function getSettlements(?string $find = null): array
     {
         $this->calledMethod = 'getSettlements';
         $this->methodProperties = null;
@@ -168,7 +175,7 @@ class Address extends NovaPoshta
      * @param string|null $find
      * @return array
      */
-    public function getStreet($city, $find = null)
+    public function getStreet(string $city, ?string $find = null): array
     {
         $this->calledMethod = 'getStreet';
         $this->addLimit();
@@ -182,8 +189,10 @@ class Address extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    //dev
-    //Counterparty API
+    /**
+     * DEV!
+     * Counterparty API
+     */
     public function save()
     {
         $this->calledMethod = 'save';

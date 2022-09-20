@@ -11,47 +11,34 @@ trait SenderProperty
     protected $SendersPhone;
 
     /**
-     * @param string $Sender
-     * Устанавливаем значение отправителя. Если не указывать - значение из конфига
-     * @return this
+     * Устанавливаем значение отправителя. Если не указывать - значение конфига
+     *
+     * @param array $sender
+     * @return $this
      */
-    public function setSender($Sender)
+    public function setSender(array $sender)
     {
-        if (isset($Sender['Sender'])) {
-            $this->Sender = isset($Sender['Sender']) ? $Sender['Sender'] : '';
-            $this->CitySender = isset($Sender['CitySender']) ? $Sender['CitySender'] : '';
-            $this->SenderAddress = isset($Sender['SenderAddress']) ? $Sender['SenderAddress'] : '';
-            $this->ContactSender = isset($Sender['ContactSender']) ? $Sender['ContactSender'] : '';
-            $this->SendersPhone = isset($Sender['SendersPhone']) ? $Sender['SendersPhone'] : '';
+        if (isset($sender['Sender'])) {
+            $this->Sender = $sender['Sender'] ?? '';
+            $this->CitySender = $sender['CitySender'] ?? '';
+            $this->SenderAddress = $sender['SenderAddress'] ?? '';
+            $this->ContactSender = $sender['ContactSender'] ?? '';
+            $this->SendersPhone = $sender['SendersPhone'] ?? '';
         }
 
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function getSender()
     {
-        //конструктор нельзя, потому как трейт
-        if (! $this->Sender) {
-            $this->Sender = config('novaposhta.sender');
-        }
-        if (! $this->CitySender) {
-            $this->CitySender = config('novaposhta.sender');
-        }
-        if (! $this->SenderAddress) {
-            $this->SenderAddress = config('novaposhta.sender_address');
-        }
-        if (! $this->ContactSender) {
-            $this->ContactSender = config('novaposhta.contact_sender');
-        }
-        if (! $this->SendersPhone) {
-            $this->SendersPhone = config('novaposhta.senders_phone');
-        }
-
-        $this->methodProperties['Sender'] = $this->Sender;
-        $this->methodProperties['CitySender'] = $this->CitySender;
-        $this->methodProperties['SenderAddress'] = $this->SenderAddress;
-        $this->methodProperties['ContactSender'] = $this->ContactSender;
-        $this->methodProperties['SendersPhone'] = $this->SendersPhone;
+        $this->methodProperties['Sender'] = $this->Sender ?: config('novaposhta.sender');
+        $this->methodProperties['CitySender'] = $this->CitySender ?: config('novaposhta.city_sender');
+        $this->methodProperties['SenderAddress'] = $this->SenderAddress ?: config('novaposhta.sender_address');
+        $this->methodProperties['ContactSender'] = $this->ContactSender ?: config('novaposhta.contact_sender');
+        $this->methodProperties['SendersPhone'] = $this->SendersPhone ?: config('novaposhta.senders_phone');
 
         return $this;
     }

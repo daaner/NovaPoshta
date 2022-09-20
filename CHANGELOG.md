@@ -2,6 +2,10 @@
 
 All notable changes to `NovaPoshta` will be documented in this file
 
+### 2022-09-20
+- [Refactor] Refactor part code (not included in the release!!! TESTING)
+
+
 ### 2021-03-18
 - [Add] `getMoneyTransferDocuments` in InternetDocument
 

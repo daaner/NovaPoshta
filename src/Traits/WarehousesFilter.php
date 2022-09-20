@@ -6,6 +6,11 @@ trait WarehousesFilter
 {
     protected $typeOfWarehouseRef;
 
+    /**
+     * Наличие парковки для велосипедов.
+     *
+     * @return $this
+     */
     public function filterBicycleParking()
     {
         $this->methodProperties['BicycleParking'] = 1;
@@ -13,6 +18,11 @@ trait WarehousesFilter
         return $this;
     }
 
+    /**
+     * Наличие PostFinance.
+     *
+     * @return $this
+     */
     public function filterPostFinance()
     {
         $this->methodProperties['PostFinance'] = 1;
@@ -22,15 +32,18 @@ trait WarehousesFilter
 
     /**
      * @param string $typeOfWarehouseRef
-     * @return this
+     * @return $this
      */
-    public function setTypeOfWarehouseRef($typeOfWarehouseRef)
+    public function setTypeOfWarehouseRef(string $typeOfWarehouseRef)
     {
         $this->typeOfWarehouseRef = $typeOfWarehouseRef;
 
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function getTypeOfWarehouseRef()
     {
         if ($this->typeOfWarehouseRef) {

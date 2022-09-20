@@ -5,7 +5,7 @@ namespace Daaner\NovaPoshta\Traits;
 trait DocumentList
 {
     /**
-     * @return this
+     * @return $this
      */
     public function showFullList()
     {
@@ -15,7 +15,7 @@ trait DocumentList
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function showRedeliveryMoney()
     {
@@ -25,7 +25,7 @@ trait DocumentList
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function showUnassembledCargo()
     {

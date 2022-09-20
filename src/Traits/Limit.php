@@ -9,26 +9,29 @@ trait Limit
 
     /**
      * @param int $limit
-     * @return this
+     * @return $this
      */
-    public function setLimit($limit)
+    public function setLimit(int $limit)
     {
-        $this->limit = (int) $limit;
+        $this->limit = $limit;
 
         return $this;
     }
 
     /**
      * @param int $page
-     * @return this
+     * @return $this
      */
-    public function setPage($page)
+    public function setPage(int $page)
     {
-        $this->page = (int) $page;
+        $this->page = $page;
 
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function addLimit()
     {
         if ($this->limit) {
@@ -44,6 +47,9 @@ trait Limit
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function getPage()
     {
         if ($this->page) {

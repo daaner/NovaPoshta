@@ -30,7 +30,7 @@ __ВНИМАНИЕ__
 #### Laravel > 7, PHP >= 7.2.5
 Минимальная версия Laravel `7.0`, для более низкой версии нужно использовать `guzzle/guzzle`
 
-Работает на Laravel 7+
+Работает на Laravel 8+ и PHP 8
 
 
 ## Установка
@@ -58,7 +58,7 @@ php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvid
 ```
 
 
-## Конфигураци
+## Конфигурация
 
 После публикации ресурсов поправьте файл `config/novaposhta.php` и заполните `.env` новыми полями.
 
@@ -251,7 +251,6 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 - [Daan](https://github.com/daaner)
-- [All Contributors](../../contributors)
 
 ## License
 

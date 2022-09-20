@@ -16,170 +16,177 @@ trait InternetDocumentProperty
     protected $AdditionalInformation;
 
     /**
-     * @param string $PayerType
-     * Устанавливаем значение плательщика. По умолчанию значение из конфига
+     * Устанавливаем значение плательщика. По умолчанию значение конфига
      * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913
-     * @return this
+     *
+     * @param string $PayerType
+     * @return $this
      */
-    public function setPayerType($PayerType)
+    public function setPayerType(string $PayerType)
     {
         $this->PayerType = $PayerType;
 
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function getPayerType()
     {
-        if (! $this->PayerType) {
-            $this->PayerType = config('novaposhta.payer_type');
-        }
-        $this->methodProperties['PayerType'] = $this->PayerType;
+        $this->methodProperties['PayerType'] = $this->PayerType ?: config('novaposhta.payer_type');
 
         return $this;
     }
 
     /**
-     * @param string $ServiceType
-     * Устанавливаем тип доставки. По умолчанию значение из конфига
+     * Устанавливаем тип доставки. По умолчанию значение конфига
      * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890e
-     * @return this
+     *
+     * @param string $ServiceType
+     * @return $this
      */
-    public function setServiceType($ServiceType)
+    public function setServiceType(string $ServiceType)
     {
         $this->ServiceType = $ServiceType;
 
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function getServiceType()
     {
-        if (! $this->ServiceType) {
-            $this->ServiceType = config('novaposhta.service_type');
-        }
-        $this->methodProperties['ServiceType'] = $this->ServiceType;
+        $this->methodProperties['ServiceType'] = $this->ServiceType ?: config('novaposhta.service_type');
 
         return $this;
     }
 
     /**
-     * @param string $PaymentMethod
-     * Устанавливаем форму оплаты. По умолчанию значение из конфига
+     * Устанавливаем форму оплаты. По умолчанию значение конфига
      * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890d
-     * @return this
+     *
+     * @param string $PaymentMethod
+     * @return $this
      */
-    public function setPaymentMethod($PaymentMethod)
+    public function setPaymentMethod(string $PaymentMethod)
     {
         $this->PaymentMethod = $PaymentMethod;
 
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function getPaymentMethod()
     {
-        if (! $this->PaymentMethod) {
-            $this->PaymentMethod = config('novaposhta.payment_method');
-        }
-        $this->methodProperties['PaymentMethod'] = $this->PaymentMethod;
+        $this->methodProperties['PaymentMethod'] = $this->PaymentMethod ?: config('novaposhta.payment_method');
 
         return $this;
     }
 
     /**
-     * @param string $CargoType
-     * Устанавливаем тип груза. По умолчанию значение из конфига
+     * Устанавливаем тип груза. По умолчанию значение конфига
      * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838909
-     * @return this
+     *
+     * @param string $CargoType
+     * @return $this
      */
-    public function setCargoType($CargoType)
+    public function setCargoType(string $CargoType)
     {
         $this->CargoType = $CargoType;
 
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function getCargoType()
     {
-        if (! $this->CargoType) {
-            $this->CargoType = config('novaposhta.cargo_type');
-        }
-        $this->methodProperties['CargoType'] = $this->CargoType;
+        $this->methodProperties['CargoType'] = $this->CargoType ?: config('novaposhta.cargo_type');
 
         return $this;
     }
 
     /**
-     * @param string $Description
-     * Устанавливаем описание груза. По умолчанию из конфига
-     * @return this
+     * Устанавливаем описание груза. По умолчанию из конфига.
+     *
+     * @param string|null $description
+     * @return $this
      */
-    public function setDescription($Description)
+    public function setDescription(?string $description)
     {
-        if ($Description) {
-            $this->methodProperties['Description'] = $Description;
-        } else {
-            $this->methodProperties['Description'] = config('novaposhta.description');
-        }
+        $this->methodProperties['Description'] = $description ?: config('novaposhta.description');
 
         return $this;
     }
 
     /**
-     * @param string $SeatsAmount
      * Кол-во мест груза по умолчанию
-     * @return this
+     *
+     * @param string $SeatsAmount
+     * @return $this
      */
-    public function setSeatsAmount($SeatsAmount)
+    public function setSeatsAmount(string $SeatsAmount)
     {
         $this->SeatsAmount = $SeatsAmount;
 
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function getSeatsAmount()
     {
-        if (! $this->SeatsAmount) {
-            $this->SeatsAmount = config('novaposhta.seats_amount');
-        }
-        $this->methodProperties['SeatsAmount'] = $this->SeatsAmount;
+        $this->methodProperties['SeatsAmount'] = $this->SeatsAmount ?: config('novaposhta.seats_amount');
 
         return $this;
     }
 
     /**
-     * @param string $Cost
-     * Устанавливаем стоимость груза. По умолчанию значение из конфига
-     * @return this
+     * Устанавливаем стоимость груза. По умолчанию значение конфига.
+     *
+     * @param string $cost
+     * @return $this
      */
-    public function setCost($Cost)
+    public function setCost(string $cost)
     {
-        $this->Cost = $Cost;
+        $this->Cost = $cost;
 
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function getCost()
     {
-        if (! $this->Cost) {
-            $this->Cost = config('novaposhta.cost');
-        }
-        $this->methodProperties['Cost'] = $this->Cost;
+        $this->methodProperties['Cost'] = $this->Cost ?: config('novaposhta.cost');
 
         return $this;
     }
 
     /**
-     * @param string $Note
-     * Описание к адресу для курьера или отделения
-     * Применяется в основном, если нет текущей улицы при адресной доставке
-     * @return this
+     * Описание к адресу для курьера или отделения.
+     * Применяется в основном, если нет текущей улицы при адресной доставке.
+     *
+     * @param string $note
+     * @return $this
      */
-    public function setNote($Note)
+    public function setNote(string $note)
     {
-        $this->Note = $Note;
+        $this->Note = $note;
 
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function getNote()
     {
         if ($this->Note) {
@@ -190,17 +197,21 @@ trait InternetDocumentProperty
     }
 
     /**
-     * @param string $AdditionalInformation
      * Описание к ТТН для отображения в кабинете
-     * @return this
+     *
+     * @param string $AdditionalInformation
+     * @return $this
      */
-    public function setAdditionalInformation($AdditionalInformation)
+    public function setAdditionalInformation(string $AdditionalInformation)
     {
         $this->AdditionalInformation = $AdditionalInformation;
 
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function getAdditionalInformation()
     {
         if ($this->AdditionalInformation) {
@@ -211,15 +222,15 @@ trait InternetDocumentProperty
     }
 
     /**
+     * Услуга обратной доставки. По умолчанию значения конфига.
+     * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/575fe852a0fe4f0aa0754760
+     *
      * @param string|int $RedeliveryString
      * @param string|null $PayerType
      * @param string|null $CargoType
-     * @param array|null $addition
-     * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/575fe852a0fe4f0aa0754760
-     * Услуга обратной доставки. По умолчанию значения из конфига
-     * @return this
+     * @return $this
      */
-    public function setBackwardDeliveryData($RedeliveryString, $PayerType = null, $CargoType = null)
+    public function setBackwardDeliveryData($RedeliveryString, ?string $PayerType = null, ?string $CargoType = null)
     {
         if (! $PayerType) {
             $PayerType = config('novaposhta.back_delivery_payer_type');
@@ -236,6 +247,9 @@ trait InternetDocumentProperty
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function getBackwardDeliveryData()
     {
         if ($this->BackwardDeliveryData) {

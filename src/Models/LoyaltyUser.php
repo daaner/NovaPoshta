@@ -11,11 +11,12 @@ class LoyaltyUser extends NovaPoshta
     protected $methodProperties = null;
 
     /**
+     * Получение данных по бонусной карте.
      * Не документировано.
      *
      * @return array
      */
-    public function getLoyaltyInfoByApiKey()
+    public function getLoyaltyInfoByApiKey(): array
     {
         $this->calledMethod = 'getLoyaltyInfoByApiKey';
 

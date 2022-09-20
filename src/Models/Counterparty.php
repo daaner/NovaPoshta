@@ -18,7 +18,7 @@ class Counterparty extends NovaPoshta
      * @param string|null $find
      * @return array
      */
-    public function getCounterparties($find = null)
+    public function getCounterparties(?string $find): array
     {
         $this->calledMethod = 'getCounterparties';
         $this->getPage();
@@ -37,7 +37,7 @@ class Counterparty extends NovaPoshta
      * @param string $ref
      * @return array
      */
-    public function getCounterpartyContactPerson($ref)
+    public function getCounterpartyContactPerson(string $ref): array
     {
         $this->calledMethod = 'getCounterpartyContactPersons';
         $this->getPage();
@@ -56,7 +56,13 @@ class Counterparty extends NovaPoshta
      * @param string|null $email
      * @return array
      */
-    public function save($firstName, $lastName = null, $middleName = null, $phone = null, $email = null)
+    public function save(
+        string $firstName,
+        ?string $lastName = null,
+        ?string $middleName = null,
+        $phone = null,
+        ?string $email = null
+    ): array
     {
         $this->calledMethod = 'save';
         $this->getCounterpartyType();
@@ -88,7 +94,7 @@ class Counterparty extends NovaPoshta
      * @param string $ref
      * @return array
      */
-    public function getCounterpartyOptions($ref)
+    public function getCounterpartyOptions(string $ref): array
     {
         $this->calledMethod = 'getCounterpartyOptions';
 
@@ -101,7 +107,7 @@ class Counterparty extends NovaPoshta
      * @param string $ref
      * @return array
      */
-    public function getCounterpartyAddresses($ref)
+    public function getCounterpartyAddresses(string $ref): array
     {
         $this->calledMethod = 'getCounterpartyAddresses';
         $this->getCounterpartyProperty();
@@ -116,7 +122,7 @@ class Counterparty extends NovaPoshta
      * @param string $lastname
      * @return array
      */
-    public function getCatalogCounterparty($phone, $lastname)
+    public function getCatalogCounterparty($phone, string $lastname): array
     {
         $this->calledMethod = 'getCatalogCounterparty';
 

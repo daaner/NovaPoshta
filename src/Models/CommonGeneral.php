@@ -10,21 +10,23 @@ class CommonGeneral extends NovaPoshta
     protected $calledMethod;
     protected $methodProperties = null;
 
-    public function getMessageCodeText()
+    /**
+     * @return array
+     */
+    public function getMessageCodeText(): array
     {
         $this->calledMethod = 'getMessageCodeText';
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-    // не работает, требует JWT авторизацию
-
     /**
+     * Пока еще не работает, требует JWT авторизацию
      * @param string $ApiKey
      * @param int|null $month
      * @return array
      */
-    public function prolongateKey($ApiKey, $month = 12)
+    public function prolongateKey(string $ApiKey, ?int $month = 12): array
     {
         $this->calledMethod = 'prolongateApiKey';
 

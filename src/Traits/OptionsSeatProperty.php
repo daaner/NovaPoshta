@@ -2,18 +2,21 @@
 
 namespace Daaner\NovaPoshta\Traits;
 
+use Exception;
+
 trait OptionsSeatProperty
 {
     protected $OptionsSeat;
     protected $Weight;
 
     /**
-     * @param string|array $OptionsSeat
-     * Параметр груза для каждого места отправления
-     * Перебираем значение массива и вказываем нужные объемы
-     * Если не указывать значение из конфига в 1 кг
+     * Параметр груза для каждого места отправления.
+     * Перебираем значение массива и указываем нужные объемы.
+     * Если не указывать значение из конфига в 1 кг.
      * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/57484280a0fe4f33f0d4dd77
-     * @return this
+     *
+     * @param string|array $OptionsSeat
+     * @return $this
      */
     public function setOptionsSeat($OptionsSeat)
     {
@@ -24,7 +27,7 @@ trait OptionsSeatProperty
         foreach ($OptionsSeat as $key => $value) {
             try {
                 $this->OptionsSeat[] = $data[$value];
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->OptionsSeat[] = $data[1];
             }
         }
@@ -32,10 +35,21 @@ trait OptionsSeatProperty
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function getOptionsSeat()
     {
         if (! $this->OptionsSeat) {
-            $this->OptionsSeat[] = config('novaposhta.options_seat')[10];
+            $defaultSeat = [
+                'volumetricVolume' => '1',
+                'volumetricWidth' => '24',
+                'volumetricLength' => '17',
+                'volumetricHeight' => '10',
+                'weight' => '1',
+            ];
+
+            $this->OptionsSeat = $defaultSeat;
         }
         $this->methodProperties['OptionsSeat'] = $this->OptionsSeat;
 
@@ -43,25 +57,26 @@ trait OptionsSeatProperty
     }
 
     /**
-     * @param string $Weight
      * Устанавливаем вес груза. По умолчанию значение из конфига
      * nit:Daan
      * Не обязательно, если выставляем OptionsSeat, но пока оставлю тут
-     * @return this
+     *
+     * @param string $weight
+     * @return $this
      */
-    public function setWeight($Weight)
+    public function setWeight(string $weight)
     {
-        $this->Weight = $Weight;
+        $this->Weight = $weight;
 
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function getWeight()
     {
-        if (! $this->Weight) {
-            $this->Weight = config('novaposhta.weight');
-        }
-        $this->methodProperties['Weight'] = $this->Weight;
+        $this->methodProperties['Weight'] = $this->Weight ?: config('novaposhta.weight');
 
         return $this;
     }

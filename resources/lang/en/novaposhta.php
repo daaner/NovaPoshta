@@ -3041,6 +3041,7 @@ return [
         '20000403172' => 'Item QuestionRef invalid ',
         '20000403173' => 'Question not found by item QuestionRef',
         '20000403174' => 'Invalid item Mark',
+        '20000503631' => 'RecipientWarehouse is not found in this settlement',
         '20000403175' => 'Invalid item Comment',
         '20002603176' => 'Client not found',
         '20002603177' => 'Token is incorrect',

@@ -5,7 +5,7 @@ namespace Daaner\NovaPoshta\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Daaner\NovaPoshta
+ * @see https://github.com/daaner/novaposhta
  */
 class NovaPoshta extends Facade
 {
@@ -14,7 +14,7 @@ class NovaPoshta extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return 'novaposhta';
     }

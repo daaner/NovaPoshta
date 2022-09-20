@@ -11,9 +11,9 @@ trait CounterpartyProperty
 
     /**
      * @param string $counterpartyType
-     * @return this
+     * @return $this
      */
-    public function setCounterpartyType($counterpartyType)
+    public function setCounterpartyType(string $counterpartyType)
     {
         $this->counterpartyType = $counterpartyType;
 
@@ -22,9 +22,9 @@ trait CounterpartyProperty
 
     /**
      * @param string $counterpartyProperty
-     * @return this
+     * @return $this
      */
-    public function setCounterpartyProperty($counterpartyProperty)
+    public function setCounterpartyProperty(string $counterpartyProperty)
     {
         $this->counterpartyProperty = $counterpartyProperty;
 
@@ -33,9 +33,9 @@ trait CounterpartyProperty
 
     /**
      * @param string $ownershipForm
-     * @return this
+     * @return $this
      */
-    public function setOwnershipForm($ownershipForm)
+    public function setOwnershipForm(string $ownershipForm)
     {
         $this->ownershipForm = $ownershipForm;
 
@@ -44,9 +44,9 @@ trait CounterpartyProperty
 
     /**
      * @param string $EDRPOU
-     * @return this
+     * @return $this
      */
-    public function setEDRPOU($EDRPOU)
+    public function setEDRPOU(string $EDRPOU)
     {
         $this->EDRPOU = $EDRPOU;
 
@@ -54,7 +54,7 @@ trait CounterpartyProperty
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getCounterpartyType()
     {
@@ -68,7 +68,7 @@ trait CounterpartyProperty
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getCounterpartyProperty()
     {
@@ -88,7 +88,7 @@ trait CounterpartyProperty
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getOwnershipForm()
     {
@@ -102,7 +102,7 @@ trait CounterpartyProperty
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getEDRPOU()
     {
@@ -116,14 +116,16 @@ trait CounterpartyProperty
     }
 
     /**
+     * TODO: Проверить сложно.
      * Вынесенная логика для удаления контактов
      * используется для создания / изменения данных организаций или третьих лиц.
-     * @return this
+     *
+     * @return $this
      */
     public function makeOrganization()
     {
         //need clear data
-        // $lastName = '';
+         $lastName = '';
         // $middleName = '';
         // $phone = '';
         // $email = '';

@@ -11,9 +11,9 @@ trait AddressSettlementProperty
 
     /**
      * @param string $AreaRef
-     * @return this
+     * @return $this
      */
-    public function filterAreaRef($AreaRef)
+    public function filterAreaRef(string $AreaRef)
     {
         $this->AreaRef = $AreaRef;
 
@@ -21,7 +21,7 @@ trait AddressSettlementProperty
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getAreaRef()
     {
@@ -34,9 +34,9 @@ trait AddressSettlementProperty
 
     /**
      * @param string $RegionRef
-     * @return this
+     * @return $this
      */
-    public function filterRegionRef($RegionRef)
+    public function filterRegionRef(string $RegionRef)
     {
         $this->RegionRef = $RegionRef;
 
@@ -44,7 +44,7 @@ trait AddressSettlementProperty
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getRegionRef()
     {
@@ -56,7 +56,7 @@ trait AddressSettlementProperty
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function filterWarehouse()
     {
@@ -66,7 +66,7 @@ trait AddressSettlementProperty
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getWarehouse()
     {
@@ -79,9 +79,9 @@ trait AddressSettlementProperty
 
     /**
      * @param string $ref
-     * @return this
+     * @return $this
      */
-    public function filterRef($ref)
+    public function filterRef(string $ref)
     {
         $this->Ref = $ref;
 
@@ -89,7 +89,7 @@ trait AddressSettlementProperty
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getRef()
     {

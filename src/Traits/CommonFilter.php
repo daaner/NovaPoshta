@@ -11,7 +11,7 @@ trait CommonFilter
 
     /**
      * @param int|string $length
-     * @return this
+     * @return $this
      */
     public function setLength($length)
     {
@@ -22,7 +22,7 @@ trait CommonFilter
 
     /**
      * @param int|string $width
-     * @return this
+     * @return $this
      */
     public function setWidth($width)
     {
@@ -33,7 +33,7 @@ trait CommonFilter
 
     /**
      * @param int|string $height
-     * @return this
+     * @return $this
      */
     public function setHeight($height)
     {
@@ -44,7 +44,7 @@ trait CommonFilter
 
     /**
      * @param int|string $volumetricWeight
-     * @return this
+     * @return $this
      */
     public function setVolumetricWeight($volumetricWeight)
     {
@@ -54,7 +54,7 @@ trait CommonFilter
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getLength()
     {
@@ -66,7 +66,7 @@ trait CommonFilter
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getWidth()
     {
@@ -78,7 +78,7 @@ trait CommonFilter
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getHeight()
     {
@@ -90,7 +90,7 @@ trait CommonFilter
     }
 
     /**
-     * @return this
+     * @return $this
      */
     public function getVolumetricWeight()
     {
