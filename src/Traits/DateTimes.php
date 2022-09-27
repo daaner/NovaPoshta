@@ -107,7 +107,7 @@ trait DateTimes
      */
     public function checkDate($date, ?string $format = null): string
     {
-        if(! $format) {
+        if (! $format) {
             $format = $this->format;
         }
 

@@ -28,7 +28,6 @@ trait WarehousesFilter
 
     /**
      * @param  string  $typeOfWarehouseRef
-     *
      * @return void
      */
     public function setTypeOfWarehouseRef(string $typeOfWarehouseRef): void
