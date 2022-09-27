@@ -81,7 +81,6 @@ class TrackingDocument extends NovaPoshta
 
                 // Проверка на существование поля обратной доставки и получения номера накладной
                 // если присутствует тире в номере - значит это отправка денег назад
-                // если длина значения > 11 - это номер возврата денег. Поэтому проверка четко на 11 символов
                 if (isset($status['LastCreatedOnTheBasisNumber']) && $status['LastCreatedOnTheBasisNumber']) {
                     if (strripos($status['LastCreatedOnTheBasisNumber'], '-')) {
                         $statuses[$key]['NewMoneyTTN'] = $status['LastCreatedOnTheBasisNumber'];
@@ -89,10 +88,6 @@ class TrackingDocument extends NovaPoshta
                         $statuses[$key]['NewTTN'] = $status['LastCreatedOnTheBasisNumber'];
                     }
                 }
-
-//                $statuses[$key]['NewTTN'] = isset($status['LastCreatedOnTheBasisNumber'])
-//                    && $status['LastCreatedOnTheBasisNumber']
-//                    && strlen($status['LastCreatedOnTheBasisNumber']) > 10 ? $status['LastCreatedOnTheBasisNumber'] : null;
             }
         }
 

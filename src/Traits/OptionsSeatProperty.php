@@ -15,9 +15,9 @@ trait OptionsSeatProperty
      * Если не указывать значение из конфига в 1 кг.
      *
      * @param  string|array  $OptionsSeat
-     * @return $this
+     * @return void
      */
-    public function setOptionsSeat($OptionsSeat)
+    public function setOptionsSeat($OptionsSeat): void
     {
         $data = config('novaposhta.options_seat');
         if (is_array($OptionsSeat) === false) {
@@ -30,14 +30,12 @@ trait OptionsSeatProperty
                 $this->OptionsSeat[] = $data[1];
             }
         }
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getOptionsSeat()
+    public function getOptionsSeat(): void
     {
         if (! $this->OptionsSeat) {
             $defaultSeat = [
@@ -51,8 +49,6 @@ trait OptionsSeatProperty
             $this->OptionsSeat = $defaultSeat;
         }
         $this->methodProperties['OptionsSeat'] = $this->OptionsSeat;
-
-        return $this;
     }
 
     /**
@@ -61,22 +57,18 @@ trait OptionsSeatProperty
      * Не обязательно, если выставляем OptionsSeat, но пока оставлю тут
      *
      * @param  string  $weight
-     * @return $this
+     * @return void
      */
-    public function setWeight(string $weight)
+    public function setWeight(string $weight): void
     {
         $this->Weight = $weight;
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getWeight()
+    public function getWeight(): void
     {
         $this->methodProperties['Weight'] = $this->Weight ?: config('novaposhta.weight');
-
-        return $this;
     }
 }

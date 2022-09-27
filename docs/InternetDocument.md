@@ -23,7 +23,6 @@ use Daaner\NovaPoshta\Models\InternetDocument;
 [Получение](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9d22b34-8512-11ec-8ced-005056b2dbe1) списка всех ЭН
 
 ```php
-
 $np = new InternetDocument;
 
 // НЕ обязательные параметры
@@ -32,17 +31,15 @@ $np->setPage(2);
 //выборка по конкретной дате (выборка за период тогда не работает)
 $np->setDateTime('10-05-2020');
 //или выборка за период
-$np->setDateTimeFrom('11-07-2020'); //eсли не указано `setDateTimeFrom` - значение будет таким же, как `setDateTimeTo`
-$np->setDateTimeTo('11-07-2020'); //eсли не указано `setDateTimeTo` - значение будет сегодняшним числом
+$np->setDateTimeFrom('11-07-2020'); //Если не указано `setDateTimeFrom` - значение будет таким же, как `setDateTimeTo`
+$np->setDateTimeTo('11-07-2020'); //Если не указано `setDateTimeTo` - значение будет сегодняшним числом
 $np->showFullList(); // отобразить полный список (игнорируется лимит и постраничная разбивка)
-$np->showRedeliveryMoney(); // отобразить полный список ЭН с обратной доставкой. Требуется указание даты DateTimeFrom и DateTimeTo
-$np->showUnassembledCargo(); // отобразить полный список всех актуальных ЭН (по которым не написано заявление на возврат или утилизацию) не забранных получателями посылок. Требуется указание даты DateTimeFrom и DateTimeTo
-
+$np->showRedeliveryMoney(); // Отобразить полный список ЭН с обратной доставкой. Требуется указание даты DateTimeFrom и DateTimeTo
+$np->showUnassembledCargo(); // Отобразить полный список всех актуальных ЭН (по которым не написано заявление на возврат или утилизацию) не забранных получателями посылок. Требуется указание даты DateTimeFrom и DateTimeTo
 
 $lists = $np->getDocumentList();
 
 dd($lists);
-
 ```
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)
 ***
@@ -53,7 +50,6 @@ dd($lists);
 Для более полного понимания и передачи данных - смотрите трейты модели, ниже описано не все
 
 ```php
-
 $np = new InternetDocument;
 //не забываем про метод setApi, чтоб создать ЭН от другого отправителя
 $np->setAPI('c9********fd');
@@ -113,14 +109,13 @@ $np->setBackwardDeliveryData(386);
 
 $np->setAdditionalInformation('Добавление информации');
 
-//указание веса посылки или посылкок (если более 1 места)
+//указание веса посылки или посылок (если более 1 места)
 $np->setOptionsSeat([1, 5, 10, 11]);
 $np->setOptionsSeat(5);
 
 $createTTN = $np->save('Заявка №500');
 
 dd($createTTN);
-
 ```
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)
 ***
@@ -146,18 +141,16 @@ dd($deleted);
 ***
 
 ### `getMoneyTransferDocuments()`
-__НЕ ДОКУМЕНТИРОВАНО В ОФИЦИАЛЬНОЙ ДОКУМЕНТАЦИИ__
-
 Получить данные о платежах за определенный период
 
 ```php
 $intDoc = new InternetDocument;
 
 //можно переопределить API, иначе возьмет данные с конфига
-$intDoc->setAPI('c74***25'); //не обязательно
+$intDoc->setAPI('c74***25'); //необязательно
 
-$intDoc->setLimit(100); //не обязательно
-$intDoc->setPage(2);    //не обязательно
+$intDoc->setLimit(100); //необязательно
+$intDoc->setPage(2);    //необязательно
 
 $transfer = $intDoc->getMoneyTransferDocuments();
 

@@ -11,71 +11,61 @@ trait CounterpartyProperty
 
     /**
      * @param  string  $counterpartyType
-     * @return $this
+     * @return void
      */
-    public function setCounterpartyType(string $counterpartyType)
+    public function setCounterpartyType(string $counterpartyType): void
     {
         $this->counterpartyType = $counterpartyType;
-
-        return $this;
     }
 
     /**
      * @param  string  $counterpartyProperty
-     * @return $this
+     * @return void
      */
-    public function setCounterpartyProperty(string $counterpartyProperty)
+    public function setCounterpartyProperty(string $counterpartyProperty): void
     {
         $this->counterpartyProperty = $counterpartyProperty;
-
-        return $this;
     }
 
     /**
      * @param  string  $ownershipForm
-     * @return $this
+     * @return void
      */
-    public function setOwnershipForm(string $ownershipForm)
+    public function setOwnershipForm(string $ownershipForm): void
     {
         $this->ownershipForm = $ownershipForm;
-
-        return $this;
     }
 
     /**
      * @param  string  $EDRPOU
-     * @return $this
+     * @return void
      */
-    public function setEDRPOU(string $EDRPOU)
+    public function setEDRPOU(string $EDRPOU): void
     {
         $this->EDRPOU = $EDRPOU;
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getCounterpartyType()
+    public function getCounterpartyType(): void
     {
         if (! $this->counterpartyType) {
             $this->counterpartyType = 'PrivatePerson';
         }
 
         $this->methodProperties['CounterpartyType'] = $this->counterpartyType;
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getCounterpartyProperty()
+    public function getCounterpartyProperty(): void
     {
         //Сделано для getCounterpartyAddresses,
         //однако этот справочник игнорирует СounterpartyProperty в поиске
         if ($this->counterpartyProperty == 'All') {
-            return $this;
+            return;
         }
 
         if (! $this->counterpartyProperty) {
@@ -83,36 +73,30 @@ trait CounterpartyProperty
         }
 
         $this->methodProperties['CounterpartyProperty'] = $this->counterpartyProperty;
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getOwnershipForm()
+    public function getOwnershipForm(): void
     {
         if ($this->ownershipForm) {
             $this->methodProperties['OwnershipForm'] = $this->ownershipForm;
             $this->methodProperties['CounterpartyType'] = 'Organization';
             $this->makeOrganization();
         }
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getEDRPOU()
+    public function getEDRPOU(): void
     {
         if ($this->EDRPOU) {
             $this->methodProperties['EDRPOU'] = $this->EDRPOU;
             $this->methodProperties['CounterpartyProperty'] = 'ThirdPerson';
             $this->makeOrganization();
         }
-
-        return $this;
     }
 
     /**
@@ -120,16 +104,14 @@ trait CounterpartyProperty
      * Вынесенная логика для удаления контактов
      * используется для создания / изменения данных организаций или третьих лиц.
      *
-     * @return $this
+     * @return void
      */
-    public function makeOrganization()
+    public function makeOrganization(): void
     {
         //need clear data
-        $lastName = '';
+        // $lastName = '';
         // $middleName = '';
         // $phone = '';
         // $email = '';
-
-        return $this;
     }
 }

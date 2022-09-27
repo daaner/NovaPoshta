@@ -25,30 +25,26 @@ trait DateTimes
 
     /**
      * @param  string|Carbon|date  $dateTimeFrom
-     * @return $this
+     * @return void
      */
-    public function setDateTimeFrom($dateTimeFrom)
+    public function setDateTimeFrom($dateTimeFrom): void
     {
         $this->dateTimeFrom = $this->checkDate($dateTimeFrom);
-
-        return $this;
     }
 
     /**
      * @param  string|Carbon|date  $dateTimeTo
-     * @return $this
+     * @return void
      */
-    public function setDateTimeTo($dateTimeTo)
+    public function setDateTimeTo($dateTimeTo): void
     {
         $this->dateTimeTo = $this->checkDate($dateTimeTo);
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getDateTime()
+    public function getDateTime(): void
     {
         if ($this->dateTime && (! $this->dateTimeFrom || ! $this->dateTimeTo)) {
             $this->methodProperties['DateTime'] = $this->dateTime;
@@ -58,14 +54,12 @@ trait DateTimes
             $this->dateTime = Carbon::now()->format($this->format);
             $this->methodProperties['DateTime'] = $this->dateTime;
         }
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getDateTimeFromTo()
+    public function getDateTimeFromTo(): void
     {
         if ($this->dateTimeFrom || $this->dateTimeTo) {
             if (! $this->dateTimeTo) {
@@ -78,8 +72,6 @@ trait DateTimes
             $this->methodProperties['DateTimeFrom'] = $this->dateTimeFrom;
             $this->methodProperties['DateTimeTo'] = $this->dateTimeTo;
         }
-
-        return $this;
     }
 
     /**
@@ -93,33 +85,14 @@ trait DateTimes
     {
         // DateFrom
         if ($from) {
-            if ($from instanceof Carbon) {
-                $from = $from->format($this->formatTime);
-            } else {
-                try {
-                    $from = Carbon::parse($from)
-                        ->format($this->formatTime);
-                } catch (Exception $e) {
-                    $from = Carbon::now()
-                        ->/** @scrutinizer ignore-call */addMonth(-3)
-                        ->format($this->formatTime);
-                }
-            }
+            $from = $this->checkDate($from, $this->formatTime);
         } else {
             $from = Carbon::now()->addMonth(-3)->format($this->formatTime);
         }
 
         // DateTo
         if ($to) {
-            if ($to instanceof Carbon) {
-                $to = $to->format($this->formatTime);
-            } else {
-                try {
-                    $to = Carbon::parse($to)->format($this->formatTime);
-                } catch (Exception $e) {
-                    $to = Carbon::now()->format($this->formatTime);
-                }
-            }
+            $to = $this->checkDate($to, $this->formatTime);
         } else {
             $to = Carbon::now()->format($this->formatTime);
         }
@@ -132,15 +105,19 @@ trait DateTimes
      * @param  string|Carbon  $date
      * @return string $date
      */
-    public function checkDate($date): string
+    public function checkDate($date, ?string $format = null): string
     {
+        if(! $format) {
+            $format = $this->format;
+        }
+
         if ($date instanceof Carbon) {
-            $date = $date->format($this->format);
+            $date = $date->format($format);
         } else {
             try {
-                $date = Carbon::parse($date)->format($this->format);
+                $date = Carbon::parse($date)->format($format);
             } catch (Exception $e) {
-                $date = Carbon::now()->format($this->format);
+                $date = Carbon::now()->format($format);
             }
         }
 

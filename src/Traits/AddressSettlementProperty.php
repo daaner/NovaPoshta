@@ -11,92 +11,76 @@ trait AddressSettlementProperty
 
     /**
      * @param  string  $AreaRef
-     * @return $this
+     * @return void
      */
-    public function filterAreaRef(string $AreaRef)
+    public function filterAreaRef(string $AreaRef): void
     {
         $this->AreaRef = $AreaRef;
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getAreaRef()
+    public function getAreaRef(): void
     {
         if ($this->AreaRef) {
             $this->methodProperties['AreaRef'] = $this->AreaRef;
         }
-
-        return $this;
     }
 
     /**
      * @param  string  $RegionRef
-     * @return $this
+     * @return void
      */
-    public function filterRegionRef(string $RegionRef)
+    public function filterRegionRef(string $RegionRef): void
     {
         $this->RegionRef = $RegionRef;
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getRegionRef()
+    public function getRegionRef(): void
     {
         if ($this->RegionRef) {
             $this->methodProperties['RegionRef'] = $this->RegionRef;
         }
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function filterWarehouse()
+    public function filterWarehouse(): void
     {
         $this->Warehouse = true;
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getWarehouse()
+    public function getWarehouse(): void
     {
         if ($this->Warehouse) {
             $this->methodProperties['Warehouse'] = 1;
         }
-
-        return $this;
     }
 
     /**
      * @param  string  $ref
-     * @return $this
+     * @return void
      */
-    public function filterRef(string $ref)
+    public function filterRef(string $ref): void
     {
         $this->Ref = $ref;
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getRef()
+    public function getRef(): void
     {
         if ($this->Ref) {
             $this->methodProperties['Ref'] = $this->Ref;
         }
-
-        return $this;
     }
 }

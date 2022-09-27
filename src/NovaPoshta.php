@@ -90,7 +90,8 @@ class NovaPoshta implements NovaPoshtaInterface
         $answer = $response->json();
         if ($auth === false && isset($answer[0])) {
             /**
-             * костыль для Новой Почты. Спасибо Вам большое :).
+             * Костыль для Новой Почты.
+             * Спасибо Вам большое, что нормально не выдаете ответ :).
              */
             $answer = $answer[0];
         }
@@ -143,10 +144,12 @@ class NovaPoshta implements NovaPoshtaInterface
             Log::debug($model.' / '.$calledMethod.' // apiKey: '.$auth);
             Log::debug('--------------------');
 
-            try {
-                Log::notice(json_encode($methodProperties));
-            } catch (Exception $e) {
-                Log::notice('method json_encode error');
+            if ($methodProperties) {
+                try {
+                    Log::notice(json_encode($methodProperties));
+                } catch (Exception $e) {
+                    Log::notice('method json_encode error');
+                }
             }
 
             $return['dev'] = $answer;

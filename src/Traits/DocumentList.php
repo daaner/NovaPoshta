@@ -5,32 +5,26 @@ namespace Daaner\NovaPoshta\Traits;
 trait DocumentList
 {
     /**
-     * @return $this
+     * @return void
      */
-    public function showFullList()
+    public function showFullList(): void
     {
         $this->methodProperties['GetFullList'] = 1;
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function showRedeliveryMoney()
+    public function showRedeliveryMoney(): void
     {
         $this->methodProperties['RedeliveryMoney'] = 1;
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function showUnassembledCargo()
+    public function showUnassembledCargo(): void
     {
         $this->methodProperties['UnassembledCargo'] = 1;
-
-        return $this;
     }
 }

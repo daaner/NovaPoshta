@@ -9,30 +9,26 @@ trait Limit
 
     /**
      * @param  int  $limit
-     * @return $this
+     * @return void
      */
-    public function setLimit(int $limit)
+    public function setLimit(int $limit): void
     {
         $this->limit = $limit;
-
-        return $this;
     }
 
     /**
      * @param  int  $page
-     * @return $this
+     * @return void
      */
-    public function setPage(int $page)
+    public function setPage(int $page): void
     {
         $this->page = $page;
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function addLimit()
+    public function addLimit(): void
     {
         if ($this->limit) {
             $this->methodProperties['Limit'] = $this->limit;
@@ -43,19 +39,15 @@ trait Limit
         // if (! $this->limit) {
         //     $this->limit = config('novaposhta.page_limit');
         // }
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getPage()
+    public function getPage(): void
     {
         if ($this->page) {
             $this->methodProperties['Page'] = $this->page;
         }
-
-        return $this;
     }
 }

@@ -10,9 +10,9 @@ trait RecipientProperty
      * Устанавливаем значение получателя.
      *
      * @param  array  $Recipient
-     * @return $this
+     * @return void
      */
-    public function setRecipient(array $Recipient)
+    public function setRecipient(array $Recipient): void
     {
         if (isset($Recipient['RecipientsPhone'])) {
             $this->methodProperties['RecipientsPhone'] = $Recipient['RecipientsPhone'];
@@ -29,7 +29,7 @@ trait RecipientProperty
             $this->methodProperties['CityRecipient'] = $Recipient['CityRecipient'];
             $this->methodProperties['RecipientAddress'] = $Recipient['RecipientAddress'];
 
-            return $this;
+            return;
         }
 
         //указываем строками проверяем и вставляем
@@ -49,32 +49,26 @@ trait RecipientProperty
             $this->methodProperties['RecipientHouse'] = $Recipient['RecipientHouse'] ?? '';
             $this->methodProperties['RecipientFlat'] = $Recipient['RecipientFlat'] ?? '';
         }
-
-        return $this;
     }
 
     /**
      * Устанавливаем тип груза.
      *
      * @param  string  $RecipientType
-     * @return $this
+     * @return void
      */
-    public function setRecipientType(string $RecipientType)
+    public function setRecipientType(string $RecipientType): void
     {
         $this->RecipientType = $RecipientType;
-
-        return $this;
     }
 
     /**
      * Тип груза. По умолчанию значение конфига.
      *
-     * @return $this
+     * @return void
      */
-    public function getRecipientType()
+    public function getRecipientType(): void
     {
         $this->methodProperties['RecipientType'] = $this->RecipientType ?: config('novaposhta.recipient_type');
-
-        return $this;
     }
 }

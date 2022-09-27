@@ -2576,7 +2576,7 @@ return [
         '40000102696' => 'User has new password:',
         '40000102697' => 'Expire on:',
         '40000102698' => 'We recommend to update your personal password for security reasons. You can do it by opening this page https://new.novaposhta.ua/#/1/settings and following simple instructions. Thank you.',
-        '40000102699' => 'We recommend to update your personal password for security reasons. You can do it by opening this page http://my.novaposhta.ua/auth/forgotPassword and following simple instructions. Thank you.',
+        '40000102699' => 'We recommend to update your personal password for security reasons. You can do it by opening this page https://my.novaposhta.ua/auth/forgotPassword and following simple instructions. Thank you.',
         '20000902700' => 'You have already ordered a client report today. The order may not be more than once a day.',
         '20000402701' => 'MFO or BankName must be defined',
         '20000402702' => 'Login not found',

@@ -24,6 +24,7 @@ use Daaner\NovaPoshta\Models\Counterparty;
 
 ### `getCounterparties()`
 [Получение](https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a37a06df-8512-11ec-8ced-005056b2dbe1) списка Контрагентов отправителей/получателей/третье лицо
+
 ```php
 $cp = new Counterparty;
 
@@ -46,6 +47,7 @@ dd($agent);
 
 ### `getCounterpartyContactPerson()`
 [Загрузить](https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a3575a67-8512-11ec-8ced-005056b2dbe1) список контактных лиц Контрагента
+
 ```php
 $cp = new Counterparty;
 
@@ -65,6 +67,7 @@ dd($agent);
 [Создать](https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/0ae5dd75-8a5f-11ec-8ced-005056b2dbe1) Контрагента
 [Создать](https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/bc3c44c7-8a8a-11ec-8ced-005056b2dbe1) Контрагента с типом (юридическое лицо) или организацию
 [Создать](https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/b0fdf818-8a8e-11ec-8ced-005056b2dbe1) Контрагента с типом третьего лица (данные подтягиваются из информации кода ЕДРПОУ)
+
 ```php
 $cp = new Counterparty;
 
@@ -88,7 +91,7 @@ $agent = $cp->save("Иван", "Иванов", "Иванович", "380675554433
 
 //Для создания контрагента с юридическим лицом обязательно указать OwnershipForm
 //CounterpartyType установится насильно и этот параметр указывать необязательно
-//обязательные параметры OwnershipForm и FirstName
+//обязательные параметры OwnershipForm и FirstName,
 //а параметры MiddleName, LastName, Email и Phone - игнорируются
 
 //Organization
@@ -111,6 +114,7 @@ dd($agent);
 
 ### `getCounterpartyOptions()`
 [Загрузить](https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a332efbf-8512-11ec-8ced-005056b2dbe1) параметры Контрагента
+
 ```php
 $cp = new Counterparty;
 
@@ -124,6 +128,7 @@ dd($agent);
 
 ### `getCounterpartyAddresses()`
 [Загрузить](https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a30dbb7c-8512-11ec-8ced-005056b2dbe1) список адресов Контрагентов
+
 ```php
 $cp = new Counterparty;
 //по умолчанию Recipient

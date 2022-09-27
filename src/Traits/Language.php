@@ -8,24 +8,20 @@ trait Language
 
     /**
      * @param  string  $lang
-     * @return $this
+     * @return void
      */
-    public function setLanguage(string $lang)
+    public function setLanguage(string $lang): void
     {
         $this->language = $lang;
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getLanguage()
+    public function getLanguage(): void
     {
         if ($this->language && $this->language !== 'ua') {
             $this->methodProperties['Language'] = $this->language;
         }
-
-        return $this;
     }
 }

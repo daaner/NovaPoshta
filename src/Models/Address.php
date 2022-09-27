@@ -36,17 +36,17 @@ class Address extends NovaPoshta
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1e6f0a7-8512-11ec-8ced-005056b2dbe1
      *
      * @param  string|null  $find
-     * @param  bool|null  $string
+     * @param  bool|null  $searchByString
      * @return array
      */
-    public function getCities(?string $find = null, ?bool $string = true): array
+    public function getCities(?string $find = null, ?bool $searchByString = true): array
     {
         $this->calledMethod = 'getCities';
         $this->addLimit();
         $this->getPage();
 
         if ($find) {
-            if ($string) {
+            if ($searchByString) {
                 $this->methodProperties['FindByString'] = $find;
             } else {
                 $this->methodProperties['Ref'] = $find;
@@ -62,10 +62,10 @@ class Address extends NovaPoshta
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2322f38-8512-11ec-8ced-005056b2dbe1
      *
      * @param  string|null  $cityRef
-     * @param  bool|null  $string
+     * @param  bool|null  $searchByString
      * @return array
      */
-    public function getWarehouses(?string $cityRef = null, ?bool $string = true): array
+    public function getWarehouses(?string $cityRef = null, ?bool $searchByString = true): array
     {
         $this->calledMethod = 'getWarehouses';
         $this->addLimit();
@@ -73,7 +73,7 @@ class Address extends NovaPoshta
         $this->getTypeOfWarehouseRef();
 
         if ($cityRef) {
-            if ($string) {
+            if ($searchByString) {
                 $this->methodProperties['CityName'] = $cityRef;
             } else {
                 $this->methodProperties['CityRef'] = $cityRef;
@@ -84,23 +84,16 @@ class Address extends NovaPoshta
     }
 
     /**
-     * Получение типов отделений в населенном пункте.
+     * Получение типов отделений.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2587b53-8512-11ec-8ced-005056b2dbe1
      *
-     * @param  string  $cityRef
-     * @param  bool|null  $string
      * @return array
      */
-    public function getWarehouseTypes(string $cityRef, ?bool $string = true): array
+    public function getWarehouseTypes(): array
     {
         $this->calledMethod = 'getWarehouseTypes';
-
-        if ($string) {
-            $this->methodProperties['CityName'] = $cityRef;
-        } else {
-            $this->methodProperties['CityRef'] = $cityRef;
-        }
+        $this->methodProperties = null;
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }

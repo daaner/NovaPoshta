@@ -9,47 +9,40 @@ trait WarehousesFilter
     /**
      * Наличие парковки для велосипедов.
      *
-     * @return $this
+     * @return void
      */
-    public function filterBicycleParking()
+    public function filterBicycleParking(): void
     {
         $this->methodProperties['BicycleParking'] = 1;
-
-        return $this;
     }
 
     /**
      * Наличие PostFinance.
      *
-     * @return $this
+     * @return void
      */
-    public function filterPostFinance()
+    public function filterPostFinance(): void
     {
         $this->methodProperties['PostFinance'] = 1;
-
-        return $this;
     }
 
     /**
      * @param  string  $typeOfWarehouseRef
-     * @return $this
+     *
+     * @return void
      */
-    public function setTypeOfWarehouseRef(string $typeOfWarehouseRef)
+    public function setTypeOfWarehouseRef(string $typeOfWarehouseRef): void
     {
         $this->typeOfWarehouseRef = $typeOfWarehouseRef;
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getTypeOfWarehouseRef()
+    public function getTypeOfWarehouseRef(): void
     {
         if ($this->typeOfWarehouseRef) {
             $this->methodProperties['TypeOfWarehouseRef'] = $this->typeOfWarehouseRef;
         }
-
-        return $this;
     }
 }

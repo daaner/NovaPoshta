@@ -14,9 +14,9 @@ trait SenderProperty
      * Устанавливаем значение отправителя. Если не указывать - значение конфига.
      *
      * @param  array  $sender
-     * @return $this
+     * @return void
      */
-    public function setSender(array $sender)
+    public function setSender(array $sender): void
     {
         if (isset($sender['Sender'])) {
             $this->Sender = $sender['Sender'] ?? '';
@@ -25,21 +25,17 @@ trait SenderProperty
             $this->ContactSender = $sender['ContactSender'] ?? '';
             $this->SendersPhone = $sender['SendersPhone'] ?? '';
         }
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getSender()
+    public function getSender(): void
     {
         $this->methodProperties['Sender'] = $this->Sender ?: config('novaposhta.sender');
         $this->methodProperties['CitySender'] = $this->CitySender ?: config('novaposhta.city_sender');
         $this->methodProperties['SenderAddress'] = $this->SenderAddress ?: config('novaposhta.sender_address');
         $this->methodProperties['ContactSender'] = $this->ContactSender ?: config('novaposhta.contact_sender');
         $this->methodProperties['SendersPhone'] = $this->SendersPhone ?: config('novaposhta.senders_phone');
-
-        return $this;
     }
 }

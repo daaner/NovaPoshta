@@ -7,6 +7,7 @@ All notable changes to `NovaPoshta` will be documented in this file
 - [Add] Добавление в `getStatusTTN` значения `NewMoneyTTN` - номер накладной возврата денег
 - [Fix] Изменение в `getStatusTTN` значения `NewTTN` при создании возвратной ТТН
 - [Add] Немного изменена выдача warning и errors
+- [Fix] `getWarehouseTypes`
 
 
 ### 2022-09-20

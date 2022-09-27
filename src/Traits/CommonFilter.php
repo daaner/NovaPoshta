@@ -11,93 +11,77 @@ trait CommonFilter
 
     /**
      * @param  int|string  $length
-     * @return $this
+     * @return void
      */
-    public function setLength($length)
+    public function setLength($length): void
     {
         $this->length = $length;
-
-        return $this;
     }
 
     /**
      * @param  int|string  $width
-     * @return $this
+     * @return void
      */
-    public function setWidth($width)
+    public function setWidth($width): void
     {
         $this->width = $width;
-
-        return $this;
     }
 
     /**
      * @param  int|string  $height
-     * @return $this
+     * @return void
      */
-    public function setHeight($height)
+    public function setHeight($height): void
     {
         $this->height = $height;
-
-        return $this;
     }
 
     /**
      * @param  int|string  $volumetricWeight
-     * @return $this
+     * @return void
      */
-    public function setVolumetricWeight($volumetricWeight)
+    public function setVolumetricWeight($volumetricWeight): void
     {
         $this->volumetricWeight = $volumetricWeight;
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getLength()
+    public function getLength(): void
     {
         if ($this->length) {
             $this->methodProperties['Length'] = $this->length;
         }
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getWidth()
+    public function getWidth(): void
     {
         if ($this->width) {
             $this->methodProperties['Width'] = $this->width;
         }
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getHeight()
+    public function getHeight(): void
     {
         if ($this->height) {
             $this->methodProperties['Height'] = $this->height;
         }
-
-        return $this;
     }
 
     /**
-     * @return $this
+     * @return void
      */
-    public function getVolumetricWeight()
+    public function getVolumetricWeight(): void
     {
         if ($this->volumetricWeight) {
             $this->methodProperties['VolumetricWeight'] = $this->volumetricWeight;
         }
-
-        return $this;
     }
 }

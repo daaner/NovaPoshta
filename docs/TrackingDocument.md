@@ -23,10 +23,16 @@ use Daaner\NovaPoshta\Models\TrackingDocument;
 [Получение](https://developers.novaposhta.ua/view/model/a99d2f28-8512-11ec-8ced-005056b2dbe1/method/a9ae7bc9-8512-11ec-8ced-005056b2dbe1) полной информации по ТТН
 
 ```php
-
 $doc = '20450296339688';
 // либо
 $doc = '20450296339688, 20450296339742';
+//либо
+$doc = ['20450296339688, 20450296339742'];
+//либо
+$doc = [
+    0 => '20450296339688',
+    '100500' => '20450296339742'
+];
 //либо в массиве одна или несколько ТТН с отдельными телефонами
 $doc = array();
 array_push($doc, ['DocumentNumber' => 'ttn1', 'Phone' => 'phone1']);
