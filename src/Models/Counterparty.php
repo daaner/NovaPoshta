@@ -15,10 +15,11 @@ class Counterparty extends NovaPoshta
     protected $methodProperties = [];
 
     /**
-     * Завантажити список контрагентів відправників / одержувачів / третя особа
+     * Завантажити список контрагентів відправників / одержувачів / третя особа.
+     *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a37a06df-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string|null $find
+     * @param  string|null  $find
      * @return array
      */
     public function getCounterparties(?string $find): array
@@ -37,10 +38,11 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-     * Завантажити список контактних осіб Контрагента
+     * Завантажити список контактних осіб Контрагента.
+     *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a3575a67-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string $ref
+     * @param  string  $ref
      * @return array
      */
     public function getCounterpartyContactPerson(string $ref): array
@@ -55,16 +57,17 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-     * Створити Контрагента
+     * Створити Контрагента.
+     *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/0ae5dd75-8a5f-11ec-8ced-005056b2dbe1
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/bc3c44c7-8a8a-11ec-8ced-005056b2dbe1
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/b0fdf818-8a8e-11ec-8ced-005056b2dbe1
      *
-     * @param string $firstName
-     * @param string|null $lastName
-     * @param string|null $middleName
-     * @param string|int|null $phone
-     * @param string|null $email
+     * @param  string  $firstName
+     * @param  string|null  $lastName
+     * @param  string|null  $middleName
+     * @param  string|int|null  $phone
+     * @param  string|null  $email
      * @return array
      */
     public function save(
@@ -73,8 +76,7 @@ class Counterparty extends NovaPoshta
         ?string $middleName = null,
         $phone = null,
         ?string $email = null
-    ): array
-    {
+    ): array {
         $this->calledMethod = 'save';
         $this->getCounterpartyType();
         $this->getCounterpartyProperty();
@@ -102,10 +104,11 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-     * Завантажити параметри Контрагента
+     * Завантажити параметри Контрагента.
+     *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a332efbf-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string $ref
+     * @param  string  $ref
      * @return array
      */
     public function getCounterpartyOptions(string $ref): array
@@ -118,10 +121,11 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-     * Завантажити список адрес Контрагентів
+     * Завантажити список адрес Контрагентів.
+     *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a30dbb7c-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string $ref
+     * @param  string  $ref
      * @return array
      */
     public function getCounterpartyAddresses(string $ref): array
@@ -135,10 +139,10 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-     * Получение данных об Контрагенте по номеру телефона (ФИО и прочее)
+     * Получение данных об Контрагенте по номеру телефона (ФИО и прочее).
      *
-     * @param string|int $phone
-     * @param string $lastname
+     * @param  string|int  $phone
+     * @param  string  $lastname
      * @return array
      */
     public function getCatalogCounterparty($phone, string $lastname): array

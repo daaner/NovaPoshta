@@ -11,9 +11,10 @@ class TrackingDocument extends NovaPoshta
 
     /**
      * Получение полной информации по ТТН/ТТНкам.
+     *
      * @see https://developers.novaposhta.ua/view/model/a99d2f28-8512-11ec-8ced-005056b2dbe1/method/a9ae7bc9-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string|array $documents
+     * @param  string|array  $documents
      * @return array
      */
     public function getStatusDocuments($documents): array
@@ -33,8 +34,8 @@ class TrackingDocument extends NovaPoshta
     /**
      * Проверка единичной ТТН или массива. Телефон, если указан, подставляется один для всех.
      *
-     * @param string|array $ttns Номер ТТН либо массив ТТНок
-     * @param string|null $phone Номер телефона получателя или отправителя
+     * @param  string|array  $ttns  Номер ТТН либо массив ТТНок
+     * @param  string|null  $phone  Номер телефона получателя или отправителя
      * @return array
      */
     public function checkTTN($ttns, ?string $phone = null): array
@@ -58,8 +59,8 @@ class TrackingDocument extends NovaPoshta
     /**
      * Получение статусов одной ТТН или массива.
      *
-     * @param string|array $ttns
-     * @param string|int|null $phone
+     * @param  string|array  $ttns
+     * @param  string|int|null  $phone
      * @return array
      */
     public function getStatusTTN($ttns, $phone = null): array
@@ -109,9 +110,9 @@ class TrackingDocument extends NovaPoshta
     }
 
     /**
-     * Очистка пробелов и букв в ТТН
+     * Очистка пробелов и букв в ТТН.
      *
-     * @param string $ttn
+     * @param  string  $ttn
      * @return string
      */
     public function clearNumber(string $ttn): string

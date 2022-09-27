@@ -14,7 +14,7 @@ trait OptionsSeatProperty
      * Перебираем значение массива и указываем нужные объемы.
      * Если не указывать значение из конфига в 1 кг.
      *
-     * @param string|array $OptionsSeat
+     * @param  string|array  $OptionsSeat
      * @return $this
      */
     public function setOptionsSeat($OptionsSeat)
@@ -60,7 +60,7 @@ trait OptionsSeatProperty
      * nit:Daan
      * Не обязательно, если выставляем OptionsSeat, но пока оставлю тут
      *
-     * @param string $weight
+     * @param  string  $weight
      * @return $this
      */
     public function setWeight(string $weight)
