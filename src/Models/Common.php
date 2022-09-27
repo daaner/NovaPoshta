@@ -6,18 +6,20 @@ use Carbon\Carbon;
 use Daaner\NovaPoshta\NovaPoshta;
 use Daaner\NovaPoshta\Traits\CommonFilter;
 use Daaner\NovaPoshta\Traits\DateTimes;
-use Daaner\NovaPoshta\Traits\Language;
 use Daaner\NovaPoshta\Traits\Limit;
 
 class Common extends NovaPoshta
 {
-    use Language, Limit, CommonFilter, DateTimes;
+    use Limit, CommonFilter, DateTimes;
 
     protected $model = 'Common';
     protected $calledMethod;
     protected $methodProperties = null;
 
     /**
+     * Справочник форм собственности
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a754ff0d-8512-11ec-8ced-005056b2dbe1
+     *
      * @return array
      */
     public function getOwnershipFormsList(): array
@@ -28,39 +30,46 @@ class Common extends NovaPoshta
     }
 
     /**
+     * Получение справочника формы оплаты
+     *
      * @return array
      */
     public function getPaymentForms(): array
     {
         $this->calledMethod = 'getPaymentForms';
-        $this->getLanguage();
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
     /**
+     * Получение справочника типов контрагентов
+     *
      * @return array
      */
     public function getTypesOfCounterparties(): array
     {
         $this->calledMethod = 'getTypesOfCounterparties';
-        $this->getLanguage();
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
     /**
+     * Получение справочника технологий доставки
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6e189f7-8512-11ec-8ced-005056b2dbe1
+     *
      * @return array
      */
     public function getServiceTypes(): array
     {
         $this->calledMethod = 'getServiceTypes';
-        $this->getLanguage();
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
     /**
+     * Получение справочника описаний груза
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a697db47-8512-11ec-8ced-005056b2dbe1
+     *
      * @param string|null $find
      * @return array
      */
@@ -77,6 +86,9 @@ class Common extends NovaPoshta
     }
 
     /**
+     * Получение справочника видов шин и дисков
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a66fada0-8512-11ec-8ced-005056b2dbe1
+     *
      * @return array
      */
     public function getTiresWheelsList(): array
@@ -87,6 +99,9 @@ class Common extends NovaPoshta
     }
 
     /**
+     * Получение справочника видов упаковки
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6492db4-8512-11ec-8ced-005056b2dbe1
+     *
      * @return array
      */
     public function getPackList(): array
@@ -102,28 +117,35 @@ class Common extends NovaPoshta
     }
 
     /**
+     * Получение справочника видов плательщиков обратной доставки
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6247f2f-8512-11ec-8ced-005056b2dbe1
+     *
      * @return array
      */
     public function getTypesOfPayersForRedelivery(): array
     {
         $this->calledMethod = 'getTypesOfPayersForRedelivery';
-        $this->getLanguage();
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
     /**
+     * Получение справочника видов плательщиков доставки
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6247f2f-8512-11ec-8ced-005056b2dbe1
+     *
      * @return array
      */
     public function getTypesOfPayers(): array
     {
         $this->calledMethod = 'getTypesOfPayers';
-        $this->getLanguage();
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
     /**
+     * Получение справочника видов паллет
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5dd575e-8512-11ec-8ced-005056b2dbe1
+     *
      * @return array
      */
     public function getPalletsList(): array
@@ -134,28 +156,35 @@ class Common extends NovaPoshta
     }
 
     /**
+     * Получение справочника видов обратной доставки груза
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5b46873-8512-11ec-8ced-005056b2dbe1
+     *
      * @return array
      */
     public function getBackwardDeliveryCargoTypes(): array
     {
         $this->calledMethod = 'getBackwardDeliveryCargoTypes';
-        $this->getLanguage();
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
     /**
+     * Получение справочника видов груза
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5912a1e-8512-11ec-8ced-005056b2dbe1
+     *
      * @return array
      */
     public function getCargoTypes(): array
     {
         $this->calledMethod = 'getCargoTypes';
-        $this->getLanguage();
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
     /**
+     * Получение справочника видов временных интервалов
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a56d5c1c-8512-11ec-8ced-005056b2dbe1
+     *
      * @param string $recipientCityRef
      * @param string|Carbon|null $dateTime
      * @return array

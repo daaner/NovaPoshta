@@ -11,7 +11,7 @@ class TrackingDocument extends NovaPoshta
 
     /**
      * Получение полной информации по ТТН/ТТНкам.
-     * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55702cbba0fe4f0cf4fc53ee
+     * @see https://developers.novaposhta.ua/view/model/a99d2f28-8512-11ec-8ced-005056b2dbe1/method/a9ae7bc9-8512-11ec-8ced-005056b2dbe1
      *
      * @param string|array $documents
      * @return array
@@ -33,10 +33,8 @@ class TrackingDocument extends NovaPoshta
     /**
      * Проверка единичной ТТН или массива. Телефон, если указан, подставляется один для всех.
      *
-     * Номер ТТН либо массив ТТНок
-     * @param string|array $ttns
-     * Номер телефона получателя или отправителя
-     * @param string|null $phone
+     * @param string|array $ttns Номер ТТН либо массив ТТНок
+     * @param string|null $phone Номер телефона получателя или отправителя
      * @return array
      */
     public function checkTTN($ttns, ?string $phone = null): array
@@ -46,11 +44,11 @@ class TrackingDocument extends NovaPoshta
         if (is_array($ttns)) {
             $docs = array_values($ttns);
             foreach ($docs as $key => $ttn) {
-                $documents[$key]['DocumentNumber'] = $ttn;
+                $documents[$key]['DocumentNumber'] = $this->clearNumber($ttn);
                 $documents[$key]['Phone'] = $phone;
             }
         } else {
-            $documents[0]['DocumentNumber'] = $ttns;
+            $documents[0]['DocumentNumber'] = $this->clearNumber($ttns);
             $documents[0]['Phone'] = $phone;
         }
 
@@ -77,9 +75,23 @@ class TrackingDocument extends NovaPoshta
                 $statuses[$key]['StatusLocale'] = trans('novaposhta::novaposhta.statusCode.'.$status['StatusCode']);
                 $statuses[$key]['ActualDeliveryDate'] = $status['ActualDeliveryDate'] ?? null;
 
+                $statuses[$key]['NewTTN'] = '';
+                $statuses[$key]['NewMoneyTTN'] = '';
+
                 // Проверка на существование поля обратной доставки и получения номера накладной
+                // если присутствует тире в номере - значит это отправка денег назад
                 // если длина значения > 11 - это номер возврата денег. Поэтому проверка четко на 11 символов
-                $statuses[$key]['NewTTN'] = isset($status['LastCreatedOnTheBasisNumber']) && $status['LastCreatedOnTheBasisNumber'] && strlen($status['LastCreatedOnTheBasisNumber']) == 11 ? $status['LastCreatedOnTheBasisNumber'] : null;
+                if (isset($status['LastCreatedOnTheBasisNumber']) && $status['LastCreatedOnTheBasisNumber']) {
+                    if (strripos($status['LastCreatedOnTheBasisNumber'], '-')) {
+                        $statuses[$key]['NewMoneyTTN'] = $status['LastCreatedOnTheBasisNumber'];
+                    } else {
+                        $statuses[$key]['NewTTN'] = $status['LastCreatedOnTheBasisNumber'];
+                    }
+                }
+
+//                $statuses[$key]['NewTTN'] = isset($status['LastCreatedOnTheBasisNumber'])
+//                    && $status['LastCreatedOnTheBasisNumber']
+//                    && strlen($status['LastCreatedOnTheBasisNumber']) > 10 ? $status['LastCreatedOnTheBasisNumber'] : null;
             }
         }
 
@@ -94,5 +106,16 @@ class TrackingDocument extends NovaPoshta
         }
 
         return $return;
+    }
+
+    /**
+     * Очистка пробелов и букв в ТТН
+     *
+     * @param string $ttn
+     * @return string
+     */
+    public function clearNumber(string $ttn): string
+    {
+        return preg_replace('/[^0-9,]/', '', $ttn);
     }
 }

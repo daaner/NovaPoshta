@@ -27,7 +27,8 @@ use Daaner\NovaPoshta\Models\ScanSheet;
 
 
 ### `getScanSheetList()`
-[Загрузить](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c7734a0fe4f08e8f7ce31) список реестров (требует ключ API)
+Загрузить список реестров (требует ключ API)
+
 ```php
 $np = new ScanSheet;
 $scansheets = $np->getScanSheetList();
@@ -39,7 +40,8 @@ dd($scansheets);
 
 
 ### `getScanSheet()`
-[Загрузить](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c7734a0fe4f08e8f7ce31) информацию по одному реестру (требует ключ API)
+Загрузить информацию по одному реестру (требует ключ API)
+
 ```php
 $np = new ScanSheet;
 $ref = 'd1****54-****-****-****-b8830****df5';
@@ -52,7 +54,8 @@ dd($scansheet);
 
 
 ### `removeDocuments()`
-[Удалить](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c6474a0fe4f08e8f7ce2e) экспресс-накладные из реестра (требует ключ API)
+Удалить экспресс-накладные из реестра (требует ключ API)
+
 ```php
 $np = new ScanSheet;
 $ref = 'd1****54-****-****-****-b8830****df5'; //не обязательно
@@ -77,9 +80,8 @@ dd($scansheet);
 
 
 ### `updateScanSheet()`
-__НЕ ДОКУМЕНТИРОВАНО В ОФИЦИАЛЬНОЙ ДОКУМЕНТАЦИИ__
-
 Обновить описание реестра (максимум 101 символ с пробелами без специальных знаков) (требует ключ API)
+
 ```php
 $np = new ScanSheet;
 $ref = 'd1****54-****-****-****-b8830****df5';
@@ -92,9 +94,8 @@ dd($scansheet);
 
 
 ### `getScanSheetDocuments()`
-__НЕ ДОКУМЕНТИРОВАНО В ОФИЦИАЛЬНОЙ ДОКУМЕНТАЦИИ__
-
 Получить краткий список ТТН реестра (требует ключ API)
+
 ```php
 $np = new ScanSheet;
 $np->setLimit(5); // НЕ обязательно
@@ -110,7 +111,7 @@ dd($scansheet);
 
 
 ### `insertDocuments()`
-[Добавить](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c4786a0fe4f0634657b65) экспресс-накладные в реестр (требует ключ API)
+Добавить экспресс-накладные в реестр (требует ключ API)
 
 ```php
 $np = new ScanSheet;
@@ -140,7 +141,7 @@ dd($addScanSheet);
 
 
 ### `deleteScanSheet()`
-[Удалить (расформировать)](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c6a2da0fe4f08e8f7ce2f) реестр отправлений (требует ключ API)
+Удалить (расформировать) реестр отправлений (требует ключ API)
 
 ```php
 $np = new ScanSheet;

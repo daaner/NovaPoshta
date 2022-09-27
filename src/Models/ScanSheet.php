@@ -17,7 +17,6 @@ class ScanSheet extends NovaPoshta
 
     /**
      * Удалить (расформировать) реестр отправлений.
-     * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c6a2da0fe4f08e8f7ce2f
      *
      * @param string|array $ScanSheetRefs
      * @return array
@@ -37,7 +36,6 @@ class ScanSheet extends NovaPoshta
 
     /**
      * Добавить экспресс-накладные в реестр.
-     * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c4786a0fe4f0634657b65
      *
      * @param string|array $DocumentRefs
      * @param string|null $Ref
@@ -67,7 +65,6 @@ class ScanSheet extends NovaPoshta
 
     /**
      * Загрузить список реестров.
-     * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c7734a0fe4f08e8f7ce31
      *
      * @return array
      */
@@ -80,7 +77,6 @@ class ScanSheet extends NovaPoshta
 
     /**
      * Загрузить информацию по одному реестру.
-     * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c72d7a0fe4f08e8f7ce30
      *
      * @param string $ref
      * @return array
@@ -97,7 +93,6 @@ class ScanSheet extends NovaPoshta
 
     /**
      * Удалить экспресс-накладные из реестра.
-     * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c6474a0fe4f08e8f7ce2e
      *
      * @param string|array $documents
      * @param string|null $ref

@@ -17,7 +17,6 @@ trait InternetDocumentProperty
 
     /**
      * Устанавливаем значение плательщика. По умолчанию значение конфига
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913
      *
      * @param string $PayerType
      * @return $this
@@ -41,7 +40,6 @@ trait InternetDocumentProperty
 
     /**
      * Устанавливаем тип доставки. По умолчанию значение конфига
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890e
      *
      * @param string $ServiceType
      * @return $this
@@ -65,7 +63,6 @@ trait InternetDocumentProperty
 
     /**
      * Устанавливаем форму оплаты. По умолчанию значение конфига
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890d
      *
      * @param string $PaymentMethod
      * @return $this
@@ -89,7 +86,6 @@ trait InternetDocumentProperty
 
     /**
      * Устанавливаем тип груза. По умолчанию значение конфига
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838909
      *
      * @param string $CargoType
      * @return $this
@@ -223,7 +219,6 @@ trait InternetDocumentProperty
 
     /**
      * Услуга обратной доставки. По умолчанию значения конфига.
-     * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/575fe852a0fe4f0aa0754760
      *
      * @param string|int $RedeliveryString
      * @param string|null $PayerType

@@ -55,7 +55,6 @@ trait RecipientProperty
 
     /**
      * Устанавливаем тип груза.
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838909
      *
      * @param string $RecipientType
      * @return $this

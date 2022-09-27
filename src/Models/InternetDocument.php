@@ -37,7 +37,7 @@ class InternetDocument extends NovaPoshta
 
     /**
      * Получить список ЭН.
-     * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/557eb417a0fe4f02fc455b2c
+     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9d22b34-8512-11ec-8ced-005056b2dbe1
      *
      * @return array
      */
@@ -58,7 +58,7 @@ class InternetDocument extends NovaPoshta
 
     /**
      * Создать экспресс-накладную.
-     * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/556ef753a0fe4f02049c664f
+     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a965630e-8512-11ec-8ced-005056b2dbe1
      *
      * @param string|null $description
      * @return array
@@ -90,7 +90,7 @@ class InternetDocument extends NovaPoshta
 
     /**
      * Удаление экспресс-накладной
-     * @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55701fa5a0fe4f0cf4fc53ec
+     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9f43ff1-8512-11ec-8ced-005056b2dbe1
      *
      * @param string|array $DocumentRefs
      * @return array

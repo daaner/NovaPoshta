@@ -57,11 +57,11 @@ class NovaPoshta implements NovaPoshtaInterface
     /**
      * @param string $model
      * @param string $calledMethod
-     * @param array $methodProperties
+     * @param array|null $methodProperties
      * @param bool $auth
      * @return array
      */
-    public function getResponse(string $model, string $calledMethod, array $methodProperties, bool $auth = true): array
+    public function getResponse(string $model, string $calledMethod, ?array $methodProperties, bool $auth = true): array
     {
         $url = $this->url . '/' . $model . '/' . $calledMethod;
         $body = [];
@@ -114,13 +114,14 @@ class NovaPoshta implements NovaPoshtaInterface
         /**
          * Ошибки, либо уведомления
          */
+        $info = [];
         if (isset($answer['warnings']) && $answer['warnings']) {
-            $info = $answer['warnings'];
+            $info['warnings'] = $answer['warnings'];
 
             if ($answer['errors']) {
-                $info = $answer['errors'];
+                $info['errors'] = $answer['errors'];
                 if ($answer['errorCodes']) {
-                    $info = [];
+
                     foreach ($answer['errorCodes'] as $err) {
                         $info['StatusCode'] = $err;
                         $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.' . $err);
@@ -129,8 +130,8 @@ class NovaPoshta implements NovaPoshtaInterface
             }
         }
 
-        if (!$info && isset($answer['info'])) {
-            $info = $answer['info'];
+        if (!$info && isset($answer['info']) && $answer['info']) {
+            $info['info'] = $answer['info'];
         }
 
         $return = [

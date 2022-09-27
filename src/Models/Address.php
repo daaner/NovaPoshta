@@ -17,6 +17,7 @@ class Address extends NovaPoshta
 
     /**
      * Получение списка областей.
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a20ee6e4-8512-11ec-8ced-005056b2dbe1
      *
      * @return array
      */
@@ -30,6 +31,7 @@ class Address extends NovaPoshta
 
     /**
      * Получение списка городов.
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1e6f0a7-8512-11ec-8ced-005056b2dbe1
      *
      * @param string|null $find
      * @param bool|null $string
@@ -53,6 +55,9 @@ class Address extends NovaPoshta
     }
 
     /**
+     * Получение списка отделений и почтоматов в городах.
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2322f38-8512-11ec-8ced-005056b2dbe1
+     *
      * @param string|null $cityRef
      * @param bool|null $string
      * @return array
@@ -76,6 +81,9 @@ class Address extends NovaPoshta
     }
 
     /**
+     * Получение типов отделений в населенном пункте.
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2587b53-8512-11ec-8ced-005056b2dbe1
+     *
      * @param string $cityRef
      * @param bool|null $string
      * @return array
@@ -94,6 +102,8 @@ class Address extends NovaPoshta
     }
 
     /**
+     * Получение списка отделений в населенном пункте.
+     *
      * @param string $settlementRef
      * @return array
      */
@@ -108,6 +118,9 @@ class Address extends NovaPoshta
     }
 
     /**
+     * Поиск населенных пунктов из справочника Settlements.
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a0eb83ab-8512-11ec-8ced-005056b2dbe1
+     *
      * @param string $search
      * @return array
      */
@@ -122,6 +135,8 @@ class Address extends NovaPoshta
     }
 
     /**
+     * Поиск улиц в населенных пунктах.
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1329635-8512-11ec-8ced-005056b2dbe1
      * @param string $ref
      * @param string $street
      * @return array
@@ -138,6 +153,9 @@ class Address extends NovaPoshta
     }
 
     /**
+     * Справочник населенных пунктов Украины.
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1c42723-8512-11ec-8ced-005056b2dbe1
+     *
      * @param string|null $find
      * @return array
      */
@@ -171,6 +189,9 @@ class Address extends NovaPoshta
     }
 
     /**
+     * Получение улиц в городе по CityRef.
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a27c20d7-8512-11ec-8ced-005056b2dbe1
+     *
      * @param string $city
      * @param string|null $find
      * @return array
@@ -190,8 +211,11 @@ class Address extends NovaPoshta
     }
 
     /**
-     * DEV!
-     * Counterparty API
+     * TODO Не сделано
+     * Создать адрес контрагента (отправитель / получатель).
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a155d0d9-8512-11ec-8ced-005056b2dbe1
+     *
+     * @return false
      */
     public function save()
     {
@@ -200,6 +224,13 @@ class Address extends NovaPoshta
         return false;
     }
 
+    /**
+     * TODO Не сделано
+     * Редактировать адрес контрагента (отправитель / получатель).
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a19ba934-8512-11ec-8ced-005056b2dbe1
+     *
+     * @return false
+     */
     public function update()
     {
         $this->calledMethod = 'update';
@@ -207,6 +238,13 @@ class Address extends NovaPoshta
         return false;
     }
 
+    /**
+     * TODO Не сделано
+     * Удалить адрес контрагента (отправитель / получатель).
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a177069a-8512-11ec-8ced-005056b2dbe1
+     *
+     * @return false
+     */
     public function delete()
     {
         $this->calledMethod = 'delete';

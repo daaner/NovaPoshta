@@ -17,7 +17,8 @@ use Daaner\NovaPoshta\Models\CommonGeneral;
 ---
 
 ### `getMessageCodeText()`
-[Получение](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/58f0730deea270153c8be3cd) справочника перечня ошибок
+[Получение](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6bce5a1-8512-11ec-8ced-005056b2dbe1) справочника перечня ошибок
+
 ```php
 $cg = new CommonGeneral;
 $lg = $cg->getMessageCodeText();
@@ -29,8 +30,6 @@ dd($lg);
 
 
 ### `prolongateKey()`
-__НЕ ДОКУМЕНТИРОВАНО В ОФИЦИАЛЬНОЙ ДОКУМЕНТАЦИИ__
-
 Данная ф-ция НЕ РАБОТАЕТ, потому как требует авторизацию JWT.
 Возможно в будущем она будет доступна и через API
 

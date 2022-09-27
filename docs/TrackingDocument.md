@@ -4,6 +4,9 @@
 use Daaner\NovaPoshta\Models\TrackingDocument;
 ```
 
+Номера ТТН уже можно передавать и с пробелами. При запросе каждая ТТН очищается от всех символов кроме цифр.
+Если НП введут буквы - нужно будет поправить.
+
 ## Содержание
 - [x] [Получение полной инфо об ЭН](TrackingDocument.md#getStatusDocuments)
 - [x] [Проверка одной/массива ЭН](TrackingDocument.md#checkTTN)
@@ -17,7 +20,8 @@ use Daaner\NovaPoshta\Models\TrackingDocument;
 ---
 
 ### `getStatusDocuments()`
-[Получение](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55702cbba0fe4f0cf4fc53ee) полной информации по ТТН
+[Получение](https://developers.novaposhta.ua/view/model/a99d2f28-8512-11ec-8ced-005056b2dbe1/method/a9ae7bc9-8512-11ec-8ced-005056b2dbe1) полной информации по ТТН
+
 ```php
 
 $doc = '20450296339688';
@@ -39,6 +43,7 @@ dd($getStatusDocuments);
 
 ### `checkTTN()`
 Проверка одной/массива накладных с необязательным указанием общего телефона
+
 ```php
 // Берутся только значения массива как ЭН
 $data = ['20450xxxx701xx', '20450xxxx227xx', '20450xxxx886xx'];
@@ -53,6 +58,8 @@ $np = new TrackingDocument;
 $info = $np->checkTTN($data);
 //или
 $info = $np->checkTTN($data, '380671234567');
+
+dd($info);
 ```
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)
 ***
@@ -60,6 +67,7 @@ $info = $np->checkTTN($data, '380671234567');
 
 ### `getStatusTTN()`
 Быстрая проверка одной/массива накладных с получением статуса и возвратной накладной `NewTTN` (при возврате)
+
 ```php
 $data = ['20450xxxx701xx', '20450xxxx227xx', '20450xxxx886xx'];
 $np = new TrackingDocument;

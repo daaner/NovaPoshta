@@ -31,7 +31,7 @@ use Daaner\NovaPoshta\Models\Address;
 ---
 
 ### `getAreas()`
-[Получение](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d9130a0fe4f08e8f7ce48) списка областей
+[Получение](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a20ee6e4-8512-11ec-8ced-005056b2dbe1) списка областей
 ```php
 $adr = new Address;
 $area = $adr->getAreas();
@@ -43,7 +43,7 @@ dd($area);
 
 
 ### `getCities()`
-[Получение](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d885da0fe4f08e8f7ce46) списка городов
+[Получение](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1e6f0a7-8512-11ec-8ced-005056b2dbe1) списка городов
 ```php
 //получить все города используя пагинацию
 $adr = new Address;
@@ -70,7 +70,7 @@ dd($city);
 
 
 ### `getWarehouses()`
-[Получение](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d8211a0fe4f08e8f7ce45) списка отделений в городах
+[Получение](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2322f38-8512-11ec-8ced-005056b2dbe1) списка отделений и почтоматов в городах
 ```php
 $adr = new Address;
 //получить все (используйте лимит и пагинацию, данных много)
@@ -92,7 +92,7 @@ dd($warehouses);
 
 
 ### `getWarehouseTypes()`
-[Получение](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d8211a0fe4f08e8f7ce45) типов отделений в населенном пункте
+[Получение](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2587b53-8512-11ec-8ced-005056b2dbe1) типов отделений в населенном пункте
 ```php
 $adr = new Address;
 $warehouseTypes = $adr->getWarehouseTypes('Киев');
@@ -106,7 +106,8 @@ dd($warehouseTypes);
 
 
 ### `getWarehouseSettlements()`
-[Получение](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d8211a0fe4f08e8f7ce45) списка отделений в населенном пункте
+Получение списка отделений в населенном пункте
+
 ```php
 $adr = new Address;
 $warehouses = $adr->getWarehouseSettlements('e71405ee-4b33-11e4-ab6d-005056801329');
@@ -124,7 +125,8 @@ dd($warehouses);
 
 
 ### `searchSettlements()`
-[Поиск](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/58e5ebeceea27017bc851d67) населенных пунктов из справочника Settlements
+[Поиск](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a0eb83ab-8512-11ec-8ced-005056b2dbe1) населенных пунктов из справочника Settlements
+
 ```php
 $adr = new Address;
 //работает ф-ция лимита, но можно и без нее, setPage - НЕ применяется
@@ -138,7 +140,8 @@ dd($settlements);
 
 
 ### `searchSettlementStreets()`
-[Поиск](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/58e5f369eea27017540b58ac) улиц в населенных пунктах
+[Поиск](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1329635-8512-11ec-8ced-005056b2dbe1) улиц в населенных пунктах
+
 ```php
 $adr = new Address;
 //работает ф-ция лимита, но можно и без нее, setPage - НЕ применяется
@@ -152,7 +155,8 @@ dd($streets);
 
 
 ### `getStreet()`
-[Получение](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d8db0a0fe4f08e8f7ce47) улиц в городе по CityRef
+[Получение](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a27c20d7-8512-11ec-8ced-005056b2dbe1) улиц в городе по CityRef
+
 ```php
 $adr = new Address;
 //работает ф-ция лимита и страниц, но можно и без них
@@ -170,7 +174,8 @@ dd($streets);
 
 
 ### `getSettlements()`
-[Справочник](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/56248fffa0fe4f0da0550ea8) населенных пунктов Украины
+[Справочник](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1c42723-8512-11ec-8ced-005056b2dbe1) населенных пунктов Украины
+
 ```php
 $adr = new Address;
 //работает ф-ция лимита и страниц, но можно и без них
