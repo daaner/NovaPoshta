@@ -13,23 +13,21 @@ use Daaner\NovaPoshta\Traits\SenderProperty;
 
 class InternetDocument extends NovaPoshta
 {
-
     /**
      * getDocumentList
-     * getMoneyTransferDocuments
+     * getMoneyTransferDocuments.
      */
     use Limit, DateTimes;
 
     /**
-     * getDocumentList
+     * getDocumentList.
      */
     use DocumentList;
 
     /**
-     * save
+     * save.
      */
     use InternetDocumentProperty, SenderProperty, OptionsSeatProperty, RecipientProperty;
-
 
     protected $model = 'InternetDocument';
     protected $calledMethod;
@@ -37,6 +35,7 @@ class InternetDocument extends NovaPoshta
 
     /**
      * Получить список ЭН.
+     *
      * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9d22b34-8512-11ec-8ced-005056b2dbe1
      *
      * @return array
@@ -55,12 +54,12 @@ class InternetDocument extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-
     /**
      * Создать экспресс-накладную.
+     *
      * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a965630e-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string|null $description
+     * @param  string|null  $description
      * @return array
      */
     public function save(string $description = null): array
@@ -89,10 +88,11 @@ class InternetDocument extends NovaPoshta
     }
 
     /**
-     * Удаление экспресс-накладной
+     * Удаление экспресс-накладной.
+     *
      * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9f43ff1-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string|array $DocumentRefs
+     * @param  string|array  $DocumentRefs
      * @return array
      */
     public function delete($DocumentRefs): array
@@ -109,10 +109,10 @@ class InternetDocument extends NovaPoshta
     }
 
     /**
-     * Получить данные о платежах за определенный период
+     * Получить данные о платежах за определенный период.
      *
-     * @param null $dateFrom
-     * @param null $dateTo
+     * @param  null  $dateFrom
+     * @param  null  $dateTo
      * @return array
      */
     public function getMoneyTransferDocuments($dateFrom = null, $dateTo = null)

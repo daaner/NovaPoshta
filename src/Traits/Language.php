@@ -6,7 +6,6 @@ trait Language
 {
     protected $language;
 
-
     /**
      * @param  string  $lang
      * @return $this

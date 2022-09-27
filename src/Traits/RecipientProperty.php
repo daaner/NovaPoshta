@@ -9,7 +9,7 @@ trait RecipientProperty
     /**
      * Устанавливаем значение получателя.
      *
-     * @param array $Recipient
+     * @param  array  $Recipient
      * @return $this
      */
     public function setRecipient(array $Recipient)
@@ -56,7 +56,7 @@ trait RecipientProperty
     /**
      * Устанавливаем тип груза.
      *
-     * @param string $RecipientType
+     * @param  string  $RecipientType
      * @return $this
      */
     public function setRecipientType(string $RecipientType)

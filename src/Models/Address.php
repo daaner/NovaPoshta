@@ -17,6 +17,7 @@ class Address extends NovaPoshta
 
     /**
      * Получение списка областей.
+     *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a20ee6e4-8512-11ec-8ced-005056b2dbe1
      *
      * @return array
@@ -31,10 +32,11 @@ class Address extends NovaPoshta
 
     /**
      * Получение списка городов.
+     *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1e6f0a7-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string|null $find
-     * @param bool|null $string
+     * @param  string|null  $find
+     * @param  bool|null  $string
      * @return array
      */
     public function getCities(?string $find = null, ?bool $string = true): array
@@ -56,10 +58,11 @@ class Address extends NovaPoshta
 
     /**
      * Получение списка отделений и почтоматов в городах.
+     *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2322f38-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string|null $cityRef
-     * @param bool|null $string
+     * @param  string|null  $cityRef
+     * @param  bool|null  $string
      * @return array
      */
     public function getWarehouses(?string $cityRef = null, ?bool $string = true): array
@@ -82,10 +85,11 @@ class Address extends NovaPoshta
 
     /**
      * Получение типов отделений в населенном пункте.
+     *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2587b53-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string $cityRef
-     * @param bool|null $string
+     * @param  string  $cityRef
+     * @param  bool|null  $string
      * @return array
      */
     public function getWarehouseTypes(string $cityRef, ?bool $string = true): array
@@ -104,7 +108,7 @@ class Address extends NovaPoshta
     /**
      * Получение списка отделений в населенном пункте.
      *
-     * @param string $settlementRef
+     * @param  string  $settlementRef
      * @return array
      */
     public function getWarehouseSettlements(string $settlementRef): array
@@ -119,9 +123,10 @@ class Address extends NovaPoshta
 
     /**
      * Поиск населенных пунктов из справочника Settlements.
+     *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a0eb83ab-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string $search
+     * @param  string  $search
      * @return array
      */
     public function searchSettlements(string $search): array
@@ -136,9 +141,11 @@ class Address extends NovaPoshta
 
     /**
      * Поиск улиц в населенных пунктах.
+     *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1329635-8512-11ec-8ced-005056b2dbe1
-     * @param string $ref
-     * @param string $street
+     *
+     * @param  string  $ref
+     * @param  string  $street
      * @return array
      */
     public function searchSettlementStreets(string $ref, string $street): array
@@ -154,9 +161,10 @@ class Address extends NovaPoshta
 
     /**
      * Справочник населенных пунктов Украины.
+     *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1c42723-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string|null $find
+     * @param  string|null  $find
      * @return array
      */
     public function getSettlements(?string $find = null): array
@@ -190,10 +198,11 @@ class Address extends NovaPoshta
 
     /**
      * Получение улиц в городе по CityRef.
+     *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a27c20d7-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string $city
-     * @param string|null $find
+     * @param  string  $city
+     * @param  string|null  $find
      * @return array
      */
     public function getStreet(string $city, ?string $find = null): array
@@ -213,6 +222,7 @@ class Address extends NovaPoshta
     /**
      * TODO Не сделано
      * Создать адрес контрагента (отправитель / получатель).
+     *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a155d0d9-8512-11ec-8ced-005056b2dbe1
      *
      * @return false
@@ -227,6 +237,7 @@ class Address extends NovaPoshta
     /**
      * TODO Не сделано
      * Редактировать адрес контрагента (отправитель / получатель).
+     *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a19ba934-8512-11ec-8ced-005056b2dbe1
      *
      * @return false
@@ -241,6 +252,7 @@ class Address extends NovaPoshta
     /**
      * TODO Не сделано
      * Удалить адрес контрагента (отправитель / получатель).
+     *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a177069a-8512-11ec-8ced-005056b2dbe1
      *
      * @return false
