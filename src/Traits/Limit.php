@@ -8,7 +8,7 @@ trait Limit
     protected $page;
 
     /**
-     * @param int $limit
+     * @param  int  $limit
      * @return $this
      */
     public function setLimit(int $limit)
@@ -19,7 +19,7 @@ trait Limit
     }
 
     /**
-     * @param int $page
+     * @param  int  $page
      * @return $this
      */
     public function setPage(int $page)

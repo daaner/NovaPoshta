@@ -10,7 +10,7 @@ trait CounterpartyProperty
     protected $EDRPOU;
 
     /**
-     * @param string $counterpartyType
+     * @param  string  $counterpartyType
      * @return $this
      */
     public function setCounterpartyType(string $counterpartyType)
@@ -21,7 +21,7 @@ trait CounterpartyProperty
     }
 
     /**
-     * @param string $counterpartyProperty
+     * @param  string  $counterpartyProperty
      * @return $this
      */
     public function setCounterpartyProperty(string $counterpartyProperty)
@@ -32,7 +32,7 @@ trait CounterpartyProperty
     }
 
     /**
-     * @param string $ownershipForm
+     * @param  string  $ownershipForm
      * @return $this
      */
     public function setOwnershipForm(string $ownershipForm)
@@ -43,7 +43,7 @@ trait CounterpartyProperty
     }
 
     /**
-     * @param string $EDRPOU
+     * @param  string  $EDRPOU
      * @return $this
      */
     public function setEDRPOU(string $EDRPOU)
@@ -125,7 +125,7 @@ trait CounterpartyProperty
     public function makeOrganization()
     {
         //need clear data
-         $lastName = '';
+        $lastName = '';
         // $middleName = '';
         // $phone = '';
         // $email = '';

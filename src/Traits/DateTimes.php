@@ -15,7 +15,7 @@ trait DateTimes
     protected $formatTime = 'd.m.Y H:i:s';
 
     /**
-     * @param string|Carbon|date $dateTime
+     * @param  string|Carbon|date  $dateTime
      * @return void
      */
     public function setDateTime($dateTime): void
@@ -24,7 +24,7 @@ trait DateTimes
     }
 
     /**
-     * @param string|Carbon|date $dateTimeFrom
+     * @param  string|Carbon|date  $dateTimeFrom
      * @return $this
      */
     public function setDateTimeFrom($dateTimeFrom)
@@ -35,7 +35,7 @@ trait DateTimes
     }
 
     /**
-     * @param string|Carbon|date $dateTimeTo
+     * @param  string|Carbon|date  $dateTimeTo
      * @return $this
      */
     public function setDateTimeTo($dateTimeTo)
@@ -84,8 +84,9 @@ trait DateTimes
 
     /**
      * Странно, но тут с минутами и секундами.
-     * @param string|Carbon|date|null $from
-     * @param string|Carbon|date|null $to
+     *
+     * @param  string|Carbon|date|null  $from
+     * @param  string|Carbon|date|null  $to
      * @return void
      */
     public function getDateFromTo($from = null, $to = null): void
@@ -128,7 +129,7 @@ trait DateTimes
     }
 
     /**
-     * @param string|Carbon $date
+     * @param  string|Carbon  $date
      * @return string $date
      */
     public function checkDate($date): string

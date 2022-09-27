@@ -8,7 +8,7 @@ trait Language
 
 
     /**
-     * @param string $lang
+     * @param  string  $lang
      * @return $this
      */
     public function setLanguage(string $lang)

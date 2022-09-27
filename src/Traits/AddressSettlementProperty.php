@@ -10,7 +10,7 @@ trait AddressSettlementProperty
     protected $Warehouse = false;
 
     /**
-     * @param string $AreaRef
+     * @param  string  $AreaRef
      * @return $this
      */
     public function filterAreaRef(string $AreaRef)
@@ -33,7 +33,7 @@ trait AddressSettlementProperty
     }
 
     /**
-     * @param string $RegionRef
+     * @param  string  $RegionRef
      * @return $this
      */
     public function filterRegionRef(string $RegionRef)
@@ -78,7 +78,7 @@ trait AddressSettlementProperty
     }
 
     /**
-     * @param string $ref
+     * @param  string  $ref
      * @return $this
      */
     public function filterRef(string $ref)
