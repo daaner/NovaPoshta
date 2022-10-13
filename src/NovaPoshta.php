@@ -114,14 +114,14 @@ class NovaPoshta implements NovaPoshtaInterface
         $info = [];
         if (isset($answer['warnings']) && $answer['warnings']) {
             $info['warnings'] = $answer['warnings'];
+        }
 
-            if ($answer['errors']) {
-                $info['errors'] = $answer['errors'];
-                if ($answer['errorCodes']) {
-                    foreach ($answer['errorCodes'] as $err) {
-                        $info['StatusCode'] = $err;
-                        $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.'.$err);
-                    }
+        if (isset($answer['errors']) && $answer['errors']) {
+            $info['errors'] = $answer['errors'];
+            if ($answer['errorCodes']) {
+                foreach ($answer['errorCodes'] as $err) {
+                    $info['StatusCode'] = $err;
+                    $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.'.$err);
                 }
             }
         }

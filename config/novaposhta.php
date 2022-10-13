@@ -213,4 +213,12 @@ return [
     'http_retry_max_time' => 2,
     'http_retry_delay' => 200,
 
+    /*
+    | Идентификатор возврата по умолчанию.
+    | ref_return_reasons - "Відмова від доставки"
+    | ref_return_reasons_sub - "Відправлення не відповідає замовленню, не підійшло"
+    */
+    'ref_return_reasons' => '49754eb2-a9e1-11e3-9fa0-0050568002cf',
+    'ref_return_reasons_sub' => '49754ec8-a9e1-11e3-9fa0-0050568002cf',
+
 ];

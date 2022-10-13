@@ -2,6 +2,12 @@
 
 All notable changes to `NovaPoshta` will be documented in this file
 
+### 2022-10-13
+- [Fix] Изменение возвращения ошибок при запросах
+- [Add] Добавление модели `AdditionalService` и метода `CheckPossibilityCreateReturn`
+- [Add] Добавление метода `getReturnReasonsSubtypes` в `AdditionalService`
+- [Add] Добавление метода `getReturnOrdersList` в `AdditionalService`
+
 ### 2022-09-27
 - [Fix] Изменение ссылок в документацию офф сайта в коде и в документации в пакете
 - [Add] Добавление в `getStatusTTN` значения `NewMoneyTTN` - номер накладной возврата денег
