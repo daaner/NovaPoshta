@@ -92,11 +92,11 @@ class AdditionalService extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-
     /**
      * Создание заявки на возврат.
      *
      * Возврат на адрес отправителя.
+     *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7fb4a3a-8512-11ec-8ced-005056b2dbe1
      *
      * Возврат на новый адрес отделения.
@@ -105,8 +105,8 @@ class AdditionalService extends NovaPoshta
      * Возврат на новый адрес по адресной доставке.
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/175baec3-8f0d-11ec-8ced-005056b2dbe1
      *
-     * @param string $ttn
-     * @param string|null $type
+     * @param  string  $ttn
+     * @param  string|null  $type
      * @return array
      */
     public function save(string $ttn, ?string $type = null): array
@@ -125,17 +125,17 @@ class AdditionalService extends NovaPoshta
         }
 
         /**
-         * Возврат на адрес отправления
+         * Возврат на адрес отправления.
          */
         $this->getReturnAddressRef();
 
         /**
-         * Возврат на новый адрес отделения
+         * Возврат на новый адрес отделения.
          */
         $this->getRecipientWarehouse();
 
         /**
-         * Возврат на новый адрес по адресной доставке
+         * Возврат на новый адрес по адресной доставке.
          */
         $this->getRecipientSettlement();
 
