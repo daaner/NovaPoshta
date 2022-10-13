@@ -131,12 +131,14 @@ class InternetDocument extends NovaPoshta
      * Редактирование экспресс-накладной.
      *
      * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a98a4354-8512-11ec-8ced-005056b2dbe1
+     *
      * @author https://github.com/seriklav/NovaPoshta
      *
      * TODO need tested
+     *
      * @deprecated NOT FULLY TESTED
      *
-     * @param null $description
+     * @param  null  $description
      * @return array
      */
     public function edit($description = null): array
@@ -167,18 +169,17 @@ class InternetDocument extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-
     /**
-     * Прогноз даты доставки груза
+     * Прогноз даты доставки груза.
      *
      * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a941c714-8512-11ec-8ced-005056b2dbe1
+     *
      * @author https://github.com/seriklav/NovaPoshta
      *
-     * @param string $CitySender
-     * @param string $CityRecipient
-     * @param string|null $DateTime
-     * @param string|null $ServiceType
-     *
+     * @param  string  $CitySender
+     * @param  string  $CityRecipient
+     * @param  string|null  $DateTime
+     * @param  string|null  $ServiceType
      * @return array
      */
     public function getDocumentDeliveryDate(
@@ -186,9 +187,7 @@ class InternetDocument extends NovaPoshta
         string $CityRecipient,
         ?string $DateTime = null,
         ?string $ServiceType = null
-    ): array
-    {
-
+    ): array {
         $this->calledMethod = 'getDocumentDeliveryDate';
 
         $methodProperties['ServiceType'] = $ServiceType ?? config('novaposhta.service_type');
@@ -201,5 +200,4 @@ class InternetDocument extends NovaPoshta
 
         return $this->getResponse($this->model, $this->calledMethod, $methodProperties, false);
     }
-
 }
