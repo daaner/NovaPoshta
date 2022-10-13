@@ -3,6 +3,7 @@
 
 - Поддерживаемые модели
   - [Address](Address.md)
+  - [AdditionalService](AdditionalService.md)
   - [Common](Common.md)
   - [CommonGeneral](CommonGeneral.md)
   - [Counterparty](Counterparty.md)
@@ -10,7 +11,7 @@
   - [LoyaltyUser](LoyaltyUser.md)
   - [ScanSheet](ScanSheet.md)
   - [TrackingDocument](TrackingDocument.md)
-  - [AdditionalService](AdditionalService.md)
+
 
 
 - Официально не документировано

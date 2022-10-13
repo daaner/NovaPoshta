@@ -41,9 +41,11 @@ php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvid
 ## Поддерживаемые модели
 
 * [Модель Address](Address.md)
+* [AdditionalService](AdditionalService.md)
 * [Модель Common](Common.md)
 * [Модель CommonGeneral](CommonGeneral.md)
 * [Модель Counterparty](Counterparty.md)
 * [Модель LoyaltyUser](LoyaltyUser.md)
 * [Модель ScanSheet](ScanSheet.md)
 * [Модель TrackingDocument](TrackingDocument.md)
+

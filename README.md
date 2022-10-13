@@ -65,16 +65,19 @@ php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvid
 - Создайте аккаунт на сайте [novaposhta.ua](https://novaposhta.ua)
 - Скопируйте `Ключ API` в настройках безопасности в разделе `Мои ключи API` и добавьте в соответствующий параметр в `config/novaposhta.php` либо в .env файл
 - `point` поддерживается только `json` (вряд ли добавится `xml`)
-- `dev` режим отладки запросов. Включает в лог каждый запрос на API Новой Почты (не оставляйте на продакшене)
+- `dev` режим отладки запросов. Включает в лог каждый запрос на API Новой Почты (не оставляйте на продакшене) и в массиве ответа данные с ключем `dev` без преобразования, а та как возвращает Новая Почта
 
 
 ## Использование и API
 - `setAPI($apiKey)` - установка API ключа, отличного от значения по умолчанию
+
 ```php
 $cp = new Counterparty;
 $cp->setAPI('391e241b2c********************e7');
 ```
+
 - `getResponse($model, $calledMethod, $methodProperties, $auth = true)` - кастомная отправка данных, если добавятся новые методы
+
 ```php
 use NovaPoshta;
 $model = 'TrackingDocument'; //нужная модель
@@ -84,12 +87,15 @@ $methodProperties = [
 ];
 $np = new NovaPoshta;
 $data = $np->getResponse($model, $calledMethod, $methodProperties, $auth = true);
+
+dd($data);
 ```
 
 
 ## Поддержка моделей / методов
 #### Хелперы (более детальные хелперы можно увидеть в документации к модели)
 Хелперы вызываются до главного метода обращения:
+
 ```php
 $foo = new Common;
 $list = $foo->getPaymentForms();
@@ -97,6 +103,8 @@ $list = $foo->getPaymentForms();
 $bar = new Address;
 $bar->setLimit(5)->setPage(2);
 $cities = $bar->getCities();
+
+dd($cities);
 ```
 
 Очень много моделей имеют в ответе дубляж на русском. В некоторых справочниках нет русской локализации.
@@ -115,6 +123,7 @@ $cities = $bar->getCities();
 
 ## Статус обертки над API новой почты
 [Официальная документация API Новой почты](https://developers.novaposhta.ua/)
+[Документация по пакету](https://daaner.github.io/NovaPoshta/#/)
 
 
 ### [API Адреса](https://daaner.github.io/NovaPoshta/#/Address)
@@ -232,7 +241,7 @@ $cities = $bar->getCities();
 
 ***
 
-### [Пропущенный функционал (не вижу потребности или не могу проверить)](https://daaner.github.io/NovaPoshta/#/)
+### Пропущенный функционал (не вижу потребности или не могу проверить)
 - Создание Контрагента с типом юрлицо или третье лицо
   - не добавлена возможность указывать `CityRef`
 
@@ -244,11 +253,17 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 
 ## Contributing
+
+Всегда рад поддержке, указаниям на ошибки и ПР!
+
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 
+
 ## Credits
+
 - [Daan](https://github.com/daaner)
+- [Telegram](https://t.me/neodaan)
 
 ## License
 
