@@ -10,6 +10,7 @@
   - [LoyaltyUser](LoyaltyUser.md)
   - [ScanSheet](ScanSheet.md)
   - [TrackingDocument](TrackingDocument.md)
+  - [AdditionalService](AdditionalService.md)
 
 
 - Официально не документировано
