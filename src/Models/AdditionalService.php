@@ -4,10 +4,8 @@ namespace Daaner\NovaPoshta\Models;
 
 use Daaner\NovaPoshta\NovaPoshta;
 
-
 class AdditionalService extends NovaPoshta
 {
-
     protected $model = 'AdditionalService';
     protected $calledMethod;
     protected $methodProperties = [];
@@ -17,7 +15,7 @@ class AdditionalService extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a778f519-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string $ttn
+     * @param  string  $ttn
      * @return array
      */
     public function CheckPossibilityCreateReturn(string $ttn): array
@@ -30,6 +28,7 @@ class AdditionalService extends NovaPoshta
 
     /**
      * Получение списка причин возврата.
+     *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7a6bacb-8512-11ec-8ced-005056b2dbe1
      *
      * @return array
@@ -44,9 +43,10 @@ class AdditionalService extends NovaPoshta
 
     /**
      * Получение списка подтипов причины возврата.
+     *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7cb69ee-8512-11ec-8ced-005056b2dbe1
      *
-     * @param string|null $ref
+     * @param  string|null  $ref
      * @return array
      */
     public function getReturnReasonsSubtypes(?string $ref = null): array
@@ -59,6 +59,7 @@ class AdditionalService extends NovaPoshta
 
     /**
      * Получение списка заявок на возврат.
+     *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7cb69ee-8512-11ec-8ced-005056b2dbe1
      *
      * @return array
@@ -70,6 +71,4 @@ class AdditionalService extends NovaPoshta
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
-
-
 }
