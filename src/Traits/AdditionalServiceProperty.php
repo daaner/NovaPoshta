@@ -10,7 +10,6 @@ trait AdditionalServiceProperty
     protected $RecipientWarehouse;
     protected $RecipientSettlement;
 
-
     /**
      * @return void
      */
@@ -121,7 +120,7 @@ trait AdditionalServiceProperty
     /**
      * Устанавливаем идентификатор возврата на новое отделение.
      *
-     * @param array $RecipientSettlement
+     * @param  array  $RecipientSettlement
      * @return void
      */
     public function setRecipientSettlement(array $RecipientSettlement): void
@@ -132,5 +131,4 @@ trait AdditionalServiceProperty
         $this->ReturnAddressRef = null;
         $this->RecipientWarehouse = null;
     }
-
 }
