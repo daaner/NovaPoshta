@@ -169,7 +169,7 @@ dd($transfer);
 ***
 
 
-### `getDocumentDeliveryDate($CitySender, $CityRecipient, $DateTime = null, $ServiceType = null)`
+### `getDocumentDeliveryDate()`
 [Прогноз](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a941c714-8512-11ec-8ced-005056b2dbe1) даты доставки груза
 
 ```php
@@ -190,7 +190,7 @@ dd($forecast);
 ***
 
 
-### `edit($description = null)`
+### `edit()`
 [Редактирование](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a98a4354-8512-11ec-8ced-005056b2dbe1) экспресс-накладной
 
 __НЕ ПРОВЕРЕНО__

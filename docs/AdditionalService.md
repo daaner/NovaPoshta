@@ -22,7 +22,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 ---
 
 
-### `CheckPossibilityCreateReturn($ttn)`
+### `CheckPossibilityCreateReturn()`
 [Проверка](https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a778f519-8512-11ec-8ced-005056b2dbe1) возможности создания заявки на возврат
 
 
@@ -87,7 +87,7 @@ dd($addition);
 ***
 
 
-### `checkPossibilityForRedirecting($ttn)`
+### `checkPossibilityForRedirecting()`
 [Проверка](https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a8d29fc2-8512-11ec-8ced-005056b2dbe1) возможности создания заявки на переадресацию отправки
 
 ```php
