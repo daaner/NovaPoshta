@@ -17,9 +17,9 @@ trait InternetDocumentProperty
     protected $AdditionalInformation;
 
     /**
-     * Устанавливаем значение Ref
+     * Устанавливаем значение Ref.
      *
-     * @param string $Ref
+     * @param  string  $Ref
      */
     public function setRef(string $Ref): void
     {
