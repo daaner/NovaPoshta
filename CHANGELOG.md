@@ -7,6 +7,9 @@ All notable changes to `NovaPoshta` will be documented in this file
 - [Add] Добавление модели `AdditionalService` и метода `CheckPossibilityCreateReturn`
 - [Add] Добавление метода `getReturnReasonsSubtypes` в `AdditionalService`
 - [Add] Добавление метода `getReturnOrdersList` в `AdditionalService`
+- [Add] Добавление метода `checkPossibilityForRedirecting` в `AdditionalService`
+- [Add] Добавление метода `getDocumentDeliveryDate` в `InternetDocument` (спасибо https://github.com/seriklav)
+- [Add] Добавление метода `edit` в `InternetDocument` (спасибо https://github.com/seriklav) НЕ ТЕСТИРОВАЛ
 
 ### 2022-09-27
 - [Fix] Изменение ссылок в документацию офф сайта в коде и в документации в пакете

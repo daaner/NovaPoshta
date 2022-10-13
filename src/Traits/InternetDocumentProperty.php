@@ -4,6 +4,7 @@ namespace Daaner\NovaPoshta\Traits;
 
 trait InternetDocumentProperty
 {
+    protected $Ref;
     protected $PayerType;
     protected $ServiceType;
     protected $PaymentMethod;
@@ -14,6 +15,21 @@ trait InternetDocumentProperty
     protected $BackwardDeliveryData;
     protected $Note;
     protected $AdditionalInformation;
+
+    /**
+     * Устанавливаем значение Ref
+     *
+     * @param string $Ref
+     */
+    public function setRef(string $Ref): void
+    {
+        $this->Ref = $Ref;
+    }
+
+    public function getRef(): void
+    {
+        $this->methodProperties['Ref'] = $this->Ref;
+    }
 
     /**
      * Устанавливаем значение плательщика. По умолчанию значение конфига.

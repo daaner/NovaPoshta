@@ -27,6 +27,22 @@ class AdditionalService extends NovaPoshta
     }
 
     /**
+     * Проверка возможности создания заявки на переадресацию отправки.
+     *
+     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a8d29fc2-8512-11ec-8ced-005056b2dbe1
+     *
+     * @param  string  $ttn
+     * @return array
+     */
+    public function checkPossibilityForRedirecting(string $ttn): array
+    {
+        $this->calledMethod = 'checkPossibilityForRedirecting';
+        $this->methodProperties['Number'] = $ttn;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
+    /**
      * Получение списка причин возврата.
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7a6bacb-8512-11ec-8ced-005056b2dbe1

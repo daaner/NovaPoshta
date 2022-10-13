@@ -126,4 +126,80 @@ class InternetDocument extends NovaPoshta
         // dd($this->methodProperties);
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
+
+    /**
+     * Редактирование экспресс-накладной.
+     *
+     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a98a4354-8512-11ec-8ced-005056b2dbe1
+     * @author https://github.com/seriklav/NovaPoshta
+     *
+     * TODO need tested
+     * @deprecated NOT FULLY TESTED
+     *
+     * @param null $description
+     * @return array
+     */
+    public function edit($description = null): array
+    {
+        $this->calledMethod = 'update';
+
+        $this->getRef();
+
+        $this->getPayerType();
+        $this->getServiceType();
+        $this->getPaymentMethod();
+        $this->getCargoType();
+
+        $this->getDateTime();
+        $this->setDescription($description);
+        $this->getSeatsAmount();
+        $this->getCost();
+        $this->getWeight();
+//        $this->getOptionsSeat();
+
+        //Отправитель и другое
+        $this->getSender();
+        $this->getRecipientType();
+        $this->getBackwardDeliveryData();
+        $this->getNote();
+        $this->getAdditionalInformation();
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
+
+    /**
+     * Прогноз даты доставки груза
+     *
+     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a941c714-8512-11ec-8ced-005056b2dbe1
+     * @author https://github.com/seriklav/NovaPoshta
+     *
+     * @param string $CitySender
+     * @param string $CityRecipient
+     * @param string|null $DateTime
+     * @param string|null $ServiceType
+     *
+     * @return array
+     */
+    public function getDocumentDeliveryDate(
+        string $CitySender,
+        string $CityRecipient,
+        ?string $DateTime = null,
+        ?string $ServiceType = null
+    ): array
+    {
+
+        $this->calledMethod = 'getDocumentDeliveryDate';
+
+        $methodProperties['ServiceType'] = $ServiceType ?? config('novaposhta.service_type');
+        $methodProperties['CitySender'] = $CitySender;
+        $methodProperties['CityRecipient'] = $CityRecipient;
+
+        if ($DateTime) {
+            $methodProperties['DateTime'] = $this->checkDate($DateTime, 'd.m.Y');
+        }
+
+        return $this->getResponse($this->model, $this->calledMethod, $methodProperties, false);
+    }
+
 }

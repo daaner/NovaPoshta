@@ -9,6 +9,8 @@ use Daaner\NovaPoshta\Models\InternetDocument;
 - [x] [Создать экспресс-накладную](InternetDocument.md#save)
 - [x] [Удалить экспресс-накладные](InternetDocument.md#delete)
 - [x] [Получить денежные переводы](InternetDocument.md#getMoneyTransferDocuments)
+- [x] [Прогноз даты доставки груза](InternetDocument.md#getDocumentDeliveryDate)
+- [x] [Редактирование экспресс-накладной](InternetDocument.md#edit) (НЕ ПРОВЕРЕНО)
 
 
 ## Все методы модели
@@ -16,6 +18,8 @@ use Daaner\NovaPoshta\Models\InternetDocument;
 - [save($description = null)](#save)
 - [delete($description = null)](#delete)
 - [getMoneyTransferDocuments($from = null, $to = null)](#getMoneyTransferDocuments)
+- [getDocumentDeliveryDate($CitySender, $CityRecipient, $DateTime = null, $ServiceType = null)](#getDocumentDeliveryDate)
+- [edit($description = null)](#edit)
 
 ---
 
@@ -160,6 +164,48 @@ $from = '2021-02-01 00:00:00'; //Carbon, string, date, null
 $transfer = $intDoc->getMoneyTransferDocuments($from, $to);
 
 dd($transfer);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `getDocumentDeliveryDate($CitySender, $CityRecipient, $DateTime = null, $ServiceType = null)`
+[Прогноз](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a941c714-8512-11ec-8ced-005056b2dbe1) даты доставки груза
+
+```php
+$intDoc = new InternetDocument;
+
+$CitySender = '8d5a980d-391c-11dd-90d9-001a92567626'; //город отправителя
+$CityRecipient = 'db5c88f5-391c-11dd-90d9-001a92567626'; //город получателя
+
+//НЕОБЯЗАТЕЛЬНЫЕ ПАРАМЕТРЫ
+$DateTime = '1/1/2028'; //Если не указать, посчитает с текущего дня и времени
+$ServiceType = 'WarehouseWarehouse'; // Тип отправки (отделение-отделение, отделение-адрес и пр.), по умолчанию в конфиге `service_type`
+
+$forecast = $intDoc->getDocumentDeliveryDate($CitySender, $CityRecipient, $DateTime, $ServiceType);
+
+dd($forecast);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `edit($description = null)`
+[Редактирование](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a98a4354-8512-11ec-8ced-005056b2dbe1) экспресс-накладной
+
+__НЕ ПРОВЕРЕНО__
+
+```php
+$intDoc = new InternetDocument;
+$description = 'Изменение';
+$np->setAPI('c9********fd');
+$intDoc->setRef('123');
+
+// остальные параметры, такие же как и при создании накладной
+
+$edited = $intDoc->edit($description);
+
+dd($edited);
 ```
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)
 ***
