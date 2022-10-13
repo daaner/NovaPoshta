@@ -8,6 +8,7 @@ All notable changes to `NovaPoshta` will be documented in this file
 - [Add] Добавление метода `getReturnReasonsSubtypes` в `AdditionalService`
 - [Add] Добавление метода `getReturnOrdersList` в `AdditionalService`
 - [Add] Добавление метода `checkPossibilityForRedirecting` в `AdditionalService`
+- [Add] Добавление метода `save` в `AdditionalService`
 - [Add] Добавление метода `getDocumentDeliveryDate` в `InternetDocument` (спасибо https://github.com/seriklav)
 - [Add] Добавление метода `edit` в `InternetDocument` (спасибо https://github.com/seriklav) НЕ ТЕСТИРОВАЛ
 

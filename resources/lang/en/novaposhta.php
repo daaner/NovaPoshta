@@ -43,6 +43,8 @@ return [
         '1005' => 'One or more lines of data are not synchronized',
 
         //3275 на 2020-11-09
+        '20002503517' => 'The document does not belong to this user',
+
         '20000100004' => 'User with email exists',
         '20000100002' => 'General error',
         '20000201162' => 'Warehouse place max allowed weight: 30',
@@ -2962,6 +2964,7 @@ return [
         '20002703090' => 'Afterpayment On Goods Cost is too long (maximum is 10 characters).; Afterpayment On Goods Cost must be a number.',
         '20000203091' => 'BackwardDelivery Cash2CardPayout_Id required for SecurePayment',
         '20000303092' => 'Cost is to high for chosen recipient warehouse for redirection. Cost must be less than UAH. Specify a different branch.',
+        '20000303747' => 'Please wait',
         '20000503093' => 'AllWarehouses must be integer',
         '20000403094' => 'Ref or Sign required',
         '20000403095' => 'User undefined',
