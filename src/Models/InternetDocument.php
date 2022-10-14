@@ -5,13 +5,13 @@ namespace Daaner\NovaPoshta\Models;
 use Carbon\Carbon;
 use Daaner\NovaPoshta\NovaPoshta;
 use Daaner\NovaPoshta\Traits\DateTimes;
-use Illuminate\Support\Facades\Date;
 use Daaner\NovaPoshta\Traits\DocumentList;
 use Daaner\NovaPoshta\Traits\InternetDocumentProperty;
 use Daaner\NovaPoshta\Traits\Limit;
 use Daaner\NovaPoshta\Traits\OptionsSeatProperty;
 use Daaner\NovaPoshta\Traits\RecipientProperty;
 use Daaner\NovaPoshta\Traits\SenderProperty;
+use Illuminate\Support\Facades\Date;
 
 class InternetDocument extends NovaPoshta
 {
@@ -141,7 +141,7 @@ class InternetDocument extends NovaPoshta
      *
      * @deprecated НЕ ПРОВЕРЕНО
      *
-     * @param string|null $description
+     * @param  string|null  $description
      * @return array
      */
     public function edit(?string $description = null): array
