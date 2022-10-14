@@ -10,7 +10,7 @@ trait CommonFilter
     protected $volumetricWeight;
 
     /**
-     * @param  int|string  $length Длина
+     * @param  int|string  $length  Длина
      * @return void
      */
     public function setLength($length): void
@@ -19,7 +19,7 @@ trait CommonFilter
     }
 
     /**
-     * @param  int|string  $width Ширина
+     * @param  int|string  $width  Ширина
      * @return void
      */
     public function setWidth($width): void
@@ -28,7 +28,7 @@ trait CommonFilter
     }
 
     /**
-     * @param  int|string  $height Высота
+     * @param  int|string  $height  Высота
      * @return void
      */
     public function setHeight($height): void
@@ -37,7 +37,7 @@ trait CommonFilter
     }
 
     /**
-     * @param  int|string  $volumetricWeight Объемный вес
+     * @param  int|string  $volumetricWeight  Объемный вес
      * @return void
      */
     public function setVolumetricWeight($volumetricWeight): void

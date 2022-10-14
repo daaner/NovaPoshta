@@ -12,7 +12,7 @@ trait AddressSettlementProperty
     /**
      * Фильтровать по области.
      *
-     * @param  string  $AreaRef Ref области
+     * @param  string  $AreaRef  Ref области
      * @return void
      */
     public function filterAreaRef(string $AreaRef): void
@@ -33,7 +33,7 @@ trait AddressSettlementProperty
     /**
      * Фильтровать по региону.
      *
-     * @param  string  $RegionRef Ref региона
+     * @param  string  $RegionRef  Ref региона
      * @return void
      */
     public function filterRegionRef(string $RegionRef): void
@@ -74,7 +74,7 @@ trait AddressSettlementProperty
     /**
      * Фильтровать по Ref.
      *
-     * @param  string  $ref Ref фильтра
+     * @param  string  $ref  Ref фильтра
      * @return void
      */
     public function filterRef(string $ref): void

@@ -136,6 +136,7 @@ class InternetDocument extends NovaPoshta
      * @author https://github.com/seriklav/NovaPoshta
      *
      * TODO need tested
+     *
      * @deprecated НЕ ПРОВЕРЕНО
      *
      * @param  null  $description

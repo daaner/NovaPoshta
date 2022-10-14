@@ -112,7 +112,6 @@ class AdditionalService extends NovaPoshta
         $this->getNumber();
         $this->getDateBeginEnd();
 
-
         if ($this->Ref) {
             $this->methodProperties['Ref'] = $this->Ref;
         }
@@ -124,9 +123,7 @@ class AdditionalService extends NovaPoshta
      * Создание заявки на возврат.
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7fb4a3a-8512-11ec-8ced-005056b2dbe1 Возврат на адрес отправителя
-     *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/5a64f960-e7fa-11ec-a60f-48df37b921db Возврат на новый адрес отделения
-     *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/175baec3-8f0d-11ec-8ced-005056b2dbe1 Возврат на новый адрес по адресной доставке
      *
      * @param  string  $ttn
@@ -170,7 +167,7 @@ class AdditionalService extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a85bb34b-8512-11ec-8ced-005056b2dbe1 Удаление заявки
      *
-     * @param string $Ref
+     * @param  string  $Ref
      * @return array
      */
     public function delete(string $Ref): array

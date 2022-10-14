@@ -10,7 +10,7 @@ trait CounterpartyProperty
     protected $EDRPOU;
 
     /**
-     * @param  string  $counterpartyType Тип контрагента (PrivatePerson)
+     * @param  string  $counterpartyType  Тип контрагента (PrivatePerson)
      * @return void
      */
     public function setCounterpartyType(string $counterpartyType): void
@@ -19,7 +19,7 @@ trait CounterpartyProperty
     }
 
     /**
-     * @param  string  $counterpartyProperty Свойства контрагента (Recipient / Sender)
+     * @param  string  $counterpartyProperty  Свойства контрагента (Recipient / Sender)
      * @return void
      */
     public function setCounterpartyProperty(string $counterpartyProperty): void
@@ -28,7 +28,7 @@ trait CounterpartyProperty
     }
 
     /**
-     * @param  string  $ownershipForm Ref формы собственности
+     * @param  string  $ownershipForm  Ref формы собственности
      * @return void
      */
     public function setOwnershipForm(string $ownershipForm): void
@@ -37,7 +37,7 @@ trait CounterpartyProperty
     }
 
     /**
-     * @param  string  $EDRPOU ЕРДПОУ
+     * @param  string  $EDRPOU  ЕРДПОУ
      * @return void
      */
     public function setEDRPOU(string $EDRPOU): void

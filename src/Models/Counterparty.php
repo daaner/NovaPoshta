@@ -60,9 +60,7 @@ class Counterparty extends NovaPoshta
      * Создать Контрагента.
      *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/0ae5dd75-8a5f-11ec-8ced-005056b2dbe1 Создать контрагента с типом Физ лицо
-     *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/bc3c44c7-8a8a-11ec-8ced-005056b2dbe1 Создать контрагента с типом Юр лицо
-     *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/b0fdf818-8a8e-11ec-8ced-005056b2dbe1 Создать контрагента с типом Третья особа
      *
      * @param  string  $firstName
