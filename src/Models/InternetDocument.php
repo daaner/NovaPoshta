@@ -2,8 +2,10 @@
 
 namespace Daaner\NovaPoshta\Models;
 
+use Carbon\Carbon;
 use Daaner\NovaPoshta\NovaPoshta;
 use Daaner\NovaPoshta\Traits\DateTimes;
+use Illuminate\Support\Facades\Date;
 use Daaner\NovaPoshta\Traits\DocumentList;
 use Daaner\NovaPoshta\Traits\InternetDocumentProperty;
 use Daaner\NovaPoshta\Traits\Limit;
@@ -113,8 +115,8 @@ class InternetDocument extends NovaPoshta
      *
      * @deprecated НЕ ДОКУМЕНТИРОВАНО
      *
-     * @param  null  $dateFrom
-     * @param  null  $dateTo
+     * @param  null|string|Carbon|date  $dateFrom
+     * @param  null|string|Carbon|date  $dateTo
      * @return array
      */
     public function getMoneyTransferDocuments($dateFrom = null, $dateTo = null): array
@@ -139,10 +141,10 @@ class InternetDocument extends NovaPoshta
      *
      * @deprecated НЕ ПРОВЕРЕНО
      *
-     * @param  null  $description
+     * @param string|null $description
      * @return array
      */
-    public function edit($description = null): array
+    public function edit(?string $description = null): array
     {
         $this->calledMethod = 'update';
 

@@ -100,7 +100,6 @@ class NovaPoshta implements NovaPoshtaInterface
             /**
              * Что-то не так в ответе.
              */
-            $info = trans('novaposhta::novaposhta.error_answer');
             $success = false;
             $result = null;
         } else {
@@ -144,7 +143,7 @@ class NovaPoshta implements NovaPoshtaInterface
             Log::debug($model.' / '.$calledMethod.' // apiKey: '.$auth);
             Log::debug('--------------------');
 
-            if ($methodProperties) {
+            if (! empty($methodProperties)) {
                 try {
                     Log::notice(json_encode($methodProperties));
                 } catch (Exception $e) {
