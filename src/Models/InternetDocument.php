@@ -193,14 +193,15 @@ class InternetDocument extends NovaPoshta
     ): array {
         $this->calledMethod = 'getDocumentDeliveryDate';
 
-        $methodProperties['ServiceType'] = $ServiceType ?? config('novaposhta.service_type');
-        $methodProperties['CitySender'] = $CitySender;
-        $methodProperties['CityRecipient'] = $CityRecipient;
+        $this->methodProperties['CitySender'] = $CitySender;
+        $this->methodProperties['CityRecipient'] = $CityRecipient;
 
         if ($DateTime) {
-            $methodProperties['DateTime'] = $this->checkDate($DateTime, 'd.m.Y');
+            $this->methodProperties['DateTime'] = $this->checkDate($DateTime, 'd.m.Y');
         }
 
-        return $this->getResponse($this->model, $this->calledMethod, $methodProperties, false);
+        $this->methodProperties['ServiceType'] = $ServiceType ?? config('novaposhta.service_type');
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
     }
 }

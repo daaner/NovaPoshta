@@ -89,7 +89,7 @@ trait DateTimes
         if ($from) {
             $from = $this->checkDate($from, $this->formatTime);
         } else {
-            $from = Carbon::now()->subMonth(3)->format($this->formatTime);
+            $from = Carbon::now()->/** @scrutinizer ignore-call */subMonth(3)->format($this->formatTime);
         }
 
         // DateTo

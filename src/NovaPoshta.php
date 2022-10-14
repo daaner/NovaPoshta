@@ -61,7 +61,6 @@ class NovaPoshta implements NovaPoshtaInterface
     {
         $url = $this->url.'/'.$model.'/'.$calledMethod;
         $body = [];
-        $info = '';
 
         $body['modelName'] = $model;
         $body['calledMethod'] = $calledMethod;
