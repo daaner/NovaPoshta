@@ -219,7 +219,6 @@ class Address extends NovaPoshta
      * Создать адрес контрагента (отправитель / получатель).
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a155d0d9-8512-11ec-8ced-005056b2dbe1 Создать адрес контрагента
-     *
      * @deprecated НЕ СДЕЛАНО
      *
      * @return false
@@ -236,7 +235,6 @@ class Address extends NovaPoshta
      * Редактировать адрес контрагента (отправитель / получатель).
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a19ba934-8512-11ec-8ced-005056b2dbe1 Редактировать адрес контрагента
-     *
      * @deprecated НЕ СДЕЛАНО
      *
      * @return false
@@ -253,7 +251,6 @@ class Address extends NovaPoshta
      * Удалить адрес контрагента (отправитель / получатель).
      *
      * @deprecated НЕ СДЕЛАНО
-     *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a177069a-8512-11ec-8ced-005056b2dbe1 Удалить адрес контрагента
      *
      * @return false
