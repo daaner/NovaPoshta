@@ -36,7 +36,7 @@ class InternetDocument extends NovaPoshta
     /**
      * Получить список ЭН.
      *
-     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9d22b34-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9d22b34-8512-11ec-8ced-005056b2dbe1 Получить список ЭН
      *
      * @return array
      */
@@ -57,7 +57,7 @@ class InternetDocument extends NovaPoshta
     /**
      * Создать экспресс-накладную.
      *
-     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a965630e-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a965630e-8512-11ec-8ced-005056b2dbe1 Создать экспресс-накладную
      *
      * @param  string|null  $description
      * @return array
@@ -90,7 +90,7 @@ class InternetDocument extends NovaPoshta
     /**
      * Удаление экспресс-накладной.
      *
-     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9f43ff1-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9f43ff1-8512-11ec-8ced-005056b2dbe1 Удаление экспресс-накладной
      *
      * @param  string|array  $DocumentRefs
      * @return array
@@ -111,11 +111,13 @@ class InternetDocument extends NovaPoshta
     /**
      * Получить данные о платежах за определенный период.
      *
+     * @deprecated НЕ ДОКУМЕНТИРОВАНО
+     *
      * @param  null  $dateFrom
      * @param  null  $dateTo
      * @return array
      */
-    public function getMoneyTransferDocuments($dateFrom = null, $dateTo = null)
+    public function getMoneyTransferDocuments($dateFrom = null, $dateTo = null): array
     {
         $this->calledMethod = 'getMoneyTransferDocuments';
 
@@ -123,20 +125,18 @@ class InternetDocument extends NovaPoshta
         $this->getPage();
         $this->getDateFromTo($dateFrom, $dateTo);
 
-        // dd($this->methodProperties);
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
     /**
      * Редактирование экспресс-накладной.
      *
-     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a98a4354-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a98a4354-8512-11ec-8ced-005056b2dbe1 Редактирование экспресс-накладной
      *
      * @author https://github.com/seriklav/NovaPoshta
      *
      * TODO need tested
-     *
-     * @deprecated NOT FULLY TESTED
+     * @deprecated НЕ ПРОВЕРЕНО
      *
      * @param  null  $description
      * @return array
@@ -172,7 +172,7 @@ class InternetDocument extends NovaPoshta
     /**
      * Прогноз даты доставки груза.
      *
-     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a941c714-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a941c714-8512-11ec-8ced-005056b2dbe1 Прогноз даты доставки груза
      *
      * @author https://github.com/seriklav/NovaPoshta
      *

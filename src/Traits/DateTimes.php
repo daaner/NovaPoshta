@@ -10,12 +10,14 @@ trait DateTimes
 {
     protected $dateTime;
     protected $dateTimeFrom;
+    protected $dateBegin;
+    protected $dateEnd;
     protected $dateTimeTo;
     protected $format = 'd.m.Y';
     protected $formatTime = 'd.m.Y H:i:s';
 
     /**
-     * @param  string|Carbon|date  $dateTime
+     * @param  string|Carbon|date  $dateTime Указание даты
      * @return void
      */
     public function setDateTime($dateTime): void
@@ -24,7 +26,7 @@ trait DateTimes
     }
 
     /**
-     * @param  string|Carbon|date  $dateTimeFrom
+     * @param  string|Carbon|date  $dateTimeFrom С текущей даты
      * @return void
      */
     public function setDateTimeFrom($dateTimeFrom): void
@@ -33,7 +35,7 @@ trait DateTimes
     }
 
     /**
-     * @param  string|Carbon|date  $dateTimeTo
+     * @param  string|Carbon|date  $dateTimeTo До текущей даты
      * @return void
      */
     public function setDateTimeTo($dateTimeTo): void
@@ -77,8 +79,8 @@ trait DateTimes
     /**
      * Странно, но тут с минутами и секундами.
      *
-     * @param  string|Carbon|date|null  $from
-     * @param  string|Carbon|date|null  $to
+     * @param  string|Carbon|date|null  $from С текущей даты
+     * @param  string|Carbon|date|null  $to До текущей даты
      * @return void
      */
     public function getDateFromTo($from = null, $to = null): void
@@ -102,7 +104,10 @@ trait DateTimes
     }
 
     /**
-     * @param  string|Carbon  $date
+     * Проверка даты на валидность.
+     *
+     * @param string|Carbon|date $date Дата
+     * @param string|null $format Формат даты
      * @return string $date
      */
     public function checkDate($date, ?string $format = null): string
@@ -123,4 +128,34 @@ trait DateTimes
 
         return $date;
     }
+
+    /**
+     * @param string|Carbon|date $dateBegin Дата начала
+     */
+    public function setDateBegin($dateBegin)
+    {
+        $this->dateBegin = $this->checkDate($dateBegin, $this->format);
+    }
+
+    /**
+     * @param string|Carbon|date $dateEnd Дата окончания
+     */
+    public function setDateEnd($dateEnd)
+    {
+        $this->dateEnd = $this->checkDate($dateEnd, $this->format);
+    }
+
+
+    public function getDateBeginEnd()
+    {
+        if($this->dateBegin) {
+            $this->methodProperties['BeginDate'] = $this->dateBegin;
+        }
+
+        if($this->dateEnd) {
+            $this->methodProperties['EndDate'] = $this->dateEnd;
+        }
+    }
+
+
 }

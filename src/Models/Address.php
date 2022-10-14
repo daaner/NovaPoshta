@@ -18,7 +18,7 @@ class Address extends NovaPoshta
     /**
      * Получение списка областей.
      *
-     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a20ee6e4-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a20ee6e4-8512-11ec-8ced-005056b2dbe1 Получение списка областей
      *
      * @return array
      */
@@ -33,7 +33,7 @@ class Address extends NovaPoshta
     /**
      * Получение списка городов.
      *
-     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1e6f0a7-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1e6f0a7-8512-11ec-8ced-005056b2dbe1 Получение списка городов
      *
      * @param  string|null  $find
      * @param  bool|null  $searchByString
@@ -59,7 +59,7 @@ class Address extends NovaPoshta
     /**
      * Получение списка отделений и почтоматов в городах.
      *
-     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2322f38-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2322f38-8512-11ec-8ced-005056b2dbe1 Получение списка отделений и почтоматов в городах
      *
      * @param  string|null  $cityRef
      * @param  bool|null  $searchByString
@@ -86,7 +86,7 @@ class Address extends NovaPoshta
     /**
      * Получение типов отделений.
      *
-     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2587b53-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2587b53-8512-11ec-8ced-005056b2dbe1 Получение типов отделений
      *
      * @return array
      */
@@ -100,6 +100,8 @@ class Address extends NovaPoshta
 
     /**
      * Получение списка отделений в населенном пункте.
+     *
+     * @deprecated НЕ ДОКУМЕНТИРОВАНО
      *
      * @param  string  $settlementRef
      * @return array
@@ -117,7 +119,7 @@ class Address extends NovaPoshta
     /**
      * Поиск населенных пунктов из справочника Settlements.
      *
-     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a0eb83ab-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a0eb83ab-8512-11ec-8ced-005056b2dbe1 Поиск населенных пунктов
      *
      * @param  string  $search
      * @return array
@@ -135,7 +137,7 @@ class Address extends NovaPoshta
     /**
      * Поиск улиц в населенных пунктах.
      *
-     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1329635-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1329635-8512-11ec-8ced-005056b2dbe1 Поиск улиц в населенных пунктах
      *
      * @param  string  $ref
      * @param  string  $street
@@ -155,7 +157,7 @@ class Address extends NovaPoshta
     /**
      * Справочник населенных пунктов Украины.
      *
-     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1c42723-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1c42723-8512-11ec-8ced-005056b2dbe1 Справочник населенных пунктов
      *
      * @param  string|null  $find
      * @return array
@@ -166,7 +168,7 @@ class Address extends NovaPoshta
         $this->methodProperties = null;
 
         /**
-         * nit:Daan
+         * TODO Daan
          * $this->addLimit();.
          *
          * Нужен лимит 150, иначе значение totalCount имеет не верный формат
@@ -192,7 +194,7 @@ class Address extends NovaPoshta
     /**
      * Получение улиц в городе по CityRef.
      *
-     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a27c20d7-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a27c20d7-8512-11ec-8ced-005056b2dbe1 Получение улиц в городе
      *
      * @param  string  $city
      * @param  string|null  $find
@@ -216,7 +218,9 @@ class Address extends NovaPoshta
      * TODO Не сделано
      * Создать адрес контрагента (отправитель / получатель).
      *
-     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a155d0d9-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a155d0d9-8512-11ec-8ced-005056b2dbe1 Создать адрес контрагента
+     *
+     * @deprecated НЕ СДЕЛАНО
      *
      * @return false
      */
@@ -231,7 +235,9 @@ class Address extends NovaPoshta
      * TODO Не сделано
      * Редактировать адрес контрагента (отправитель / получатель).
      *
-     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a19ba934-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a19ba934-8512-11ec-8ced-005056b2dbe1 Редактировать адрес контрагента
+     *
+     * @deprecated НЕ СДЕЛАНО
      *
      * @return false
      */
@@ -246,7 +252,9 @@ class Address extends NovaPoshta
      * TODO Не сделано
      * Удалить адрес контрагента (отправитель / получатель).
      *
-     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a177069a-8512-11ec-8ced-005056b2dbe1
+     * @deprecated НЕ СДЕЛАНО
+     *
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a177069a-8512-11ec-8ced-005056b2dbe1 Удалить адрес контрагента
      *
      * @return false
      */

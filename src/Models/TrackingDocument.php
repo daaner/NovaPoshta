@@ -10,11 +10,11 @@ class TrackingDocument extends NovaPoshta
     protected $calledMethod;
 
     /**
-     * Получение полной информации по ТТН/ТТНкам.
+     * Получение полной информации по ТТН/массиву ТТН.
      *
      * @see https://developers.novaposhta.ua/view/model/a99d2f28-8512-11ec-8ced-005056b2dbe1/method/a9ae7bc9-8512-11ec-8ced-005056b2dbe1
      *
-     * @param  string|array  $documents
+     * @param  string|array  $documents Номер ТТН либо массив ТТН, либо строкой через запятую
      * @return array
      */
     public function getStatusDocuments($documents): array
@@ -32,9 +32,12 @@ class TrackingDocument extends NovaPoshta
     }
 
     /**
-     * Проверка единичной ТТН или массива. Телефон, если указан, подставляется один для всех.
+     * Проверка единичной ТТН или массива ТТН.
+     * Телефон, если указан, подставляется один для всех.
      *
-     * @param  string|array  $ttns  Номер ТТН либо массив ТТНок
+     * @internal Внутренняя функция для простоты обработки
+     *
+     * @param  string|array  $ttns  Номер ТТН либо массив ТТН
      * @param  string|null  $phone  Номер телефона получателя или отправителя
      * @return array
      */
@@ -57,10 +60,12 @@ class TrackingDocument extends NovaPoshta
     }
 
     /**
-     * Получение статусов одной ТТН или массива.
+     * Получение коротких статусов одной ТТН или массива.
      *
-     * @param  string|array  $ttns
-     * @param  string|int|null  $phone
+     * @internal Внутренняя функция для простоты обработки
+     *
+     * @param  string|array  $ttns Номер ТТН либо массив ТТН
+     * @param  string|int|null  $phone Номер телефона получателя или отправителя
      * @return array
      */
     public function getStatusTTN($ttns, $phone = null): array
@@ -107,7 +112,9 @@ class TrackingDocument extends NovaPoshta
     /**
      * Очистка пробелов и букв в ТТН.
      *
-     * @param  string  $ttn
+     * @internal Внутренняя функция для простоты обработки
+     *
+     * @param  string  $ttn Номер ТТН
      * @return string
      */
     public function clearNumber(string $ttn): string

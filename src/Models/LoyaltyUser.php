@@ -12,7 +12,8 @@ class LoyaltyUser extends NovaPoshta
 
     /**
      * Получение данных по бонусной карте.
-     * Не документировано.
+     *
+     * @deprecated НЕ ДОКУМЕНТИРОВАНО
      *
      * @return array
      */

@@ -10,7 +10,8 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [x] [Получение списка подтипов причины возврата](AdditionalService.md#getReturnReasonsSubtypes)
 - [x] [Получение списка заявок на возврат](AdditionalService.md#getReturnOrdersList)
 - [x] [Проверка возможности создания заявки на переадресацию отправки](AdditionalService.md#checkPossibilityForRedirecting)
-- [x] [Проверка возможности создания заявки на переадресацию отправки](AdditionalService.md#save)
+- [x] [Создание заявки на возврат](AdditionalService.md#save)
+- [x] [Получение списка заявок на переадресацию отправлений](AdditionalService.md#getRedirectionOrdersList)
 
 
 ## Все методы модели
@@ -20,6 +21,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [getReturnOrdersList()](#getReturnOrdersList)
 - [checkPossibilityForRedirecting($ttn)](#checkPossibilityForRedirecting)
 - [save($ttn)](#save)
+- [getRedirectionOrdersList()](#getRedirectionOrdersList)
 
 ---
 
@@ -143,6 +145,51 @@ $np->setSubtypeReason('00000000-0000-0000-0000-000000000000'); //Ref подти�
 $np->setNote('Возврат заказа'); //Заметка возврата
 
 $addition = $np->save($ttn);
+
+dd($addition);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `getRedirectionOrdersList()`
+[Получение](https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a8faa2e6-8512-11ec-8ced-005056b2dbe1) списка заявок на переадресацию отправлений
+
+
+```php
+$np = new AdditionalService;
+$np->setApi('...');
+
+// Доступные НЕОБЯЗАТЕЛЬНЫЕ методы:
+$np->setLimit(3);
+$np->setPage(2);
+$np->setNumber('102-00010160'); //номер заявки переадресации
+$np->setRef('00000000-0000-0000-0000-000000000000'); //Идентификатор заявки на переадресацию (лично у меня не фильтрует)
+$np->setDateBegin('2020-11-3'); // дата почти в любом формате, главное чтоб не путались месяца и даты
+$np->setDateEnd('9/22/2022');
+
+$addition = $np->getRedirectionOrdersList();
+
+dd($addition);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `delete()`
+[Удаление](https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a85bb34b-8512-11ec-8ced-005056b2dbe1) заявки
+Метод "delete" позволяет удалить:
+
+- заявку на возврат;
+- заявку об изменении данных (можно удалить заявку только со статусом «Принято»);
+– заявку переадресации.
+
+
+```php
+$np = new AdditionalService;
+$np->setApi('...');
+$ref = '00000000-0000-0000-0000-000000000000';
+$addition = $np->delete($Ref);
 
 dd($addition);
 ```

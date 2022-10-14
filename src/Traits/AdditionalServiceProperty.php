@@ -9,6 +9,7 @@ trait AdditionalServiceProperty
     protected $ReturnAddressRef;
     protected $RecipientWarehouse;
     protected $RecipientSettlement;
+    protected $Number;
 
     /**
      * @return void
@@ -21,7 +22,7 @@ trait AdditionalServiceProperty
     /**
      * Устанавливаем идентификатор причины возврата.
      *
-     * @param  string  $Reason
+     * @param  string  $Reason Ref возврата
      * @return void
      */
     public function setReason(string $Reason): void
@@ -38,9 +39,9 @@ trait AdditionalServiceProperty
     }
 
     /**
-     * Устанавливаем идентификатор причины суб возврата.
+     * Устанавливаем идентификатор подтипа причины возврата.
      *
-     * @param  string  $SubtypeReason
+     * @param  string  $SubtypeReason Ref подтипа возврата
      * @return void
      */
     public function setSubtypeReason(string $SubtypeReason): void
@@ -62,7 +63,7 @@ trait AdditionalServiceProperty
      * Устанавливаем идентификатор адреса возврата.
      * Значение из метода CheckPossibilityCreateReturn!!!
      *
-     * @param  string  $ReturnAddressRef
+     * @param  string  $ReturnAddressRef Ref Адреса из доступных (CheckPossibilityCreateReturn)
      * @return void
      */
     public function setReturnAddressRef(string $ReturnAddressRef): void
@@ -92,7 +93,7 @@ trait AdditionalServiceProperty
     /**
      * Устанавливаем идентификатор возврата на новое отделение.
      *
-     * @param  string  $RecipientWarehouse
+     * @param  string  $RecipientWarehouse Ref отделения
      * @return void
      */
     public function setRecipientWarehouse(string $RecipientWarehouse): void
@@ -120,7 +121,7 @@ trait AdditionalServiceProperty
     /**
      * Устанавливаем идентификатор возврата на новое отделение.
      *
-     * @param  array  $RecipientSettlement
+     * @param  array  $RecipientSettlement Массив адреса ['settlement', 'street', 'building', 'other']
      * @return void
      */
     public function setRecipientSettlement(array $RecipientSettlement): void
@@ -130,5 +131,26 @@ trait AdditionalServiceProperty
         // Очищаем данные предыдущих значений по возврату
         $this->ReturnAddressRef = null;
         $this->RecipientWarehouse = null;
+    }
+
+    /**
+     * @return void
+     */
+    public function getNumber(): void
+    {
+        if ($this->Number) {
+            $this->methodProperties['Number'] = $this->Number;
+        }
+    }
+
+    /**
+     * Устанавливаем номер заявки на переадресацию.
+     *
+     * @param  string  $Number Номер заявки ('102-00010160')
+     * @return void
+     */
+    public function setNumber(string $Number): void
+    {
+        $this->Number = $Number;
     }
 }

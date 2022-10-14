@@ -15,9 +15,9 @@ class Counterparty extends NovaPoshta
     protected $methodProperties = [];
 
     /**
-     * Завантажити список контрагентів відправників / одержувачів / третя особа.
+     * Загрузить список контрагентов отправителей / получателей / третье лицо.
      *
-     * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a37a06df-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a37a06df-8512-11ec-8ced-005056b2dbe1 Загрузить список контрагентов
      *
      * @param  string|null  $find
      * @return array
@@ -38,9 +38,9 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-     * Завантажити список контактних осіб Контрагента.
+     * Загрузить список контактных лиц Контрагента.
      *
-     * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a3575a67-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a3575a67-8512-11ec-8ced-005056b2dbe1 Загрузить список контактных лиц Контрагента
      *
      * @param  string  $ref
      * @return array
@@ -57,11 +57,13 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-     * Створити Контрагента.
+     * Создать Контрагента.
      *
-     * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/0ae5dd75-8a5f-11ec-8ced-005056b2dbe1
-     * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/bc3c44c7-8a8a-11ec-8ced-005056b2dbe1
-     * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/b0fdf818-8a8e-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/0ae5dd75-8a5f-11ec-8ced-005056b2dbe1 Создать контрагента с типом Физ лицо
+     *
+     * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/bc3c44c7-8a8a-11ec-8ced-005056b2dbe1 Создать контрагента с типом Юр лицо
+     *
+     * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/b0fdf818-8a8e-11ec-8ced-005056b2dbe1 Создать контрагента с типом Третья особа
      *
      * @param  string  $firstName
      * @param  string|null  $lastName
@@ -104,9 +106,9 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-     * Завантажити параметри Контрагента.
+     * Скачать параметры Контрагента.
      *
-     * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a332efbf-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a332efbf-8512-11ec-8ced-005056b2dbe1 Скачать параметры Контрагента
      *
      * @param  string  $ref
      * @return array
@@ -121,9 +123,9 @@ class Counterparty extends NovaPoshta
     }
 
     /**
-     * Завантажити список адрес Контрагентів.
+     * Загрузить список адресов Контрагентов.
      *
-     * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a30dbb7c-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a30dbb7c-8512-11ec-8ced-005056b2dbe1 Загрузить список адресов Контрагентов
      *
      * @param  string  $ref
      * @return array
@@ -140,6 +142,8 @@ class Counterparty extends NovaPoshta
 
     /**
      * Получение данных об Контрагенте по номеру телефона (ФИО и прочее).
+     *
+     * @deprecated НЕ ДОКУМЕНТИРОВАНО
      *
      * @param  string|int  $phone
      * @param  string  $lastname

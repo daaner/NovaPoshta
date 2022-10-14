@@ -5,6 +5,8 @@ namespace Daaner\NovaPoshta\Traits;
 trait DocumentList
 {
     /**
+     * Отобразить полный список.
+     *
      * @return void
      */
     public function showFullList(): void
@@ -13,6 +15,8 @@ trait DocumentList
     }
 
     /**
+     * Фильтр присутствия обратной доставки.
+     *
      * @return void
      */
     public function showRedeliveryMoney(): void
@@ -21,6 +25,8 @@ trait DocumentList
     }
 
     /**
+     * Фильтр полного списка всех актуальных ЭН (по которым не написано заявление на возврат или утилизацию) не забранных получателями посылок.
+     *
      * @return void
      */
     public function showUnassembledCargo(): void

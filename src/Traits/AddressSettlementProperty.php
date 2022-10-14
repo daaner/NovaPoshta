@@ -10,7 +10,9 @@ trait AddressSettlementProperty
     protected $Warehouse = false;
 
     /**
-     * @param  string  $AreaRef
+     * Фильтровать по области.
+     *
+     * @param  string  $AreaRef Ref области
      * @return void
      */
     public function filterAreaRef(string $AreaRef): void
@@ -29,7 +31,9 @@ trait AddressSettlementProperty
     }
 
     /**
-     * @param  string  $RegionRef
+     * Фильтровать по региону.
+     *
+     * @param  string  $RegionRef Ref региона
      * @return void
      */
     public function filterRegionRef(string $RegionRef): void
@@ -48,6 +52,8 @@ trait AddressSettlementProperty
     }
 
     /**
+     * Фильтровать по наличию отделений.
+     *
      * @return void
      */
     public function filterWarehouse(): void
@@ -66,7 +72,9 @@ trait AddressSettlementProperty
     }
 
     /**
-     * @param  string  $ref
+     * Фильтровать по Ref.
+     *
+     * @param  string  $ref Ref фильтра
      * @return void
      */
     public function filterRef(string $ref): void

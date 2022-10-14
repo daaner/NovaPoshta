@@ -19,7 +19,7 @@ class Common extends NovaPoshta
     /**
      * Справочник форм собственности.
      *
-     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a754ff0d-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a754ff0d-8512-11ec-8ced-005056b2dbe1 Справочник форм собственности
      *
      * @return array
      */
@@ -33,6 +33,8 @@ class Common extends NovaPoshta
     /**
      * Получение справочника формы оплаты.
      *
+     * @deprecated НЕ ДОКУМЕНТИРОВАНО
+     *
      * @return array
      */
     public function getPaymentForms(): array
@@ -44,6 +46,8 @@ class Common extends NovaPoshta
 
     /**
      * Получение справочника типов контрагентов.
+     *
+     * @deprecated НЕ ДОКУМЕНТИРОВАНО
      *
      * @return array
      */
@@ -57,7 +61,7 @@ class Common extends NovaPoshta
     /**
      * Получение справочника технологий доставки.
      *
-     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6e189f7-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6e189f7-8512-11ec-8ced-005056b2dbe1 Получение справочника технологий доставки
      *
      * @return array
      */
@@ -71,7 +75,7 @@ class Common extends NovaPoshta
     /**
      * Получение справочника описаний груза.
      *
-     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a697db47-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a697db47-8512-11ec-8ced-005056b2dbe1 Получение справочника описаний груза
      *
      * @param  string|null  $find
      * @return array
@@ -91,7 +95,7 @@ class Common extends NovaPoshta
     /**
      * Получение справочника видов шин и дисков.
      *
-     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a66fada0-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a66fada0-8512-11ec-8ced-005056b2dbe1 Получение справочника видов шин и дисков
      *
      * @return array
      */
@@ -105,7 +109,7 @@ class Common extends NovaPoshta
     /**
      * Получение справочника видов упаковки.
      *
-     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6492db4-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6492db4-8512-11ec-8ced-005056b2dbe1 Получение справочника видов упаковки
      *
      * @return array
      */
@@ -124,7 +128,7 @@ class Common extends NovaPoshta
     /**
      * Получение справочника видов плательщиков обратной доставки.
      *
-     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6247f2f-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6247f2f-8512-11ec-8ced-005056b2dbe1 Получение справочника видов плательщиков обратной доставки
      *
      * @return array
      */
@@ -138,7 +142,7 @@ class Common extends NovaPoshta
     /**
      * Получение справочника видов плательщиков доставки.
      *
-     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6247f2f-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6247f2f-8512-11ec-8ced-005056b2dbe1 Получение справочника видов плательщиков доставки
      *
      * @return array
      */
@@ -150,9 +154,9 @@ class Common extends NovaPoshta
     }
 
     /**
-     * Получение справочника видов паллет
+     * Получение справочника видов паллет.
      *
-     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5dd575e-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5dd575e-8512-11ec-8ced-005056b2dbe1 Получение справочника видов паллет
      *
      * @return array
      */
@@ -166,7 +170,7 @@ class Common extends NovaPoshta
     /**
      * Получение справочника видов обратной доставки груза.
      *
-     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5b46873-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5b46873-8512-11ec-8ced-005056b2dbe1 Получение справочника видов обратной доставки груза
      *
      * @return array
      */
@@ -180,7 +184,7 @@ class Common extends NovaPoshta
     /**
      * Получение справочника видов груза.
      *
-     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5912a1e-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5912a1e-8512-11ec-8ced-005056b2dbe1 Получение справочника видов груза
      *
      * @return array
      */
@@ -194,7 +198,7 @@ class Common extends NovaPoshta
     /**
      * Получение справочника видов временных интервалов.
      *
-     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a56d5c1c-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a56d5c1c-8512-11ec-8ced-005056b2dbe1 Получение справочника видов временных интервалов
      *
      * @param  string  $recipientCityRef
      * @param  string|Carbon|null  $dateTime

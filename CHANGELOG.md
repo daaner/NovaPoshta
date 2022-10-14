@@ -2,15 +2,19 @@
 
 All notable changes to `NovaPoshta` will be documented in this file
 
+### 2022-10-14
+- [Add] Добавление метода `delete` в `AdditionalService`
+
 ### 2022-10-13
-- [Fix] Изменение возвращения ошибок при запросах
-- [Add] Добавление модели `AdditionalService` и метода `CheckPossibilityCreateReturn`
+- [Add] Добавление метода `getRedirectionOrdersList` в `AdditionalService`
 - [Add] Добавление метода `getReturnReasonsSubtypes` в `AdditionalService`
 - [Add] Добавление метода `getReturnOrdersList` в `AdditionalService`
 - [Add] Добавление метода `checkPossibilityForRedirecting` в `AdditionalService`
 - [Add] Добавление метода `save` в `AdditionalService`
-- [Add] Добавление метода `getDocumentDeliveryDate` в `InternetDocument` (спасибо https://github.com/seriklav)
+- [Fix] Изменение возвращения ошибок при запросах
+- [Add] Добавление модели `AdditionalService` и метода `CheckPossibilityCreateReturn`
 - [Add] Добавление метода `edit` в `InternetDocument` (спасибо https://github.com/seriklav) НЕ ТЕСТИРОВАЛ
+- [Add] Добавление метода `getDocumentDeliveryDate` в `InternetDocument` (спасибо https://github.com/seriklav)
 
 ### 2022-09-27
 - [Fix] Изменение ссылок в документацию офф сайта в коде и в документации в пакете

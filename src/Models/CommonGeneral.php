@@ -11,9 +11,9 @@ class CommonGeneral extends NovaPoshta
     protected $methodProperties = null;
 
     /**
-     * Перелік помилок.
+     * Список ошибок.
      *
-     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6bce5a1-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6bce5a1-8512-11ec-8ced-005056b2dbe1 Список ошибок
      *
      * @return array
      */
@@ -25,7 +25,9 @@ class CommonGeneral extends NovaPoshta
     }
 
     /**
-     * Пока еще не работает, требует JWT авторизацию.
+     * Продление даты действия API ключа.
+     *
+     * @deprecated Не работает, требует JWT авторизацию
      *
      * @param  string  $ApiKey
      * @param  int|null  $month

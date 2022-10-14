@@ -4,7 +4,9 @@ namespace Daaner\NovaPoshta\Models;
 
 use Daaner\NovaPoshta\NovaPoshta;
 use Daaner\NovaPoshta\Traits\AdditionalServiceProperty;
+use Daaner\NovaPoshta\Traits\DateTimes;
 use Daaner\NovaPoshta\Traits\InternetDocumentProperty;
+use Daaner\NovaPoshta\Traits\Limit;
 
 class AdditionalService extends NovaPoshta
 {
@@ -12,12 +14,12 @@ class AdditionalService extends NovaPoshta
     protected $calledMethod;
     protected $methodProperties = [];
 
-    use InternetDocumentProperty, AdditionalServiceProperty;
+    use InternetDocumentProperty, AdditionalServiceProperty, Limit, DateTimes;
 
     /**
      * Проверка возможности создания заявки на возврат.
      *
-     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a778f519-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a778f519-8512-11ec-8ced-005056b2dbe1 Возможность возврата
      *
      * @param  string  $ttn
      * @return array
@@ -33,7 +35,7 @@ class AdditionalService extends NovaPoshta
     /**
      * Проверка возможности создания заявки на переадресацию отправки.
      *
-     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a8d29fc2-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a8d29fc2-8512-11ec-8ced-005056b2dbe1 Возможность переадресации
      *
      * @param  string  $ttn
      * @return array
@@ -49,7 +51,7 @@ class AdditionalService extends NovaPoshta
     /**
      * Получение списка причин возврата.
      *
-     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7a6bacb-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7a6bacb-8512-11ec-8ced-005056b2dbe1 Список причин возврата
      *
      * @return array
      */
@@ -64,7 +66,7 @@ class AdditionalService extends NovaPoshta
     /**
      * Получение списка подтипов причины возврата.
      *
-     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7cb69ee-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7cb69ee-8512-11ec-8ced-005056b2dbe1 Список подтипов причины возврата
      *
      * @param  string|null  $ref
      * @return array
@@ -80,7 +82,7 @@ class AdditionalService extends NovaPoshta
     /**
      * Получение списка заявок на возврат.
      *
-     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7cb69ee-8512-11ec-8ced-005056b2dbe1
+     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7cb69ee-8512-11ec-8ced-005056b2dbe1 Список заявок на возврат
      *
      * @return array
      */
@@ -93,23 +95,44 @@ class AdditionalService extends NovaPoshta
     }
 
     /**
-     * Создание заявки на возврат.
+     * Получение списка заявок на переадресацию отправлений.
      *
-     * Возврат на адрес отправителя.
+     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a8faa2e6-8512-11ec-8ced-005056b2dbe1 Список заявок на переадресацию
      *
-     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7fb4a3a-8512-11ec-8ced-005056b2dbe1
-     *
-     * Возврат на новый адрес отделения.
-     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/5a64f960-e7fa-11ec-a60f-48df37b921db
-     *
-     * Возврат на новый адрес по адресной доставке.
-     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/175baec3-8f0d-11ec-8ced-005056b2dbe1
-     *
-     * @param  string  $ttn
-     * @param  string|null  $type
      * @return array
      */
-    public function save(string $ttn, ?string $type = null): array
+    public function getRedirectionOrdersList(): array
+    {
+        $this->calledMethod = 'getRedirectionOrdersList';
+        $this->methodProperties = null;
+
+        $this->addLimit();
+        $this->getPage();
+
+        $this->getNumber();
+        $this->getDateBeginEnd();
+
+
+        if ($this->Ref) {
+            $this->methodProperties['Ref'] = $this->Ref;
+        }
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
+    /**
+     * Создание заявки на возврат.
+     *
+     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7fb4a3a-8512-11ec-8ced-005056b2dbe1 Возврат на адрес отправителя
+     *
+     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/5a64f960-e7fa-11ec-a60f-48df37b921db Возврат на новый адрес отделения
+     *
+     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/175baec3-8f0d-11ec-8ced-005056b2dbe1 Возврат на новый адрес по адресной доставке
+     *
+     * @param  string  $ttn
+     * @return array
+     */
+    public function save(string $ttn): array
     {
         $this->calledMethod = 'save';
 
@@ -138,6 +161,23 @@ class AdditionalService extends NovaPoshta
          * Возврат на новый адрес по адресной доставке.
          */
         $this->getRecipientSettlement();
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
+    /**
+     * Удаление заявки на возврат, заявку об изменении данных или заявку переадресации.
+     *
+     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a85bb34b-8512-11ec-8ced-005056b2dbe1 Удаление заявки
+     *
+     * @param string $Ref
+     * @return array
+     */
+    public function delete(string $Ref): array
+    {
+        $this->calledMethod = 'delete';
+
+        $this->methodProperties['Ref'] = $Ref;
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }

@@ -18,6 +18,8 @@ class ScanSheet extends NovaPoshta
     /**
      * Удалить (расформировать) реестр отправлений.
      *
+     * @see https://developers.novaposhta.ua/view/model/a46fc4f4-8512-11ec-8ced-005056b2dbe1/method/a50e049b-8512-11ec-8ced-005056b2dbe1 Расформировать реестр
+     *
      * @param  string|array  $ScanSheetRefs
      * @return array
      */
@@ -36,6 +38,8 @@ class ScanSheet extends NovaPoshta
 
     /**
      * Добавить экспресс-накладные в реестр.
+     *
+     * @see https://developers.novaposhta.ua/view/model/a46fc4f4-8512-11ec-8ced-005056b2dbe1/method/a482293c-8512-11ec-8ced-005056b2dbe1 Добавить экспресс-накладные в реестр
      *
      * @param  string|array  $DocumentRefs
      * @param  string|null  $Ref
@@ -66,6 +70,8 @@ class ScanSheet extends NovaPoshta
     /**
      * Загрузить список реестров.
      *
+     * @see https://developers.novaposhta.ua/view/model/a46fc4f4-8512-11ec-8ced-005056b2dbe1/method/a4abdd36-8512-11ec-8ced-005056b2dbe1 Загрузить список реестров
+     *
      * @return array
      */
     public function getScanSheetList(): array
@@ -77,6 +83,8 @@ class ScanSheet extends NovaPoshta
 
     /**
      * Загрузить информацию по одному реестру.
+     *
+     * @deprecated НЕ ДОКУМЕНТИРОВАНО
      *
      * @param  string  $ref
      * @return array
@@ -93,6 +101,8 @@ class ScanSheet extends NovaPoshta
 
     /**
      * Удалить экспресс-накладные из реестра.
+     *
+     * @see https://developers.novaposhta.ua/view/model/a46fc4f4-8512-11ec-8ced-005056b2dbe1/method/a53dea8a-8512-11ec-8ced-005056b2dbe1 Удалить экспресс-накладные из реестра
      *
      * @param  string|array  $documents
      * @param  string|null  $ref
@@ -118,7 +128,8 @@ class ScanSheet extends NovaPoshta
 
     /**
      * Получить краткий список ТТН реестра.
-     * Не документировано.
+     *
+     * @deprecated НЕ ДОКУМЕНТИРОВАНО
      *
      * @param  string  $ref
      * @return array
@@ -137,7 +148,8 @@ class ScanSheet extends NovaPoshta
 
     /**
      * Обновить описание реестра.
-     * Не документировано.
+     *
+     * @deprecated НЕ ДОКУМЕНТИРОВАНО
      *
      * @param  string  $ref
      * @param  string|int  $description
