@@ -9,7 +9,7 @@ trait RecipientProperty
     /**
      * Устанавливаем значение получателя.
      *
-     * @param  array  $Recipient Массив данных получателя
+     * @param  array  $Recipient  Массив данных получателя
      * @return void
      */
     public function setRecipient(array $Recipient): void
@@ -54,7 +54,7 @@ trait RecipientProperty
     /**
      * Устанавливаем тип получателя.
      *
-     * @param  string  $RecipientType Тип получателя ('PrivatePerson', 'Organization')
+     * @param  string  $RecipientType  Тип получателя ('PrivatePerson', 'Organization')
      * @return void
      */
     public function setRecipientType(string $RecipientType): void

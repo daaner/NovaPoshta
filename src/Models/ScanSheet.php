@@ -20,7 +20,7 @@ class ScanSheet extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a46fc4f4-8512-11ec-8ced-005056b2dbe1/method/a50e049b-8512-11ec-8ced-005056b2dbe1 Расформировать реестр
      *
-     * @param  string|array  $ScanSheetRefs Ref реестра
+     * @param  string|array  $ScanSheetRefs  Ref реестра
      * @return array
      */
     public function deleteScanSheet($ScanSheetRefs): array
@@ -41,9 +41,9 @@ class ScanSheet extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a46fc4f4-8512-11ec-8ced-005056b2dbe1/method/a482293c-8512-11ec-8ced-005056b2dbe1 Добавить экспресс-накладные в реестр
      *
-     * @param  string|array  $DocumentRefs Ref или массив Ref ТТН
-     * @param  string|null  $Ref Ref реестра, если есть
-     * @param  string|Carbon|null  $Date Дата, если необходимо создать реестр на определенную дату
+     * @param  string|array  $DocumentRefs  Ref или массив Ref ТТН
+     * @param  string|null  $Ref  Ref реестра, если есть
+     * @param  string|Carbon|null  $Date  Дата, если необходимо создать реестр на определенную дату
      * @return array
      */
     public function insertDocuments($DocumentRefs, ?string $Ref = null, $Date = null): array
@@ -86,7 +86,7 @@ class ScanSheet extends NovaPoshta
      *
      * @deprecated НЕ ДОКУМЕНТИРОВАНО
      *
-     * @param  string  $ref Ref реестра
+     * @param  string  $ref  Ref реестра
      * @return array
      */
     public function getScanSheet(string $ref): array
@@ -104,8 +104,8 @@ class ScanSheet extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a46fc4f4-8512-11ec-8ced-005056b2dbe1/method/a53dea8a-8512-11ec-8ced-005056b2dbe1 Удалить экспресс-накладные из реестра
      *
-     * @param  string|array  $documents Ref или массив Ref ТТН
-     * @param  string|null  $ref Ref реестра
+     * @param  string|array  $documents  Ref или массив Ref ТТН
+     * @param  string|null  $ref  Ref реестра
      * @return array
      */
     public function removeDocuments($documents, ?string $ref = null): array
@@ -131,7 +131,7 @@ class ScanSheet extends NovaPoshta
      *
      * @deprecated НЕ ДОКУМЕНТИРОВАНО
      *
-     * @param  string  $ref Ref реестра
+     * @param  string  $ref  Ref реестра
      * @return array
      */
     public function getScanSheetDocuments(string $ref): array
@@ -151,8 +151,8 @@ class ScanSheet extends NovaPoshta
      *
      * @deprecated НЕ ДОКУМЕНТИРОВАНО
      *
-     * @param  string  $ref Ref реестра
-     * @param  string  $description Описание
+     * @param  string  $ref  Ref реестра
+     * @param  string  $description  Описание
      * @return array
      */
     public function updateScanSheet(string $ref, string $description): array

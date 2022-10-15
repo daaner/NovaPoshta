@@ -10,7 +10,7 @@ trait Limit
     /**
      * Установка лимита записей.
      *
-     * @param  int  $limit Лимит записей
+     * @param  int  $limit  Лимит записей
      * @return void
      */
     public function setLimit(int $limit): void
@@ -21,7 +21,7 @@ trait Limit
     /**
      * Установка страницы.
      *
-     * @param  int  $page Номер страницы данных
+     * @param  int  $page  Номер страницы данных
      * @return void
      */
     public function setPage(int $page): void
