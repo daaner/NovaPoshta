@@ -18,7 +18,7 @@ class NovaPoshtaServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/../resources/lang' => $this->app['path.lang'] . '/vendor/novaposhta',
+            __DIR__.'/../resources/lang' => $this->app['path.lang'].'/vendor/novaposhta',
         ]);
 
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang/', 'novaposhta');

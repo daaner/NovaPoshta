@@ -19,7 +19,7 @@ class Counterparty extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a37a06df-8512-11ec-8ced-005056b2dbe1 Загрузить список контрагентов
      *
-     * @param  string|null  $find Поиск по названию
+     * @param  string|null  $find  Поиск по названию
      * @return array
      */
     public function getCounterparties(?string $find): array
@@ -42,7 +42,7 @@ class Counterparty extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a3575a67-8512-11ec-8ced-005056b2dbe1 Загрузить список контактных лиц Контрагента
      *
-     * @param  string  $ref Ref контрагента
+     * @param  string  $ref  Ref контрагента
      * @return array
      */
     public function getCounterpartyContactPerson(string $ref): array
@@ -63,11 +63,11 @@ class Counterparty extends NovaPoshta
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/bc3c44c7-8a8a-11ec-8ced-005056b2dbe1 Создать контрагента с типом Юр лицо
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/b0fdf818-8a8e-11ec-8ced-005056b2dbe1 Создать контрагента с типом Третья особа
      *
-     * @param  string  $firstName Имя
-     * @param  string|null  $lastName Фамилия
-     * @param  string|null  $middleName Отчество
-     * @param  string|int|null  $phone Телефон
-     * @param  string|null  $email Электронная почта
+     * @param  string  $firstName  Имя
+     * @param  string|null  $lastName  Фамилия
+     * @param  string|null  $middleName  Отчество
+     * @param  string|int|null  $phone  Телефон
+     * @param  string|null  $email  Электронная почта
      * @return array
      */
     public function save(
@@ -108,7 +108,7 @@ class Counterparty extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a332efbf-8512-11ec-8ced-005056b2dbe1 Скачать параметры Контрагента
      *
-     * @param  string  $ref Ref контрагента
+     * @param  string  $ref  Ref контрагента
      * @return array
      */
     public function getCounterpartyOptions(string $ref): array
@@ -125,7 +125,7 @@ class Counterparty extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a30dbb7c-8512-11ec-8ced-005056b2dbe1 Загрузить список адресов Контрагентов
      *
-     * @param  string  $ref Ref контрагента
+     * @param  string  $ref  Ref контрагента
      * @return array
      */
     public function getCounterpartyAddresses(string $ref): array
@@ -143,8 +143,8 @@ class Counterparty extends NovaPoshta
      *
      * @deprecated НЕ ДОКУМЕНТИРОВАНО
      *
-     * @param  string|int  $phone Телефон
-     * @param  string  $lastname Фамилия (минимум 3 буквы)
+     * @param  string|int  $phone  Телефон
+     * @param  string  $lastname  Фамилия (минимум 3 буквы)
      * @return array
      */
     public function getCatalogCounterparty($phone, string $lastname): array

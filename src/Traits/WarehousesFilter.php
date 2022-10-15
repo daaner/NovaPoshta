@@ -29,7 +29,7 @@ trait WarehousesFilter
     /**
      * Фильтр по типу отделения.
      *
-     * @param  string  $typeOfWarehouseRef Ref типа отделения
+     * @param  string  $typeOfWarehouseRef  Ref типа отделения
      * @return void
      */
     public function setTypeOfWarehouseRef(string $typeOfWarehouseRef): void

@@ -21,7 +21,7 @@ class AdditionalService extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a778f519-8512-11ec-8ced-005056b2dbe1 Возможность возврата
      *
-     * @param  string  $ttn Номер ТТН
+     * @param  string  $ttn  Номер ТТН
      * @return array
      */
     public function CheckPossibilityCreateReturn(string $ttn): array
@@ -37,7 +37,7 @@ class AdditionalService extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a8d29fc2-8512-11ec-8ced-005056b2dbe1 Возможность переадресации
      *
-     * @param  string  $ttn Номер ТТН
+     * @param  string  $ttn  Номер ТТН
      * @return array
      */
     public function checkPossibilityForRedirecting(string $ttn): array
@@ -68,7 +68,7 @@ class AdditionalService extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7cb69ee-8512-11ec-8ced-005056b2dbe1 Список подтипов причины возврата
      *
-     * @param  string|null  $ref Ref причины
+     * @param  string|null  $ref  Ref причины
      * @return array
      */
     public function getReturnReasonsSubtypes(?string $ref = null): array
@@ -126,7 +126,7 @@ class AdditionalService extends NovaPoshta
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/5a64f960-e7fa-11ec-a60f-48df37b921db Возврат на новый адрес отделения
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/175baec3-8f0d-11ec-8ced-005056b2dbe1 Возврат на новый адрес по адресной доставке
      *
-     * @param  string  $ttn Номер ТТН
+     * @param  string  $ttn  Номер ТТН
      * @return array
      */
     public function save(string $ttn): array

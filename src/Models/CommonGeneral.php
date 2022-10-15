@@ -29,8 +29,8 @@ class CommonGeneral extends NovaPoshta
      *
      * @deprecated Не работает, требует JWT авторизацию
      *
-     * @param  string  $ApiKey API токен
-     * @param  int|null  $month Кол-во месяцев продления
+     * @param  string  $ApiKey  API токен
+     * @param  int|null  $month  Кол-во месяцев продления
      * @return array
      */
     public function prolongateKey(string $ApiKey, ?int $month = 12): array

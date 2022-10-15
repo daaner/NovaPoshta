@@ -8,6 +8,7 @@ trait Language
 
     /**
      * Установка языка.
+     *
      * @deprecated Уже не доступна
      *
      * @param  string  $lang

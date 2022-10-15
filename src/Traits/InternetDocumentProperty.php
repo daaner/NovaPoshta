@@ -19,7 +19,7 @@ trait InternetDocumentProperty
     /**
      * Устанавливаем значение Ref.
      *
-     * @param  string  $Ref Указываем Ref
+     * @param  string  $Ref  Указываем Ref
      */
     public function setRef(string $Ref): void
     {
@@ -34,7 +34,7 @@ trait InternetDocumentProperty
     /**
      * Устанавливаем значение плательщика. По умолчанию значение конфига.
      *
-     * @param  string  $PayerType Значение плательщика ('Sender', 'Recipient', 'ThirdPerson')
+     * @param  string  $PayerType  Значение плательщика ('Sender', 'Recipient', 'ThirdPerson')
      * @return void
      */
     public function setPayerType(string $PayerType): void
@@ -53,7 +53,7 @@ trait InternetDocumentProperty
     /**
      * Устанавливаем тип доставки. По умолчанию значение конфига.
      *
-     * @param  string  $ServiceType Тип доставки ('DoorsDoors', 'DoorsWarehouse', 'WarehouseWarehouse', 'WarehouseDoors')
+     * @param  string  $ServiceType  Тип доставки ('DoorsDoors', 'DoorsWarehouse', 'WarehouseWarehouse', 'WarehouseDoors')
      * @return void
      */
     public function setServiceType(string $ServiceType): void
@@ -72,7 +72,7 @@ trait InternetDocumentProperty
     /**
      * Устанавливаем форму оплаты. По умолчанию значение конфига.
      *
-     * @param  string  $PaymentMethod Форма оплаты ('Cash', 'NonCash')
+     * @param  string  $PaymentMethod  Форма оплаты ('Cash', 'NonCash')
      * @return void
      */
     public function setPaymentMethod(string $PaymentMethod): void
@@ -95,7 +95,7 @@ trait InternetDocumentProperty
     /**
      * Устанавливаем тип груза. По умолчанию значение конфига.
      *
-     * @param  string  $CargoType Tип груза ('Cargo', 'Documents', 'TiresWheels', 'Pallet', 'Parcel')
+     * @param  string  $CargoType  Tип груза ('Cargo', 'Documents', 'TiresWheels', 'Pallet', 'Parcel')
      * @return void
      */
     public function setCargoType(string $CargoType): void
@@ -114,7 +114,7 @@ trait InternetDocumentProperty
     /**
      * Устанавливаем описание груза. По умолчанию из конфига.
      *
-     * @param  string|null  $description Описание груза
+     * @param  string|null  $description  Описание груза
      * @return void
      */
     public function setDescription(?string $description): void
@@ -125,7 +125,7 @@ trait InternetDocumentProperty
     /**
      * Кол-во мест груза по умолчанию.
      *
-     * @param  string  $SeatsAmount Количество мест отправки
+     * @param  string  $SeatsAmount  Количество мест отправки
      * @return void
      */
     public function setSeatsAmount(string $SeatsAmount): void
@@ -144,7 +144,7 @@ trait InternetDocumentProperty
     /**
      * Устанавливаем стоимость груза. По умолчанию значение конфига.
      *
-     * @param  string  $cost Оценочная стоимость
+     * @param  string  $cost  Оценочная стоимость
      * @return void
      */
     public function setCost(string $cost): void
@@ -164,7 +164,7 @@ trait InternetDocumentProperty
      * Описание к адресу для курьера или отделения.
      * Применяется в основном, если нет текущей улицы при адресной доставке.
      *
-     * @param  string  $note Пометка
+     * @param  string  $note  Пометка
      * @return void
      */
     public function setNote(string $note): void
@@ -185,7 +185,7 @@ trait InternetDocumentProperty
     /**
      * Описание к ТТН для отображения в кабинете.
      *
-     * @param  string  $AdditionalInformation Дополнительная информация к грузу
+     * @param  string  $AdditionalInformation  Дополнительная информация к грузу
      * @return void
      */
     public function setAdditionalInformation(string $AdditionalInformation): void
@@ -206,9 +206,9 @@ trait InternetDocumentProperty
     /**
      * Услуга обратной доставки. По умолчанию значения конфига.
      *
-     * @param  string|int  $RedeliveryString Обратная доставка денег (наложный платеж)
-     * @param  string|null  $PayerType Значение плательщика ('Sender', 'Recipient', 'ThirdPerson')
-     * @param  string|null  $CargoType Tип груза ('Cargo', 'Documents', 'TiresWheels', 'Pallet', 'Parcel')
+     * @param  string|int  $RedeliveryString  Обратная доставка денег (наложный платеж)
+     * @param  string|null  $PayerType  Значение плательщика ('Sender', 'Recipient', 'ThirdPerson')
+     * @param  string|null  $CargoType  Tип груза ('Cargo', 'Documents', 'TiresWheels', 'Pallet', 'Parcel')
      * @return void
      */
     public function setBackwardDeliveryData($RedeliveryString, ?string $PayerType = null, ?string $CargoType = null): void
