@@ -85,14 +85,13 @@ trait DateTimes
      */
     public function getDateFromTo($from = null, $to = null): void
     {
-        // DateFrom
         if ($from) {
             $from = $this->checkDate($from, $this->formatTime);
         } else {
-            $from = Carbon::now()->/** @scrutinizer ignore-call */subMonth(3)->format($this->formatTime);
+            $from = Carbon::now()->/** @scrutinizer ignore-call */subMonths(3)
+                ->format($this->formatTime);
         }
 
-        // DateTo
         if ($to) {
             $to = $this->checkDate($to, $this->formatTime);
         } else {
@@ -131,21 +130,26 @@ trait DateTimes
 
     /**
      * @param  string|Carbon|date  $dateBegin  Дата начала
+     * @return void
      */
-    public function setDateBegin($dateBegin)
+    public function setDateBegin($dateBegin): void
     {
         $this->dateBegin = $this->checkDate($dateBegin, $this->format);
     }
 
     /**
      * @param  string|Carbon|date  $dateEnd  Дата окончания
+     * @return void
      */
-    public function setDateEnd($dateEnd)
+    public function setDateEnd($dateEnd): void
     {
         $this->dateEnd = $this->checkDate($dateEnd, $this->format);
     }
 
-    public function getDateBeginEnd()
+    /**
+     * @return void
+     */
+    public function getDateBeginEnd(): void
     {
         if ($this->dateBegin) {
             $this->methodProperties['BeginDate'] = $this->dateBegin;

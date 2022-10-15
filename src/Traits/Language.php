@@ -7,6 +7,9 @@ trait Language
     protected $language;
 
     /**
+     * Установка языка.
+     * @deprecated Уже не доступна
+     *
      * @param  string  $lang
      * @return void
      */

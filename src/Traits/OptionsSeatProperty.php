@@ -14,7 +14,7 @@ trait OptionsSeatProperty
      * Перебираем значение массива и указываем нужные объемы.
      * Если не указывать значение из конфига в 1 кг.
      *
-     * @param  string|array  $OptionsSeat
+     * @param  string|array  $OptionsSeat Указание объемного веса массивом или индексом из массива в конфиге
      * @return void
      */
     public function setOptionsSeat($OptionsSeat): void
@@ -23,7 +23,7 @@ trait OptionsSeatProperty
         if (is_array($OptionsSeat) === false) {
             $OptionsSeat = explode(',', /** @scrutinizer ignore-type */ $OptionsSeat);
         }
-        foreach ($OptionsSeat as $key => $value) {
+        foreach ($OptionsSeat as $value) {
             try {
                 $this->OptionsSeat[] = $data[$value];
             } catch (Exception $e) {
@@ -52,11 +52,10 @@ trait OptionsSeatProperty
     }
 
     /**
-     * Устанавливаем вес груза. По умолчанию значение из конфига
-     * nit:Daan
+     * Устанавливаем вес груза. По умолчанию значение из конфига.
      * Не обязательно, если выставляем OptionsSeat, но пока оставлю тут
      *
-     * @param  string  $weight
+     * @param  string  $weight Вес груза
      * @return void
      */
     public function setWeight(string $weight): void
@@ -65,6 +64,8 @@ trait OptionsSeatProperty
     }
 
     /**
+     * Установка веса.
+     *
      * @return void
      */
     public function getWeight(): void

@@ -10,6 +10,8 @@ trait CounterpartyProperty
     protected $EDRPOU;
 
     /**
+     * Установка типа контрагента.
+     *
      * @param  string  $counterpartyType  Тип контрагента (PrivatePerson)
      * @return void
      */
@@ -19,6 +21,8 @@ trait CounterpartyProperty
     }
 
     /**
+     * Установка свойства контрагента.
+     *
      * @param  string  $counterpartyProperty  Свойства контрагента (Recipient / Sender)
      * @return void
      */
@@ -28,6 +32,8 @@ trait CounterpartyProperty
     }
 
     /**
+     * Установка формы собственности.
+     *
      * @param  string  $ownershipForm  Ref формы собственности
      * @return void
      */
@@ -37,6 +43,8 @@ trait CounterpartyProperty
     }
 
     /**
+     * Установка ЕДРПОУ.
+     *
      * @param  string  $EDRPOU  ЕРДПОУ
      * @return void
      */
@@ -100,9 +108,12 @@ trait CounterpartyProperty
     }
 
     /**
-     * TODO Не тестировалось.
      * Вынесенная логика для удаления контактов
      * используется для создания / изменения данных организаций или третьих лиц.
+     *
+     * @deprecated НЕ СДЕЛАНО
+     *
+     * TODO Не сделано
      *
      * @return void
      */

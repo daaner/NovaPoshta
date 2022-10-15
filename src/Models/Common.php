@@ -77,7 +77,7 @@ class Common extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a697db47-8512-11ec-8ced-005056b2dbe1 Получение справочника описаний груза
      *
-     * @param  string|null  $find
+     * @param  string|null  $find Запрос поиска
      * @return array
      */
     public function getCargoDescriptionList(?string $find = null): array
@@ -200,8 +200,8 @@ class Common extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a56d5c1c-8512-11ec-8ced-005056b2dbe1 Получение справочника видов временных интервалов
      *
-     * @param  string  $recipientCityRef
-     * @param  string|Carbon|null  $dateTime
+     * @param  string  $recipientCityRef Ref города
+     * @param  string|Carbon|null  $dateTime Дата интервалов
      * @return array
      */
     public function getTimeIntervals(string $recipientCityRef, $dateTime = null): array

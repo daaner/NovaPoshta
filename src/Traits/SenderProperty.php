@@ -13,7 +13,7 @@ trait SenderProperty
     /**
      * Устанавливаем значение отправителя. Если не указывать - значение конфига.
      *
-     * @param  array  $sender
+     * @param  array  $sender Тип отправителя массивом
      * @return void
      */
     public function setSender(array $sender): void

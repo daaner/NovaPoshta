@@ -61,7 +61,7 @@ class InternetDocument extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a965630e-8512-11ec-8ced-005056b2dbe1 Создать экспресс-накладную
      *
-     * @param  string|null  $description
+     * @param  string|null  $description Описание посылки
      * @return array
      */
     public function save(string $description = null): array
@@ -94,7 +94,7 @@ class InternetDocument extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9f43ff1-8512-11ec-8ced-005056b2dbe1 Удаление экспресс-накладной
      *
-     * @param  string|array  $DocumentRefs
+     * @param  string|array  $DocumentRefs Ref или массив Ref ТТН
      * @return array
      */
     public function delete($DocumentRefs): array
@@ -115,8 +115,8 @@ class InternetDocument extends NovaPoshta
      *
      * @deprecated НЕ ДОКУМЕНТИРОВАНО
      *
-     * @param  null|string|Carbon|date  $dateFrom
-     * @param  null|string|Carbon|date  $dateTo
+     * @param  null|string|Carbon|date  $dateFrom Начиная с текущей даты
+     * @param  null|string|Carbon|date  $dateTo До текущей даты
      * @return array
      */
     public function getMoneyTransferDocuments($dateFrom = null, $dateTo = null): array
@@ -141,7 +141,7 @@ class InternetDocument extends NovaPoshta
      *
      * @deprecated НЕ ПРОВЕРЕНО
      *
-     * @param  string|null  $description
+     * @param  string|null  $description Описание
      * @return array
      */
     public function edit(?string $description = null): array
@@ -179,10 +179,10 @@ class InternetDocument extends NovaPoshta
      *
      * @author https://github.com/seriklav/NovaPoshta
      *
-     * @param  string  $CitySender
-     * @param  string  $CityRecipient
-     * @param  string|null  $DateTime
-     * @param  string|null  $ServiceType
+     * @param  string  $CitySender Ref города отправителя
+     * @param  string  $CityRecipient Ref города получателя
+     * @param  string|null  $DateTime Дата ориентировочной отправки
+     * @param  string|null  $ServiceType Тип доставки ('DoorsDoors', 'DoorsWarehouse', 'WarehouseWarehouse', 'WarehouseDoors')
      * @return array
      */
     public function getDocumentDeliveryDate(

@@ -8,7 +8,9 @@ trait Limit
     protected $page;
 
     /**
-     * @param  int  $limit
+     * Установка лимита записей.
+     *
+     * @param  int  $limit Лимит записей
      * @return void
      */
     public function setLimit(int $limit): void
@@ -17,7 +19,9 @@ trait Limit
     }
 
     /**
-     * @param  int  $page
+     * Установка страницы.
+     *
+     * @param  int  $page Номер страницы данных
      * @return void
      */
     public function setPage(int $page): void
@@ -33,12 +37,6 @@ trait Limit
         if ($this->limit) {
             $this->methodProperties['Limit'] = $this->limit;
         }
-
-        // nit: Daan
-        // подумать, нужно ли по умолчанию лимит передавать из конфига
-        // if (! $this->limit) {
-        //     $this->limit = config('novaposhta.page_limit');
-        // }
     }
 
     /**

@@ -41,9 +41,9 @@ class NovaPoshta implements NovaPoshtaInterface
     }
 
     /**
-     * Устанавливаем другой API ключ.
+     * Устанавливаем API токен отличный от значения в конфиге.
      *
-     * @param  string  $api
+     * @param  string  $api API токен
      */
     public function setApi(string $api): void
     {
@@ -51,10 +51,10 @@ class NovaPoshta implements NovaPoshtaInterface
     }
 
     /**
-     * @param  string  $model
-     * @param  string  $calledMethod
-     * @param  array|null  $methodProperties
-     * @param  bool  $auth
+     * @param  string  $model Модель Новой Почты
+     * @param  string  $calledMethod Метод модели
+     * @param  array|null  $methodProperties Тело запроса
+     * @param  bool  $auth Использовать ли аутентификацию токеном или нет
      * @return array
      */
     public function getResponse(string $model, string $calledMethod, ?array $methodProperties, bool $auth = true): array
@@ -71,7 +71,10 @@ class NovaPoshta implements NovaPoshtaInterface
         }
 
         $response = Http::timeout(config('novaposhta.http_response_timeout', 3))
-            ->retry(config('novaposhta.http_retry_max_time', 2), config('novaposhta.http_retry_delay', 200))
+            ->retry(
+                config('novaposhta.http_retry_max_time', 2),
+                config('novaposhta.http_retry_delay', 200)
+            )
             ->withHeaders([
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
@@ -95,7 +98,11 @@ class NovaPoshta implements NovaPoshtaInterface
             $answer = $answer[0];
         }
 
-        if (! isset($answer['success']) || ! isset($answer['data']) || empty($answer['data'])) {
+        if (
+            ! isset($answer['success']) ||
+            ! isset($answer['data']) ||
+            empty($answer['data'])
+        ) {
             /**
              * Что-то не так в ответе.
              */
@@ -124,7 +131,11 @@ class NovaPoshta implements NovaPoshtaInterface
             }
         }
 
-        if (! $info && isset($answer['info']) && $answer['info']) {
+        if (
+            ! $info &&
+            isset($answer['info']) &&
+            $answer['info']
+        ) {
             $info['info'] = $answer['info'];
         }
 
