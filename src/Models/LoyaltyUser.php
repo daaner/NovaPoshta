@@ -10,10 +10,11 @@ class LoyaltyUser extends NovaPoshta
     protected $calledMethod;
     protected $methodProperties = null;
 
-    /**
+    /***
      * Получение данных по бонусной карте.
+     * Работает на 2022-10-16.
      *
-     * @deprecated НЕ ДОКУМЕНТИРОВАНО
+     * @see https://daaner.github.io/NovaPoshta/#/LoyaltyUser?id=getloyaltyinfobyapikey НЕ ДОКУМЕНТИРОВАНО
      *
      * @return array
      */
