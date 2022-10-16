@@ -234,8 +234,8 @@ return [
     'return_note' => 'Возврат посылки',
 
     /*
-    | Формат возврата по умолчанию Cash/NonCash.
+    | Формат возврата по умолчанию Cash/NonCash. (нал / безнал)
     */
-    'return_cash_method' => 'NonCash',
+    'return_cash_method' => 'Cash',
 
 ];
