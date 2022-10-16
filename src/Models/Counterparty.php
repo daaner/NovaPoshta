@@ -22,7 +22,7 @@ class Counterparty extends NovaPoshta
      * @param  string|null  $find  Поиск по названию
      * @return array
      */
-    public function getCounterparties(?string $find): array
+    public function getCounterparties(?string $find = null): array
     {
         $this->calledMethod = 'getCounterparties';
         $this->getPage();
