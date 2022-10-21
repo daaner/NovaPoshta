@@ -10,6 +10,8 @@ trait AdditionalServiceProperty
     protected $RecipientWarehouse;
     protected $RecipientSettlement;
     protected $Number;
+    protected $Customer;
+    protected $RecipientData;
 
     /**
      * @return void
@@ -152,5 +154,56 @@ trait AdditionalServiceProperty
     public function setNumber(string $Number): void
     {
         $this->Number = $Number;
+    }
+
+    /**
+     * @return void
+     */
+    public function getCustomer(): void
+    {
+        $this->methodProperties['Customer'] = $this->Customer ?: 'Sender';
+    }
+
+    /**
+     * Заказчик переадресации (получателю не разрешается изменять данные получателя).
+     *
+     * @param  string  $Customer  тип
+     * @return void
+     */
+    public function setCustomer(string $Customer): void
+    {
+        $this->Customer = $Customer;
+    }
+
+    /**
+     * @return void
+     */
+    public function getRecipientData(): void
+    {
+        if ($this->RecipientData) {
+            if (isset($this->methodProperties['Recipient'])) {
+                $this->methodProperties['Recipient'] = $this->RecipientData['Recipient'];
+            }
+            $this->methodProperties['RecipientContactName'] = $this->RecipientData['RecipientContactName'] ?? '';
+            $this->methodProperties['RecipientPhone'] = $this->RecipientData['RecipientPhone'] ?? '';
+
+            if (isset($this->methodProperties['SenderContactName'])) {
+                $this->methodProperties['SenderContactName'] = $this->RecipientData['SenderContactName'];
+            }
+            if (isset($this->methodProperties['SenderPhone'])) {
+                $this->methodProperties['SenderPhone'] = $this->RecipientData['SenderPhone'];
+            }
+        }
+    }
+
+    /**
+     * Смена получателя. Игнорируется, если выполняет получатель
+     *
+     * @param  array  $RecipientData  тип
+     * @return void
+     */
+    public function changeRecipientData(array $RecipientData): void
+    {
+        $this->RecipientData = $RecipientData;
     }
 }

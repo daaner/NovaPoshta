@@ -126,40 +126,76 @@ class AdditionalService extends NovaPoshta
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/5a64f960-e7fa-11ec-a60f-48df37b921db Возврат на новый адрес отделения
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/175baec3-8f0d-11ec-8ced-005056b2dbe1 Возврат на новый адрес по адресной доставке
      *
-     * @param  string  $ttn  Номер ТТН
+     * @param string $ttn Номер ТТН
+     * @param bool|null $isRedirecting Флаг, что заявка является переадресацией
      * @return array
      */
-    public function save(string $ttn): array
+    public function save(string $ttn, ?bool $isRedirecting = false): array
     {
         $this->calledMethod = 'save';
 
         $this->methodProperties['IntDocNumber'] = $ttn;
-        $this->methodProperties['OrderType'] = 'orderCargoReturn';
+
         $this->getPaymentMethod();
-        $this->getReason();
-        $this->getSubtypeReason();
         $this->getNote();
+
+        /**
+         * Переадресация или возврат
+         */
+        if ($isRedirecting) {
+            $this->methodProperties['OrderType'] = 'orderRedirecting';
+            $this->getPayerType();
+            $this->getCustomer();
+            $this->getServiceType();
+            $this->getRecipientData();
+
+        } else {
+            $this->methodProperties['OrderType'] = 'orderCargoReturn';
+
+            // При возврате нужно указать причину и подтип причины
+            $this->getReason();
+            $this->getSubtypeReason();
+
+            /**
+             * Возврат/переадресация на адрес отправления.
+             */
+            $this->getReturnAddressRef();
+        }
+
+
 
         if (! $this->Note) {
             $this->methodProperties['Note'] = config('novaposhta.return_note');
+
+            if ($isRedirecting) {
+                $this->methodProperties['Note'] = config('novaposhta.redirecting_note');
+            }
         }
 
         /**
-         * Возврат на адрес отправления.
-         */
-        $this->getReturnAddressRef();
-
-        /**
-         * Возврат на новый адрес отделения.
+         * Возврат/переадресация на новый адрес отделения.
          */
         $this->getRecipientWarehouse();
 
         /**
-         * Возврат на новый адрес по адресной доставке.
+         * Возврат/переадресация на новый адрес по адресной доставке.
          */
         $this->getRecipientSettlement();
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
+    /**
+     * Создание заявки на переадресацию.
+     *
+     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/98acb0f6-8f0b-11ec-8ced-005056b2dbe1 Создание заявки на переадресацию
+     *
+     * @param string $ttn Номер ТТН
+     * @return array
+     */
+    public function saveRedirecting(string $ttn): array
+    {
+        return $this->save($ttn, true);
     }
 
     /**

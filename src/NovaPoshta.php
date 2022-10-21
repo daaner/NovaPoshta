@@ -126,7 +126,9 @@ class NovaPoshta implements NovaPoshtaInterface
             if ($answer['errorCodes']) {
                 foreach ($answer['errorCodes'] as $err) {
                     $info['StatusCode'] = $err;
-                    $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.'.$err);
+                }
+                if (isset($answer['errorCodes'][0])) {
+                    $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.'.$answer['errorCodes'][0]);
                 }
             }
         }

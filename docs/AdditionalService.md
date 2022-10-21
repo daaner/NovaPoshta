@@ -11,6 +11,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [x] [Получение списка заявок на возврат](AdditionalService.md#getReturnOrdersList)
 - [x] [Проверка возможности создания заявки на переадресацию отправки](AdditionalService.md#checkPossibilityForRedirecting)
 - [x] [Создание заявки на возврат](AdditionalService.md#save)
+- [x] [Создание заявки на переадресация](AdditionalService.md#saveRedirecting)
 - [x] [Получение списка заявок на переадресацию отправлений](AdditionalService.md#getRedirectionOrdersList)
 
 
@@ -21,6 +22,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [getReturnOrdersList()](#getReturnOrdersList)
 - [checkPossibilityForRedirecting($ttn)](#checkPossibilityForRedirecting)
 - [save($ttn)](#save)
+- [saveRedirecting($ttn)](#saveRedirecting)
 - [getRedirectionOrdersList()](#getRedirectionOrdersList)
 
 ---
@@ -149,6 +151,70 @@ $addition = $np->save($ttn);
 
 dd($addition);
 ```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `saveRedirecting()`
+[Создание](https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/98acb0f6-8f0b-11ec-8ced-005056b2dbe1) заявки на переадресацию посылки.
+
+Алиас для метода `save($ttn, true)`, имеет все те же функции, что и метод `save`
+
+```php
+$np = new AdditionalService;
+$ttn = '206004560074695';
+$np->setApi('...');
+
+// на отделение не из списка отправителя (из справочника отделений)
+$np->setRecipientWarehouse('137db83c-e6a9-11e5-899e-005056887b8d');
+
+// либо на адрес отправителя (адрес для возврата, брать с ответа в методе CheckPossibilityCreateReturn)
+$np->setReturnAddressRef('00000000-0000-0000-0000-000000000000');
+
+// либо на новый адрес, указанный массивом
+$newAddress = [
+    'settlement' => '00000000-0000-0000-0000-000000000000', //Ref населеного пункта
+    'street' => '00000000-0000-0000-0000-000000000000', //Ref улицы
+    'building' => '4', //Номер дома
+    'other' => '2', //Квартира или другое описание
+];
+$np->setRecipientSettlement($newAddress);
+
+$np->setNote('Переадресация заказа'); //Заметка
+
+//
+/**
+ * ========
+ * Отличия от метода save()
+ * ========
+ */
+// Установка плательщика за пересылку (по умолчанию из конфига)
+// Учтите, что для оплаты пересылки отправителем - он должен иметь возможность автоматически списать оплату
+$np->setPayerType('Recipient'); // необязательный параметр
+
+//Заказчик переадресации (получателю не разрешается изменять данные получателя). По умолчанию `Sender`
+$np->setCustomer('Recipient'); // необязательный параметр,
+
+//Тип услуги (DoorsWarehouse, WarehouseWarehouse)
+//Будьте осторожны при пересылке с адресной доставки, указывайте правильно
+$np->setServiceType('WarehouseWarehouse'); //по умолчанию из конфига (service_type)
+
+// Смена получателя. Игнорируется, если оформляет НЕ отправитель
+$recipientData = [
+    'Recipient' => '00000000-0000-0000-0000-000000000000', // можно НЕ указывать, если не знаете
+    'RecipientContactName' => 'Іванов Іван Іванович',
+    'RecipientPhone' => '380681111111',
+];
+$np->changeRecipientData($recipientData);
+
+
+$addition = $np->saveRedirecting($ttn);
+// либо же
+$addition = $np->save($ttn, true);
+
+dd($addition);
+```
+
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)
 ***
 
