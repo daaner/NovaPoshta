@@ -197,7 +197,7 @@ trait AdditionalServiceProperty
     }
 
     /**
-     * Смена получателя. Игнорируется, если выполняет получатель
+     * Смена получателя. Игнорируется, если выполняет получатель.
      *
      * @param  array  $RecipientData  тип
      * @return void
