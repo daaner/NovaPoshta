@@ -181,7 +181,7 @@ trait AdditionalServiceProperty
     public function getRecipientData(): void
     {
         if ($this->RecipientData) {
-            if (isset($this->methodProperties['Recipient'])) {
+            if (isset($this->RecipientData['Recipient'])) {
                 $this->methodProperties['Recipient'] = $this->RecipientData['Recipient'];
             }
             $this->methodProperties['RecipientContactName'] = $this->RecipientData['RecipientContactName'] ?? '';
