@@ -233,13 +233,12 @@ class AdditionalService extends NovaPoshta
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
-
     /**
      * Проверка на изменения в ТТН.
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a886b776-8512-11ec-8ced-005056b2dbe1 Проверка на изменения в накладной
      *
-     * @param string $ttn Номер ТТН
+     * @param  string  $ttn  Номер ТТН
      * @return array
      */
     public function CheckPossibilityChangeEW(string $ttn): array
