@@ -4,6 +4,13 @@ All notable changes to `NovaPoshta` will be documented in this file
 
 ### 2022-10-28
 - [Add] Добавление метода переадресации `CheckPossibilityTermExtension` в `AdditionalService`
+- [Add] Добавление метода проверки изменения `CheckPossibilityChangeEW` в `AdditionalService`
+- [Add] Добавление метода вывода карт оплаты `walletManagement` в `Payment`
+- [Add] Добавление метода вывод API ключей `getApiKeysList` в `CommonGeneral`
+- [Add] Добавление метода `getTrustedDevicesList` в `CommonGeneral`
+- [Add] Добавление метода `deleteTrustedDevice` в `CommonGeneral`
+- [Fix] Исправление методе `prolongateApiKey` в модели `CommonGeneral`
+- [Fix] Отключил импорт локализаций, так как при изменении нужно обновлять, что усложняет пользование
 
 ### 2022-10-21
 - [Add] Добавление метода переадресации `saveRedirecting` или `save($ttn, true)` в `AdditionalService`

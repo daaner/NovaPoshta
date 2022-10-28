@@ -27,6 +27,7 @@ class AdditionalService extends NovaPoshta
     public function CheckPossibilityCreateReturn(string $ttn): array
     {
         $this->calledMethod = 'CheckPossibilityCreateReturn';
+
         $this->methodProperties['Number'] = $ttn;
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
@@ -43,6 +44,7 @@ class AdditionalService extends NovaPoshta
     public function checkPossibilityForRedirecting(string $ttn): array
     {
         $this->calledMethod = 'checkPossibilityForRedirecting';
+
         $this->methodProperties['Number'] = $ttn;
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
@@ -58,6 +60,7 @@ class AdditionalService extends NovaPoshta
     public function getReturnReasons(): array
     {
         $this->calledMethod = 'getReturnReasons';
+
         $this->methodProperties = null;
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
@@ -74,6 +77,7 @@ class AdditionalService extends NovaPoshta
     public function getReturnReasonsSubtypes(?string $ref = null): array
     {
         $this->calledMethod = 'getReturnReasonsSubtypes';
+
         $this->methodProperties['ReasonRef'] = $ref ?: config('novaposhta.ref_return_reasons');
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
@@ -89,6 +93,7 @@ class AdditionalService extends NovaPoshta
     public function getReturnOrdersList(): array
     {
         $this->calledMethod = 'getReturnOrdersList';
+
         $this->methodProperties = null;
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
@@ -104,6 +109,7 @@ class AdditionalService extends NovaPoshta
     public function getRedirectionOrdersList(): array
     {
         $this->calledMethod = 'getRedirectionOrdersList';
+
         $this->methodProperties = null;
 
         $this->addLimit();
@@ -221,6 +227,24 @@ class AdditionalService extends NovaPoshta
     public function CheckPossibilityTermExtension(string $ttn): array
     {
         $this->calledMethod = 'CheckPossibilityTermExtension';
+
+        $this->methodProperties['IntDocNumber'] = $ttn;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
+
+    /**
+     * Проверка на изменения в ТТН.
+     *
+     * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a886b776-8512-11ec-8ced-005056b2dbe1 Проверка на изменения в накладной
+     *
+     * @param string $ttn Номер ТТН
+     * @return array
+     */
+    public function CheckPossibilityChangeEW(string $ttn): array
+    {
+        $this->calledMethod = 'CheckPossibilityChangeEW';
 
         $this->methodProperties['IntDocNumber'] = $ttn;
 

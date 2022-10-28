@@ -9,6 +9,7 @@
   - [Counterparty](Counterparty.md)
   - [InternetDocument](InternetDocument.md)
   - [LoyaltyUser](LoyaltyUser.md)
+  - [Payment](Payment.md)
   - [ScanSheet](ScanSheet.md)
   - [TrackingDocument](TrackingDocument.md)
 

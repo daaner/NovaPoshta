@@ -3,9 +3,12 @@
 namespace Daaner\NovaPoshta\Models;
 
 use Daaner\NovaPoshta\NovaPoshta;
+use Daaner\NovaPoshta\Traits\Limit;
 
 class CommonGeneral extends NovaPoshta
 {
+    use Limit;
+
     protected $model = 'CommonGeneral';
     protected $calledMethod;
     protected $methodProperties = null;
@@ -27,9 +30,7 @@ class CommonGeneral extends NovaPoshta
     /**
      * Продление даты действия API ключа.
      *
-     * @deprecated Не работает, требует JWT авторизацию
-     *
-     * @param  string  $ApiKey  API токен
+     * @param  string  $ApiKey  API ключ
      * @param  int|null  $month  Кол-во месяцев продления
      * @return array
      */
@@ -39,6 +40,48 @@ class CommonGeneral extends NovaPoshta
 
         $this->methodProperties['ApiKey'] = $ApiKey;
         $this->methodProperties['prolongateMounthCount'] = $month;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
+    /**
+     * Получение списка API ключей.
+     *
+     * @return array
+     */
+    public function getApiKeysList(): array
+    {
+        $this->calledMethod = 'getApiKeysList';
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
+    /**
+     * Получение доверенных устройств.
+     *
+     * @return array
+     */
+    public function getTrustedDevicesList(): array
+    {
+        $this->calledMethod = 'getTrustedDevicesList';
+
+        $this->addLimit();
+        $this->getPage();
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
+
+    /**
+     * Удаление доверенного устройства со списка.
+     *
+     * @param string $Ref Ref устройства
+     * @return array
+     */
+    public function deleteTrustedDevice(string $Ref): array
+    {
+        $this->calledMethod = 'deleteTrustedDevice';
+
+        $this->methodProperties['Ref'] = $Ref;
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }

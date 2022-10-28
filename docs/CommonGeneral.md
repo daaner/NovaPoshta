@@ -6,12 +6,18 @@ use Daaner\NovaPoshta\Models\CommonGeneral;
 
 ## Содержание
 - [x] [Перечень ошибок](CommonGeneral.md#getMessageCodeText)
-- [x] [Продление API ключа](CommonGeneral.md#prolongateKey) - не работает
+- [x] [Продление API ключа](CommonGeneral.md#prolongateKey)
+- [x] [Получение списка API ключей](CommonGeneral.md#getApiKeysList)
+- [x] [Получение списка доверенных устройств](CommonGeneral.md#getTrustedDevicesList)
+- [x] [Удаление доверенного устройства из списка](CommonGeneral.md#deleteTrustedDevice)
 
 
 ## Все методы модели
 - [getMessageCodeText()](#getMessageCodeText)
 - [prolongateKey($ApiKey, $month = 12)](#prolongateKey)
+- [getApiKeysList()](#getApiKeysList)
+- [getTrustedDevicesList()](#getTrustedDevicesList)
+- [deleteTrustedDevice($Ref)](#deleteTrustedDevice)
 
 
 ---
@@ -30,12 +36,56 @@ dd($lg);
 
 
 ### `prolongateKey()`
-Данная ф-ция НЕ РАБОТАЕТ, потому как требует авторизацию JWT.
-Возможно в будущем она будет доступна и через API
+Продление действия API ключа.
 
 ```php
 $cg = new CommonGeneral;
-$api = $cg->prolongateKey('c9b*****ffd', 3);
+$api = '3e6****367****bdba****2d87****da';
+$cg->setAPI($api);
+$api = $cg->prolongateKey($api, 3);
+
+dd($api);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `getApiKeysList()`
+Получение списка доступных API ключей
+
+```php
+$cg = new CommonGeneral;
+$cg->setAPI('3e6****367****bdba****2d87****da');
+$api = $cg->getApiKeysList();
+
+dd($api);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `getTrustedDevicesList()`
+Получение списка доверенных устройств
+
+```php
+$cg = new CommonGeneral;
+$cg->setAPI('3e6****367****bdba****2d87****da');
+$api = $cg->getTrustedDevicesList();
+
+dd($api);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `deleteTrustedDevice()`
+Удаление доверенного устройства из списка
+
+```php
+$cg = new CommonGeneral;
+$cg->setAPI('3e6****367****bdba****2d87****da');
+$Ref = '12345sfdfsd';
+$api = $cg->deleteTrustedDevice($Ref);
 
 dd($api);
 ```

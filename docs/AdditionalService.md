@@ -14,6 +14,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [x] [Создание заявки на переадресация](AdditionalService.md#saveRedirecting)
 - [x] [Получение списка заявок на переадресацию отправлений](AdditionalService.md#getRedirectionOrdersList)
 - [x] [Проверка на продление хранения](AdditionalService.md#CheckPossibilityTermExtension)
+- [x] [Проверка на изменение в ТТН](AdditionalService.md#CheckPossibilityChangeEW)
 
 
 ## Все методы модели
@@ -26,6 +27,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [saveRedirecting($ttn)](#saveRedirecting)
 - [getRedirectionOrdersList()](#getRedirectionOrdersList)
 - [CheckPossibilityTermExtension($ttn)](#CheckPossibilityTermExtension)
+- [CheckPossibilityChangeEW($ttn)](#CheckPossibilityChangeEW)
 
 ---
 
@@ -278,6 +280,21 @@ $np = new AdditionalService;
 $np->setApi('...');
 $ttn = '20450600000001';
 $term = $np->CheckPossibilityTermExtension($ttn);
+
+dd($term);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `CheckPossibilityChangeEW()`
+[Проверка](https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a886b776-8512-11ec-8ced-005056b2dbe1) на изменения в ТТН
+
+```php
+$np = new AdditionalService;
+$np->setApi('...');
+$ttn = '20450600000001';
+$term = $np->CheckPossibilityChangeEW($ttn);
 
 dd($term);
 ```
