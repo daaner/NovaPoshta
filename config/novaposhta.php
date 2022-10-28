@@ -5,13 +5,13 @@ return [
     // GENERAL
     /*
      | Base URL NovaPoshta
-     | @see https://devcenter.novaposhta.ua/
+     | @see https://developers.novaposhta.ua/
      */
     'base_uri' => 'https://api.novaposhta.ua/v2.0/',
 
     /*
      | End Point
-     | @see https://devcenter.novaposhta.ua/
+     | @see https://developers.novaposhta.ua/
      |
      | Supported: "json", "xml" (XML - еще не поддерживается и вряд ли будет)
      */
@@ -83,7 +83,7 @@ return [
     /*
     | RecipientType по умолчанию
     | Если получатель юридическое лицо - нужно указывать дополнительные данные.
-    | @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/56261f14a0fe4f1e503fe187
+    | @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/f74a0918-8f18-11ec-8ced-005056b2dbe1
     |
     | 'PrivatePerson', 'Organization'
     */
@@ -130,7 +130,7 @@ return [
     /*
     | CargoType для BackwardDeliveryData по умолчанию: 'Money' - деньги
     | Для некоторых типов нужны дополнительные параметры (не реализовано). Смотрите документацию.
-    | @see https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/575fe852a0fe4f0aa0754760
+    | @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/c7c8aaf5-8f40-11ec-8ced-005056b2dbe1
     |
     | 'Money', 'CreditDocuments', 'SignedDocuments', 'Trays' (пока не доступна в НП),
     | 'Documents', 'Other'

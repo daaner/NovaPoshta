@@ -65,7 +65,9 @@ dd($agent);
 
 ### `save()`
 [Создать](https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/0ae5dd75-8a5f-11ec-8ced-005056b2dbe1) Контрагента
+
 [Создать](https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/bc3c44c7-8a8a-11ec-8ced-005056b2dbe1) Контрагента с типом (юридическое лицо) или организацию
+
 [Создать](https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/b0fdf818-8a8e-11ec-8ced-005056b2dbe1) Контрагента с типом третьего лица (данные подтягиваются из информации кода ЕДРПОУ)
 
 ```php

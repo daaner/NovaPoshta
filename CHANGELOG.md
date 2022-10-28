@@ -2,9 +2,12 @@
 
 All notable changes to `NovaPoshta` will be documented in this file
 
+### 2022-10-28
+- [Add] Добавление метода переадресации `CheckPossibilityTermExtension` в `AdditionalService`
+
 ### 2022-10-21
 - [Add] Добавление метода переадресации `saveRedirecting` или `save($ttn, true)` в `AdditionalService`
-- 
+
 ### 2022-10-14
 - [Add] Добавление метода `delete` в `AdditionalService`
 

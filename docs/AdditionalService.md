@@ -13,6 +13,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [x] [Создание заявки на возврат](AdditionalService.md#save)
 - [x] [Создание заявки на переадресация](AdditionalService.md#saveRedirecting)
 - [x] [Получение списка заявок на переадресацию отправлений](AdditionalService.md#getRedirectionOrdersList)
+- [x] [Проверка на продление хранения](AdditionalService.md#CheckPossibilityTermExtension)
 
 
 ## Все методы модели
@@ -24,6 +25,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [save($ttn)](#save)
 - [saveRedirecting($ttn)](#saveRedirecting)
 - [getRedirectionOrdersList()](#getRedirectionOrdersList)
+- [CheckPossibilityTermExtension($ttn)](#CheckPossibilityTermExtension)
 
 ---
 
@@ -259,6 +261,25 @@ $ref = '00000000-0000-0000-0000-000000000000';
 $addition = $np->delete($Ref);
 
 dd($addition);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `CheckPossibilityTermExtension()`
+Проверка на продление хранения
+
+__НЕ ДОКУМЕНТИРОВАНО__
+
+Опытным путем определено, что услуга не доступна у юр.лиц, у которых подключен автовозврат.
+
+```php
+$np = new AdditionalService;
+$np->setApi('...');
+$ttn = '20450600000001';
+$term = $np->CheckPossibilityTermExtension($ttn);
+
+dd($term);
 ```
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)
 ***

@@ -211,4 +211,18 @@ class AdditionalService extends NovaPoshta
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
+
+    /**
+     * Проверка продления хранения ТТН.
+     *
+     * @param string $ttn Номер ТТН
+     * @return array
+     */
+    public function CheckPossibilityTermExtension(string $ttn): array
+    {
+        $this->calledMethod = 'CheckPossibilityTermExtension';
+
+        $this->methodProperties['IntDocNumber'] = $ttn;
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+    }
 }
