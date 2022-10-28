@@ -74,7 +74,7 @@ class CommonGeneral extends NovaPoshta
     /**
      * Удаление доверенного устройства со списка.
      *
-     * @param string $Ref Ref устройства
+     * @param  string  $Ref  Ref устройства
      * @return array
      */
     public function deleteTrustedDevice(string $Ref): array
