@@ -85,7 +85,6 @@ class AdditionalService extends NovaPoshta
      * Получение списка заявок на возврат.
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7cb69ee-8512-11ec-8ced-005056b2dbe1 Список заявок на возврат
-     *
      * @since 2022-10-29 Проверено
      *
      * @return array
@@ -150,7 +149,7 @@ class AdditionalService extends NovaPoshta
         /**
          * ========================
          * Тип оформления
-         * ========================
+         * ========================.
          */
         // Обычный возврат
         if ($ownerDocumentType == 'orderCargoReturn') {
@@ -181,9 +180,6 @@ class AdditionalService extends NovaPoshta
                 $this->methodProperties['Note'] = config('novaposhta.return_note');
             }
         }
-
-
-
 
         // Доп поля, если переадресация / возврат
         if ($ownerDocumentType == 'orderCargoReturn' || $ownerDocumentType == 'orderRedirecting') {
@@ -218,7 +214,6 @@ class AdditionalService extends NovaPoshta
      * Удаление заявки на возврат, заявку об изменении данных или заявку переадресации.
      *
      * @since 2022-10-29 Проверено
-     *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a85bb34b-8512-11ec-8ced-005056b2dbe1 Удаление заявки
      *
      * @param  string  $Ref  Ref заявки
@@ -264,6 +259,4 @@ class AdditionalService extends NovaPoshta
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
-
-
 }
