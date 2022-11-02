@@ -1,4 +1,4 @@
-# Payment
+# Payment - Платежные данные
 
 ```php
 use Daaner\NovaPoshta\Models\Payment;

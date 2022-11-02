@@ -11,8 +11,9 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [x] [Получение списка заявок на возврат](AdditionalService.md#getReturnOrdersList)
 - [x] [Проверка возможности создания заявки на переадресацию отправки](AdditionalService.md#checkPossibilityForRedirecting)
 - [x] [Создание заявки на возврат](AdditionalService.md#save)
-- [x] [Создание заявки на переадресация](AdditionalService.md#saveRedirecting)
+- [x] [Создание заявки на переадресацию](AdditionalService.md#saveRedirecting)
 - [x] [Получение списка заявок на переадресацию отправлений](AdditionalService.md#getRedirectionOrdersList)
+- [x] [Удаление заявки на услуги](AdditionalService.md#delete)
 - [x] [Проверка на продление хранения](AdditionalService.md#CheckPossibilityTermExtension)
 - [x] [Проверка на изменение в ТТН](AdditionalService.md#CheckPossibilityChangeEW)
 
@@ -23,7 +24,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [getReturnReasonsSubtypes($ref = null)](#getReturnReasonsSubtypes)
 - [getReturnOrdersList()](#getReturnOrdersList)
 - [checkPossibilityForRedirecting($ttn)](#checkPossibilityForRedirecting)
-- [save($ttn)](#save)
+- [save($ttn, $ownerDocumentType = null)](#save)
 - [saveRedirecting($ttn)](#saveRedirecting)
 - [getRedirectionOrdersList()](#getRedirectionOrdersList)
 - [CheckPossibilityTermExtension($ttn)](#CheckPossibilityTermExtension)
@@ -89,6 +90,12 @@ dd($addition);
 ```php
 $np = new AdditionalService;
 
+//НЕОБЯЗАТЕЛЬНЫЕ параметры
+$np->setLimit(10);
+$np->setPage(1);
+$serv->setDateBegin('dd.mm.yyyy');
+$serv->setDateEnd('dd.mm.yyyy');
+
 $addition = $np->getReturnOrdersList();
 
 dd($addition);
@@ -152,6 +159,8 @@ $np->setSubtypeReason('00000000-0000-0000-0000-000000000000'); //Ref подти�
 $np->setNote('Возврат заказа'); //Заметка возврата
 
 $addition = $np->save($ttn);
+// либо
+$addition = $np->save($ttn, 'orderCargoReturn');
 
 dd($addition);
 ```
@@ -162,7 +171,7 @@ dd($addition);
 ### `saveRedirecting()`
 [Создание](https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/98acb0f6-8f0b-11ec-8ced-005056b2dbe1) заявки на переадресацию посылки.
 
-Алиас для метода `save($ttn, true)`, имеет все те же функции, что и метод `save`
+Алиас для метода `save($ttn, 'orderRedirecting')`, имеет все те же функции, что и метод `save`
 
 ```php
 $np = new AdditionalService;
@@ -214,7 +223,7 @@ $np->changeRecipientData($recipientData);
 
 $addition = $np->saveRedirecting($ttn);
 // либо же
-$addition = $np->save($ttn, true);
+$addition = $np->save($ttn, 'orderRedirecting');
 
 dd($addition);
 ```
@@ -251,9 +260,11 @@ dd($addition);
 [Удаление](https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a85bb34b-8512-11ec-8ced-005056b2dbe1) заявки
 Метод "delete" позволяет удалить:
 
-- заявку на возврат;
-- заявку об изменении данных (можно удалить заявку только со статусом «Принято»);
-– заявку переадресации.
+- заявку на возврат
+
+- заявку об изменении данных (можно удалить заявку только со статусом «Принято»)
+
+– заявку переадресации
 
 
 ```php

@@ -12,7 +12,7 @@ class AdditionalService extends NovaPoshta
 {
     protected $model = 'AdditionalService';
     protected $calledMethod;
-    protected $methodProperties = [];
+    protected $methodProperties = null;
 
     use InternetDocumentProperty, AdditionalServiceProperty, Limit, DateTimes;
 
@@ -61,8 +61,6 @@ class AdditionalService extends NovaPoshta
     {
         $this->calledMethod = 'getReturnReasons';
 
-        $this->methodProperties = null;
-
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
@@ -88,13 +86,17 @@ class AdditionalService extends NovaPoshta
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7cb69ee-8512-11ec-8ced-005056b2dbe1 Список заявок на возврат
      *
+     * @since 2022-10-29 Проверено
+     *
      * @return array
      */
     public function getReturnOrdersList(): array
     {
         $this->calledMethod = 'getReturnOrdersList';
 
-        $this->methodProperties = null;
+        $this->addLimit();
+        $this->getPage();
+        $this->getDateBeginEnd();
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
@@ -133,10 +135,10 @@ class AdditionalService extends NovaPoshta
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/175baec3-8f0d-11ec-8ced-005056b2dbe1 Возврат на новый адрес по адресной доставке
      *
      * @param  string  $ttn  Номер ТТН
-     * @param  bool|null  $isRedirecting  Флаг, что заявка является переадресацией
+     * @param  string|null  $ownerDocumentType  Тип документа
      * @return array
      */
-    public function save(string $ttn, ?bool $isRedirecting = false): array
+    public function save(string $ttn, ?string $ownerDocumentType = 'orderCargoReturn'): array
     {
         $this->calledMethod = 'save';
 
@@ -146,17 +148,13 @@ class AdditionalService extends NovaPoshta
         $this->getNote();
 
         /**
-         * Переадресация или возврат
+         * ========================
+         * Тип оформления
+         * ========================
          */
-        if ($isRedirecting) {
-            $this->methodProperties['OrderType'] = 'orderRedirecting';
-            $this->getPayerType();
-            $this->getCustomer();
-            $this->getServiceType();
-            $this->getRecipientData();
-        } else {
+        // Обычный возврат
+        if ($ownerDocumentType == 'orderCargoReturn') {
             $this->methodProperties['OrderType'] = 'orderCargoReturn';
-
             // При возврате нужно указать причину и подтип причины
             $this->getReason();
             $this->getSubtypeReason();
@@ -165,25 +163,40 @@ class AdditionalService extends NovaPoshta
              * Возврат/переадресация на адрес отправления.
              */
             $this->getReturnAddressRef();
-        }
 
-        if (! $this->Note) {
-            $this->methodProperties['Note'] = config('novaposhta.return_note');
-
-            if ($isRedirecting) {
+            if (! $this->Note) {
                 $this->methodProperties['Note'] = config('novaposhta.redirecting_note');
             }
         }
 
-        /**
-         * Возврат/переадресация на новый адрес отделения.
-         */
-        $this->getRecipientWarehouse();
+        // Переадресация
+        if ($ownerDocumentType == 'orderRedirecting') {
+            $this->methodProperties['OrderType'] = 'orderRedirecting';
+            $this->getPayerType();
+            $this->getCustomer();
+            $this->getServiceType();
+            $this->getRecipientData();
 
-        /**
-         * Возврат/переадресация на новый адрес по адресной доставке.
-         */
-        $this->getRecipientSettlement();
+            if (! $this->Note) {
+                $this->methodProperties['Note'] = config('novaposhta.return_note');
+            }
+        }
+
+
+
+
+        // Доп поля, если переадресация / возврат
+        if ($ownerDocumentType == 'orderCargoReturn' || $ownerDocumentType == 'orderRedirecting') {
+            /**
+             * Возврат/переадресация на новый адрес отделения.
+             */
+            $this->getRecipientWarehouse();
+
+            /**
+             * Возврат/переадресация на новый адрес по адресной доставке.
+             */
+            $this->getRecipientSettlement();
+        }
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
@@ -198,11 +211,13 @@ class AdditionalService extends NovaPoshta
      */
     public function saveRedirecting(string $ttn): array
     {
-        return $this->save($ttn, true);
+        return $this->save($ttn, 'orderRedirecting');
     }
 
     /**
      * Удаление заявки на возврат, заявку об изменении данных или заявку переадресации.
+     *
+     * @since 2022-10-29 Проверено
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a85bb34b-8512-11ec-8ced-005056b2dbe1 Удаление заявки
      *
@@ -249,4 +264,6 @@ class AdditionalService extends NovaPoshta
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
+
+
 }
