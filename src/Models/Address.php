@@ -20,7 +20,6 @@ class Address extends NovaPoshta
      * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a20ee6e4-8512-11ec-8ced-005056b2dbe1 Получение списка областей
-     *
      * @since 2022-11-03
      *
      * @return array
@@ -38,7 +37,6 @@ class Address extends NovaPoshta
      * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1e6f0a7-8512-11ec-8ced-005056b2dbe1 Получение списка городов
-     *
      * @since 2022-11-03
      *
      * @param  string|null  $find  Строка или Ref поиска
@@ -53,7 +51,7 @@ class Address extends NovaPoshta
         $this->getPage();
 
         /**
-         * Если значения пустые - вставляем насильно
+         * Если значения пустые - вставляем насильно.
          */
         if (! $this->limit) {
             $this->methodProperties['Limit'] = config('novaposhta.page_limit');
@@ -75,7 +73,6 @@ class Address extends NovaPoshta
      * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2322f38-8512-11ec-8ced-005056b2dbe1 Получение списка отделений и почтоматов в городах
-     *
      * @since 2022-11-03
      *
      * @param  string|null  $cityRef  Строка или Ref поиска
@@ -91,7 +88,7 @@ class Address extends NovaPoshta
         $this->getTypeOfWarehouseRef();
 
         /**
-         * Если значения пустые - вставляем насильно
+         * Если значения пустые - вставляем насильно.
          */
         if (! $this->limit) {
             $this->methodProperties['Limit'] = config('novaposhta.page_limit');
@@ -113,7 +110,6 @@ class Address extends NovaPoshta
      * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2587b53-8512-11ec-8ced-005056b2dbe1 Получение типов отделений
-     *
      * @since 2022-11-03
      *
      * @return array
@@ -151,7 +147,6 @@ class Address extends NovaPoshta
      * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a0eb83ab-8512-11ec-8ced-005056b2dbe1 Поиск населенных пунктов
-     *
      * @since 2022-11-03
      *
      * @param  string  $search  Строка поиска
@@ -173,7 +168,6 @@ class Address extends NovaPoshta
      * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1329635-8512-11ec-8ced-005056b2dbe1 Поиск улиц в населенных пунктах
-     *
      * @since 2022-11-03
      *
      * @param  string  $ref  Ref
@@ -196,7 +190,6 @@ class Address extends NovaPoshta
      * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a27c20d7-8512-11ec-8ced-005056b2dbe1 Получение улиц в городе
-     *
      * @since 2022-11-03
      *
      * @param  string  $cityRef  Ref города
@@ -222,7 +215,6 @@ class Address extends NovaPoshta
      * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1c42723-8512-11ec-8ced-005056b2dbe1 Справочник населенных пунктов
-     *
      * @since 2022-11-03
      *
      * @param  string|null  $find  Строка поиска
@@ -260,7 +252,6 @@ class Address extends NovaPoshta
      * Создать адрес контрагента (отправитель / получатель).
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a155d0d9-8512-11ec-8ced-005056b2dbe1 Создать адрес контрагента
-     *
      * @deprecated НЕ СДЕЛАНО
      *
      * TODO Не сделано
@@ -278,7 +269,6 @@ class Address extends NovaPoshta
      * Редактировать адрес контрагента (отправитель / получатель).
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a19ba934-8512-11ec-8ced-005056b2dbe1 Редактировать адрес контрагента
-     *
      * @deprecated НЕ СДЕЛАНО
      *
      * TODO Не сделано
@@ -296,7 +286,6 @@ class Address extends NovaPoshta
      * Удалить адрес контрагента (отправитель / получатель).
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a177069a-8512-11ec-8ced-005056b2dbe1 Удалить адрес контрагента
-     *
      * @deprecated НЕ СДЕЛАНО
      *
      * TODO Не сделано

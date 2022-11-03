@@ -18,7 +18,6 @@ class Counterparty extends NovaPoshta
      * Загрузить список контрагентов отправителей / получателей / третье лицо.
      *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a37a06df-8512-11ec-8ced-005056b2dbe1 Загрузить список контрагентов
-     *
      * @since 2022-11-03
      *
      * @param  string|null  $find  Поиск по названию
