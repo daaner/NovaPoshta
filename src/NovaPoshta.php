@@ -16,6 +16,9 @@ class NovaPoshta implements NovaPoshtaInterface
     protected $url;
     protected $dev;
 
+    protected $return;
+
+
     /**
      * NovaPoshta constructor main settings.
      */
@@ -26,6 +29,12 @@ class NovaPoshta implements NovaPoshtaInterface
         $this->dev = config('novaposhta.dev');
         $this->getApi();
         $this->url = $this->baseUri.$this->point;
+
+        $this->return = [
+            'success' => false,
+            'result' => null,
+            'info' => [],
+        ];
     }
 
     /**
@@ -68,6 +77,7 @@ class NovaPoshta implements NovaPoshtaInterface
     ): array {
         $url = $this->url.'/'.$model.'/'.$calledMethod;
 
+        $body= [];
         $body['modelName'] = $model;
         $body['calledMethod'] = $calledMethod;
         $body['methodProperties'] = $methodProperties;
@@ -87,15 +97,27 @@ class NovaPoshta implements NovaPoshtaInterface
             ])
             ->post($url, $body);
 
-        if ($response->failed()) {
-            return [
-                'success' => false,
-                'result' => null,
-                'info' => trans('novaposhta::novaposhta.error_data'),
-            ];
+        if ($response->failed() || $response->json() === null) {
+
+            $this->return['info']['error'] = trans('novaposhta::novaposhta.error_data');
+
+            if ($this->dev) {
+                $this->development($model, $calledMethod, $auth, $methodProperties, '');
+            }
+
+            return $this->return;
         }
 
         $answer = $response->json();
+
+        /**
+         * Development
+         */
+        if ($this->dev) {
+            $this->development($model, $calledMethod, $auth, $methodProperties, $answer);
+        }
+
+        // TODO Возможно, исправлено
         if ($auth === false && isset($answer[0])) {
             /**
              * Костыль для Новой Почты.
@@ -104,25 +126,32 @@ class NovaPoshta implements NovaPoshtaInterface
             $answer = $answer[0];
         }
 
-        if (
-            ! isset($answer['success']) ||
-            ! isset($answer['data']) ||
-            empty($answer['data'])
-        ) {
-            /**
-             * Что-то не так в ответе.
-             */
-            $success = false;
-            $result = null;
-        } else {
-            $success = $answer['success'];
-            $result = $answer['data'];
+        if (isset($answer['success'])) {
+            $this->return['success'] = $answer['success'];
+        }
+
+        if (isset($answer['data'])) {
+            $this->return['result'] = $answer['data'];
         }
 
         /**
-         * Ошибки, либо уведомления.
+         * Формирование info
          */
+        $this->return['info'] = $this->addInfo($answer);
+
+        return $this->return;
+    }
+
+    /**
+     * Формирование информации.
+     * Ошибки, уведомления.
+     *
+     * @param mixed $answer Ответ от НП
+     */
+    public function addInfo($answer): array
+    {
         $info = [];
+
         if (isset($answer['warnings']) && $answer['warnings']) {
             $info['warnings'] = $answer['warnings'];
         }
@@ -139,39 +168,44 @@ class NovaPoshta implements NovaPoshtaInterface
             }
         }
 
-        if (
-            ! $info &&
-            isset($answer['info']) &&
-            $answer['info']
-        ) {
+        if (empty($info) && isset($answer['info']) && $answer['info']) {
             $info['info'] = $answer['info'];
         }
 
-        $return = [
-            'success' => $success,
-            'result' => $result,
-            'info' => $info,
-        ];
+        return $info;
+    }
 
-        if ($this->dev) {
-            /**
-             * Test and Dev.
-             */
-            Log::debug('= = = = = = = = = = = = = = = = = = = =');
-            Log::debug($model.' / '.$calledMethod.' // apiKey: '.$auth);
-            Log::debug('--------------------');
 
-            if (! empty($methodProperties)) {
-                try {
-                    Log::notice(json_encode($methodProperties));
-                } catch (Exception $e) {
-                    Log::notice('method json_encode error');
-                }
+    /**
+     * Логирование запроса.
+     *
+     * @param string $model Модель
+     * @param string $calledMethod Метод
+     * @param bool $auth Аутентификация
+     * @param mixed $methodProperties Тело запроса
+     * @param mixed $answer Ответ
+     * @return void
+     */
+    public function development(
+        string $model,
+        string $calledMethod,
+        bool $auth,
+        $methodProperties,
+        $answer
+    ): void
+    {
+        Log::debug('= = = = = = = = = = = = = = = = = = = =');
+        Log::debug($model.' / '.$calledMethod.' // apiKey: '. (int) $auth);
+        Log::debug('--------------------');
+
+        if (! empty($methodProperties)) {
+            try {
+                Log::notice(json_encode($methodProperties));
+            } catch (Exception $e) {
+                Log::notice('method json_encode error');
             }
-
-            $return['dev'] = $answer;
         }
 
-        return $return;
+        $this->return['dev'] = $answer;
     }
 }

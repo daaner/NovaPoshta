@@ -5,6 +5,7 @@ All notable changes to `NovaPoshta` will be documented in this file
 ### 2022-11-03
 - [Fix] Fix part returns
 - [Fix] Rename `addLimit()` to `getLimit()`
+- [Refactor] Rebuild `getResponse()`
 
 ### 2022-11-02
 - [Fix] Немного поменял второй параметр в методе `save` в `AdditionalService` (Ломает обратку)

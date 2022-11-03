@@ -135,6 +135,7 @@ dd($warehouses);
 $adr = new Address;
 //работает ф-ция лимита, но можно и без нее, setPage - НЕ применяется
 $adr->setLimit(20);
+
 $settlements = $adr->searchSettlements('Дне');
 
 dd($settlements);
@@ -163,7 +164,7 @@ dd($streets);
 
 ```php
 $adr = new Address;
-//работает ф-ция лимита и страниц, но можно и без них
+
 $adr->setLimit(2);
 $adr->setPage(1);
 
@@ -182,22 +183,19 @@ dd($streets);
 
 ```php
 $adr = new Address;
-//Работает ф-ция лимита и страниц, но можно и без них
-//однако, наблюдается баг. При использовании лимита, общее кол-во записей приравнивается ему
-//для получения правильного общего числа записей используйте значение 150 (по умолчанию)
-//значение более 300 - вызывает 500 ошибку при запросе на сервер Новой Почты
-$adr->setLimit(5);
+//насильно работает ф-ция лимита в 150 (setLimit - НЕ применяется)
+
 $adr->setPage(3);
 
-//фильтрации (не обязательные)
-$adr->filterAreaRef('dcaae4e5-4b33-11e4-ab6d-005056801329');
-$adr->filterRegionRef('e4b1481d-4b33-11e4-ab6d-005056801329');
-$adr->filterRef('0e451e40-4b3a-11e4-ab6d-005056801329');
-$adr->filterWarehouse();
+// Можно использовать фильтры (не обязательные)
+$adr->filterAreaRef('dcaadf02-4b33-11e4-ab6d-005056801329'); //по области
+$adr->filterRegionRef('dcaadf02-4b33-11e4-ab6d-005056801329'); //по региону
+$adr->filterWarehouse(); //по наличию отделений в населенном пункте
+$adr->filterRef('e71abb60-4b33-11e4-ab6d-005056801329'); //по Ref населенного пункта
 
 $settlements = $adr->getSettlements();
 //или
-$settlements = $adr->getSettlements('кан');
+$settlements = $adr->getSettlements('днепр');
 
 dd($settlements);
 ```

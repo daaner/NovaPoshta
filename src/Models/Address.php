@@ -17,8 +17,11 @@ class Address extends NovaPoshta
 
     /**
      * Получение списка областей.
+     * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a20ee6e4-8512-11ec-8ced-005056b2dbe1 Получение списка областей
+     *
+     * @since 2022-11-03
      *
      * @return array
      */
@@ -27,13 +30,16 @@ class Address extends NovaPoshta
         $this->calledMethod = 'getAreas';
         $this->methodProperties = null;
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
     }
 
     /**
      * Получение списка городов.
+     * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1e6f0a7-8512-11ec-8ced-005056b2dbe1 Получение списка городов
+     *
+     * @since 2022-11-03
      *
      * @param  string|null  $find  Строка или Ref поиска
      * @param  bool|null  $searchByString  Поиск по Ref = false или по строке
@@ -42,8 +48,16 @@ class Address extends NovaPoshta
     public function getCities(?string $find = null, ?bool $searchByString = true): array
     {
         $this->calledMethod = 'getCities';
+
         $this->getLimit();
         $this->getPage();
+
+        /**
+         * Если значения пустые - вставляем насильно
+         */
+        if (! $this->limit) {
+            $this->methodProperties['Limit'] = config('novaposhta.page_limit');
+        }
 
         if ($find) {
             if ($searchByString) {
@@ -53,13 +67,16 @@ class Address extends NovaPoshta
             }
         }
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
     }
 
     /**
      * Получение списка отделений и почтоматов в городах.
+     * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2322f38-8512-11ec-8ced-005056b2dbe1 Получение списка отделений и почтоматов в городах
+     *
+     * @since 2022-11-03
      *
      * @param  string|null  $cityRef  Строка или Ref поиска
      * @param  bool|null  $searchByString  Поиск по Ref = false или по строке
@@ -68,9 +85,17 @@ class Address extends NovaPoshta
     public function getWarehouses(?string $cityRef = null, ?bool $searchByString = true): array
     {
         $this->calledMethod = 'getWarehouses';
+
         $this->getLimit();
         $this->getPage();
         $this->getTypeOfWarehouseRef();
+
+        /**
+         * Если значения пустые - вставляем насильно
+         */
+        if (! $this->limit) {
+            $this->methodProperties['Limit'] = config('novaposhta.page_limit');
+        }
 
         if ($cityRef) {
             if ($searchByString) {
@@ -80,13 +105,16 @@ class Address extends NovaPoshta
             }
         }
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
     }
 
     /**
      * Получение типов отделений.
+     * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2587b53-8512-11ec-8ced-005056b2dbe1 Получение типов отделений
+     *
+     * @since 2022-11-03
      *
      * @return array
      */
@@ -95,13 +123,14 @@ class Address extends NovaPoshta
         $this->calledMethod = 'getWarehouseTypes';
         $this->methodProperties = null;
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
     }
 
     /**
      * Получение списка отделений в населенном пункте.
+     * Работает без авторизации.
      *
-     * @deprecated НЕ ДОКУМЕНТИРОВАНО
+     * @since 2022-11-03 НЕ ДОКУМЕНТИРОВАНО
      *
      * @param  string  $settlementRef  Ref населенного пункта
      * @return array
@@ -113,13 +142,17 @@ class Address extends NovaPoshta
 
         $this->methodProperties['SettlementRef'] = $settlementRef;
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
     }
 
     /**
      * Поиск населенных пунктов из справочника Settlements.
+     * Не стандартная выдача ответа!!!
+     * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a0eb83ab-8512-11ec-8ced-005056b2dbe1 Поиск населенных пунктов
+     *
+     * @since 2022-11-03
      *
      * @param  string  $search  Строка поиска
      * @return array
@@ -128,17 +161,20 @@ class Address extends NovaPoshta
     {
         $this->calledMethod = 'searchSettlements';
         $this->getLimit();
-        $this->getPage();
 
         $this->methodProperties['CityName'] = $search;
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
     }
 
     /**
      * Поиск улиц в населенных пунктах.
+     * Не стандартная выдача ответа!!!
+     * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1329635-8512-11ec-8ced-005056b2dbe1 Поиск улиц в населенных пунктах
+     *
+     * @since 2022-11-03
      *
      * @param  string  $ref  Ref
      * @param  string  $street  Поиск улицы (минимум 2 буквы)
@@ -152,13 +188,42 @@ class Address extends NovaPoshta
         $this->methodProperties['SettlementRef'] = $ref;
         $this->methodProperties['StreetName'] = $street;
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
+    }
+
+    /**
+     * Получение улиц в городе по CityRef.
+     * Работает без авторизации.
+     *
+     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a27c20d7-8512-11ec-8ced-005056b2dbe1 Получение улиц в городе
+     *
+     * @since 2022-11-03
+     *
+     * @param  string  $cityRef  Ref города
+     * @param  string|null  $find  Строка поиска
+     * @return array
+     */
+    public function getStreet(string $cityRef, ?string $find = null): array
+    {
+        $this->calledMethod = 'getStreet';
+        $this->getLimit();
+        $this->getPage();
+
+        $this->methodProperties['CityRef'] = $cityRef;
+        if ($find) {
+            $this->methodProperties['FindByString'] = $find;
+        }
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
     }
 
     /**
      * Справочник населенных пунктов Украины.
+     * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1c42723-8512-11ec-8ced-005056b2dbe1 Справочник населенных пунктов
+     *
+     * @since 2022-11-03
      *
      * @param  string|null  $find  Строка поиска
      * @return array
@@ -166,7 +231,6 @@ class Address extends NovaPoshta
     public function getSettlements(?string $find = null): array
     {
         $this->calledMethod = 'getSettlements';
-        $this->methodProperties = null;
 
         /**
          * TODO Лимит установлен хардкорно
@@ -189,36 +253,14 @@ class Address extends NovaPoshta
             $this->methodProperties['FindByString'] = $find;
         }
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
-    }
-
-    /**
-     * Получение улиц в городе по CityRef.
-     *
-     * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a27c20d7-8512-11ec-8ced-005056b2dbe1 Получение улиц в городе
-     *
-     * @param  string  $cityRef  Ref города
-     * @param  string|null  $find  Строка поиска
-     * @return array
-     */
-    public function getStreet(string $cityRef, ?string $find = null): array
-    {
-        $this->calledMethod = 'getStreet';
-        $this->getLimit();
-        $this->getPage();
-
-        $this->methodProperties['CityRef'] = $cityRef;
-        if ($find) {
-            $this->methodProperties['FindByString'] = $find;
-        }
-
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
     }
 
     /**
      * Создать адрес контрагента (отправитель / получатель).
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a155d0d9-8512-11ec-8ced-005056b2dbe1 Создать адрес контрагента
+     *
      * @deprecated НЕ СДЕЛАНО
      *
      * TODO Не сделано
@@ -236,6 +278,7 @@ class Address extends NovaPoshta
      * Редактировать адрес контрагента (отправитель / получатель).
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a19ba934-8512-11ec-8ced-005056b2dbe1 Редактировать адрес контрагента
+     *
      * @deprecated НЕ СДЕЛАНО
      *
      * TODO Не сделано
@@ -253,6 +296,7 @@ class Address extends NovaPoshta
      * Удалить адрес контрагента (отправитель / получатель).
      *
      * @see https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a177069a-8512-11ec-8ced-005056b2dbe1 Удалить адрес контрагента
+     *
      * @deprecated НЕ СДЕЛАНО
      *
      * TODO Не сделано
