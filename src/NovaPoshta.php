@@ -65,14 +65,14 @@ class NovaPoshta implements NovaPoshtaInterface
      * @param  string  $model  Модель Новой Почты
      * @param  string  $calledMethod  Метод модели
      * @param  array|null  $methodProperties  Тело запроса
-     * @param  bool|null  $auth  Использовать ли аутентификацию токеном или нет
+     * @param  bool  $auth  Использовать ли аутентификацию токеном или нет
      * @return array
      */
     public function getResponse(
         string $model,
         string $calledMethod,
         ?array $methodProperties,
-        ?bool $auth = true
+        bool $auth = true
     ): array {
         $url = $this->url.'/'.$model.'/'.$calledMethod;
 
