@@ -2,7 +2,6 @@
 
 namespace Daaner\NovaPoshta\Traits;
 
-
 trait InternetDocumentProperty
 {
     protected $Ref;
@@ -20,7 +19,7 @@ trait InternetDocumentProperty
     /**
      * Устанавливаем значение Ref.
      *
-     * @param string $Ref Указываем Ref
+     * @param  string  $Ref  Указываем Ref
      * @return $this
      */
     public function setRef(string $Ref): self
