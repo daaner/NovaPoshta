@@ -18,29 +18,35 @@ trait DateTimes
 
     /**
      * @param  string|Carbon|date  $dateTime  Указание даты
-     * @return void
+     * @return $this
      */
-    public function setDateTime($dateTime): void
+    public function setDateTime($dateTime): self
     {
         $this->dateTime = $this->checkDate($dateTime);
+
+        return $this;
     }
 
     /**
      * @param  string|Carbon|date  $dateTimeFrom  С текущей даты
-     * @return void
+     * @return $this
      */
-    public function setDateTimeFrom($dateTimeFrom): void
+    public function setDateTimeFrom($dateTimeFrom): self
     {
         $this->dateTimeFrom = $this->checkDate($dateTimeFrom);
+
+        return $this;
     }
 
     /**
      * @param  string|Carbon|date  $dateTimeTo  До текущей даты
-     * @return void
+     * @return $this
      */
-    public function setDateTimeTo($dateTimeTo): void
+    public function setDateTimeTo($dateTimeTo): self
     {
         $this->dateTimeTo = $this->checkDate($dateTimeTo);
+
+        return $this;
     }
 
     /**
@@ -130,20 +136,24 @@ trait DateTimes
 
     /**
      * @param  string|Carbon|date  $dateBegin  Дата начала
-     * @return void
+     * @return $this
      */
-    public function setDateBegin($dateBegin): void
+    public function setDateBegin($dateBegin): self
     {
         $this->dateBegin = $this->checkDate($dateBegin, $this->format);
+
+        return $this;
     }
 
     /**
      * @param  string|Carbon|date  $dateEnd  Дата окончания
-     * @return void
+     * @return $this
      */
-    public function setDateEnd($dateEnd): void
+    public function setDateEnd($dateEnd): self
     {
         $this->dateEnd = $this->checkDate($dateEnd, $this->format);
+
+        return $this;
     }
 
     /**

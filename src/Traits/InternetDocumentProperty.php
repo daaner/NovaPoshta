@@ -2,6 +2,7 @@
 
 namespace Daaner\NovaPoshta\Traits;
 
+
 trait InternetDocumentProperty
 {
     protected $Ref;
@@ -19,11 +20,14 @@ trait InternetDocumentProperty
     /**
      * Устанавливаем значение Ref.
      *
-     * @param  string  $Ref  Указываем Ref
+     * @param string $Ref Указываем Ref
+     * @return $this
      */
-    public function setRef(string $Ref): void
+    public function setRef(string $Ref): self
     {
         $this->Ref = $Ref;
+
+        return $this;
     }
 
     public function getRef(): void
@@ -35,11 +39,13 @@ trait InternetDocumentProperty
      * Устанавливаем значение плательщика. По умолчанию значение конфига.
      *
      * @param  string  $PayerType  Значение плательщика ('Sender', 'Recipient', 'ThirdPerson')
-     * @return void
+     * @return $this
      */
-    public function setPayerType(string $PayerType): void
+    public function setPayerType(string $PayerType): self
     {
         $this->PayerType = $PayerType;
+
+        return $this;
     }
 
     /**
@@ -54,11 +60,13 @@ trait InternetDocumentProperty
      * Устанавливаем тип доставки. По умолчанию значение конфига.
      *
      * @param  string  $ServiceType  Тип доставки ('DoorsDoors', 'DoorsWarehouse', 'WarehouseWarehouse', 'WarehouseDoors')
-     * @return void
+     * @return $this
      */
-    public function setServiceType(string $ServiceType): void
+    public function setServiceType(string $ServiceType): self
     {
         $this->ServiceType = $ServiceType;
+
+        return $this;
     }
 
     /**
@@ -73,14 +81,18 @@ trait InternetDocumentProperty
      * Устанавливаем форму оплаты. По умолчанию значение конфига.
      *
      * @param  string  $PaymentMethod  Форма оплаты ('Cash', 'NonCash')
-     * @return void
+     * @return $this
      */
-    public function setPaymentMethod(string $PaymentMethod): void
+    public function setPaymentMethod(string $PaymentMethod): self
     {
         $this->PaymentMethod = $PaymentMethod;
+
+        return $this;
     }
 
     /**
+     * Разные значения по умолчанию для разных моделей.
+     *
      * @return void
      */
     public function getPaymentMethod(): void
@@ -96,11 +108,13 @@ trait InternetDocumentProperty
      * Устанавливаем тип груза. По умолчанию значение конфига.
      *
      * @param  string  $CargoType  Tип груза ('Cargo', 'Documents', 'TiresWheels', 'Pallet', 'Parcel')
-     * @return void
+     * @return $this
      */
-    public function setCargoType(string $CargoType): void
+    public function setCargoType(string $CargoType): self
     {
         $this->CargoType = $CargoType;
+
+        return $this;
     }
 
     /**
@@ -115,22 +129,26 @@ trait InternetDocumentProperty
      * Устанавливаем описание груза. По умолчанию из конфига.
      *
      * @param  string|null  $description  Описание груза
-     * @return void
+     * @return $this
      */
-    public function setDescription(?string $description): void
+    public function setDescription(?string $description): self
     {
         $this->methodProperties['Description'] = $description ?: config('novaposhta.description');
+
+        return $this;
     }
 
     /**
      * Кол-во мест груза по умолчанию.
      *
      * @param  string  $SeatsAmount  Количество мест отправки
-     * @return void
+     * @return $this
      */
-    public function setSeatsAmount(string $SeatsAmount): void
+    public function setSeatsAmount(string $SeatsAmount): self
     {
         $this->SeatsAmount = $SeatsAmount;
+
+        return $this;
     }
 
     /**
@@ -145,11 +163,13 @@ trait InternetDocumentProperty
      * Устанавливаем стоимость груза. По умолчанию значение конфига.
      *
      * @param  string  $cost  Оценочная стоимость
-     * @return void
+     * @return $this
      */
-    public function setCost(string $cost): void
+    public function setCost(string $cost): self
     {
         $this->Cost = $cost;
+
+        return $this;
     }
 
     /**
@@ -165,11 +185,13 @@ trait InternetDocumentProperty
      * Применяется в основном, если нет текущей улицы при адресной доставке.
      *
      * @param  string  $note  Пометка
-     * @return void
+     * @return $this
      */
-    public function setNote(string $note): void
+    public function setNote(string $note): self
     {
         $this->Note = $note;
+
+        return $this;
     }
 
     /**
@@ -186,11 +208,13 @@ trait InternetDocumentProperty
      * Описание к ТТН для отображения в кабинете.
      *
      * @param  string  $AdditionalInformation  Дополнительная информация к грузу
-     * @return void
+     * @return $this
      */
-    public function setAdditionalInformation(string $AdditionalInformation): void
+    public function setAdditionalInformation(string $AdditionalInformation): self
     {
         $this->AdditionalInformation = $AdditionalInformation;
+
+        return $this;
     }
 
     /**
@@ -209,9 +233,9 @@ trait InternetDocumentProperty
      * @param  string|int  $RedeliveryString  Обратная доставка денег (наложный платеж)
      * @param  string|null  $PayerType  Значение плательщика ('Sender', 'Recipient', 'ThirdPerson')
      * @param  string|null  $CargoType  Tип груза ('Cargo', 'Documents', 'TiresWheels', 'Pallet', 'Parcel')
-     * @return void
+     * @return $this
      */
-    public function setBackwardDeliveryData($RedeliveryString, ?string $PayerType = null, ?string $CargoType = null): void
+    public function setBackwardDeliveryData($RedeliveryString, ?string $PayerType = null, ?string $CargoType = null): self
     {
         if (! $PayerType) {
             $PayerType = config('novaposhta.back_delivery_payer_type');
@@ -224,6 +248,8 @@ trait InternetDocumentProperty
             'CargoType' => $CargoType,
             'RedeliveryString' => $RedeliveryString,
         ];
+
+        return $this;
     }
 
     /**

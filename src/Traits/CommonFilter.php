@@ -11,38 +11,46 @@ trait CommonFilter
 
     /**
      * @param  int|string  $length  Длина
-     * @return void
+     * @return $this
      */
-    public function setLength($length): void
+    public function setLength($length): self
     {
         $this->length = $length;
+
+        return $this;
     }
 
     /**
      * @param  int|string  $width  Ширина
-     * @return void
+     * @return $this
      */
-    public function setWidth($width): void
+    public function setWidth($width): self
     {
         $this->width = $width;
+
+        return $this;
     }
 
     /**
      * @param  int|string  $height  Высота
-     * @return void
+     * @return $this
      */
-    public function setHeight($height): void
+    public function setHeight($height): self
     {
         $this->height = $height;
+
+        return $this;
     }
 
     /**
      * @param  int|string  $volumetricWeight  Объемный вес
-     * @return void
+     * @return $this
      */
-    public function setVolumetricWeight($volumetricWeight): void
+    public function setVolumetricWeight($volumetricWeight): self
     {
         $this->volumetricWeight = $volumetricWeight;
+
+        return $this;
     }
 
     /**

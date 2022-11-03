@@ -15,9 +15,9 @@ trait OptionsSeatProperty
      * Если не указывать значение из конфига в 1 кг.
      *
      * @param  string|array  $OptionsSeat  Указание объемного веса массивом или индексом из массива в конфиге
-     * @return void
+     * @return $this
      */
-    public function setOptionsSeat($OptionsSeat): void
+    public function setOptionsSeat($OptionsSeat): self
     {
         $data = config('novaposhta.options_seat');
         if (is_array($OptionsSeat) === false) {
@@ -30,6 +30,8 @@ trait OptionsSeatProperty
                 $this->OptionsSeat[] = $data[1];
             }
         }
+
+        return $this;
     }
 
     /**
@@ -53,14 +55,16 @@ trait OptionsSeatProperty
 
     /**
      * Устанавливаем вес груза. По умолчанию значение из конфига.
-     * Не обязательно, если выставляем OptionsSeat, но пока оставлю тут
+     * Не обязательно, если выставляем OptionsSeat, но это не точно
      *
      * @param  string  $weight  Вес груза
-     * @return void
+     * @return $this
      */
-    public function setWeight(string $weight): void
+    public function setWeight(string $weight): self
     {
         $this->Weight = $weight;
+
+        return $this;
     }
 
     /**

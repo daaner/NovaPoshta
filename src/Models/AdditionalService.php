@@ -93,7 +93,7 @@ class AdditionalService extends NovaPoshta
     {
         $this->calledMethod = 'getReturnOrdersList';
 
-        $this->addLimit();
+        $this->getLimit();
         $this->getPage();
         $this->getDateBeginEnd();
 
@@ -113,7 +113,7 @@ class AdditionalService extends NovaPoshta
 
         $this->methodProperties = null;
 
-        $this->addLimit();
+        $this->getLimit();
         $this->getPage();
 
         $this->getNumber();

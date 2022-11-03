@@ -26,7 +26,7 @@ class Counterparty extends NovaPoshta
     {
         $this->calledMethod = 'getCounterparties';
         $this->getPage();
-        $this->addLimit();
+        $this->getLimit();
 
         $this->getCounterpartyProperty();
 
@@ -49,7 +49,7 @@ class Counterparty extends NovaPoshta
     {
         $this->calledMethod = 'getCounterpartyContactPersons';
         $this->getPage();
-        $this->addLimit();
+        $this->getLimit();
 
         $this->methodProperties['Ref'] = $ref;
 

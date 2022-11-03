@@ -11,28 +11,32 @@ trait Limit
      * Установка лимита записей.
      *
      * @param  int  $limit  Лимит записей
-     * @return void
+     * @return $this
      */
-    public function setLimit(int $limit): void
+    public function setLimit(int $limit): self
     {
         $this->limit = $limit;
+
+        return $this;
     }
 
     /**
      * Установка страницы.
      *
      * @param  int  $page  Номер страницы данных
-     * @return void
+     * @return $this
      */
-    public function setPage(int $page): void
+    public function setPage(int $page): self
     {
         $this->page = $page;
+
+        return $this;
     }
 
     /**
      * @return void
      */
-    public function addLimit(): void
+    public function getLimit(): void
     {
         if ($this->limit) {
             $this->methodProperties['Limit'] = $this->limit;

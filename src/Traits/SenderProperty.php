@@ -14,17 +14,19 @@ trait SenderProperty
      * Устанавливаем значение отправителя. Если не указывать - значение конфига.
      *
      * @param  array  $sender  Тип отправителя массивом
-     * @return void
+     * @return $this
      */
-    public function setSender(array $sender): void
+    public function setSender(array $sender): self
     {
         if (isset($sender['Sender'])) {
-            $this->Sender = $sender['Sender'] ?? '';
-            $this->CitySender = $sender['CitySender'] ?? '';
-            $this->SenderAddress = $sender['SenderAddress'] ?? '';
-            $this->ContactSender = $sender['ContactSender'] ?? '';
-            $this->SendersPhone = $sender['SendersPhone'] ?? '';
+            $this->Sender = $sender['Sender'] ?? null;
+            $this->CitySender = $sender['CitySender'] ?? null;
+            $this->SenderAddress = $sender['SenderAddress'] ?? null;
+            $this->ContactSender = $sender['ContactSender'] ?? null;
+            $this->SendersPhone = $sender['SendersPhone'] ?? null;
         }
+
+        return $this;
     }
 
     /**

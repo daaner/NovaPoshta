@@ -43,24 +43,31 @@ class NovaPoshta implements NovaPoshtaInterface
     /**
      * Устанавливаем API токен отличный от значения в конфиге.
      *
-     * @param  string  $api  API токен
+     * @param string $api API токен
+     * @return $this
      */
-    public function setApi(string $api): void
+    public function setApi(string $api): self
     {
         $this->api = $api;
+
+        return $this;
     }
 
     /**
      * @param  string  $model  Модель Новой Почты
      * @param  string  $calledMethod  Метод модели
      * @param  array|null  $methodProperties  Тело запроса
-     * @param  bool  $auth  Использовать ли аутентификацию токеном или нет
+     * @param  bool|null  $auth  Использовать ли аутентификацию токеном или нет
      * @return array
      */
-    public function getResponse(string $model, string $calledMethod, ?array $methodProperties, bool $auth = true): array
+    public function getResponse(
+        string $model,
+        string $calledMethod,
+        ?array $methodProperties,
+        ?bool $auth = true
+    ): array
     {
         $url = $this->url.'/'.$model.'/'.$calledMethod;
-        $body = [];
 
         $body['modelName'] = $model;
         $body['calledMethod'] = $calledMethod;

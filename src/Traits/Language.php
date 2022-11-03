@@ -8,15 +8,19 @@ trait Language
 
     /**
      * Установка языка.
+     * С недавних пор русский язык выпилили.
+     * Часть английских названий приходит вместе с украинскими в другом ключе.
      *
      * @deprecated Уже не доступна
      *
      * @param  string  $lang
-     * @return void
+     * @return $this
      */
-    public function setLanguage(string $lang): void
+    public function setLanguage(string $lang): self
     {
         $this->language = $lang;
+
+        return $this;
     }
 
     /**

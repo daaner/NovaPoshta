@@ -65,7 +65,7 @@ class CommonGeneral extends NovaPoshta
     {
         $this->calledMethod = 'getTrustedDevicesList';
 
-        $this->addLimit();
+        $this->getLimit();
         $this->getPage();
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);

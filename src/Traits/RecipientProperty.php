@@ -10,9 +10,9 @@ trait RecipientProperty
      * Устанавливаем значение получателя.
      *
      * @param  array  $Recipient  Массив данных получателя
-     * @return void
+     * @return $this
      */
-    public function setRecipient(array $Recipient): void
+    public function setRecipient(array $Recipient): self
     {
         if (isset($Recipient['RecipientsPhone'])) {
             $this->methodProperties['RecipientsPhone'] = $Recipient['RecipientsPhone'];
@@ -29,7 +29,7 @@ trait RecipientProperty
             $this->methodProperties['CityRecipient'] = $Recipient['CityRecipient'];
             $this->methodProperties['RecipientAddress'] = $Recipient['RecipientAddress'];
 
-            return;
+            return $this;
         }
 
         //указываем строками проверяем и вставляем
@@ -49,17 +49,21 @@ trait RecipientProperty
             $this->methodProperties['RecipientHouse'] = $Recipient['RecipientHouse'] ?? '';
             $this->methodProperties['RecipientFlat'] = $Recipient['RecipientFlat'] ?? '';
         }
+
+        return $this;
     }
 
     /**
      * Устанавливаем тип получателя.
      *
      * @param  string  $RecipientType  Тип получателя ('PrivatePerson', 'Organization')
-     * @return void
+     * @return $this
      */
-    public function setRecipientType(string $RecipientType): void
+    public function setRecipientType(string $RecipientType): self
     {
         $this->RecipientType = $RecipientType;
+
+        return $this;
     }
 
     /**

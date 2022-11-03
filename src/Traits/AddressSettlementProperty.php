@@ -13,11 +13,13 @@ trait AddressSettlementProperty
      * Фильтровать по области.
      *
      * @param  string  $AreaRef  Ref области
-     * @return void
+     * @return $this
      */
-    public function filterAreaRef(string $AreaRef): void
+    public function filterAreaRef(string $AreaRef): self
     {
         $this->AreaRef = $AreaRef;
+
+        return $this;
     }
 
     /**
@@ -34,11 +36,13 @@ trait AddressSettlementProperty
      * Фильтровать по региону.
      *
      * @param  string  $RegionRef  Ref региона
-     * @return void
+     * @return $this
      */
-    public function filterRegionRef(string $RegionRef): void
+    public function filterRegionRef(string $RegionRef): self
     {
         $this->RegionRef = $RegionRef;
+
+        return $this;
     }
 
     /**
@@ -54,11 +58,13 @@ trait AddressSettlementProperty
     /**
      * Фильтровать по наличию отделений.
      *
-     * @return void
+     * @return $this
      */
-    public function filterWarehouse(): void
+    public function filterWarehouse(): self
     {
         $this->Warehouse = true;
+
+        return $this;
     }
 
     /**
@@ -75,11 +81,13 @@ trait AddressSettlementProperty
      * Фильтровать по Ref.
      *
      * @param  string  $ref  Ref фильтра
-     * @return void
+     * @return $this
      */
-    public function filterRef(string $ref): void
+    public function filterRef(string $ref): self
     {
         $this->Ref = $ref;
+
+        return $this;
     }
 
     /**

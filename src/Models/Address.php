@@ -42,7 +42,7 @@ class Address extends NovaPoshta
     public function getCities(?string $find = null, ?bool $searchByString = true): array
     {
         $this->calledMethod = 'getCities';
-        $this->addLimit();
+        $this->getLimit();
         $this->getPage();
 
         if ($find) {
@@ -68,7 +68,7 @@ class Address extends NovaPoshta
     public function getWarehouses(?string $cityRef = null, ?bool $searchByString = true): array
     {
         $this->calledMethod = 'getWarehouses';
-        $this->addLimit();
+        $this->getLimit();
         $this->getPage();
         $this->getTypeOfWarehouseRef();
 
@@ -127,7 +127,8 @@ class Address extends NovaPoshta
     public function searchSettlements(string $search): array
     {
         $this->calledMethod = 'searchSettlements';
-        $this->addLimit();
+        $this->getLimit();
+        $this->getPage();
 
         $this->methodProperties['CityName'] = $search;
 
@@ -146,7 +147,7 @@ class Address extends NovaPoshta
     public function searchSettlementStreets(string $ref, string $street): array
     {
         $this->calledMethod = 'searchSettlementStreets';
-        $this->addLimit();
+        $this->getLimit();
 
         $this->methodProperties['SettlementRef'] = $ref;
         $this->methodProperties['StreetName'] = $street;
@@ -168,8 +169,8 @@ class Address extends NovaPoshta
         $this->methodProperties = null;
 
         /**
-         * TODO Daan
-         * $this->addLimit();.
+         * TODO Лимит установлен хардкорно
+         * $this->getLimit();.
          *
          * Нужен лимит 150, иначе значение totalCount имеет не верный формат
          * Устанавливаю насильно, возможно позже исправят
@@ -203,7 +204,7 @@ class Address extends NovaPoshta
     public function getStreet(string $cityRef, ?string $find = null): array
     {
         $this->calledMethod = 'getStreet';
-        $this->addLimit();
+        $this->getLimit();
         $this->getPage();
 
         $this->methodProperties['CityRef'] = $cityRef;

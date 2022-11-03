@@ -25,11 +25,13 @@ trait AdditionalServiceProperty
      * Устанавливаем идентификатор причины возврата.
      *
      * @param  string  $Reason  Ref возврата
-     * @return void
+     * @return $this
      */
-    public function setReason(string $Reason): void
+    public function setReason(string $Reason): self
     {
         $this->Reason = $Reason;
+
+        return $this;
     }
 
     /**
@@ -44,11 +46,13 @@ trait AdditionalServiceProperty
      * Устанавливаем идентификатор подтипа причины возврата.
      *
      * @param  string  $SubtypeReason  Ref подтипа возврата
-     * @return void
+     * @return $this
      */
-    public function setSubtypeReason(string $SubtypeReason): void
+    public function setSubtypeReason(string $SubtypeReason): self
     {
         $this->SubtypeReason = $SubtypeReason;
+
+        return $this;
     }
 
     /**
@@ -63,18 +67,20 @@ trait AdditionalServiceProperty
 
     /**
      * Устанавливаем идентификатор адреса возврата.
-     * Значение из метода CheckPossibilityCreateReturn!!!
+     * Значение из метода CheckPossibilityCreateReturn.
      *
      * @param  string  $ReturnAddressRef  Ref Адреса из доступных (CheckPossibilityCreateReturn)
-     * @return void
+     * @return $this
      */
-    public function setReturnAddressRef(string $ReturnAddressRef): void
+    public function setReturnAddressRef(string $ReturnAddressRef): self
     {
         $this->ReturnAddressRef = $ReturnAddressRef;
 
         // Очищаем данные предыдущих значений по возврату
         $this->RecipientWarehouse = null;
         $this->RecipientSettlement = null;
+
+        return $this;
     }
 
     /**
@@ -96,15 +102,17 @@ trait AdditionalServiceProperty
      * Устанавливаем идентификатор возврата на новое отделение.
      *
      * @param  string  $RecipientWarehouse  Ref отделения
-     * @return void
+     * @return $this
      */
-    public function setRecipientWarehouse(string $RecipientWarehouse): void
+    public function setRecipientWarehouse(string $RecipientWarehouse): self
     {
         $this->RecipientWarehouse = $RecipientWarehouse;
 
         // Очищаем данные предыдущих значений по возврату
         $this->ReturnAddressRef = null;
         $this->RecipientSettlement = null;
+
+        return $this;
     }
 
     /**
@@ -124,15 +132,17 @@ trait AdditionalServiceProperty
      * Устанавливаем идентификатор возврата на новое отделение.
      *
      * @param  array  $RecipientSettlement  Массив адреса ['settlement', 'street', 'building', 'other']
-     * @return void
+     * @return $this
      */
-    public function setRecipientSettlement(array $RecipientSettlement): void
+    public function setRecipientSettlement(array $RecipientSettlement): self
     {
         $this->RecipientSettlement = $RecipientSettlement;
 
         // Очищаем данные предыдущих значений по возврату
         $this->ReturnAddressRef = null;
         $this->RecipientWarehouse = null;
+
+        return $this;
     }
 
     /**
@@ -149,11 +159,13 @@ trait AdditionalServiceProperty
      * Устанавливаем номер заявки на переадресацию.
      *
      * @param  string  $Number  Номер заявки ('102-00010160')
-     * @return void
+     * @return $this
      */
-    public function setNumber(string $Number): void
+    public function setNumber(string $Number): self
     {
         $this->Number = $Number;
+
+        return $this;
     }
 
     /**
@@ -168,11 +180,13 @@ trait AdditionalServiceProperty
      * Заказчик переадресации (получателю не разрешается изменять данные получателя).
      *
      * @param  string  $Customer  тип
-     * @return void
+     * @return $this
      */
-    public function setCustomer(string $Customer): void
+    public function setCustomer(string $Customer): self
     {
         $this->Customer = $Customer;
+
+        return $this;
     }
 
     /**
@@ -200,10 +214,12 @@ trait AdditionalServiceProperty
      * Смена получателя. Игнорируется, если выполняет получатель.
      *
      * @param  array  $RecipientData  тип
-     * @return void
+     * @return $this
      */
-    public function changeRecipientData(array $RecipientData): void
+    public function changeRecipientData(array $RecipientData): self
     {
         $this->RecipientData = $RecipientData;
+
+        return $this;
     }
 }

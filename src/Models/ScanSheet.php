@@ -129,8 +129,6 @@ class ScanSheet extends NovaPoshta
     /**
      * Получить краткий список ТТН реестра.
      *
-     * @deprecated НЕ ДОКУМЕНТИРОВАНО
-     *
      * @param  string  $ref  Ref реестра
      * @return array
      */
@@ -138,7 +136,7 @@ class ScanSheet extends NovaPoshta
     {
         $this->methodProperties = [];
         $this->getPage();
-        $this->addLimit();
+        $this->getLimit();
 
         $this->calledMethod = 'getScanSheetDocuments';
         $this->methodProperties['Ref'] = $ref;
@@ -148,8 +146,6 @@ class ScanSheet extends NovaPoshta
 
     /**
      * Обновить описание реестра.
-     *
-     * @deprecated НЕ ДОКУМЕНТИРОВАНО
      *
      * @param  string  $ref  Ref реестра
      * @param  string  $description  Описание

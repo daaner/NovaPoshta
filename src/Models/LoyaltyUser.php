@@ -12,9 +12,10 @@ class LoyaltyUser extends NovaPoshta
 
     /***
      * Получение данных по бонусной карте.
-     * Работает на 2022-10-16.
      *
      * @see https://daaner.github.io/NovaPoshta/#/LoyaltyUser?id=getloyaltyinfobyapikey НЕ ДОКУМЕНТИРОВАНО
+     *
+     * @since 2022-10-16
      *
      * @return array
      */

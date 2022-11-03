@@ -47,7 +47,7 @@ class InternetDocument extends NovaPoshta
         $this->calledMethod = 'getDocumentList';
 
         $this->getPage();
-        $this->addLimit();
+        $this->getLimit();
 
         //DateTime
         $this->getDateTime();
@@ -123,7 +123,7 @@ class InternetDocument extends NovaPoshta
     {
         $this->calledMethod = 'getMoneyTransferDocuments';
 
-        $this->addLimit();
+        $this->getLimit();
         $this->getPage();
         $this->getDateFromTo($dateFrom, $dateTo);
 

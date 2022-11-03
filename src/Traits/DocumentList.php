@@ -7,30 +7,36 @@ trait DocumentList
     /**
      * Отобразить полный список.
      *
-     * @return void
+     * @return $this
      */
-    public function showFullList(): void
+    public function showFullList(): self
     {
         $this->methodProperties['GetFullList'] = 1;
+
+        return $this;
     }
 
     /**
      * Фильтр присутствия обратной доставки.
      *
-     * @return void
+     * @return $this
      */
-    public function showRedeliveryMoney(): void
+    public function showRedeliveryMoney(): self
     {
         $this->methodProperties['RedeliveryMoney'] = 1;
+
+        return $this;
     }
 
     /**
      * Фильтр полного списка всех актуальных ЭН (по которым не написано заявление на возврат или утилизацию) не забранных получателями посылок.
      *
-     * @return void
+     * @return $this
      */
-    public function showUnassembledCargo(): void
+    public function showUnassembledCargo(): self
     {
         $this->methodProperties['UnassembledCargo'] = 1;
+
+        return $this;
     }
 }
