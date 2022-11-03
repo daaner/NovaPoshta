@@ -18,7 +18,6 @@ class NovaPoshta implements NovaPoshtaInterface
 
     protected $return;
 
-
     /**
      * NovaPoshta constructor main settings.
      */
@@ -77,7 +76,7 @@ class NovaPoshta implements NovaPoshtaInterface
     ): array {
         $url = $this->url.'/'.$model.'/'.$calledMethod;
 
-        $body= [];
+        $body = [];
         $body['modelName'] = $model;
         $body['calledMethod'] = $calledMethod;
         $body['methodProperties'] = $methodProperties;
@@ -98,7 +97,6 @@ class NovaPoshta implements NovaPoshtaInterface
             ->post($url, $body);
 
         if ($response->failed() || $response->json() === null) {
-
             $this->return['info']['error'] = trans('novaposhta::novaposhta.error_data');
 
             if ($this->dev) {
@@ -111,7 +109,7 @@ class NovaPoshta implements NovaPoshtaInterface
         $answer = $response->json();
 
         /**
-         * Development
+         * Development.
          */
         if ($this->dev) {
             $this->development($model, $calledMethod, $auth, $methodProperties, $answer);
@@ -135,7 +133,7 @@ class NovaPoshta implements NovaPoshtaInterface
         }
 
         /**
-         * Формирование info
+         * Формирование info.
          */
         $this->return['info'] = $this->addInfo($answer);
 
@@ -146,7 +144,7 @@ class NovaPoshta implements NovaPoshtaInterface
      * Формирование информации.
      * Ошибки, уведомления.
      *
-     * @param mixed $answer Ответ от НП
+     * @param  mixed  $answer  Ответ от НП
      */
     public function addInfo($answer): array
     {
@@ -175,15 +173,14 @@ class NovaPoshta implements NovaPoshtaInterface
         return $info;
     }
 
-
     /**
      * Логирование запроса.
      *
-     * @param string $model Модель
-     * @param string $calledMethod Метод
-     * @param bool $auth Аутентификация
-     * @param mixed $methodProperties Тело запроса
-     * @param mixed $answer Ответ
+     * @param  string  $model  Модель
+     * @param  string  $calledMethod  Метод
+     * @param  bool  $auth  Аутентификация
+     * @param  mixed  $methodProperties  Тело запроса
+     * @param  mixed  $answer  Ответ
      * @return void
      */
     public function development(
@@ -192,10 +189,9 @@ class NovaPoshta implements NovaPoshtaInterface
         bool $auth,
         $methodProperties,
         $answer
-    ): void
-    {
+    ): void {
         Log::debug('= = = = = = = = = = = = = = = = = = = =');
-        Log::debug($model.' / '.$calledMethod.' // apiKey: '. (int) $auth);
+        Log::debug($model.' / '.$calledMethod.' // apiKey: '.(int) $auth);
         Log::debug('--------------------');
 
         if (! empty($methodProperties)) {
