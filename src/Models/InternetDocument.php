@@ -194,7 +194,8 @@ class InternetDocument extends NovaPoshta
      * @param  string  $CityRecipient  Ref города получателя
      * @return array
      */
-    public function getDocumentDeliveryDate(string $CitySender, string $CityRecipient): array {
+    public function getDocumentDeliveryDate(string $CitySender, string $CityRecipient): array
+    {
         $this->calledMethod = 'getDocumentDeliveryDate';
 
         $this->methodProperties['CitySender'] = $CitySender;
@@ -216,7 +217,7 @@ class InternetDocument extends NovaPoshta
      * @param  string  $CityRecipient  Ref города получателя
      * @return array
      */
-    public function getDocumentPrice(string $CitySender, string $CityRecipient):array
+    public function getDocumentPrice(string $CitySender, string $CityRecipient): array
     {
         $this->calledMethod = 'getDocumentPrice';
 
@@ -232,7 +233,7 @@ class InternetDocument extends NovaPoshta
         $this->getCost();
 
         /**
-         * TODO Есть еще куча всяких штук, я не добавил
+         * TODO Есть еще куча всяких штук, я не добавил.
          */
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
