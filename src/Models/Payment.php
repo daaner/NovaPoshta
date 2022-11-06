@@ -13,6 +13,8 @@ class Payment extends NovaPoshta
     /***
      * Получение данных по картам оплаты.
      *
+     * @since 2022-11-07
+     *
      * @return array
      */
     public function walletManagement(): array

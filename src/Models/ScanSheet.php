@@ -19,6 +19,7 @@ class ScanSheet extends NovaPoshta
      * Удалить (расформировать) реестр отправлений.
      *
      * @see https://developers.novaposhta.ua/view/model/a46fc4f4-8512-11ec-8ced-005056b2dbe1/method/a50e049b-8512-11ec-8ced-005056b2dbe1 Расформировать реестр
+     * @since 2022-11-07
      *
      * @param  string|array  $ScanSheetRefs  Ref реестра
      * @return array
@@ -40,6 +41,7 @@ class ScanSheet extends NovaPoshta
      * Добавить экспресс-накладные в реестр.
      *
      * @see https://developers.novaposhta.ua/view/model/a46fc4f4-8512-11ec-8ced-005056b2dbe1/method/a482293c-8512-11ec-8ced-005056b2dbe1 Добавить экспресс-накладные в реестр
+     * @since 2022-11-07
      *
      * @param  string|array  $DocumentRefs  Ref или массив Ref ТТН
      * @param  string|null  $Ref  Ref реестра, если есть
@@ -71,6 +73,7 @@ class ScanSheet extends NovaPoshta
      * Загрузить список реестров.
      *
      * @see https://developers.novaposhta.ua/view/model/a46fc4f4-8512-11ec-8ced-005056b2dbe1/method/a4abdd36-8512-11ec-8ced-005056b2dbe1 Загрузить список реестров
+     * @since 2022-11-07
      *
      * @return array
      */
@@ -84,7 +87,7 @@ class ScanSheet extends NovaPoshta
     /**
      * Загрузить информацию по одному реестру.
      *
-     * @deprecated НЕ ДОКУМЕНТИРОВАНО
+     * @since 2022-11-07 НЕ ДОКУМЕНТИРОВАНО
      *
      * @param  string  $ref  Ref реестра
      * @return array
@@ -103,6 +106,7 @@ class ScanSheet extends NovaPoshta
      * Удалить экспресс-накладные из реестра.
      *
      * @see https://developers.novaposhta.ua/view/model/a46fc4f4-8512-11ec-8ced-005056b2dbe1/method/a53dea8a-8512-11ec-8ced-005056b2dbe1 Удалить экспресс-накладные из реестра
+     * @since 2022-11-07
      *
      * @param  string|array  $documents  Ref или массив Ref ТТН
      * @param  string|null  $ref  Ref реестра
@@ -129,6 +133,8 @@ class ScanSheet extends NovaPoshta
     /**
      * Получить краткий список ТТН реестра.
      *
+     * @since 2022-11-07
+     *
      * @param  string  $ref  Ref реестра
      * @return array
      */
@@ -146,6 +152,8 @@ class ScanSheet extends NovaPoshta
 
     /**
      * Обновить описание реестра.
+     *
+     * @since 2022-11-07
      *
      * @param  string  $ref  Ref реестра
      * @param  string  $description  Описание

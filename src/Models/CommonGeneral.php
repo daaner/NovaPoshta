@@ -76,11 +76,13 @@ class CommonGeneral extends NovaPoshta
         $this->getLimit();
         $this->getPage();
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
      * Удаление доверенного устройства со списка.
+     *
+     * @since 2022-11-03
      *
      * @param  string  $Ref  Ref устройства
      * @return array
@@ -91,6 +93,6 @@ class CommonGeneral extends NovaPoshta
 
         $this->methodProperties['Ref'] = $Ref;
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 }

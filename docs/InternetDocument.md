@@ -10,6 +10,7 @@ use Daaner\NovaPoshta\Models\InternetDocument;
 - [x] [Удалить экспресс-накладные](InternetDocument.md#delete)
 - [x] [Получить денежные переводы](InternetDocument.md#getMoneyTransferDocuments)
 - [x] [Прогноз даты доставки груза](InternetDocument.md#getDocumentDeliveryDate)
+- [x] [Прогноз стоимости доставки груза](InternetDocument.md#getDocumentPrice)
 - [x] [Редактирование экспресс-накладной](InternetDocument.md#edit) (НЕ ПРОВЕРЕНО)
 - [x] [Получение PDF по накладным либо реестру](InternetDocument.md#getPDF)
 
@@ -19,7 +20,8 @@ use Daaner\NovaPoshta\Models\InternetDocument;
 - [save($description = null)](#save)
 - [delete($description = null)](#delete)
 - [getMoneyTransferDocuments($from = null, $to = null)](#getMoneyTransferDocuments)
-- [getDocumentDeliveryDate($CitySender, $CityRecipient, $DateTime = null, $ServiceType = null)](#getDocumentDeliveryDate)
+- [getDocumentDeliveryDate($CitySender, $CityRecipient)](#getDocumentDeliveryDate)
+- [getDocumentPrice($CitySender, $CityRecipient)](#getDocumentPrice)
 - [edit($description = null)](#edit)
 - [getPDF($$DocumentRefs, $getStreamFile)](#getPDF)
 
@@ -181,10 +183,36 @@ $CitySender = '8d5a980d-391c-11dd-90d9-001a92567626'; //город отправ�
 $CityRecipient = 'db5c88f5-391c-11dd-90d9-001a92567626'; //город получателя
 
 //НЕОБЯЗАТЕЛЬНЫЕ ПАРАМЕТРЫ
-$DateTime = '1/1/2028'; //Если не указать, посчитает с текущего дня и времени
-$ServiceType = 'WarehouseWarehouse'; // Тип отправки (отделение-отделение, отделение-адрес и пр.), по умолчанию в конфиге `service_type`
+$intDoc->setDateTime('1/1/2028'); //Если не указать, посчитает с текущего дня и времени
+$intDoc->setServiceType('WarehouseDoors'); //Тип отправки (по умолчанию в конфиге `service_type`)
 
-$forecast = $intDoc->getDocumentDeliveryDate($CitySender, $CityRecipient, $DateTime, $ServiceType);
+$forecast = $intDoc->getDocumentDeliveryDate($CitySender, $CityRecipient);
+
+dd($forecast);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `getDocumentPrice()`
+[Прогноз](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a91f115b-8512-11ec-8ced-005056b2dbe1) стоимости доставки груза
+
+```php
+$intDoc = new InternetDocument;
+
+$CitySender = '8d5a980d-391c-11dd-90d9-001a92567626'; //город отправителя
+$CityRecipient = 'db5c88f5-391c-11dd-90d9-001a92567626'; //город получателя
+
+//НЕОБЯЗАТЕЛЬНЫЕ ПАРАМЕТРЫ
+$intDoc->setDateTime('1/1/2028'); //Если не указать, посчитает с текущего дня
+$intDoc->setServiceType('WarehouseDoors'); //Тип отправки (по умолчанию в конфиге `service_type`)
+$intDoc->setWeight('3'); //Вес посылки (по умолчанию 1)
+$intDoc->setCargoType('Parcel'); //Тип посылки (по умолчанию в конфиге `cargo_type`)
+$adr->setCost(500); // Оценочная стоимость
+
+//ЗЫ: Есть еще куча всяких условий у них, я добавил только популярные
+
+$forecast = $intDoc->getDocumentPrice($CitySender, $CityRecipient);
 
 dd($forecast);
 ```

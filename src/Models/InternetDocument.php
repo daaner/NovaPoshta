@@ -46,6 +46,7 @@ class InternetDocument extends NovaPoshta
      * Получить список ЭН.
      *
      * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9d22b34-8512-11ec-8ced-005056b2dbe1 Получить список ЭН
+     * @since 2022-11-07
      *
      * @return array
      */
@@ -60,13 +61,14 @@ class InternetDocument extends NovaPoshta
         $this->getDateTime();
         $this->getDateTimeFromTo();
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
      * Создать экспресс-накладную.
      *
      * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a965630e-8512-11ec-8ced-005056b2dbe1 Создать экспресс-накладную
+     * @since 2022-11-07
      *
      * @param  string|null  $description  Описание посылки
      * @return array
@@ -93,13 +95,14 @@ class InternetDocument extends NovaPoshta
         $this->getNote();
         $this->getAdditionalInformation();
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
      * Удаление экспресс-накладной.
      *
      * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9f43ff1-8512-11ec-8ced-005056b2dbe1 Удаление экспресс-накладной
+     * @since 2022-11-07
      *
      * @param  string|array  $DocumentRefs  Ref или массив Ref ТТН
      * @return array
@@ -114,13 +117,13 @@ class InternetDocument extends NovaPoshta
 
         $this->methodProperties['DocumentRefs'] = array_values(/** @scrutinizer ignore-type */ $DocumentRefs);
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
      * Получить данные о платежах за определенный период.
      *
-     * @since 2022-11-06 НЕ ДОКУМЕНТИРОВАНО
+     * @since 2022-11-07 НЕ ДОКУМЕНТИРОВАНО
      *
      * @param  null|string|Carbon|date  $dateFrom  Начиная с текущей даты
      * @param  null|string|Carbon|date  $dateTo  До текущей даты
@@ -134,7 +137,7 @@ class InternetDocument extends NovaPoshta
         $this->getPage();
         $this->getDateFromTo($dateFrom, $dateTo);
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
@@ -176,44 +179,69 @@ class InternetDocument extends NovaPoshta
         $this->getNote();
         $this->getAdditionalInformation();
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
      * Прогноз даты доставки груза.
      *
      * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a941c714-8512-11ec-8ced-005056b2dbe1 Прогноз даты доставки груза
+     * @since 2022-11-07
      *
      * @author https://github.com/seriklav/NovaPoshta
      *
      * @param  string  $CitySender  Ref города отправителя
      * @param  string  $CityRecipient  Ref города получателя
-     * @param  string|null  $DateTime  Дата ориентировочной отправки
-     * @param  string|null  $ServiceType  Тип доставки ('DoorsDoors', 'DoorsWarehouse', 'WarehouseWarehouse', 'WarehouseDoors')
      * @return array
      */
-    public function getDocumentDeliveryDate(
-        string $CitySender,
-        string $CityRecipient,
-        ?string $DateTime = null,
-        ?string $ServiceType = null
-    ): array {
+    public function getDocumentDeliveryDate(string $CitySender, string $CityRecipient): array {
         $this->calledMethod = 'getDocumentDeliveryDate';
 
         $this->methodProperties['CitySender'] = $CitySender;
         $this->methodProperties['CityRecipient'] = $CityRecipient;
 
-        if ($DateTime) {
-            $this->methodProperties['DateTime'] = $this->checkDate($DateTime, 'd.m.Y');
-        }
+        $this->getDateTime();
+        $this->getServiceType();
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
+    }
+
+    /**
+     * Прогноз стоимости доставки груза.
+     *
+     * @see https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a91f115b-8512-11ec-8ced-005056b2dbe1 Прогноз стоимости доставки груза
+     * @since 2022-11-07
+     *
+     * @param  string  $CitySender  Ref города отправителя
+     * @param  string  $CityRecipient  Ref города получателя
+     * @return array
+     */
+    public function getDocumentPrice(string $CitySender, string $CityRecipient):array
+    {
+        $this->calledMethod = 'getDocumentPrice';
+
+        $this->methodProperties['CitySender'] = $CitySender;
+        $this->methodProperties['CityRecipient'] = $CityRecipient;
 
         $this->methodProperties['ServiceType'] = $ServiceType ?? config('novaposhta.service_type');
+
+        $this->getWeight();
+        $this->getDateTime();
+        $this->getCargoType();
+        $this->getServiceType();
+        $this->getCost();
+
+        /**
+         * TODO Есть еще куча всяких штук, я не добавил
+         */
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
     }
 
     /**
      * Печать накладной.
+     *
+     * @since 2022-11-07
      *
      * @param  string|array  $DocumentRefs  Ref либо ТТН (можно и массивом Ref или ТТН)
      * @param  bool  $getStreamFile  Получать файл сразу (false - в массиве в ключе result)
@@ -263,9 +291,9 @@ class InternetDocument extends NovaPoshta
         }
 
         if ($this->isScansheet) {
-            $this->methodProperties['ScanSheetRefs'] = $DocumentRefs;
+            $this->methodProperties['ScanSheetRefs'] = array_values(/** @scrutinizer ignore-type */ $DocumentRefs);
         } else {
-            $this->methodProperties['DocumentRefs'] = $DocumentRefs;
+            $this->methodProperties['DocumentRefs'] = array_values(/** @scrutinizer ignore-type */ $DocumentRefs);
         }
 
         $this->getPageFormat();

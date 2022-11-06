@@ -4,6 +4,8 @@ All notable changes to `NovaPoshta` will be documented in this file
 
 ### 2022-11-07
 - [Add] Добавление метода `saveAddTerm` в `AdditionalService`
+- [Add] Добавление метода `getDocumentPrice` в `InternetDocument`
+- [Fix] Убрал 3 и 4 параметр в методе `getDocumentDeliveryDate` в `InternetDocument` (Ломает обратку)
 
 ### 2022-11-06
 - [Add] Добавление метода `getPDF` в `InternetDocument`

@@ -25,7 +25,7 @@ class TrackingDocument extends NovaPoshta
             $documents = explode(', ', /** @scrutinizer ignore-type */ $documents);
         }
         $methodProperties = [
-            'Documents' => $documents,
+            'Documents' => array_values(/** @scrutinizer ignore-type */ $documents),
         ];
 
         return $this->getResponse($this->model, $this->calledMethod, $methodProperties, false);
