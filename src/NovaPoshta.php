@@ -60,12 +60,11 @@ class NovaPoshta implements NovaPoshtaInterface
     }
 
     /**
-     * @param bool $auth
+     * @param  bool  $auth
      * @return ClientResponse|string
      */
     public function getData(bool $auth = true)
     {
-
         $url = $this->url.'/'.$this->model.'/'.$this->calledMethod;
 
         $body = [];
@@ -104,8 +103,6 @@ class NovaPoshta implements NovaPoshtaInterface
         return $response;
     }
 
-
-
     /**
      * @param  string  $model  Модель Новой Почты
      * @param  string  $calledMethod  Метод модели
@@ -118,9 +115,7 @@ class NovaPoshta implements NovaPoshtaInterface
         string $calledMethod,
         ?array $methodProperties,
         bool $auth = true
-    ): array
-    {
-
+    ): array {
         $this->model = $model;
         $this->calledMethod = $calledMethod;
         $this->methodProperties = $methodProperties;
@@ -128,7 +123,7 @@ class NovaPoshta implements NovaPoshtaInterface
         $response = $this->getData($auth);
 
         // Ошибка курла
-        if (!($response instanceof ClientResponse)) {
+        if (! ($response instanceof ClientResponse)) {
             $this->return['info']['error'] = $response;
             $this->return['info']['StatusCode'] = '20000100016'; // Сервис не доступен
             $this->return['info']['StatusLocale'] = __('novaposhta::novaposhta.error_data');
@@ -240,7 +235,8 @@ class NovaPoshta implements NovaPoshtaInterface
      * @param  bool  $auth  Аутентификация
      * @return void
      */
-    public function development(bool $auth): void {
+    public function development(bool $auth): void
+    {
         Log::debug('= = = = = = = = = = = = = = = = = = = =');
         Log::debug($this->model.' / '.$this->calledMethod.' // apiKey: '.(int) $auth);
         Log::debug('--------------------');

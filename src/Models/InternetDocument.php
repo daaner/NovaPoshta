@@ -215,8 +215,9 @@ class InternetDocument extends NovaPoshta
     /**
      * Печать накладной.
      *
-     * @param string|array $DocumentRefs Ref либо ТТН (можно и массивом Ref или ТТН)
-     * @param bool $getStreamFile Получать файл сразу (false - в массиве в ключе result)
+     * @param  string|array  $DocumentRefs  Ref либо ТТН (можно и массивом Ref или ТТН)
+     * @param  bool  $getStreamFile  Получать файл сразу (false - в массиве в ключе result)
+     *
      * @throws BindingResolutionException
      */
     public function getPDF($DocumentRefs, bool $getStreamFile)
@@ -232,7 +233,7 @@ class InternetDocument extends NovaPoshta
         /**
          * Форсирование параметров, при определенных условиях.
          */
-        if($this->printForm == 'ScanSheet') {
+        if ($this->printForm == 'ScanSheet') {
             $this->setThisIsScansheet();
 
             $this->methodProperties['PrintOrientation'] = $this->PrintOrientation;
@@ -243,19 +244,19 @@ class InternetDocument extends NovaPoshta
             $this->Copies = 1;
         }
 
-        if($this->printForm == 'Document_new') {
+        if ($this->printForm == 'Document_new') {
             $this->Type = 'pdf';
 
             $this->Copies = $this->Copies ?: 1;
             $this->PageFormat = $this->PageFormat ?: 'A4';
         }
 
-        if($this->printForm == 'Marking_85x85') {
+        if ($this->printForm == 'Marking_85x85') {
             $this->PageFormat = 'A4';
             $this->Type = 'pdf8';
         }
 
-        if($this->printForm == 'Marking_100x100') {
+        if ($this->printForm == 'Marking_100x100') {
             $this->PageFormat = null;
             $this->Type = 'pdf';
             $this->Position = '';
@@ -286,7 +287,7 @@ class InternetDocument extends NovaPoshta
 
             return response()->make($file, $status, [
                 'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'inline; filename="'.$filename.'"'
+                'Content-Disposition' => 'inline; filename="'.$filename.'"',
             ]);
         }
 

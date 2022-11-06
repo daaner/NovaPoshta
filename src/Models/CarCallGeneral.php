@@ -6,7 +6,6 @@ use Daaner\NovaPoshta\NovaPoshta;
 
 class CarCallGeneral extends NovaPoshta
 {
-
     protected $model = 'CarCallGeneral';
     protected $calledMethod;
     protected $methodProperties = null;
@@ -16,7 +15,7 @@ class CarCallGeneral extends NovaPoshta
      *
      * @since 2022-11-05 НЕ ДОКУМЕНТИРОВАНО
      *
-     * @param bool $extendedInfo Расширенная информация
+     * @param  bool  $extendedInfo  Расширенная информация
      * @return array
      */
     public function getOrdersList(bool $extendedInfo = true): array
@@ -27,6 +26,4 @@ class CarCallGeneral extends NovaPoshta
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
-
-
 }

@@ -13,7 +13,6 @@ trait PDFDocumentProperty
     protected $isScansheet;
     protected $PrintOrientation;
 
-
     /**
      * Устанавливаем количество копий.
      * 1 - по умолчанию.
@@ -38,7 +37,7 @@ trait PDFDocumentProperty
 
     /**
      * Устанавливаем формат страницы.
-     * Варианты: A4, A5
+     * Варианты: A4, A5.
      *
      * @param  string  $PageFormat  Формат страницы
      * @return $this
@@ -84,7 +83,7 @@ trait PDFDocumentProperty
     /**
      * Устанавливаем тип документа.
      * `pdf` - по умолчанию.
-     * Варианты: pdf, pdf8
+     * Варианты: pdf, pdf8.
      *
      * @param  string  $Type  Указываем Type
      * @return $this
@@ -141,11 +140,10 @@ trait PDFDocumentProperty
         $this->methodProperties['printForm'] = $this->printForm;
     }
 
-
     /**
      * Флаг, что данная распечатка является реестром.
      *
-     * @param string|null $PrintOrientation Ориентация печати
+     * @param  string|null  $PrintOrientation  Ориентация печати
      * @return $this
      */
     public function setThisIsScansheet(?string $PrintOrientation = null): self
@@ -156,6 +154,4 @@ trait PDFDocumentProperty
 
         return $this;
     }
-
-
 }

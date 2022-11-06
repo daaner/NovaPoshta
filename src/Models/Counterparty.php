@@ -144,6 +144,7 @@ class Counterparty extends NovaPoshta
 
     /**
      * Получение данных об Контрагенте по номеру телефона (ФИО и прочее).
+     *
      * @since 2022-11-05 НЕ ДОКУМЕНТИРОВАНО
      *
      * @param  string|int  $Phone  Телефон

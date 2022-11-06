@@ -48,5 +48,4 @@ class InventoryGeneral extends NovaPoshta
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
-
 }

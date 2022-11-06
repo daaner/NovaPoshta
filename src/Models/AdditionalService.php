@@ -20,7 +20,6 @@ class AdditionalService extends NovaPoshta
      * Проверка возможности создания заявки на возврат.
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a778f519-8512-11ec-8ced-005056b2dbe1 Возможность возврата
-     *
      * @since 2022-11-06
      *
      * @param  string  $ttn  Номер ТТН
@@ -39,7 +38,6 @@ class AdditionalService extends NovaPoshta
      * Проверка возможности создания заявки на переадресацию отправки.
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a8d29fc2-8512-11ec-8ced-005056b2dbe1 Возможность переадресации
-     *
      * @since 2022-11-06
      *
      * @param  string  $ttn  Номер ТТН
@@ -58,7 +56,6 @@ class AdditionalService extends NovaPoshta
      * Получение списка причин возврата.
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7a6bacb-8512-11ec-8ced-005056b2dbe1 Список причин возврата
-     *
      * @since 2022-11-06
      *
      * @return array
@@ -74,7 +71,6 @@ class AdditionalService extends NovaPoshta
      * Получение списка подтипов причины возврата.
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7cb69ee-8512-11ec-8ced-005056b2dbe1 Список подтипов причины возврата
-     *
      * @since 2022-11-06
      *
      * @param  string|null  $ref  Ref причины
@@ -93,7 +89,6 @@ class AdditionalService extends NovaPoshta
      * Получение списка заявок на возврат.
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7cb69ee-8512-11ec-8ced-005056b2dbe1 Список заявок на возврат
-     *
      * @since 2022-11-06
      *
      * @return array
@@ -113,7 +108,6 @@ class AdditionalService extends NovaPoshta
      * Получение списка заявок на переадресацию отправлений.
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a8faa2e6-8512-11ec-8ced-005056b2dbe1 Список заявок на переадресацию
-     *
      * @since 2022-11-06
      *
      * @return array
@@ -143,7 +137,6 @@ class AdditionalService extends NovaPoshta
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7fb4a3a-8512-11ec-8ced-005056b2dbe1 Возврат на адрес отправителя
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/5a64f960-e7fa-11ec-a60f-48df37b921db Возврат на новый адрес отделения
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/175baec3-8f0d-11ec-8ced-005056b2dbe1 Возврат на новый адрес по адресной доставке
-     *
      * @since 2022-11-06
      *
      * @param  string  $ttn  Номер ТТН
@@ -214,7 +207,6 @@ class AdditionalService extends NovaPoshta
      * Создание заявки на переадресацию.
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/98acb0f6-8f0b-11ec-8ced-005056b2dbe1 Создание заявки на переадресацию
-     *
      * @since 2022-11-06
      *
      * @param  string  $ttn  Номер ТТН
@@ -230,7 +222,6 @@ class AdditionalService extends NovaPoshta
      *
      * @since 2022-10-29 Проверено
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a85bb34b-8512-11ec-8ced-005056b2dbe1 Удаление заявки
-     *
      * @since 2022-11-06
      *
      * @param  string  $Ref  Ref заявки
@@ -266,7 +257,6 @@ class AdditionalService extends NovaPoshta
      * Проверка на изменения в ТТН.
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a886b776-8512-11ec-8ced-005056b2dbe1 Проверка на изменения в накладной
-     *
      * @since 2022-11-06
      *
      * @param  string  $ttn  Номер ТТН
