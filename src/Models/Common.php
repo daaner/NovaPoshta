@@ -219,9 +219,10 @@ class Common extends NovaPoshta
 
     /**
      * Получение данных о персональном менеджере.
+     *
      * @since 2022-11-05
      *
-     * @param string $Ref Ref контрагента
+     * @param  string  $Ref  Ref контрагента
      * @return array
      */
     public function getPersonalManager(string $Ref): array
