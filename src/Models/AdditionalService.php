@@ -230,7 +230,7 @@ class AdditionalService extends NovaPoshta
      *
      * @since 2022-11-07
      *
-     * @param string $ttn Номер ТТН
+     * @param  string  $ttn  Номер ТТН
      * @return array
      */
     public function saveAddTerm(string $ttn): array

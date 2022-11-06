@@ -98,7 +98,7 @@ trait InternetDocumentProperty
     {
         if ($this->model == 'AdditionalService') {
             $this->methodProperties['PaymentMethod'] = $this->PaymentMethod ?: config('novaposhta.return_cash_method');
-        } elseif($this->model == 'orderTermExtension') {
+        } elseif ($this->model == 'orderTermExtension') {
             $this->methodProperties['PaymentMethod'] = $this->PaymentMethod ?: config('novaposhta.term_payment_method');
         } else {
             $this->methodProperties['PaymentMethod'] = $this->PaymentMethod ?: config('novaposhta.payment_method');
