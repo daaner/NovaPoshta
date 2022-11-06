@@ -42,10 +42,14 @@ php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvid
 
 * [Модель Address](Address.md)
 * [Модель AdditionalService](AdditionalService.md)
+* [Модель CarCallGeneral](CarCallGeneral.md)
 * [Модель Common](Common.md)
 * [Модель CommonGeneral](CommonGeneral.md)
 * [Модель Counterparty](Counterparty.md)
+* [Модель InternetDocument](InternetDocument.md)
+* [Модель InventoryGeneral](InventoryGeneral.md)
 * [Модель LoyaltyUser](LoyaltyUser.md)
+* [Модель Payment](Payment.md)
 * [Модель ScanSheet](ScanSheet.md)
 * [Модель TrackingDocument](TrackingDocument.md)
 

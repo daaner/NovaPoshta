@@ -4,30 +4,30 @@ namespace Daaner\NovaPoshta;
 
 use Daaner\NovaPoshta\Contracts\NovaPoshtaInterface;
 use Exception;
+use Illuminate\Http\Client\Response as ClientResponse;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class NovaPoshta implements NovaPoshtaInterface
 {
-    protected $baseUri;
-    protected $point;
-
     protected $api;
     protected $url;
     protected $dev;
 
     protected $return;
 
+    protected $model;
+    protected $calledMethod;
+    protected $methodProperties;
+
     /**
      * NovaPoshta constructor main settings.
      */
     public function __construct()
     {
-        $this->baseUri = config('novaposhta.base_uri');
-        $this->point = config('novaposhta.point');
         $this->dev = config('novaposhta.dev');
         $this->getApi();
-        $this->url = $this->baseUri.$this->point;
+        $this->url = config('novaposhta.base_uri').config('novaposhta.point');
 
         $this->return = [
             'success' => false,
@@ -37,15 +37,13 @@ class NovaPoshta implements NovaPoshtaInterface
     }
 
     /**
-     * @return string
+     * @return void
      */
-    public function getApi(): string
+    public function getApi(): void
     {
         if (! $this->api) {
             $this->api = config('novaposhta.api_key');
         }
-
-        return $this->api;
     }
 
     /**
@@ -62,6 +60,53 @@ class NovaPoshta implements NovaPoshtaInterface
     }
 
     /**
+     * @param bool $auth
+     * @return ClientResponse|string
+     */
+    public function getData(bool $auth = true)
+    {
+
+        $url = $this->url.'/'.$this->model.'/'.$this->calledMethod;
+
+        $body = [];
+        $body['modelName'] = $this->model;
+        $body['calledMethod'] = $this->calledMethod;
+        $body['methodProperties'] = $this->methodProperties;
+
+        if ($auth) {
+            $body['apiKey'] = $this->api;
+        }
+
+        if ($this->dev) {
+            $this->development($auth);
+        }
+
+        try {
+            $response = Http::timeout(config('novaposhta.http_response_timeout', 3))
+                ->retry(
+                    config('novaposhta.http_retry_max_time', 2),
+                    config('novaposhta.http_retry_delay', 500)
+                )
+                ->withHeaders([
+                    'Accept' => 'application/json',
+                    'Content-Type' => 'application/json',
+                ])
+                ->post($url, $body);
+        } catch (Exception $e) {
+            if ($e->getCode() == 401) {
+                // Ошибка API ключа
+                $response = __('novaposhta::novaposhta.statusCode.20000200068');
+            } else {
+                $response = $e->getMessage();
+            }
+        }
+
+        return $response;
+    }
+
+
+
+    /**
      * @param  string  $model  Модель Новой Почты
      * @param  string  $calledMethod  Метод модели
      * @param  array|null  $methodProperties  Тело запроса
@@ -73,35 +118,40 @@ class NovaPoshta implements NovaPoshtaInterface
         string $calledMethod,
         ?array $methodProperties,
         bool $auth = true
-    ): array {
-        $url = $this->url.'/'.$model.'/'.$calledMethod;
+    ): array
+    {
 
-        $body = [];
-        $body['modelName'] = $model;
-        $body['calledMethod'] = $calledMethod;
-        $body['methodProperties'] = $methodProperties;
+        $this->model = $model;
+        $this->calledMethod = $calledMethod;
+        $this->methodProperties = $methodProperties;
 
-        if ($auth) {
-            $body['apiKey'] = $this->api;
+        $response = $this->getData($auth);
+
+        // Ошибка курла
+        if (!($response instanceof ClientResponse)) {
+            $this->return['info']['error'] = $response;
+            $this->return['info']['StatusCode'] = '20000100016'; // Сервис не доступен
+            $this->return['info']['StatusLocale'] = __('novaposhta::novaposhta.error_data');
+
+            return $this->return;
         }
 
-        $response = Http::timeout(config('novaposhta.http_response_timeout', 3))
-            ->retry(
-                config('novaposhta.http_retry_max_time', 2),
-                config('novaposhta.http_retry_delay', 200)
-            )
-            ->withHeaders([
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-            ])
-            ->post($url, $body);
-
-        if ($response->failed() || $response->json() === null) {
+        // Ошибка запроса или 401
+        if ($response->failed()) {
             $this->return['info']['error'] = trans('novaposhta::novaposhta.error_data');
 
-            if ($this->dev) {
-                $this->development($model, $calledMethod, $auth, $methodProperties, '');
-            }
+            return $this->return;
+        }
+
+        // если что-то не JSON (типа application/pdf)
+        if ($response->header('Content-Type') !== 'application/json') {
+            $this->return['success'] = $response->ok();
+
+            $this->return['info']['file'] = true;
+            $this->return['info']['ContentType'] = $response->header('Content-Type');
+            $this->return['info']['ContentDisposition'] = $response->header('Content-Disposition') ?? '';
+
+            $this->return['result'] = $response->body();
 
             return $this->return;
         }
@@ -112,10 +162,10 @@ class NovaPoshta implements NovaPoshtaInterface
          * Development.
          */
         if ($this->dev) {
-            $this->development($model, $calledMethod, $auth, $methodProperties, $answer);
+            $this->return['dev'] = $answer;
         }
 
-        // TODO Возможно, исправлено
+        // TODO: Возможно, исправлено
         if ($auth === false && isset($answer[0])) {
             /**
              * Костыль для Новой Почты.
@@ -154,6 +204,17 @@ class NovaPoshta implements NovaPoshtaInterface
             $info['warnings'] = $answer['warnings'];
         }
 
+        if (isset($answer['infoCodes']) && $answer['infoCodes']) {
+            $info['infoCodes'] = $answer['infoCodes'];
+
+            foreach ($answer['infoCodes'] as $err) {
+                $info['infoCodes'] = $err;
+            }
+            if (isset($answer['infoCodes'][0])) {
+                $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.'.$answer['infoCodes'][0]);
+            }
+        }
+
         if (isset($answer['errors']) && $answer['errors']) {
             $info['errors'] = $answer['errors'];
             if ($answer['errorCodes']) {
@@ -166,7 +227,7 @@ class NovaPoshta implements NovaPoshtaInterface
             }
         }
 
-        if (empty($info) && isset($answer['info']) && $answer['info']) {
+        if (isset($answer['info']) && $answer['info']) {
             $info['info'] = $answer['info'];
         }
 
@@ -176,32 +237,20 @@ class NovaPoshta implements NovaPoshtaInterface
     /**
      * Логирование запроса.
      *
-     * @param  string  $model  Модель
-     * @param  string  $calledMethod  Метод
      * @param  bool  $auth  Аутентификация
-     * @param  mixed  $methodProperties  Тело запроса
-     * @param  mixed  $answer  Ответ
      * @return void
      */
-    public function development(
-        string $model,
-        string $calledMethod,
-        bool $auth,
-        $methodProperties,
-        $answer
-    ): void {
+    public function development(bool $auth): void {
         Log::debug('= = = = = = = = = = = = = = = = = = = =');
-        Log::debug($model.' / '.$calledMethod.' // apiKey: '.(int) $auth);
+        Log::debug($this->model.' / '.$this->calledMethod.' // apiKey: '.(int) $auth);
         Log::debug('--------------------');
 
-        if (! empty($methodProperties)) {
+        if (! empty($this->methodProperties)) {
             try {
-                Log::notice(json_encode($methodProperties));
+                Log::notice(json_encode($this->methodProperties));
             } catch (Exception $e) {
                 Log::notice('method json_encode error');
             }
         }
-
-        $this->return['dev'] = $answer;
     }
 }

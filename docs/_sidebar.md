@@ -4,10 +4,12 @@
 - Поддерживаемые модели
   - [Address](Address.md)
   - [AdditionalService](AdditionalService.md)
+  - [CarCallGeneral](CarCallGeneral.md)
   - [Common](Common.md)
   - [CommonGeneral](CommonGeneral.md)
   - [Counterparty](Counterparty.md)
   - [InternetDocument](InternetDocument.md)
+  - [InventoryGeneral](InventoryGeneral.md)
   - [LoyaltyUser](LoyaltyUser.md)
   - [Payment](Payment.md)
   - [ScanSheet](ScanSheet.md)

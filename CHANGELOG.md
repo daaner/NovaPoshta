@@ -2,6 +2,20 @@
 
 All notable changes to `NovaPoshta` will be documented in this file
 
+### 2022-11-06
+- [Add] Добавление метода `getPDF` в `InternetDocument`
+- [Add] Добавление возможности распечатывать реестр методом `setThisIsScansheet()`
+
+### 2022-11-05
+- [Add] Добавлен вывод `infoCodes` в ответе в ключе `info`
+- [Add] Добавление метода `getPersonalManager` в `Common`
+- [Add] Добавление метода `getLoyaltyCardTurnoverByApiKey` в `LoyaltyUser`
+- [Add] Добавление метода `getPromocodeByPhone` в `LoyaltyUser`
+- [Add] Добавление метода `getStandartCardsList` в `LoyaltyUser`
+- [Add] Добавление модели `InventoryGeneral` и метода `getInventoryNomenclaturesList`
+- [Add] Добавление модели `CarCallGeneral` и метода `getOrdersList`
+- [Add] Добавление метода `getInventoryOrdersList` в `InventoryGeneral`
+
 ### 2022-11-03
 - [Fix] Fix part returns
 - [Fix] Rename `addLimit()` to `getLimit()`

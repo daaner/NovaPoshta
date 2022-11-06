@@ -15,8 +15,10 @@ class CommonGeneral extends NovaPoshta
 
     /**
      * Список ошибок.
+     * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6bce5a1-8512-11ec-8ced-005056b2dbe1 Список ошибок
+     * @since 2022-11-03
      *
      * @return array
      */
@@ -24,11 +26,13 @@ class CommonGeneral extends NovaPoshta
     {
         $this->calledMethod = 'getMessageCodeText';
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
     }
 
     /**
      * Продление даты действия API ключа.
+     *
+     * @since 2022-11-03
      *
      * @param  string  $ApiKey  API ключ
      * @param  int|null  $month  Кол-во месяцев продления
@@ -41,11 +45,13 @@ class CommonGeneral extends NovaPoshta
         $this->methodProperties['ApiKey'] = $ApiKey;
         $this->methodProperties['prolongateMounthCount'] = $month;
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
      * Получение списка API ключей.
+     *
+     * @since 2022-11-03
      *
      * @return array
      */
@@ -53,11 +59,13 @@ class CommonGeneral extends NovaPoshta
     {
         $this->calledMethod = 'getApiKeysList';
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
      * Получение доверенных устройств.
+     *
+     * @since 2022-11-03
      *
      * @return array
      */

@@ -216,4 +216,20 @@ class Common extends NovaPoshta
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
     }
+
+    /**
+     * Получение данных о персональном менеджере.
+     * @since 2022-11-05
+     *
+     * @param string $Ref Ref контрагента
+     * @return array
+     */
+    public function getPersonalManager(string $Ref): array
+    {
+        $this->calledMethod = 'getPersonalManager';
+
+        $this->methodProperties['Ref'] = $Ref;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+    }
 }

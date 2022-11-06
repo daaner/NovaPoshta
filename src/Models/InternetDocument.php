@@ -9,8 +9,10 @@ use Daaner\NovaPoshta\Traits\DocumentList;
 use Daaner\NovaPoshta\Traits\InternetDocumentProperty;
 use Daaner\NovaPoshta\Traits\Limit;
 use Daaner\NovaPoshta\Traits\OptionsSeatProperty;
+use Daaner\NovaPoshta\Traits\PDFDocumentProperty;
 use Daaner\NovaPoshta\Traits\RecipientProperty;
 use Daaner\NovaPoshta\Traits\SenderProperty;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Facades\Date;
 
 class InternetDocument extends NovaPoshta
@@ -30,6 +32,11 @@ class InternetDocument extends NovaPoshta
      * save.
      */
     use InternetDocumentProperty, SenderProperty, OptionsSeatProperty, RecipientProperty;
+
+    /**
+     * getPDF.
+     */
+    use PDFDocumentProperty;
 
     protected $model = 'InternetDocument';
     protected $calledMethod;
@@ -113,7 +120,7 @@ class InternetDocument extends NovaPoshta
     /**
      * Получить данные о платежах за определенный период.
      *
-     * @deprecated НЕ ДОКУМЕНТИРОВАНО
+     * @since 2022-11-06 НЕ ДОКУМЕНТИРОВАНО
      *
      * @param  null|string|Carbon|date  $dateFrom  Начиная с текущей даты
      * @param  null|string|Carbon|date  $dateTo  До текущей даты
@@ -139,7 +146,7 @@ class InternetDocument extends NovaPoshta
      *
      * TODO need tested
      *
-     * @deprecated НЕ ПРОВЕРЕНО
+     * @since НЕ ПРОВЕРЕНО
      *
      * @param  string|null  $description  Описание
      * @return array
@@ -203,5 +210,86 @@ class InternetDocument extends NovaPoshta
         $this->methodProperties['ServiceType'] = $ServiceType ?? config('novaposhta.service_type');
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
+    }
+
+    /**
+     * Печать накладной.
+     *
+     * @param string|array $DocumentRefs Ref либо ТТН (можно и массивом Ref или ТТН)
+     * @param bool $getStreamFile Получать файл сразу (false - в массиве в ключе result)
+     * @throws BindingResolutionException
+     */
+    public function getPDF($DocumentRefs, bool $getStreamFile)
+    {
+        $this->calledMethod = 'printFull';
+
+        if (is_array($DocumentRefs) === false) {
+            $DocumentRefs = explode(', ', /** @scrutinizer ignore-type */ $DocumentRefs);
+        }
+
+        $this->getPrintForm();
+
+        /**
+         * Форсирование параметров, при определенных условиях.
+         */
+        if($this->printForm == 'ScanSheet') {
+            $this->setThisIsScansheet();
+
+            $this->methodProperties['PrintOrientation'] = $this->PrintOrientation;
+            $this->Type = 'pdf';
+
+            $this->PageFormat = null;
+            $this->Position = 1;
+            $this->Copies = 1;
+        }
+
+        if($this->printForm == 'Document_new') {
+            $this->Type = 'pdf';
+
+            $this->Copies = $this->Copies ?: 1;
+            $this->PageFormat = $this->PageFormat ?: 'A4';
+        }
+
+        if($this->printForm == 'Marking_85x85') {
+            $this->PageFormat = 'A4';
+            $this->Type = 'pdf8';
+        }
+
+        if($this->printForm == 'Marking_100x100') {
+            $this->PageFormat = null;
+            $this->Type = 'pdf';
+            $this->Position = '';
+        }
+
+        if ($this->isScansheet) {
+            $this->methodProperties['ScanSheetRefs'] = $DocumentRefs;
+        } else {
+            $this->methodProperties['DocumentRefs'] = $DocumentRefs;
+        }
+
+        $this->getPageFormat();
+        $this->getCopies();
+        $this->getPosition();
+        $this->getType();
+
+        if ($getStreamFile) {
+            $data = $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+
+            $file = null;
+            $status = 500;
+            $filename = microtime(false).'.pdf';
+
+            if (isset($data['info']['file']) && $data['info']['file'] && $data['success']) {
+                $file = $data['result'];
+                $status = 200;
+            }
+
+            return response()->make($file, $status, [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="'.$filename.'"'
+            ]);
+        }
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 }

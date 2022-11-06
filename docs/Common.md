@@ -18,6 +18,7 @@ use Daaner\NovaPoshta\Models\Common;
 - [x] [Типы контрагентов](Common.md#getTypesOfCounterparties)
 - [x] [Формы оплаты](Common.md#getPaymentForms)
 - [x] [Формы собственности](Common.md#getOwnershipFormsList)
+- [x] [Получение данных о менеджере](Common.md#getPersonalManager)
 
 ## Все методы модели
 - [`getTimeIntervals($recipientCityRef, $dateTime = null)`](#getTimeIntervals)
@@ -33,6 +34,7 @@ use Daaner\NovaPoshta\Models\Common;
 - [`getTypesOfCounterparties()`](#getTypesOfCounterparties)
 - [`getPaymentForms()`](#getPaymentForms)
 - [`getOwnershipFormsList()`](#getOwnershipFormsList)
+- [`getPersonalManager($Ref)`](#getPersonalManager)
 
 
 ---
@@ -229,5 +231,19 @@ $list = $c->getTimeIntervals('8d5a980d-391c-11dd-90d9-001a92567626');
 $list = $c->getTimeIntervals('8d5a980d-391c-11dd-90d9-001a92567626', Carbon::tomorrow()->format('d.m.Y'));
 
 dd($list);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+
+
+#### `getPersonalManager()`
+Получение данных о персональном менеджере
+
+```php
+$c = new Common;
+$c->setApi('...');
+
+$data = $c->getPersonalManager('00000000-0000-0000-0000-000000000000');
+
+dd($data);
 ```
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)

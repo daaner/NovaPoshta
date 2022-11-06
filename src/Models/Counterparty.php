@@ -42,17 +42,18 @@ class Counterparty extends NovaPoshta
      * Загрузить список контактных лиц Контрагента.
      *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a3575a67-8512-11ec-8ced-005056b2dbe1 Загрузить список контактных лиц Контрагента
+     * @since 2022-11-06
      *
-     * @param  string  $ref  Ref контрагента
+     * @param  string  $Ref  Ref контрагента
      * @return array
      */
-    public function getCounterpartyContactPerson(string $ref): array
+    public function getCounterpartyContactPerson(string $Ref): array
     {
         $this->calledMethod = 'getCounterpartyContactPersons';
         $this->getPage();
         $this->getLimit();
 
-        $this->methodProperties['Ref'] = $ref;
+        $this->methodProperties['Ref'] = $Ref;
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
@@ -108,15 +109,16 @@ class Counterparty extends NovaPoshta
      * Скачать параметры Контрагента.
      *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a332efbf-8512-11ec-8ced-005056b2dbe1 Скачать параметры Контрагента
+     * @since 2022-11-06
      *
-     * @param  string  $ref  Ref контрагента
+     * @param  string  $Ref  Ref контрагента
      * @return array
      */
-    public function getCounterpartyOptions(string $ref): array
+    public function getCounterpartyOptions(string $Ref): array
     {
         $this->calledMethod = 'getCounterpartyOptions';
 
-        $this->methodProperties['Ref'] = $ref;
+        $this->methodProperties['Ref'] = $Ref;
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
@@ -125,35 +127,35 @@ class Counterparty extends NovaPoshta
      * Загрузить список адресов Контрагентов.
      *
      * @see https://developers.novaposhta.ua/view/model/a28f4b04-8512-11ec-8ced-005056b2dbe1/method/a30dbb7c-8512-11ec-8ced-005056b2dbe1 Загрузить список адресов Контрагентов
+     * @since 2022-11-06
      *
-     * @param  string  $ref  Ref контрагента
+     * @param  string  $Ref  Ref контрагента
      * @return array
      */
-    public function getCounterpartyAddresses(string $ref): array
+    public function getCounterpartyAddresses(string $Ref): array
     {
         $this->calledMethod = 'getCounterpartyAddresses';
         $this->getCounterpartyProperty();
 
-        $this->methodProperties['Ref'] = $ref;
+        $this->methodProperties['Ref'] = $Ref;
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }
 
     /**
      * Получение данных об Контрагенте по номеру телефона (ФИО и прочее).
+     * @since 2022-11-05 НЕ ДОКУМЕНТИРОВАНО
      *
-     * @deprecated НЕ ДОКУМЕНТИРОВАНО
-     *
-     * @param  string|int  $phone  Телефон
-     * @param  string  $lastname  Фамилия (минимум 3 буквы)
+     * @param  string|int  $Phone  Телефон
+     * @param  string  $LastName  Фамилия (минимум 3 буквы)
      * @return array
      */
-    public function getCatalogCounterparty($phone, string $lastname): array
+    public function getCatalogCounterparty($Phone, string $LastName): array
     {
         $this->calledMethod = 'getCatalogCounterparty';
 
-        $this->methodProperties['Phone'] = $phone;
-        $this->methodProperties['LastName'] = $lastname;
+        $this->methodProperties['Phone'] = $Phone;
+        $this->methodProperties['LastName'] = $LastName;
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
     }

@@ -19,6 +19,6 @@ class Payment extends NovaPoshta
     {
         $this->calledMethod = 'walletManagement';
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 }

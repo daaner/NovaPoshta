@@ -211,7 +211,7 @@ return [
     */
     'http_response_timeout' => 3,
     'http_retry_max_time' => 2,
-    'http_retry_delay' => 200,
+    'http_retry_delay' => 500,
 
     /*
     | Идентификатор возврата по умолчанию.
@@ -238,5 +238,17 @@ return [
     | Формат возврата по умолчанию Cash/NonCash. (нал / безнал)
     */
     'return_cash_method' => 'Cash',
+
+    /*
+    | Формат печати по умолчанию
+    | Document_new, Marking_85x85, Marking_100x100
+    */
+    'print_form' => 'Marking_100x100',
+
+    /*
+    | Ориентация PDF реестра по умолчанию
+    | 'portrait' или 'landscape'
+    */
+    'scan_sheet_orientation' => 'portrait',
 
 ];

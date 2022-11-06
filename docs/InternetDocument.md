@@ -11,6 +11,7 @@ use Daaner\NovaPoshta\Models\InternetDocument;
 - [x] [Получить денежные переводы](InternetDocument.md#getMoneyTransferDocuments)
 - [x] [Прогноз даты доставки груза](InternetDocument.md#getDocumentDeliveryDate)
 - [x] [Редактирование экспресс-накладной](InternetDocument.md#edit) (НЕ ПРОВЕРЕНО)
+- [x] [Получение PDF по накладным либо реестру](InternetDocument.md#getPDF)
 
 
 ## Все методы модели
@@ -20,6 +21,7 @@ use Daaner\NovaPoshta\Models\InternetDocument;
 - [getMoneyTransferDocuments($from = null, $to = null)](#getMoneyTransferDocuments)
 - [getDocumentDeliveryDate($CitySender, $CityRecipient, $DateTime = null, $ServiceType = null)](#getDocumentDeliveryDate)
 - [edit($description = null)](#edit)
+- [getPDF($$DocumentRefs, $getStreamFile)](#getPDF)
 
 ---
 
@@ -206,6 +208,56 @@ $intDoc->setRef('123');
 $edited = $intDoc->edit($description);
 
 dd($edited);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `getPDF()`
+Получение PDF по накладной или массиву накладных либо реестру
+
+При большом кол-ве генерируемых PDF увеличивайте значение `config('novaposhta.http_retry_delay')`.
+
+```php
+$intDoc = new InternetDocument;
+$np->setAPI('c9********fd');
+
+// номер ТТН либо Ref
+$ttns = '20450600000000';
+//либо массивом
+$ttns = [
+    '20450600000000',
+    '00000000-0000-0000-0000-000000000000'
+];
+// реестр тоже можно передавать как номером, так и Ref'ом
+$ttns = '105-00000000'; // Это номер реестра
+
+
+// НЕ обязательные установки
+$np->setCopies(1); //кол-во копий (по умолчанию: 1)
+$np->setPrintForm('Marking_100x100'); // макет шаблона (по умолчанию: 'Document_new')
+
+// Установка, что данный Ref является реестром. Копия всегда одна.
+$np->setThisIsScansheet();
+// Реестр создается по ориентации из конфига config('novaposhta.scan_sheet_orientation'), либо можно указать вручную
+$np->setThisIsScansheet('portrait');
+
+
+// Установки, которые особо не нужны или автоматически подставляющиеся,
+// в зависимости от макета шаблона.
+$np->setPageFormat('A5'); // размер страницы (по умолчанию: 'A4')
+$np->setPosition(1); // установка позиции (по умолчанию: '1')
+$np->setType('pdf'); // установка позиции (по умолчанию: 'pdf')
+
+// ответ массивом, где в ключе `$data['result']` тело PDF файла
+// файл получен и можно вывести, если `$data['success'] == true`, иначе в `$data['result']` пусто
+$data = $intDoc->getPDF($ttns, false);
+dd($data);
+
+// Сразу открытие (при `$data['success'] == true`) файла
+$data = $intDoc->getPDF($ttns, true);
+return $data;
+
 ```
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)
 ***
