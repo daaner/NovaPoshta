@@ -31,7 +31,7 @@ class AdditionalService extends NovaPoshta
 
         $this->methodProperties['Number'] = $ttn;
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
@@ -49,11 +49,12 @@ class AdditionalService extends NovaPoshta
 
         $this->methodProperties['Number'] = $ttn;
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
      * Получение списка причин возврата.
+     * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7a6bacb-8512-11ec-8ced-005056b2dbe1 Список причин возврата
      * @since 2022-11-06
@@ -64,11 +65,12 @@ class AdditionalService extends NovaPoshta
     {
         $this->calledMethod = 'getReturnReasons';
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
     }
 
     /**
      * Получение списка подтипов причины возврата.
+     * Работает без авторизации.
      *
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a7cb69ee-8512-11ec-8ced-005056b2dbe1 Список подтипов причины возврата
      * @since 2022-11-06
@@ -82,7 +84,7 @@ class AdditionalService extends NovaPoshta
 
         $this->methodProperties['ReasonRef'] = $ref ?: config('novaposhta.ref_return_reasons');
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, false);
     }
 
     /**
@@ -101,7 +103,7 @@ class AdditionalService extends NovaPoshta
         $this->getPage();
         $this->getDateBeginEnd();
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
@@ -128,7 +130,7 @@ class AdditionalService extends NovaPoshta
             $this->methodProperties['Ref'] = $this->Ref;
         }
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
@@ -152,6 +154,8 @@ class AdditionalService extends NovaPoshta
         $this->getPaymentMethod();
         $this->getNote();
 
+        $this->methodProperties['OrderType'] = $ownerDocumentType;
+
         /**
          * ========================
          * Тип оформления
@@ -159,7 +163,6 @@ class AdditionalService extends NovaPoshta
          */
         // Обычный возврат
         if ($ownerDocumentType == 'orderCargoReturn') {
-            $this->methodProperties['OrderType'] = 'orderCargoReturn';
             // При возврате нужно указать причину и подтип причины
             $this->getReason();
             $this->getSubtypeReason();
@@ -176,7 +179,6 @@ class AdditionalService extends NovaPoshta
 
         // Переадресация
         if ($ownerDocumentType == 'orderRedirecting') {
-            $this->methodProperties['OrderType'] = 'orderRedirecting';
             $this->getPayerType();
             $this->getCustomer();
             $this->getServiceType();
@@ -185,6 +187,12 @@ class AdditionalService extends NovaPoshta
             if (! $this->Note) {
                 $this->methodProperties['Note'] = config('novaposhta.return_note');
             }
+        }
+
+        // Продление хранения
+        if ($ownerDocumentType == 'orderTermExtension') {
+            $this->getPayerType();
+            $this->getStorageFinalDate();
         }
 
         // Доп поля, если переадресация / возврат
@@ -200,7 +208,7 @@ class AdditionalService extends NovaPoshta
             $this->getRecipientSettlement();
         }
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
@@ -218,9 +226,21 @@ class AdditionalService extends NovaPoshta
     }
 
     /**
+     * Продление хранения посылки.
+     *
+     * @since 2022-11-07
+     *
+     * @param string $ttn Номер ТТН
+     * @return array
+     */
+    public function saveAddTerm(string $ttn): array
+    {
+        return $this->save($ttn, 'orderTermExtension');
+    }
+
+    /**
      * Удаление заявки на возврат, заявку об изменении данных или заявку переадресации.
      *
-     * @since 2022-10-29 Проверено
      * @see https://developers.novaposhta.ua/view/model/a7682c1a-8512-11ec-8ced-005056b2dbe1/method/a85bb34b-8512-11ec-8ced-005056b2dbe1 Удаление заявки
      * @since 2022-11-06
      *
@@ -233,7 +253,7 @@ class AdditionalService extends NovaPoshta
 
         $this->methodProperties['Ref'] = $Ref;
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
@@ -250,7 +270,7 @@ class AdditionalService extends NovaPoshta
 
         $this->methodProperties['IntDocNumber'] = $ttn;
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 
     /**
@@ -268,6 +288,6 @@ class AdditionalService extends NovaPoshta
 
         $this->methodProperties['IntDocNumber'] = $ttn;
 
-        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties);
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
 }

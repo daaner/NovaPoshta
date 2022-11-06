@@ -16,6 +16,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [x] [Удаление заявки на услуги](AdditionalService.md#delete)
 - [x] [Проверка на продление хранения](AdditionalService.md#CheckPossibilityTermExtension)
 - [x] [Проверка на изменение в ТТН](AdditionalService.md#CheckPossibilityChangeEW)
+- [x] [Продление хранения посылки](AdditionalService.md#saveAddTerm)
 
 
 ## Все методы модели
@@ -29,6 +30,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [getRedirectionOrdersList()](#getRedirectionOrdersList)
 - [CheckPossibilityTermExtension($ttn)](#CheckPossibilityTermExtension)
 - [CheckPossibilityChangeEW($ttn)](#CheckPossibilityChangeEW)
+- [saveAddTerm($ttn)](#saveAddTerm)
 
 ---
 
@@ -40,7 +42,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 ```php
 $np = new AdditionalService;
 // Ключ указывается, если не указан в конфиге или отличен от этого значения
-$np->setAPI('3e6****367****bdba****2d87****da');
+$np->setAPI('3e6****367****0000****2d87****da');
 $ttn = '20450520287825';
 
 $addition = $np->CheckPossibilityCreateReturn($ttn);
@@ -284,7 +286,7 @@ dd($addition);
 
 __НЕ ДОКУМЕНТИРОВАНО__
 
-Опытным путем определено, что услуга не доступна у юр.лиц, у которых подключен автовозврат.
+Опытным путем определено, что услуга не доступна у юридических лиц, у которых подключен автовозврат.
 
 ```php
 $np = new AdditionalService;
@@ -306,6 +308,38 @@ $np = new AdditionalService;
 $np->setApi('...');
 $ttn = '20450600000001';
 $term = $np->CheckPossibilityChangeEW($ttn);
+
+dd($term);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `saveAddTerm()`
+Продление хранения посылки.
+
+Алиас для метода `save($ttn, 'orderRedirecting')`.
+
+```php
+$np = new AdditionalService;
+$np->setApi('...');
+$ttn = '20450600000001';
+
+// Дата, до которой хранить посылку.
+// Берется исключительно из метода CheckPossibilityTermExtension($ttn) и принимает только такой формат
+$np->setStorageFinalDate('15.11.2022');
+
+// Каким образом платим за продление
+// Можно опустить, по умолчанию берется значение из config('novaposhta.term_payment_method')
+$np->PaymentMethod('Cash');
+
+// Кто оплачивает продление.
+// Можно опустить, по умолчанию берется значение из config('novaposhta.payer_type')
+$np->PaymentMethod('Recipient');
+
+$term = $np->saveAddTerm($ttn);
+//либо
+$term = $np->save($ttn, 'orderTermExtension');
 
 dd($term);
 ```

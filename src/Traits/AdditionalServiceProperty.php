@@ -12,6 +12,7 @@ trait AdditionalServiceProperty
     protected $Number;
     protected $Customer;
     protected $RecipientData;
+    protected $StorageFinalDate;
 
     /**
      * @return void
@@ -219,6 +220,27 @@ trait AdditionalServiceProperty
     public function changeRecipientData(array $RecipientData): self
     {
         $this->RecipientData = $RecipientData;
+
+        return $this;
+    }
+
+    /**
+     * @return void
+     */
+    public function getStorageFinalDate(): void
+    {
+        $this->methodProperties['StorageFinalDate'] = $this->StorageFinalDate;
+    }
+
+    /**
+     * Устанавливаем дату продления посылки.
+     *
+     * @param  string  $StorageFinalDate  Ref возврата
+     * @return $this
+     */
+    public function setStorageFinalDate(string $StorageFinalDate): self
+    {
+        $this->StorageFinalDate = $StorageFinalDate;
 
         return $this;
     }

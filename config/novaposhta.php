@@ -240,6 +240,11 @@ return [
     'return_cash_method' => 'Cash',
 
     /*
+    | Формат оплаты продления хранения Cash/NonCash. (нал / безнал)
+    */
+    'term_payment_method' => 'Cash',
+
+    /*
     | Формат печати по умолчанию
     | Document_new, Marking_85x85, Marking_100x100
     */
