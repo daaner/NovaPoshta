@@ -6,7 +6,7 @@ use Daaner\NovaPoshta\Models\LoyaltyUser;
 
 ## Содержание
 - [x] [Данные по бонусной карте](LoyaltyUser.md#getLoyaltyInfoByApiKey) (не документировано)
-- [x] [Данные по входящим посылкам](LoyaltyUser.md#getLoyaltyCardTurnoverByApiKey) (не документировано)
+- [x] [Данные по начислению бонусов](LoyaltyUser.md#getLoyaltyCardTurnoverByApiKey) (не документировано)
 - [x] [Данные по промокодам](LoyaltyUser.md#getPromocodeByPhone) (не документировано)
 - [x] [Данные по бонусной программе](LoyaltyUser.md#getStandartCardsList) (не документировано)
 
@@ -35,7 +35,7 @@ dd($loyalty);
 
 
 ### `getLoyaltyCardTurnoverByApiKey()`
-Получение данных о входящих посылках. Можно указать год и месяц.
+Получение данных о начислении и списании бонусов. Можно указать год и месяц.
 
 ```php
 $np = new LoyaltyUser;
