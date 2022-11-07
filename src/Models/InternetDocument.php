@@ -224,8 +224,6 @@ class InternetDocument extends NovaPoshta
         $this->methodProperties['CitySender'] = $CitySender;
         $this->methodProperties['CityRecipient'] = $CityRecipient;
 
-        $this->methodProperties['ServiceType'] = $ServiceType ?? config('novaposhta.service_type');
-
         $this->getWeight();
         $this->getDateTime();
         $this->getCargoType();

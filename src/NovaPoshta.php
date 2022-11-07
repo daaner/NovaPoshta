@@ -61,7 +61,7 @@ class NovaPoshta implements NovaPoshtaInterface
 
     /**
      * @param  bool  $auth
-     * @return ClientResponse|string
+     * @return ClientResponse|string|array
      */
     public function getData(bool $auth = true)
     {
