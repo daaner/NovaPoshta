@@ -101,7 +101,7 @@ class CommonGeneral extends NovaPoshta
      *
      * @since 2022-11-07 НЕ ДОКУМЕНТИРОВАНО
      *
-     * @param string|null $MarketplacePartnerToken
+     * @param  string|null  $MarketplacePartnerToken
      * @return array
      */
     public function createApiKey(?string $MarketplacePartnerToken = null): array
@@ -120,7 +120,7 @@ class CommonGeneral extends NovaPoshta
      *
      * @since 2022-11-07 НЕ ДОКУМЕНТИРОВАНО
      *
-     * @param string $ApiKey
+     * @param  string  $ApiKey
      * @return array
      */
     public function deleteApiKey(string $ApiKey): array
