@@ -95,4 +95,40 @@ class CommonGeneral extends NovaPoshta
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
+
+    /**
+     * Создание API ключа.
+     *
+     * @since 2022-11-07 НЕ ДОКУМЕНТИРОВАНО
+     *
+     * @param string|null $MarketplacePartnerToken
+     * @return array
+     */
+    public function createApiKey(?string $MarketplacePartnerToken = null): array
+    {
+        $this->calledMethod = 'createApiKey';
+
+        if ($MarketplacePartnerToken) {
+            $this->methodProperties['MarketplacePartnerToken'] = $MarketplacePartnerToken;
+        }
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+    }
+
+    /**
+     * Удаление API ключа.
+     *
+     * @since 2022-11-07 НЕ ДОКУМЕНТИРОВАНО
+     *
+     * @param string $ApiKey
+     * @return array
+     */
+    public function deleteApiKey(string $ApiKey): array
+    {
+        $this->calledMethod = 'deleteApiKey';
+
+        $this->methodProperties['ApiKey'] = $ApiKey;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+    }
 }

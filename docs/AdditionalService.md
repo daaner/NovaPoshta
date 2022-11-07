@@ -17,6 +17,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [x] [Проверка на продление хранения](AdditionalService.md#CheckPossibilityTermExtension)
 - [x] [Проверка на изменение в ТТН](AdditionalService.md#CheckPossibilityChangeEW)
 - [x] [Продление хранения посылки](AdditionalService.md#saveAddTerm)
+- [x] [Замена/снятие наложного платежа](AdditionalService.md#saveChangeCash)
 
 
 ## Все методы модели
@@ -31,6 +32,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [CheckPossibilityTermExtension($ttn)](#CheckPossibilityTermExtension)
 - [CheckPossibilityChangeEW($ttn)](#CheckPossibilityChangeEW)
 - [saveAddTerm($ttn)](#saveAddTerm)
+- [saveChangeCash($ttn, $RedeliveryString)](#saveChangeCash)
 
 ---
 
@@ -342,6 +344,31 @@ $term = $np->saveAddTerm($ttn);
 $term = $np->save($ttn, 'orderTermExtension');
 
 dd($term);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `saveChangeCash()`
+Замена/снятие наложного платежа.
+
+Алиас для метода `save($ttn, 'orderChangeEW')`, но с указанием суммы
+
+Если сделать `save($ttn, 'orderChangeEW')` - наложный платеж будет убран, как и при `saveChangeCash($ttn, 0)`
+
+```php
+$np = new AdditionalService;
+$np->setApi('...');
+$ttn = '20450600000001';
+
+$cash = $np->saveChangeCash($ttn, 100);
+
+//для снятия наложного платежа
+$cash = $np->saveChangeCash($ttn, 0);
+//либо
+$cash = $np->save($ttn, 'orderChangeEW');
+
+dd($cash);
 ```
 [Содержание](#Содержание) [Методы модели](#Все-методы-модели)
 ***

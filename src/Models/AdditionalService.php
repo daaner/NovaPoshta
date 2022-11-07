@@ -13,6 +13,7 @@ class AdditionalService extends NovaPoshta
     protected $model = 'AdditionalService';
     protected $calledMethod;
     protected $methodProperties = null;
+    protected $BackwardRedeliveryString;
 
     use InternetDocumentProperty, AdditionalServiceProperty, Limit, DateTimes;
 
@@ -195,6 +196,22 @@ class AdditionalService extends NovaPoshta
             $this->getStorageFinalDate();
         }
 
+        // Замена наложного платежа
+        if ($ownerDocumentType == 'orderChangeEW') {
+            $this->methodProperties['PayerType'] = 'Sender';
+
+            if ($this->BackwardRedeliveryString) {
+                $this->methodProperties['BackwardDeliveryData'][] = [
+                    "PayerType" => "Recipient",
+                    "CargoType" => "Money",
+                    "Description" => $this->BackwardRedeliveryString,
+                ];
+            } else {
+                $this->methodProperties['BackwardDeliveryData'] = [];
+            }
+
+        }
+
         // Доп поля, если переадресация / возврат
         if ($ownerDocumentType == 'orderCargoReturn' || $ownerDocumentType == 'orderRedirecting') {
             /**
@@ -236,6 +253,22 @@ class AdditionalService extends NovaPoshta
     public function saveAddTerm(string $ttn): array
     {
         return $this->save($ttn, 'orderTermExtension');
+    }
+
+    /**
+     * Замена/снятие наложного платежа.
+     *
+     * @since 2022-11-07
+     *
+     * @param string $ttn Номер ТТН
+     * @param string $RedeliveryString Новая сумма или 0
+     * @return array
+     */
+    public function saveChangeCash(string $ttn, string $RedeliveryString): array
+    {
+        $this->BackwardRedeliveryString = $RedeliveryString;
+
+        return $this->save($ttn, 'orderChangeEW');
     }
 
     /**

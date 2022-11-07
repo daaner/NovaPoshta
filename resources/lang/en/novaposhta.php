@@ -18,6 +18,7 @@ return [
         '9' => 'Parcel received',
         '10' => 'Parcel received, money sent',
         '11' => 'Parcel received, money received',
+        '12' => 'Parcel completing',
         '14' => 'The parcel has been issued for inspection by the recipient',
 
         '101' => 'On the way to the recipient',
@@ -27,6 +28,7 @@ return [
         '105' => 'Storage stopped',
         '106' => 'Received, return delivery Invoice created',
         '108' => 'Refusal to send (108)',
+        '111' => 'Unsuccessful delivery attempt due to the absence of the recipient at the address or communication with him',
         '112' => 'Delivery date moved by recipient',
 
         'sync' => 'Данные получены',

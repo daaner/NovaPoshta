@@ -8,6 +8,8 @@ use Daaner\NovaPoshta\Models\CommonGeneral;
 - [x] [Перечень ошибок](CommonGeneral.md#getMessageCodeText)
 - [x] [Продление API ключа](CommonGeneral.md#prolongateKey)
 - [x] [Получение списка API ключей](CommonGeneral.md#getApiKeysList)
+- [x] [Создать API ключ](CommonGeneral.md#createApiKey)
+- [x] [Удалить API ключ](CommonGeneral.md#deleteApiKey)
 - [x] [Получение списка доверенных устройств](CommonGeneral.md#getTrustedDevicesList)
 - [x] [Удаление доверенного устройства из списка](CommonGeneral.md#deleteTrustedDevice)
 
@@ -16,6 +18,8 @@ use Daaner\NovaPoshta\Models\CommonGeneral;
 - [getMessageCodeText()](#getMessageCodeText)
 - [prolongateKey($ApiKey, $month = 12)](#prolongateKey)
 - [getApiKeysList()](#getApiKeysList)
+- [createApiKey($MarketplacePartnerToken = null)](#createApiKey)
+- [deleteApiKey($ApiKey)](#deleteApiKey)
 - [getTrustedDevicesList()](#getTrustedDevicesList)
 - [deleteTrustedDevice($Ref)](#deleteTrustedDevice)
 
@@ -57,6 +61,38 @@ dd($api);
 $cg = new CommonGeneral;
 $cg->setAPI('3e6****367****bdba****2d87****da');
 $api = $cg->getApiKeysList();
+
+dd($api);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `createApiKey()`
+Создание API ключа
+
+```php
+$cg = new CommonGeneral;
+$cg->setAPI('3e6****367****bdba****2d87****da');
+$api = $cg->createApiKey();
+
+//Для персонализации ключа, если у вас имеется Ref организации, можете его указать 
+$api = $cg->createApiKey('005056887b8d-8478-11e5-c9ad-fa7dc024');
+
+dd($api);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `deleteApiKey()`
+Удаление (отключение активности) API ключа
+
+```php
+$cg = new CommonGeneral;
+$cg->setAPI('3e6****367****bdba****2d87****da');
+$ApiKey = '00000000001111111111222222222233';
+$api = $cg->deleteApiKey($ApiKey);
 
 dd($api);
 ```
