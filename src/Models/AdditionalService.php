@@ -202,14 +202,13 @@ class AdditionalService extends NovaPoshta
 
             if ($this->BackwardRedeliveryString) {
                 $this->methodProperties['BackwardDeliveryData'][] = [
-                    "PayerType" => "Recipient",
-                    "CargoType" => "Money",
-                    "Description" => $this->BackwardRedeliveryString,
+                    'PayerType' => 'Recipient',
+                    'CargoType' => 'Money',
+                    'Description' => $this->BackwardRedeliveryString,
                 ];
             } else {
                 $this->methodProperties['BackwardDeliveryData'] = [];
             }
-
         }
 
         // Доп поля, если переадресация / возврат
@@ -260,8 +259,8 @@ class AdditionalService extends NovaPoshta
      *
      * @since 2022-11-07
      *
-     * @param string $ttn Номер ТТН
-     * @param string $RedeliveryString Новая сумма или 0
+     * @param  string  $ttn  Номер ТТН
+     * @param  string  $RedeliveryString  Новая сумма или 0
      * @return array
      */
     public function saveChangeCash(string $ttn, string $RedeliveryString): array
