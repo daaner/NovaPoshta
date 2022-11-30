@@ -44,10 +44,10 @@ return [
         '1004' => 'All data is synchronized',
         '1005' => 'One or more lines of data are not synchronized',
 
-        //3275 на 2020-11-09
         '20002503517' => 'The document does not belong to this user',
         '20000303942' => 'EN is located in the department of the "Receipt-issuance point" category, where there is no access to the IS. Ordering additional services is prohibited.',
         '20003603881' => 'No orders found',
+        '20000303855' => 'Does not meet the payment terms',
 
         '20000100004' => 'User with email exists',
         '20000100002' => 'General error',
