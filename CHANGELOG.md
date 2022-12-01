@@ -2,6 +2,9 @@
 
 All notable changes to `NovaPoshta` will be documented in this file
 
+### 2022-12-01
+- [Fix] Изменение плательщика смены наложки на `Recipient` в `orderChangeEW`
+
 ### 2022-11-07
 - [Add] Добавление метода `createApiKey` в `CommonGeneral`
 - [Add] Добавление метода `deleteApiKey` в `CommonGeneral`

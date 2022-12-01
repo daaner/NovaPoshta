@@ -198,7 +198,7 @@ class AdditionalService extends NovaPoshta
 
         // Замена наложного платежа
         if ($ownerDocumentType == 'orderChangeEW') {
-            $this->methodProperties['PayerType'] = 'Sender';
+            $this->methodProperties['PayerType'] = 'Recipient';
 
             if ($this->BackwardRedeliveryString) {
                 $this->methodProperties['BackwardDeliveryData'][] = [
