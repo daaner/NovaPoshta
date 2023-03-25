@@ -366,6 +366,8 @@ $cash = $np->saveChangeCash($ttn, 100);
 //для снятия наложного платежа
 $cash = $np->saveChangeCash($ttn, null);
 //либо
+$cash = $np->saveChangeCash($ttn, 0);
+//либо
 $cash = $np->save($ttn, 'orderChangeEW');
 
 dd($cash);
