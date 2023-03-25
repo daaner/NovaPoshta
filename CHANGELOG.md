@@ -2,6 +2,9 @@
 
 All notable changes to `NovaPoshta` will be documented in this file
 
+### 2023-03-25
+- [Fix] Исправления снятия наложного платежа с заявки в `AdditionalService`
+
 ### 2022-12-01
 - [Fix] Изменение плательщика смены наложки на `Recipient` в `orderChangeEW`
 

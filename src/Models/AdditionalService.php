@@ -257,13 +257,13 @@ class AdditionalService extends NovaPoshta
     /**
      * Замена/снятие наложного платежа.
      *
+     * @param string $ttn Номер ТТН
+     * @param string|null $RedeliveryString Новая сумма или null, чтоб снять наложку
+     * @return array
      * @since 2022-11-07
      *
-     * @param  string  $ttn  Номер ТТН
-     * @param  string  $RedeliveryString  Новая сумма или 0
-     * @return array
      */
-    public function saveChangeCash(string $ttn, string $RedeliveryString): array
+    public function saveChangeCash(string $ttn, ?string $RedeliveryString): array
     {
         $this->BackwardRedeliveryString = $RedeliveryString;
 

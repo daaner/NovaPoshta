@@ -364,7 +364,7 @@ $ttn = '20450600000001';
 $cash = $np->saveChangeCash($ttn, 100);
 
 //для снятия наложного платежа
-$cash = $np->saveChangeCash($ttn, 0);
+$cash = $np->saveChangeCash($ttn, null);
 //либо
 $cash = $np->save($ttn, 'orderChangeEW');
 
