@@ -3293,6 +3293,7 @@ return [
         '20003403431' => 'Wrong Role value',
         '20002703432' => 'Weight is too long (maximum is 10 characters).',
         '20000203433' => 'Method is not exist more.',
+        '20000203729' => 'Maximum allowable weight for recipient\'s warehouse exceeded',
     ],
 
 ];
