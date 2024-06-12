@@ -112,8 +112,12 @@ $recipient = [
 ];
 
 $np->setRecipient($recipient);
-//наложный платеж
+
+//наложный платеж либо Контроль оплаты для предпринимателей
+//"Контроль оплаты" имеет приоритет перед наложкой!!!
 $np->setBackwardDeliveryData(386);
+//или
+$np->setAfterpaymentOnGoodsCost(386)
 
 $np->setAdditionalInformation('Добавление информации');
 

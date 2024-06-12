@@ -2,6 +2,9 @@
 
 All notable changes to `NovaPoshta` will be documented in this file
 
+### 2024-06-13
+- [Add] Добавление метода `setAfterpaymentOnGoodsCost` в `InternetDocument`
+
 ### 2023-03-25
 - [Fix] Исправления снятия наложного платежа с заявки в `AdditionalService`
 

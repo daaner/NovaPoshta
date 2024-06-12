@@ -1,4 +1,4 @@
-# Laravel NovaPoshta API 3.0
+# Laravel NovaPoshta API 2.0
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/daaner/novaposhta/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/daaner/novaposhta/?branch=master)
 [![Laravel Support](https://img.shields.io/badge/Laravel-7+-brightgreen.svg)]()

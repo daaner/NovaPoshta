@@ -13,6 +13,7 @@ trait InternetDocumentProperty
     protected $Cost;
     protected $Weight;
     protected $BackwardDeliveryData;
+    protected $AfterpaymentOnGoodsCost;
     protected $Note;
     protected $AdditionalInformation;
 
@@ -254,11 +255,26 @@ trait InternetDocumentProperty
     }
 
     /**
+     * Услуга Контроль оплаты
+     *
+     * @param string|int $AfterpaymentOnGoodsCost Контроль оплаты (Наложка на карту предпринимателя)
+     * @return $this
+     */
+    public function setAfterpaymentOnGoodsCost($AfterpaymentOnGoodsCost): self
+    {
+        $this->AfterpaymentOnGoodsCost = $AfterpaymentOnGoodsCost;
+
+        return $this;
+    }
+
+    /**
      * @return void
      */
     public function getBackwardDeliveryData(): void
     {
-        if ($this->BackwardDeliveryData) {
+        if ($this->AfterpaymentOnGoodsCost) {
+            $this->methodProperties['AfterpaymentOnGoodsCost'] = $this->AfterpaymentOnGoodsCost;
+        } else if ($this->BackwardDeliveryData) {
             $this->methodProperties['BackwardDeliveryData'][] = $this->BackwardDeliveryData;
         }
     }
