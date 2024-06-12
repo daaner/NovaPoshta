@@ -255,9 +255,9 @@ trait InternetDocumentProperty
     }
 
     /**
-     * Услуга Контроль оплаты
+     * Услуга Контроль оплаты.
      *
-     * @param string|int $AfterpaymentOnGoodsCost Контроль оплаты (Наложка на карту предпринимателя)
+     * @param  string|int  $AfterpaymentOnGoodsCost  Контроль оплаты (Наложка на карту предпринимателя)
      * @return $this
      */
     public function setAfterpaymentOnGoodsCost($AfterpaymentOnGoodsCost): self
@@ -274,7 +274,7 @@ trait InternetDocumentProperty
     {
         if ($this->AfterpaymentOnGoodsCost) {
             $this->methodProperties['AfterpaymentOnGoodsCost'] = $this->AfterpaymentOnGoodsCost;
-        } else if ($this->BackwardDeliveryData) {
+        } elseif ($this->BackwardDeliveryData) {
             $this->methodProperties['BackwardDeliveryData'][] = $this->BackwardDeliveryData;
         }
     }
