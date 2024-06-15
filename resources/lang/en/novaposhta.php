@@ -44,6 +44,7 @@ return [
         '1004' => 'All data is synchronized',
         '1005' => 'One or more lines of data are not synchronized',
 
+        '20000204095' => 'Financial services are not available to you: parcel payment, money transfer, Safe service. Access is suspended in accordance with the requirements of the legislation on financial monitoring',
         '20000203636' => 'Calculate Undefined services error. Please try again',
         '20002503517' => 'The document does not belong to this user',
         '20000303942' => 'EN is located in the department of the "Receipt-issuance point" category, where there is no access to the IS. Ordering additional services is prohibited.',
