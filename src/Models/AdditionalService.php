@@ -14,6 +14,7 @@ class AdditionalService extends NovaPoshta
     protected $calledMethod;
     protected $methodProperties = null;
     protected $BackwardRedeliveryString;
+    protected $AfterpaymentOnGoodsCost;
 
     use InternetDocumentProperty, AdditionalServiceProperty, Limit, DateTimes;
 
@@ -209,6 +210,12 @@ class AdditionalService extends NovaPoshta
             } else {
                 $this->methodProperties['BackwardDeliveryData'] = [];
             }
+
+            // Снимаем наложку, если есть контроль оплаты!!!
+            $this->methodProperties['AfterpaymentOnGoodsCost'] = $this->AfterpaymentOnGoodsCost;
+            if ($this->AfterpaymentOnGoodsCost) {
+                $this->methodProperties['BackwardDeliveryData'] = [];
+            }
         }
 
         // Доп поля, если переадресация / возврат
@@ -266,6 +273,22 @@ class AdditionalService extends NovaPoshta
     public function saveChangeCash(string $ttn, ?string $RedeliveryString): array
     {
         $this->BackwardRedeliveryString = $RedeliveryString;
+
+        return $this->save($ttn, 'orderChangeEW');
+    }
+
+    /**
+     * Замена/снятие контроля оплаты.
+     *
+     * @param  string  $ttn  Номер ТТН
+     * @param  string  $AfterpaymentString  Новая сумма или 0, чтоб снять контроль оплаты
+     * @return array
+     *
+     * @since 2024-07-04
+     */
+    public function saveChangeAfterpaymentType(string $ttn, string $AfterpaymentString): array
+    {
+        $this->AfterpaymentOnGoodsCost = $AfterpaymentString;
 
         return $this->save($ttn, 'orderChangeEW');
     }

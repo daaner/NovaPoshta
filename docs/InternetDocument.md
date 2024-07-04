@@ -11,7 +11,7 @@ use Daaner\NovaPoshta\Models\InternetDocument;
 - [x] [Получить денежные переводы](InternetDocument.md#getMoneyTransferDocuments)
 - [x] [Прогноз даты доставки груза](InternetDocument.md#getDocumentDeliveryDate)
 - [x] [Прогноз стоимости доставки груза](InternetDocument.md#getDocumentPrice)
-- [x] [Редактирование экспресс-накладной](InternetDocument.md#edit) (НЕ ПРОВЕРЕНО)
+- [x] [Редактирование экспресс-накладной](InternetDocument.md#edit)
 - [x] [Получение PDF по накладным либо реестру](InternetDocument.md#getPDF)
 
 
@@ -113,11 +113,15 @@ $recipient = [
 
 $np->setRecipient($recipient);
 
+//Плательщик доставки
+//Не обязательно указывать, берет значение из конфига
+$np->setPayerType('Sender');
+
 //наложный платеж либо Контроль оплаты для предпринимателей
 //"Контроль оплаты" имеет приоритет перед наложкой!!!
 $np->setBackwardDeliveryData(386);
 //или
-$np->setAfterpaymentOnGoodsCost(386)
+$np->setAfterpaymentOnGoodsCost(386);
 
 $np->setAdditionalInformation('Добавление информации');
 
@@ -125,7 +129,7 @@ $np->setAdditionalInformation('Добавление информации');
 $np->setOptionsSeat([1, 5, 10, 11]);
 $np->setOptionsSeat(5);
 
-$createTTN = $np->save('Заявка №500');
+$createTTN = $np->save('Заявка №500. Одяг'); //Описание(название) посылки
 
 dd($createTTN);
 ```
@@ -227,7 +231,7 @@ dd($forecast);
 ### `edit()`
 [Редактирование](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a98a4354-8512-11ec-8ced-005056b2dbe1) экспресс-накладной
 
-__НЕ ПРОВЕРЕНО__
+Редактирует накладную (если еще не поехала)
 
 ```php
 $intDoc = new InternetDocument;

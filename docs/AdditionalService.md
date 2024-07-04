@@ -18,6 +18,7 @@ use Daaner\NovaPoshta\Models\AdditionalService;
 - [x] [Проверка на изменение в ТТН](AdditionalService.md#CheckPossibilityChangeEW)
 - [x] [Продление хранения посылки](AdditionalService.md#saveAddTerm)
 - [x] [Замена/снятие наложного платежа](AdditionalService.md#saveChangeCash)
+- [x] [Замена/снятие контроля оплаты](AdditionalService.md#saveChangeAfterpaymentType)
 
 
 ## Все методы модели
@@ -369,6 +370,26 @@ $cash = $np->saveChangeCash($ttn, null);
 $cash = $np->saveChangeCash($ttn, 0);
 //либо
 $cash = $np->save($ttn, 'orderChangeEW');
+
+dd($cash);
+```
+[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+***
+
+
+### `saveChangeAfterpaymentType()`
+Замена/снятие контроля оплаты. Работает только, если у вас подписан договор
+
+```php
+$np = new AdditionalService;
+$np->setApi('...');
+$ttn = '20450600000001';
+
+$cash = $np->saveChangeAfterpaymentType($ttn, 100);
+
+//для снятия контроля оплаты
+$cash = $np->saveChangeAfterpaymentType($ttn, 0);
+
 
 dd($cash);
 ```
