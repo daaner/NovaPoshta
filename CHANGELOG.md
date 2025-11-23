@@ -2,9 +2,14 @@
 
 All notable changes to `NovaPoshta` will be documented in this file
 
+### 2025-11-23
+- [Add] Добавление метода `payEwByLoyaltyPoints` в `InternetDocument`
+- [Add] Добавление метода `registrationLoyaltyUserByPhone` в `LoyaltyUser`
+- [Add] Добавление метода `activationLoyaltyUserByPhone` в `LoyaltyUser`
+
 ### 2024-07-04
 - [Add] Добавление метода `ChangeAfterpaymentType` в `AdditionlService`
-- 
+ 
 ### 2024-06-13
 - [Add] Добавление метода `setAfterpaymentOnGoodsCost` в `InternetDocument`
 

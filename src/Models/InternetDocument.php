@@ -320,4 +320,19 @@ class InternetDocument extends NovaPoshta
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
+
+    /**
+     * Оплата "балами"
+     * @param string $DocumentNumber
+     * @param string $DebitingAmount
+     * @return array
+     */
+    public function payEwByLoyaltyPoints(string $DocumentNumber, string $DebitingAmount): array
+    {
+        $this->calledMethod = 'payEwByLoyaltyPoints';
+        $this->methodProperties['DocumentNumber'] = $DocumentNumber;
+        $this->methodProperties['DebitingAmount'] = $DebitingAmount;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+    }
 }

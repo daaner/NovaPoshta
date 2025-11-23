@@ -88,4 +88,34 @@ class LoyaltyUser extends NovaPoshta
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
+
+    /**
+     * Авторизация с помощью номера телефона и пароля
+     * @param string $Phone
+     * @param string $Password
+     * @return array
+     */
+    public function registrationLoyaltyUserByPhone(string $Phone, string $Password): array
+    {
+        $this->calledMethod = 'registrationLoyaltyUserByPhone';
+        $this->methodProperties['Login'] = $Phone;
+        $this->methodProperties['Password'] = $Password;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+    }
+
+    /**
+     * Подтверждение авторизации с помощью номера телефона и пароля
+     * @param string $Phone
+     * @param string $VerificationCode
+     * @return array
+     */
+    public function activationLoyaltyUserByPhone(string $Phone, string $VerificationCode): array
+    {
+        $this->calledMethod = 'activationLoyaltyUserByPhone';
+        $this->methodProperties['Phone'] = $Phone;
+        $this->methodProperties['VerificationCode'] = $VerificationCode;
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+    }
 }
