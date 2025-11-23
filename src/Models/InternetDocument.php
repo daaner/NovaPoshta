@@ -73,7 +73,7 @@ class InternetDocument extends NovaPoshta
      * @param  string|null  $description  Описание посылки
      * @return array
      */
-    public function save(string $description = null): array
+    public function save(?string $description = null): array
     {
         $this->calledMethod = 'save';
 
