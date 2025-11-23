@@ -26,7 +26,7 @@ trait Limit
      * @param  int  $page  Номер страницы данных
      * @return $this
      */
-    public function setPage(int $page): self
+    public function setPage(string $page): self
     {
         $this->page = $page;
 
