@@ -90,9 +90,10 @@ class LoyaltyUser extends NovaPoshta
     }
 
     /**
-     * Авторизация с помощью номера телефона и пароля
-     * @param string $Phone
-     * @param string $Password
+     * Авторизация с помощью номера телефона и пароля.
+     *
+     * @param  string  $Phone
+     * @param  string  $Password
      * @return array
      */
     public function registrationLoyaltyUserByPhone(string $Phone, string $Password): array
@@ -105,9 +106,10 @@ class LoyaltyUser extends NovaPoshta
     }
 
     /**
-     * Подтверждение авторизации с помощью номера телефона и пароля
-     * @param string $Phone
-     * @param string $VerificationCode
+     * Подтверждение авторизации с помощью номера телефона и пароля.
+     *
+     * @param  string  $Phone
+     * @param  string  $VerificationCode
      * @return array
      */
     public function activationLoyaltyUserByPhone(string $Phone, string $VerificationCode): array

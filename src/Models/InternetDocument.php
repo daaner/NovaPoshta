@@ -322,9 +322,10 @@ class InternetDocument extends NovaPoshta
     }
 
     /**
-     * Оплата "балами"
-     * @param string $DocumentNumber
-     * @param string $DebitingAmount
+     * Оплата "балами".
+     *
+     * @param  string  $DocumentNumber
+     * @param  string  $DebitingAmount
      * @return array
      */
     public function payEwByLoyaltyPoints(string $DocumentNumber, string $DebitingAmount): array
