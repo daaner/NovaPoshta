@@ -19,6 +19,7 @@ class NovaPoshta implements NovaPoshtaInterface
     protected $model;
     protected $calledMethod;
     protected $methodProperties;
+    protected $otherParams = [];
 
     /**
      * NovaPoshta constructor main settings.
@@ -80,6 +81,7 @@ class NovaPoshta implements NovaPoshtaInterface
             $this->development($auth);
         }
 
+        $body = array_merge($body, $this->otherParams);
         try {
             $response = Http::timeout(config('novaposhta.http_response_timeout', 3))
                 ->retry(
@@ -248,5 +250,16 @@ class NovaPoshta implements NovaPoshtaInterface
                 Log::notice('method json_encode error');
             }
         }
+    }
+
+    /**
+     * Подмешивает дополнительные параметры к запросу (WARNING: возможно переопределение)
+     * @param array $otherParams
+     * @return $this
+     */
+    public function setOtherParams(array $otherParams) : self
+    {
+        $this->otherParams = $otherParams;
+        return $this;
     }
 }
