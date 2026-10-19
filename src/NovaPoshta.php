@@ -253,13 +253,15 @@ class NovaPoshta implements NovaPoshtaInterface
     }
 
     /**
-     * Подмешивает дополнительные параметры к запросу (WARNING: возможно переопределение)
-     * @param array $otherParams
+     * Подмешивает дополнительные параметры к запросу (WARNING: возможно переопределение).
+     *
+     * @param  array  $otherParams
      * @return $this
      */
-    public function setOtherParams(array $otherParams) : self
+    public function setOtherParams(array $otherParams): self
     {
         $this->otherParams = $otherParams;
+
         return $this;
     }
 }
