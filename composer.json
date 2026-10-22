@@ -21,14 +21,29 @@
         "laravel/framework": ">=7.0",
         "ext-json": "*"
     },
+    "require-dev": {
+        "guzzlehttp/guzzle": "^7.0",
+        "guzzlehttp/promises": "1.5",
+        "orchestra/testbench": "^5.0|^6.0",
+        "phpunit/phpunit": "^8.5|^9.0"
+    },
     "autoload": {
         "psr-4": {
             "Daaner\\NovaPoshta\\Facades\\": "src/Facades",
             "Daaner\\NovaPoshta\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Daaner\\NovaPoshta\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "disable-tls": false
     },
     "extra": {
         "laravel": {
