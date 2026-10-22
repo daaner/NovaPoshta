@@ -4,8 +4,8 @@ namespace Daaner\NovaPoshta\Traits;
 
 trait Limit
 {
-    protected $limit;
-    protected $page;
+    protected ?string $limit = null;
+    protected ?string $page = null;
 
     /**
      * Установка лимита записей.
