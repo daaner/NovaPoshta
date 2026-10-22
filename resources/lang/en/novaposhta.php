@@ -1007,7 +1007,7 @@ return [
         '30000801043' => 'Person already exists!',
         '20000901045' => 'You can not delete the sender\'s counterparty',
         '20000901046' => 'CounterpartyProperty can\'t be empty',
-        '30000901047' => 'EDRPOU', 'Counterparty is not unique',
+        '30000901047' => 'EDRPOU: Counterparty is not unique',
         '30000901048' => 'EDRPOU',
         '20000201049' => 'Error create InternetDocument. AccountNumber does not exist',
         '20000201050' => 'Webclient.InternetDocumentGeneral.InfoRegPaymentAmountsByIDAndBankAccounts.save',

@@ -120,6 +120,13 @@ class NovaPoshta implements NovaPoshtaInterface
         $this->calledMethod = $calledMethod;
         $this->methodProperties = $methodProperties;
 
+        // Сброс результата предыдущего запроса
+        $this->return = [
+            'success' => false,
+            'result' => null,
+            'info' => [],
+        ];
+
         $response = $this->getData($auth);
 
         // Ошибка курла
@@ -134,12 +141,13 @@ class NovaPoshta implements NovaPoshtaInterface
         // Ошибка запроса или 401
         if ($response->failed()) {
             $this->return['info']['error'] = trans('novaposhta::novaposhta.error_data');
+            $this->return['info']['StatusCode'] = (string) $response->status();
 
             return $this->return;
         }
 
         // если что-то не JSON (типа application/pdf)
-        if ($response->header('Content-Type') !== 'application/json') {
+        if (strpos((string) $response->header('Content-Type'), 'application/json') === false) {
             $this->return['success'] = $response->ok();
 
             $this->return['info']['file'] = true;
@@ -202,9 +210,6 @@ class NovaPoshta implements NovaPoshtaInterface
         if (isset($answer['infoCodes']) && $answer['infoCodes']) {
             $info['infoCodes'] = $answer['infoCodes'];
 
-            foreach ($answer['infoCodes'] as $err) {
-                $info['infoCodes'] = $err;
-            }
             if (isset($answer['infoCodes'][0])) {
                 $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.'.$answer['infoCodes'][0]);
             }
@@ -212,13 +217,10 @@ class NovaPoshta implements NovaPoshtaInterface
 
         if (isset($answer['errors']) && $answer['errors']) {
             $info['errors'] = $answer['errors'];
-            if ($answer['errorCodes']) {
-                foreach ($answer['errorCodes'] as $err) {
-                    $info['StatusCode'] = $err;
-                }
-                if (isset($answer['errorCodes'][0])) {
-                    $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.'.$answer['errorCodes'][0]);
-                }
+            if (! empty($answer['errorCodes']) && isset($answer['errorCodes'][0])) {
+                // Код и перевод берутся из одной (первой) ошибки
+                $info['StatusCode'] = $answer['errorCodes'][0];
+                $info['StatusLocale'] = __('novaposhta::novaposhta.statusCode.'.$answer['errorCodes'][0]);
             }
         }
 

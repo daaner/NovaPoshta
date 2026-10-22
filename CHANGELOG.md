@@ -2,6 +2,16 @@
 
 All notable changes to `NovaPoshta` will be documented in this file
 
+### 2026-10-22
+- [Add] Статус `124` (Знищено внаслідок ворожої атаки) в переводах
+- [Fix] Сброс результата между запросами в `getResponse`
+- [Fix] `infoCodes` в `addInfo` больше не перезаписывается последним кодом; `StatusCode` и `StatusLocale` берутся из одной ошибки
+- [Fix] `StatusCode` при неуспешном HTTP-ответе
+- [Fix] Проверка `Content-Type` с charset
+- [Fix] `getStatusDocuments`/`checkTTN`: разбор строки ТТН через запятую, формат `Documents` для НП
+- [Fix] `getStatusTTN`: для неизвестного статуса `StatusLocale` берётся из ответа НП
+- [Fix] Опечатка в en-переводе `30000901047`
+
 ### 2024-07-04
 - [Add] Добавление метода `ChangeAfterpaymentType` в `AdditionlService`
 - 

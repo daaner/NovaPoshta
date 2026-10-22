@@ -3,6 +3,7 @@
 namespace Daaner\NovaPoshta\Models;
 
 use Daaner\NovaPoshta\NovaPoshta;
+use Illuminate\Support\Facades\Lang;
 
 class TrackingDocument extends NovaPoshta
 {
@@ -21,8 +22,24 @@ class TrackingDocument extends NovaPoshta
     {
         $this->calledMethod = 'getStatusDocuments';
 
-        if (is_array($documents) === false) {
-            $documents = explode(', ', /** @scrutinizer ignore-type */ $documents);
+        // Строка / массив строк через запятую (с пробелами или без) -> массив объектов для НП.
+        // Элементы-массивы ['DocumentNumber' => ..., 'Phone' => ...] передаются как есть.
+        $items = is_array($documents) ? array_values($documents) : [$documents];
+        $documents = [];
+        foreach ($items as $item) {
+            if (is_array($item)) {
+                $documents[] = $item;
+                continue;
+            }
+            foreach (explode(',', (string) $item) as $number) {
+                $number = $this->clearNumber($number);
+                if ($number !== '') {
+                    $documents[] = [
+                        'DocumentNumber' => $number,
+                        'Phone' => null,
+                    ];
+                }
+            }
         }
         $methodProperties = [
             'Documents' => array_values(/** @scrutinizer ignore-type */ $documents),
@@ -45,15 +62,18 @@ class TrackingDocument extends NovaPoshta
     {
         $documents = [];
 
-        if (is_array($ttns)) {
-            $docs = array_values($ttns);
-            foreach ($docs as $key => $ttn) {
-                $documents[$key]['DocumentNumber'] = $this->clearNumber($ttn);
-                $documents[$key]['Phone'] = $phone;
+        // Строка вида "123, 456" тоже разбивается на отдельные ТТН
+        $docs = is_array($ttns) ? array_values($ttns) : explode(',', (string) $ttns);
+
+        foreach ($docs as $ttn) {
+            $number = $this->clearNumber((string) $ttn);
+            if ($number === '') {
+                continue;
             }
-        } else {
-            $documents[0]['DocumentNumber'] = $this->clearNumber($ttns);
-            $documents[0]['Phone'] = $phone;
+            $documents[] = [
+                'DocumentNumber' => $number,
+                'Phone' => $phone,
+            ];
         }
 
         return $this->getStatusDocuments($documents);
@@ -75,10 +95,16 @@ class TrackingDocument extends NovaPoshta
 
         if ($answer['success'] && ! empty($answer['result'])) {
             foreach ($answer['result'] as $key => $status) {
-                $statuses[$key]['Number'] = $status['Number'];
-                $statuses[$key]['StatusCode'] = $status['StatusCode'];
-                $statuses[$key]['Status'] = $status['Status'];
-                $statuses[$key]['StatusLocale'] = trans('novaposhta::novaposhta.statusCode.'.$status['StatusCode']);
+                $statusCode = $status['StatusCode'] ?? '';
+                $langKey = 'novaposhta::novaposhta.statusCode.'.$statusCode;
+
+                $statuses[$key]['Number'] = $status['Number'] ?? '';
+                $statuses[$key]['StatusCode'] = $statusCode;
+                $statuses[$key]['Status'] = $status['Status'] ?? '';
+                // Неизвестный статус -> текст от НП вместо ключа перевода
+                $statuses[$key]['StatusLocale'] = ($statusCode !== '' && Lang::has($langKey))
+                    ? trans($langKey)
+                    : $statuses[$key]['Status'];
                 $statuses[$key]['ActualDeliveryDate'] = $status['ActualDeliveryDate'] ?? null;
 
                 $statuses[$key]['NewTTN'] = '';
@@ -87,7 +113,7 @@ class TrackingDocument extends NovaPoshta
                 // Проверка на существование поля обратной доставки и получения номера накладной
                 // если присутствует тире в номере - значит это отправка денег назад
                 if (isset($status['LastCreatedOnTheBasisNumber']) && $status['LastCreatedOnTheBasisNumber']) {
-                    if (strripos($status['LastCreatedOnTheBasisNumber'], '-')) {
+                    if (strpos($status['LastCreatedOnTheBasisNumber'], '-') !== false) {
                         $statuses[$key]['NewMoneyTTN'] = $status['LastCreatedOnTheBasisNumber'];
                     } else {
                         $statuses[$key]['NewTTN'] = $status['LastCreatedOnTheBasisNumber'];
@@ -110,7 +136,7 @@ class TrackingDocument extends NovaPoshta
     }
 
     /**
-     * Очистка пробелов и букв в ТТН.
+     * Очистка ТТН: остаются только цифры.
      *
      * @internal Внутренняя функция для простоты обработки
      *
@@ -119,6 +145,6 @@ class TrackingDocument extends NovaPoshta
      */
     public function clearNumber(string $ttn): string
     {
-        return preg_replace('/[^0-9,]/', '', $ttn);
+        return preg_replace('/[^0-9]/', '', $ttn);
     }
 }
