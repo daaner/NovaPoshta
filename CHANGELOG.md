@@ -15,6 +15,11 @@ All notable changes to `NovaPoshta` will be documented in this file
 - [Docs] `README.md` in Ukrainian, Russian version in `README.ru.md`
 - [Docs] Docsify updated to v5, light/dark/system theme switcher, favicon
 
+### 2025-11-23
+- [Add] Добавление метода `payEwByLoyaltyPoints` в `InternetDocument`
+- [Add] Добавление метода `registrationLoyaltyUserByPhone` в `LoyaltyUser`
+- [Add] Добавление метода `activationLoyaltyUserByPhone` в `LoyaltyUser`
+
 ### 2024-07-04
 - [Add] Added method `ChangeAfterpaymentType` to `AdditionalService`
 

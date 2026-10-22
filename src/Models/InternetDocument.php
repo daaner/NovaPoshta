@@ -73,7 +73,7 @@ class InternetDocument extends NovaPoshta
      * @param  string|null  $description  Описание посылки
      * @return array
      */
-    public function save(string $description = null): array
+    public function save(?string $description = null): array
     {
         $this->calledMethod = 'save';
 
@@ -317,6 +317,22 @@ class InternetDocument extends NovaPoshta
                 'Content-Disposition' => 'inline; filename="'.$filename.'"',
             ]);
         }
+
+        return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
+    }
+
+    /**
+     * Оплата "балами".
+     *
+     * @param  string  $DocumentNumber
+     * @param  string  $DebitingAmount
+     * @return array
+     */
+    public function payEwByLoyaltyPoints(string $DocumentNumber, string $DebitingAmount): array
+    {
+        $this->calledMethod = 'payEwByLoyaltyPoints';
+        $this->methodProperties['DocumentNumber'] = $DocumentNumber;
+        $this->methodProperties['DebitingAmount'] = $DebitingAmount;
 
         return $this->getResponse($this->model, $this->calledMethod, $this->methodProperties, true);
     }
