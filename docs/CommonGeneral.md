@@ -1,20 +1,20 @@
-# CommonGeneral - API Справочники
+# CommonGeneral - API Довідники
 
 ```php
 use Daaner\NovaPoshta\Models\CommonGeneral;
 ```
 
-## Содержание
-- [x] [Перечень ошибок](CommonGeneral.md#getMessageCodeText)
-- [x] [Продление API ключа](CommonGeneral.md#prolongateKey)
-- [x] [Получение списка API ключей](CommonGeneral.md#getApiKeysList)
-- [x] [Создать API ключ](CommonGeneral.md#createApiKey)
-- [x] [Удалить API ключ](CommonGeneral.md#deleteApiKey)
-- [x] [Получение списка доверенных устройств](CommonGeneral.md#getTrustedDevicesList)
-- [x] [Удаление доверенного устройства из списка](CommonGeneral.md#deleteTrustedDevice)
+## Зміст
+- [x] [Перелік помилок](CommonGeneral.md#getMessageCodeText)
+- [x] [Продовження API ключа](CommonGeneral.md#prolongateKey)
+- [x] [Отримання списку API ключів](CommonGeneral.md#getApiKeysList)
+- [x] [Створити API ключ](CommonGeneral.md#createApiKey)
+- [x] [Видалити API ключ](CommonGeneral.md#deleteApiKey)
+- [x] [Отримання списку довірених пристроїв](CommonGeneral.md#getTrustedDevicesList)
+- [x] [Видалення довіреного пристрою зі списку](CommonGeneral.md#deleteTrustedDevice)
 
 
-## Все методы модели
+## Усі методи моделі
 - [getMessageCodeText()](#getMessageCodeText)
 - [prolongateKey($ApiKey, $month = 12)](#prolongateKey)
 - [getApiKeysList()](#getApiKeysList)
@@ -27,7 +27,7 @@ use Daaner\NovaPoshta\Models\CommonGeneral;
 ---
 
 ### `getMessageCodeText()`
-[Получение](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6bce5a1-8512-11ec-8ced-005056b2dbe1) справочника перечня ошибок
+[Отримання](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6bce5a1-8512-11ec-8ced-005056b2dbe1) довідника переліку помилок
 
 ```php
 $cg = new CommonGeneral;
@@ -35,12 +35,12 @@ $lg = $cg->getMessageCodeText();
 
 dd($lg);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `prolongateKey()`
-Продление действия API ключа.
+Продовження дії API ключа.
 
 ```php
 $cg = new CommonGeneral;
@@ -50,12 +50,12 @@ $api = $cg->prolongateKey($api, 3);
 
 dd($api);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getApiKeysList()`
-Получение списка доступных API ключей
+Отримання списку доступних API ключів
 
 ```php
 $cg = new CommonGeneral;
@@ -64,29 +64,29 @@ $api = $cg->getApiKeysList();
 
 dd($api);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `createApiKey()`
-Создание API ключа
+Створення API ключа
 
 ```php
 $cg = new CommonGeneral;
 $cg->setAPI('3e6****367****bdba****2d87****da');
 $api = $cg->createApiKey();
 
-//Для персонализации ключа, если у вас имеется Ref организации, можете его указать 
+//Для персоналізації ключа, якщо у вас є Ref організації, можете його вказати
 $api = $cg->createApiKey('005056887b8d-8478-11e5-c9ad-fa7dc024');
 
 dd($api);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `deleteApiKey()`
-Удаление (отключение активности) API ключа
+Видалення (вимкнення активності) API ключа
 
 ```php
 $cg = new CommonGeneral;
@@ -96,12 +96,12 @@ $api = $cg->deleteApiKey($ApiKey);
 
 dd($api);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getTrustedDevicesList()`
-Получение списка доверенных устройств
+Отримання списку довірених пристроїв
 
 ```php
 $cg = new CommonGeneral;
@@ -110,12 +110,12 @@ $api = $cg->getTrustedDevicesList();
 
 dd($api);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `deleteTrustedDevice()`
-Удаление доверенного устройства из списка
+Видалення довіреного пристрою зі списку
 
 ```php
 $cg = new CommonGeneral;
@@ -125,5 +125,5 @@ $api = $cg->deleteTrustedDevice($Ref);
 
 dd($api);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***

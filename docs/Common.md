@@ -1,26 +1,26 @@
-# Common - API Справочники
+# Common - API Довідники
 ```php
 use Daaner\NovaPoshta\Models\Common;
 ```
 
-## Содержание
-- [x] [Виды временных интервалов](Common.md#getTimeIntervals)
-- [x] [Виды груза](Common.md#getCargoTypes)
-- [x] [Виды обратной доставки груза](Common.md#getBackwardDeliveryCargoTypes)
-- [x] [Виды паллет](Common.md#getPalletsList)
-- [x] [Виды плательщиков](Common.md#getTypesOfPayers)
-- [x] [Виды плательщиков обратной доставки](Common.md#getTypesOfPayersForRedelivery)
-- [x] [Виды упаковки](Common.md#getPackList)
-- [x] [Виды шин и дисков](Common.md#getTiresWheelsList)
-- [x] [Описания груза](Common.md#getCargoDescriptionList)
-- [x] [Перечень ошибок](CommonGeneral.md#getMessageCodeText)
-- [x] [Технологии доставки](Common.md#getServiceTypes)
-- [x] [Типы контрагентов](Common.md#getTypesOfCounterparties)
-- [x] [Формы оплаты](Common.md#getPaymentForms)
-- [x] [Формы собственности](Common.md#getOwnershipFormsList)
-- [x] [Получение данных о менеджере](Common.md#getPersonalManager)
+## Зміст
+- [x] [Види часових інтервалів](Common.md#getTimeIntervals)
+- [x] [Види вантажу](Common.md#getCargoTypes)
+- [x] [Види зворотної доставки вантажу](Common.md#getBackwardDeliveryCargoTypes)
+- [x] [Види палет](Common.md#getPalletsList)
+- [x] [Види платників](Common.md#getTypesOfPayers)
+- [x] [Види платників зворотної доставки](Common.md#getTypesOfPayersForRedelivery)
+- [x] [Види пакування](Common.md#getPackList)
+- [x] [Види шин і дисків](Common.md#getTiresWheelsList)
+- [x] [Описи вантажу](Common.md#getCargoDescriptionList)
+- [x] [Перелік помилок](CommonGeneral.md#getMessageCodeText)
+- [x] [Технології доставки](Common.md#getServiceTypes)
+- [x] [Типи контрагентів](Common.md#getTypesOfCounterparties)
+- [x] [Форми оплати](Common.md#getPaymentForms)
+- [x] [Форми власності](Common.md#getOwnershipFormsList)
+- [x] [Отримання даних про менеджера](Common.md#getPersonalManager)
 
-## Все методы модели
+## Усі методи моделі
 - [`getTimeIntervals($recipientCityRef, $dateTime = null)`](#getTimeIntervals)
 - [`getCargoTypes()`](#getCargoTypes)
 - [`getBackwardDeliveryCargoTypes()`](#getBackwardDeliveryCargoTypes)
@@ -40,203 +40,203 @@ use Daaner\NovaPoshta\Models\Common;
 ---
 
 #### `getOwnershipFormsList()`
-[Получение](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a754ff0d-8512-11ec-8ced-005056b2dbe1) справочника форм собственности
+[Отримання](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a754ff0d-8512-11ec-8ced-005056b2dbe1) довідника форм власності
 
 ```php
 $c = new Common;
-//локализация справочника не поддерживается Новой Почтой
+//локалізація довідника не підтримується Новою Поштою
 $list = $c->getOwnershipFormsList();
 
 dd($list);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 #### `getPaymentForms()`
-Получение справочника формы оплаты
+Отримання довідника форм оплати
 
 ```php
 $c = new Common;
-//локализация справочника не поддерживается Новой Почтой
+//локалізація довідника не підтримується Новою Поштою
 $list = $c->getPaymentForms();
 
 dd($list);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 #### `getTypesOfCounterparties()`
-Получение справочника типов контрагентов
+Отримання довідника типів контрагентів
 
 ```php
 $c = new Common;
-//локализация справочника не поддерживается Новой Почтой
+//локалізація довідника не підтримується Новою Поштою
 $list = $c->getTypesOfCounterparties();
 
 dd($list);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 #### `getServiceTypes()`
-[Получение](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6e189f7-8512-11ec-8ced-005056b2dbe1) справочника технологий доставки
+[Отримання](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6e189f7-8512-11ec-8ced-005056b2dbe1) довідника технологій доставки
 
 ```php
 $c = new Common;
-//локализация справочника не поддерживается Новой Почтой
+//локалізація довідника не підтримується Новою Поштою
 $list = $c->getServiceTypes();
 
 dd($list);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 #### `getCargoDescriptionList()`
-[Получение](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a697db47-8512-11ec-8ced-005056b2dbe1) справочника описаний груза
+[Отримання](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a697db47-8512-11ec-8ced-005056b2dbe1) довідника описів вантажу
 
 ```php
 $c = new Common;
-//работает пагинация, но не поддерживается лимит и локализация
+//працює пагінація, але не підтримуються ліміт і локалізація
 $c->setPage(2);
 $list = $c->getCargoDescriptionList();
 
-//можно использовать поиск по русским и украинским словам (регистр не важен)
+//можна шукати за українськими та російськими словами (регістр не важливий)
 $list = $c->getCargoDescriptionList('Од');
 
 dd($list);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 #### `getTiresWheelsList()`
-[Получение](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a66fada0-8512-11ec-8ced-005056b2dbe1) справочника видов шин и дисков
+[Отримання](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a66fada0-8512-11ec-8ced-005056b2dbe1) довідника видів шин і дисків
 
 ```php
 $c = new Common;
-//не поддерживается лимит, пагинация и локализация
+//не підтримуються ліміт, пагінація та локалізація
 $list = $c->getTiresWheelsList();
 
 dd($list);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 #### `getPackList()`
-[Получение](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6492db4-8512-11ec-8ced-005056b2dbe1) справочника видов упаковки
+[Отримання](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6492db4-8512-11ec-8ced-005056b2dbe1) довідника видів пакування
 
 ```php
 $c = new Common;
-//не поддерживается лимит, пагинация и локализация
+//не підтримуються ліміт, пагінація та локалізація
 
-//работают необязательные фильтры, выбирается значение больше или равно указанного
-$c->setLength(3); // либо $c->setLength('12.0');
+//працюють необов'язкові фільтри, вибирається значення, більше або рівне вказаному
+$c->setLength(3); // або $c->setLength('12.0');
 $c->setWidth(3);
 $c->setHeight(3);
-//не документирован, но тоже работает фильтр по объемному весу
+//не задокументований, але теж працює фільтр за об'ємною вагою
 $c->setVolumetricWeight(15);
 
-//TypeOfPacking уже не используется в АПИ и не добавлен
+//TypeOfPacking вже не використовується в API і не доданий
 $list = $c->getPackList();
 
 dd($list);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 #### `getTypesOfPayersForRedelivery()`
-[Получение](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6247f2f-8512-11ec-8ced-005056b2dbe1) справочника видов плательщиков обратной доставки
+[Отримання](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6247f2f-8512-11ec-8ced-005056b2dbe1) довідника видів платників зворотної доставки
 
 ```php
 $c = new Common;
-//не поддерживается лимит, пагинация и локализация
+//не підтримуються ліміт, пагінація та локалізація
 $list = $c->getTypesOfPayersForRedelivery();
 
 dd($list);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 #### `getTypesOfPayers()`
-[Получение](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6247f2f-8512-11ec-8ced-005056b2dbe1) справочника видов плательщиков доставки
+[Отримання](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a6247f2f-8512-11ec-8ced-005056b2dbe1) довідника видів платників доставки
 
 ```php
 $c = new Common;
-//не поддерживается лимит, пагинация и локализация
+//не підтримуються ліміт, пагінація та локалізація
 $list = $c->getTypesOfPayers();
 
 dd($list);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 #### `getPalletsList()`
-[Получение](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5dd575e-8512-11ec-8ced-005056b2dbe1) справочника видов паллет
+[Отримання](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5dd575e-8512-11ec-8ced-005056b2dbe1) довідника видів палет
 
 ```php
 $c = new Common;
-//не поддерживается лимит, пагинация и локализация
+//не підтримуються ліміт, пагінація та локалізація
 $list = $c->getPalletsList();
 
 dd($list);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 #### `getBackwardDeliveryCargoTypes()`
-[Получение](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5b46873-8512-11ec-8ced-005056b2dbe1) справочника видов обратной доставки груза
+[Отримання](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5b46873-8512-11ec-8ced-005056b2dbe1) довідника видів зворотної доставки вантажу
 
 ```php
 $c = new Common;
-//не поддерживается лимит, пагинация и локализация
+//не підтримуються ліміт, пагінація та локалізація
 $list = $c->getBackwardDeliveryCargoTypes();
 
 dd($list);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 #### `getCargoTypes()`
-[Получение](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5912a1e-8512-11ec-8ced-005056b2dbe1) справочника видов груза
+[Отримання](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a5912a1e-8512-11ec-8ced-005056b2dbe1) довідника видів вантажу
 
 ```php
 $c = new Common;
-//не поддерживается лимит, пагинация и локализация
+//не підтримуються ліміт, пагінація та локалізація
 $list = $c->getCargoTypes();
 
 dd($list);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 #### `getTimeIntervals()`
-[Получение](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a56d5c1c-8512-11ec-8ced-005056b2dbe1) справочника видов временных интервалов
+[Отримання](https://developers.novaposhta.ua/view/model/a55b2c64-8512-11ec-8ced-005056b2dbe1/method/a56d5c1c-8512-11ec-8ced-005056b2dbe1) довідника видів часових інтервалів
 
 ```php
 $c = new Common;
-//не поддерживается лимит, пагинация и локализация
+//не підтримуються ліміт, пагінація та локалізація
 $list = $c->getTimeIntervals('8d5a980d-391c-11dd-90d9-001a92567626');
-//либо
+//або
 $list = $c->getTimeIntervals('8d5a980d-391c-11dd-90d9-001a92567626', Carbon::tomorrow()->format('d.m.Y'));
 
 dd($list);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 
 
 #### `getPersonalManager()`
-Получение данных о персональном менеджере
+Отримання даних про персонального менеджера
 
 ```php
 $c = new Common;
@@ -246,4 +246,4 @@ $data = $c->getPersonalManager('00000000-0000-0000-0000-000000000000');
 
 dd($data);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)

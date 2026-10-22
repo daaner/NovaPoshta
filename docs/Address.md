@@ -3,19 +3,19 @@
 use Daaner\NovaPoshta\Models\Address;
 ```
 
-## Содержание
-- [x] [Получение списка областей](Address.md#getAreas)
-- [x] [Справочник городов компании](Address.md#getCities)
-- [x] [Справочник отделений](Address.md#getWarehouses)
-- [x] [Справочник типов отделений](Address.md#getWarehouseTypes)
-- [x] [Получения отделений в конкретном городе/нас. пункте или поселке](Address.md#getWarehouseSettlements)
-- [x] [Онлайн поиск в справочнике населенных пунктов](Address.md#searchSettlements)
-- [x] [Онлайн поиск улиц в справочнике населенных пунктов](Address.md#searchSettlementStreets)
-- [x] [Справочник улиц компании](Address.md#getStreet)
-- [x] [Справочник населенных пунктов Украины](Address.md#getSettlements)
+## Зміст
+- [x] [Отримання списку областей](Address.md#getAreas)
+- [x] [Довідник міст компанії](Address.md#getCities)
+- [x] [Довідник відділень](Address.md#getWarehouses)
+- [x] [Довідник типів відділень](Address.md#getWarehouseTypes)
+- [x] [Отримання відділень у конкретному місті/нас. пункті або селищі](Address.md#getWarehouseSettlements)
+- [x] [Онлайн пошук у довіднику населених пунктів](Address.md#searchSettlements)
+- [x] [Онлайн пошук вулиць у довіднику населених пунктів](Address.md#searchSettlementStreets)
+- [x] [Довідник вулиць компанії](Address.md#getStreet)
+- [x] [Довідник населених пунктів України](Address.md#getSettlements)
 
 
-## Все методы модели
+## Усі методи моделі
 - [getAreas()](#getAreas)
 - [getCities($find = null, $searchByString = true)](#getCities)
 - [getWarehouses($cityRef = null, $searchByString = true)](#getWarehouses)
@@ -31,7 +31,7 @@ use Daaner\NovaPoshta\Models\Address;
 ---
 
 ### `getAreas()`
-[Получение](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a20ee6e4-8512-11ec-8ced-005056b2dbe1) списка областей
+[Отримання](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a20ee6e4-8512-11ec-8ced-005056b2dbe1) списку областей
 
 ```php
 $adr = new Address;
@@ -39,15 +39,15 @@ $area = $adr->getAreas();
 
 dd($area);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getCities()`
-[Получение](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1e6f0a7-8512-11ec-8ced-005056b2dbe1) списка городов
+[Отримання](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1e6f0a7-8512-11ec-8ced-005056b2dbe1) списку міст
 
 ```php
-//получить все города используя пагинацию
+//отримати всі міста з пагінацією
 $adr = new Address;
 $adr->setLimit(100);
 $adr->setPage(3);
@@ -55,50 +55,50 @@ $cities = $adr->getCities();
 
 dd($cities);
 
-//Можно искать по имени. Опять же можно использовать пагинацию, но списки не большие, поэтому можно и без нее
+//Можна шукати за назвою. Пагінацію теж можна використовувати, але списки невеликі, тож можна і без неї
 $adr = new Address;
-$cities = $adr->getCities('Днепр');
+$cities = $adr->getCities('Дніпро');
 
 dd($cities);
 
-//Можно получить данные по реф коду, указав вторым параметром `false`
+//Можна отримати дані за реф-кодом, вказавши другим параметром `false`
 $adr = new Address;
 $city = $adr->getCities('ed5ca607-b33f-11e3-9fa0-0050568002cf', false);
 
 dd($city);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getWarehouses()`
-[Получение](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2322f38-8512-11ec-8ced-005056b2dbe1) списка отделений и почтоматов в городах
+[Отримання](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2322f38-8512-11ec-8ced-005056b2dbe1) списку відділень і поштоматів у містах
 
 ```php
 $adr = new Address;
 
-//необязательные фильтры применяются
+//необов'язкові фільтри
 $adr->filterBicycleParking();
 $adr->filterPostFinance();
 $adr->setTypeOfWarehouseRef('9a68df70-0267-42a8-bb5c-37f427e36ee4');
 $adr->setLimit(8);
 
-//получить все (используйте лимит и пагинацию, данных много)
+//отримати всі (використовуйте ліміт і пагінацію, даних багато)
 $warehouses = $adr->getWarehouses();
-//или
-$warehouses = $adr->getWarehouses('Тернополь');
-//или по "CityRef"
+//або
+$warehouses = $adr->getWarehouses('Тернопіль');
+//або за "CityRef"
 $warehouses = $adr->getWarehouses('db5c8904-391c-11dd-90d9-001a92567626', false);
 
 
 dd($warehouses);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getWarehouseTypes()`
-[Получение](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2587b53-8512-11ec-8ced-005056b2dbe1) типов отделений
+[Отримання](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a2587b53-8512-11ec-8ced-005056b2dbe1) типів відділень
 
 ```php
 $adr = new Address;
@@ -106,17 +106,17 @@ $warehouseTypes = $adr->getWarehouseTypes();
 
 dd($warehouseTypes);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getWarehouseSettlements()`
-Получение списка отделений в населенном пункте
+Отримання списку відділень у населеному пункті
 
 ```php
 $adr = new Address;
 
-//необязательные фильтры
+//необов'язкові фільтри
 $adr->filterPostFinance();
 $adr->setTypeOfWarehouseRef('9a68df70-0267-42a8-bb5c-37f427e36ee4');
 
@@ -124,43 +124,43 @@ $warehouses = $adr->getWarehouseSettlements('e71fe717-4b33-11e4-ab6d-00505680132
 
 dd($warehouses);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `searchSettlements()`
-[Поиск](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a0eb83ab-8512-11ec-8ced-005056b2dbe1) населенных пунктов из справочника Settlements
+[Пошук](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a0eb83ab-8512-11ec-8ced-005056b2dbe1) населених пунктів у довіднику Settlements
 
 ```php
 $adr = new Address;
-//работает ф-ция лимита, но можно и без нее, setPage - НЕ применяется
+//працює функція ліміту, але можна і без неї, setPage - НЕ застосовується
 $adr->setLimit(20);
 
-$settlements = $adr->searchSettlements('Дне');
+$settlements = $adr->searchSettlements('Дні');
 
 dd($settlements);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `searchSettlementStreets()`
-[Поиск](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1329635-8512-11ec-8ced-005056b2dbe1) улиц в населенных пунктах
+[Пошук](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1329635-8512-11ec-8ced-005056b2dbe1) вулиць у населених пунктах
 
 ```php
 $adr = new Address;
-//работает ф-ция лимита, но можно и без нее, setPage - НЕ применяется
+//працює функція ліміту, але можна і без неї, setPage - НЕ застосовується
 $adr->setLimit(20);
 $streets = $adr->searchSettlementStreets('e718a680-4b33-11e4-ab6d-005056801329', 'Шевченк');
 
 dd($streets);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getStreet()`
-[Получение](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a27c20d7-8512-11ec-8ced-005056b2dbe1) улиц в городе по CityRef
+[Отримання](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a27c20d7-8512-11ec-8ced-005056b2dbe1) вулиць у місті за CityRef
 
 ```php
 $adr = new Address;
@@ -169,35 +169,35 @@ $adr->setLimit(2);
 $adr->setPage(1);
 
 $streets = $adr->getStreet('a9522a7e-eaf5-11e7-ba66-005056b2fc3d');
-//или
+//або
 $streets = $adr->getStreet('a9522a7e-eaf5-11e7-ba66-005056b2fc3d', 'ш');
 
 dd($streets);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getSettlements()`
-[Справочник](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1c42723-8512-11ec-8ced-005056b2dbe1) населенных пунктов Украины
+[Довідник](https://developers.novaposhta.ua/view/model/a0cf0f5f-8512-11ec-8ced-005056b2dbe1/method/a1c42723-8512-11ec-8ced-005056b2dbe1) населених пунктів України
 
 ```php
 $adr = new Address;
-//насильно работает ф-ция лимита в 150 (setLimit - НЕ применяется)
+//примусово працює ліміт у 150 (setLimit - НЕ застосовується)
 
 $adr->setPage(3);
 
-// Можно использовать фильтры (не обязательные)
-$adr->filterAreaRef('dcaadf02-4b33-11e4-ab6d-005056801329'); //по области
-$adr->filterRegionRef('dcaadf02-4b33-11e4-ab6d-005056801329'); //по региону
-$adr->filterWarehouse(); //по наличию отделений в населенном пункте
-$adr->filterRef('e71abb60-4b33-11e4-ab6d-005056801329'); //по Ref населенного пункта
+// Можна використовувати фільтри (не обов'язкові)
+$adr->filterAreaRef('dcaadf02-4b33-11e4-ab6d-005056801329'); //за областю
+$adr->filterRegionRef('dcaadf02-4b33-11e4-ab6d-005056801329'); //за регіоном
+$adr->filterWarehouse(); //за наявністю відділень у населеному пункті
+$adr->filterRef('e71abb60-4b33-11e4-ab6d-005056801329'); //за Ref населеного пункту
 
 $settlements = $adr->getSettlements();
-//или
-$settlements = $adr->getSettlements('днепр');
+//або
+$settlements = $adr->getSettlements('дніпро');
 
 dd($settlements);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***

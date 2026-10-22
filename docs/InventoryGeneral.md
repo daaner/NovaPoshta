@@ -1,15 +1,15 @@
-# InventoryGeneral - Материальные ценности
+# InventoryGeneral - Матеріальні цінності
 
 ```php
 use Daaner\NovaPoshta\Models\InventoryGeneral;
 ```
 
-## Содержание
-- [x] [Список доступных материальных ценностей](InventoryGeneral.md#getInventoryNomenclaturesList) (официально не документировано)
-- [x] [Список заказов](InventoryGeneral.md#getInventoryOrdersList) (официально не документировано)
+## Зміст
+- [x] [Список доступних матеріальних цінностей](InventoryGeneral.md#getInventoryNomenclaturesList) (офіційно не задокументовано)
+- [x] [Список замовлень](InventoryGeneral.md#getInventoryOrdersList) (офіційно не задокументовано)
 
 
-## Все методы модели
+## Усі методи моделі
 - [getInventoryNomenclaturesList()](#getInventoryNomenclaturesList)
 - [getInventoryOrdersList($Ref = null)](#getInventoryOrdersList)
 
@@ -17,7 +17,7 @@ use Daaner\NovaPoshta\Models\InventoryGeneral;
 
 
 ### `getInventoryNomenclaturesList()`
-Получение списка доступных к заказу материальных ценностей.
+Отримання списку матеріальних цінностей, доступних для замовлення.
 
 ```php
 $np = new InventoryGeneral;
@@ -26,28 +26,28 @@ $check = $np->getInventoryNomenclaturesList();
 
 dd($check);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getInventoryOrdersList()`
-Получение списка заказанных материальных ценностей.
+Отримання списку замовлених матеріальних цінностей.
 
 ```php
 $np = new InventoryGeneral;
 $np->setAPI('3e6****367****bdba****2d87****da');
 
-//НЕОБЯЗАТЕЛЬНЫЕ параметры
+//НЕОБОВ'ЯЗКОВІ параметри
 $np->setLimit(10);
 $np->setPage(2);
 
 $check = $np->getInventoryOrdersList();
 
-//либо
+//або
 $check = $np->getInventoryOrdersList('ref контрагента');
 
 
 dd($check);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***

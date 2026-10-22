@@ -1,7 +1,7 @@
-# Описание
+# Опис
 
 
-- Поддерживаемые модели
+- Підтримувані моделі
   - [Address](Address.md)
   - [AdditionalService](AdditionalService.md)
   - [CarCallGeneral](CarCallGeneral.md)
@@ -17,9 +17,9 @@
 
 
 
-- Официально не документировано
-  - [Получение данных по бонусной карте](LoyaltyUser.md#getLoyaltyInfoByApiKey)
-  - [Обновить описание реестра](ScanSheet.md#updateScanSheet)
-  - [Краткий список накладных реестра](ScanSheet.md#getScanSheetDocuments)
-  - [Получение данных об Контрагенте по номеру телефона](Counterparty.md#getCatalogCounterparty)
-  - [Получить денежные переводы](InternetDocument.md#getMoneyTransferDocuments)
+- Офіційно не задокументовано
+  - [Отримання даних по бонусній картці](LoyaltyUser.md#getLoyaltyInfoByApiKey)
+  - [Оновити опис реєстру](ScanSheet.md#updateScanSheet)
+  - [Короткий список накладних реєстру](ScanSheet.md#getScanSheetDocuments)
+  - [Отримання даних про Контрагента за номером телефону](Counterparty.md#getCatalogCounterparty)
+  - [Отримати грошові перекази](InternetDocument.md#getMoneyTransferDocuments)

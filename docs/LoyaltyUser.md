@@ -4,14 +4,14 @@
 use Daaner\NovaPoshta\Models\LoyaltyUser;
 ```
 
-## Содержание
-- [x] [Данные по бонусной карте](LoyaltyUser.md#getLoyaltyInfoByApiKey) (не документировано)
-- [x] [Данные по начислению бонусов](LoyaltyUser.md#getLoyaltyCardTurnoverByApiKey) (не документировано)
-- [x] [Данные по промокодам](LoyaltyUser.md#getPromocodeByPhone) (не документировано)
-- [x] [Данные по бонусной программе](LoyaltyUser.md#getStandartCardsList) (не документировано)
+## Зміст
+- [x] [Дані по бонусній картці](LoyaltyUser.md#getLoyaltyInfoByApiKey) (не задокументовано)
+- [x] [Дані по нарахуванню бонусів](LoyaltyUser.md#getLoyaltyCardTurnoverByApiKey) (не задокументовано)
+- [x] [Дані по промокодах](LoyaltyUser.md#getPromocodeByPhone) (не задокументовано)
+- [x] [Дані по бонусній програмі](LoyaltyUser.md#getStandartCardsList) (не задокументовано)
 
 
-## Все методы модели
+## Усі методи моделі
 - [getLoyaltyInfoByApiKey()](#getLoyaltyInfoByApiKey)
 - [getLoyaltyCardTurnoverByApiKey($Year = null, $Month = null)](#getLoyaltyCardTurnoverByApiKey)
 - [getPromocodeByPhone($Phone)](#getPromocodeByPhone)
@@ -21,7 +21,7 @@ use Daaner\NovaPoshta\Models\LoyaltyUser;
 
 
 ### `getLoyaltyInfoByApiKey()`
-Возвращает статус баланса, номер бонусной карты и остальные данные по пользователю
+Повертає стан балансу, номер бонусної картки та інші дані користувача
 
 ```php
 $np = new LoyaltyUser;
@@ -30,56 +30,56 @@ $loyalty = $np->getLoyaltyInfoByApiKey();
 
 dd($loyalty);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getLoyaltyCardTurnoverByApiKey()`
-Получение данных о начислении и списании бонусов. Можно указать год и месяц.
+Отримання даних про нарахування та списання бонусів. Можна вказати рік і місяць.
 
 ```php
 $np = new LoyaltyUser;
 $np->setAPI('3e6****367****bdba****2d87****da');
 
-// Без указания года и месяца выведет данные о текущем месяце
+// Без зазначення року й місяця виведе дані за поточний місяць
 $loyalty = $np->getLoyaltyCardTurnoverByApiKey();
 
-// С указанием года и месяца
-// Если указать год, а месяц опустить - отображает последний (либо текущий) месяц года
+// Із зазначенням року й місяця
+// Якщо вказати рік, а місяць пропустити - відображає останній (або поточний) місяць року
 $loyalty = $np->getLoyaltyCardTurnoverByApiKey(2022, 11);
 
 dd($loyalty);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getPromocodeByPhone()`
-Получение активных промокодов прикрепленных к телефону контрагента.
+Отримання активних промокодів, прив'язаних до телефону контрагента.
 
-__ Метод работает только для PrivatePerson __
+__ Метод працює лише для PrivatePerson __
 
 ```php
 $np = new LoyaltyUser;
 $np->setAPI('3e6****367****bdba****2d87****da');
 
-// Телефон контрагента в формате +38067..., 38067... либо 067...
+// Телефон контрагента у форматі +38067..., 38067... або 067...
 $loyalty = $np->getPromocodeByPhone('+380671112233');
 
 dd($loyalty);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getStandartCardsList()`
-Список данных по бонусной программе контрагента.
+Список даних по бонусній програмі контрагента.
 
 ```php
 $np = new LoyaltyUser;
 $np->setAPI('3e6****367****bdba****2d87****da');
 
-//НЕОБЯЗАТЕЛЬНЫЕ параметры
+//НЕОБОВ'ЯЗКОВІ параметри
 $np->setLimit(10);
 $np->setPage(2);
 
@@ -88,5 +88,5 @@ $loyalty = $np->getStandartCardsList($CounterpartyRef);
 
 dd($loyalty);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***

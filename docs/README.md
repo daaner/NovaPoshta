@@ -1,4 +1,4 @@
-# Новая Почта для Laravel 7+
+# Нова Пошта для Laravel 7+
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/daaner/novaposhta/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/daaner/novaposhta/?branch=master)
 [![Laravel Support](https://img.shields.io/badge/Laravel-7+-brightgreen.svg)]()
@@ -11,34 +11,34 @@
 
 ***
 
-Управление отправками NovaPoshta ([novaposhta.ua](https://novaposhta.ua/)) с помощью Laravel 7+ framework ([Laravel](https://laravel.com)).
+Керування відправленнями NovaPoshta ([novaposhta.ua](https://novaposhta.ua/)) за допомогою фреймворку Laravel 7+ ([Laravel](https://laravel.com)).
 
 ***
 
-## Поддержка
-Поддерживается Laravel 7+ (HTTP фасад)
+## Підтримка
+Підтримується Laravel 7+ (HTTP фасад)
 PHP >= 7.2.5
 
-## Установка
+## Встановлення
 ``` bash
 composer require daaner/novaposhta
 ```
 
-Для последней не релизной версии обновите ваш `composer.json`
+Для останньої нерелізної версії оновіть ваш `composer.json`
 ```bash
 "daaner/novaposhta": "dev-master"
-# и выполните
+# і виконайте
 composer update daaner/novaposhta
 ```
 
-Выполните публикацию конфига и локализационных файлов командой:
+Опублікуйте конфіг і файли локалізації командою:
 ``` bash
 php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvider"
 ```
 
 ##
 
-## Поддерживаемые модели
+## Підтримувані моделі
 
 * [Модель Address](Address.md)
 * [Модель AdditionalService](AdditionalService.md)
@@ -52,4 +52,3 @@ php artisan vendor:publish --provider="Daaner\NovaPoshta\NovaPoshtaServiceProvid
 * [Модель Payment](Payment.md)
 * [Модель ScanSheet](ScanSheet.md)
 * [Модель TrackingDocument](TrackingDocument.md)
-

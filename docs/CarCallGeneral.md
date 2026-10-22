@@ -1,32 +1,31 @@
-# CarCallGeneral - Материальные ценности
+# CarCallGeneral - Виклик авто
 
 ```php
 use Daaner\NovaPoshta\Models\CarCallGeneral;
 ```
 
-## Содержание
-- [x] [Ордера для заказа авто](CarCallGeneral.md#getOrdersList) (официально не документировано)
+## Зміст
+- [x] [Ордери для замовлення авто](CarCallGeneral.md#getOrdersList) (офіційно не задокументовано)
 
 
-## Все методы модели
+## Усі методи моделі
 - [getOrdersList()](#getOrdersList)
 
 ---
 
 
 ### `getOrdersList()`
-Получение списка ордеров для заказа авто.
+Отримання списку ордерів для замовлення авто.
 
 ```php
 $np = new CarCallGeneral;
 $np->setAPI('3e6****367****bdba****2d87****da');
 
 $check = $np->getOrdersList();
-// либо короткая информация
+// або коротка інформація
 $check = $np->getOrdersList(false);
 
 dd($check);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
-

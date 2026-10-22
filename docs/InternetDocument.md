@@ -4,18 +4,18 @@
 use Daaner\NovaPoshta\Models\InternetDocument;
 ```
 
-## Содержание
-- [x] [Получение списка всех ЭН](InternetDocument.md#getDocumentList)
-- [x] [Создать экспресс-накладную](InternetDocument.md#save)
-- [x] [Удалить экспресс-накладные](InternetDocument.md#delete)
-- [x] [Получить денежные переводы](InternetDocument.md#getMoneyTransferDocuments)
-- [x] [Прогноз даты доставки груза](InternetDocument.md#getDocumentDeliveryDate)
-- [x] [Прогноз стоимости доставки груза](InternetDocument.md#getDocumentPrice)
-- [x] [Редактирование экспресс-накладной](InternetDocument.md#edit)
-- [x] [Получение PDF по накладным либо реестру](InternetDocument.md#getPDF)
+## Зміст
+- [x] [Отримання списку всіх ЕН](InternetDocument.md#getDocumentList)
+- [x] [Створити експрес-накладну](InternetDocument.md#save)
+- [x] [Видалити експрес-накладні](InternetDocument.md#delete)
+- [x] [Отримати грошові перекази](InternetDocument.md#getMoneyTransferDocuments)
+- [x] [Прогноз дати доставки вантажу](InternetDocument.md#getDocumentDeliveryDate)
+- [x] [Прогноз вартості доставки вантажу](InternetDocument.md#getDocumentPrice)
+- [x] [Редагування експрес-накладної](InternetDocument.md#edit)
+- [x] [Отримання PDF по накладних або реєстру](InternetDocument.md#getPDF)
 
 
-## Все методы модели
+## Усі методи моделі
 - [getDocumentList()](#getDocumentList)
 - [save($description = null)](#save)
 - [delete($description = null)](#delete)
@@ -28,38 +28,38 @@ use Daaner\NovaPoshta\Models\InternetDocument;
 ---
 
 ### `getDocumentList()`
-[Получение](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9d22b34-8512-11ec-8ced-005056b2dbe1) списка всех ЭН
+[Отримання](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9d22b34-8512-11ec-8ced-005056b2dbe1) списку всіх ЕН
 
 ```php
 $np = new InternetDocument;
 
-// НЕ обязательные параметры
+// НЕобов'язкові параметри
 $np->setLimit(5);
 $np->setPage(2);
-//выборка по конкретной дате (выборка за период тогда не работает)
+//вибірка за конкретною датою (вибірка за період тоді не працює)
 $np->setDateTime('10-05-2020');
-//или выборка за период
-$np->setDateTimeFrom('11-07-2020'); //Если не указано `setDateTimeFrom` - значение будет таким же, как `setDateTimeTo`
-$np->setDateTimeTo('11-07-2020'); //Если не указано `setDateTimeTo` - значение будет сегодняшним числом
-$np->showFullList(); // отобразить полный список (игнорируется лимит и постраничная разбивка)
-$np->showRedeliveryMoney(); // Отобразить полный список ЭН с обратной доставкой. Требуется указание даты DateTimeFrom и DateTimeTo
-$np->showUnassembledCargo(); // Отобразить полный список всех актуальных ЭН (по которым не написано заявление на возврат или утилизацию) не забранных получателями посылок. Требуется указание даты DateTimeFrom и DateTimeTo
+//або вибірка за період
+$np->setDateTimeFrom('11-07-2020'); //Якщо не вказано `setDateTimeFrom` - значення буде таким самим, як `setDateTimeTo`
+$np->setDateTimeTo('11-07-2020'); //Якщо не вказано `setDateTimeTo` - значенням буде сьогоднішня дата
+$np->showFullList(); // показати повний список (ліміт і посторінкова розбивка ігноруються)
+$np->showRedeliveryMoney(); // Показати повний список ЕН зі зворотною доставкою. Потрібно вказати дати DateTimeFrom і DateTimeTo
+$np->showUnassembledCargo(); // Показати повний список усіх актуальних ЕН (за якими не подано заяву на повернення чи утилізацію) з посилками, не забраними одержувачами. Потрібно вказати дати DateTimeFrom і DateTimeTo
 
 $lists = $np->getDocumentList();
 
 dd($lists);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 ### `save()`
-[Создать](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a965630e-8512-11ec-8ced-005056b2dbe1) экспресс-накладную
+[Створити](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a965630e-8512-11ec-8ced-005056b2dbe1) експрес-накладну
 
-Для более полного понимания и передачи данных - смотрите трейты модели, ниже описано не все
+Для повнішого розуміння та передачі даних дивіться трейти моделі, нижче описано не все
 
 ```php
 $np = new InternetDocument;
-//не забываем про метод setApi, чтоб создать ЭН от другого отправителя
+//не забуваємо про метод setApi, щоб створити ЕН від іншого відправника
 $np->setAPI('c9********fd');
 
 $sender = [
@@ -72,25 +72,25 @@ $sender = [
 $np->setSender($sender);
 
 /**
-  * Вариант доставки:
-  * WarehouseDoors - адресная доставка
-  * WarehouseWarehouse - доставка на отделение
-  * DoorsWarehouse - Двери-Склад
-  * DoorsDoors - Двери-Двери
+  * Варіант доставки:
+  * WarehouseDoors - адресна доставка
+  * WarehouseWarehouse - доставка у відділення
+  * DoorsWarehouse - Двері-Склад
+  * DoorsDoors - Двері-Двері
   */
 $np->setServiceType('WarehouseDoors');
 
 /**
-  * Получателя можно создать двумя путями
-  * при помощи REF или строкой
+  * Одержувача можна створити двома шляхами:
+  * за допомогою REF або рядком
   *
-  * Учтите, что строкой, случайно можно отправить в город/село с таким-же названием,
-  * хотя НП постоянно уникализирует названия для удобного создания строкой
-  * полное название лучше брать из справочника (обновляйте хотя бы раз в неделю)
+  * Врахуйте, що рядком можна випадково відправити в місто/село з такою самою назвою,
+  * хоча НП постійно уніфікує назви для зручного створення рядком.
+  * Повну назву краще брати з довідника (оновлюйте хоча б раз на тиждень)
   *
   */
 
-// идентификаторами
+// ідентифікаторами
 $recipient = [
   'Recipient' => '76****33',
   'CityRecipient' => '8d5a980d-391c-11dd-90d9-001a92567626',
@@ -99,11 +99,11 @@ $recipient = [
   'RecipientsPhone' => '380997979789',
 ];
 
-// ЭН строкой
+// ЕН рядком
 $recipient = [
   'RecipientsPhone' => '380997979789',
-  'RecipientName' => 'Иванов Иван Иванович',
-  'RecipientCityName' => 'Киев',
+  'RecipientName' => 'Іванов Іван Іванович',
+  'RecipientCityName' => 'Київ',
   'RecipientArea' => '',
   'RecipientAreaRegions' => '',
   'RecipientAddressName' => '7495',
@@ -113,37 +113,37 @@ $recipient = [
 
 $np->setRecipient($recipient);
 
-//Плательщик доставки
-//Не обязательно указывать, берет значение из конфига
+//Платник доставки
+//Вказувати не обов'язково, значення береться з конфігу
 $np->setPayerType('Sender');
 
-//наложный платеж либо Контроль оплаты для предпринимателей
-//"Контроль оплаты" имеет приоритет перед наложкой!!!
+//накладений платіж або Контроль оплати для підприємців
+//"Контроль оплати" має пріоритет перед накладеним платежем!!!
 $np->setBackwardDeliveryData(386);
-//или
+//або
 $np->setAfterpaymentOnGoodsCost(386);
 
-$np->setAdditionalInformation('Добавление информации');
+$np->setAdditionalInformation('Додаткова інформація');
 
-//указание веса посылки или посылок (если более 1 места)
+//вага посилки або посилок (якщо більше 1 місця)
 $np->setOptionsSeat([1, 5, 10, 11]);
 $np->setOptionsSeat(5);
 
-$createTTN = $np->save('Заявка №500. Одяг'); //Описание(название) посылки
+$createTTN = $np->save('Заявка №500. Одяг'); //Опис (назва) посилки
 
 dd($createTTN);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 ### `delete()`
-[Удалить](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9f43ff1-8512-11ec-8ced-005056b2dbe1) экспресс-накладную или массив накладных
+[Видалити](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a9f43ff1-8512-11ec-8ced-005056b2dbe1) експрес-накладну або масив накладних
 
 ```php
 $intDoc = new InternetDocument;
 
 $documents = '677e592b-1884-11eb-8513-b88303659df5';
-//или массивом и неважно какие ключи, берутся только значения
+//або масивом, ключі неважливі - беруться лише значення
 $documents = [
   15 =>'677e592b-1884-11eb-8513-b88303659df5',
   "100500" => '50184bff-1884-11eb-8513-b88303659df5'
@@ -153,147 +153,147 @@ $deleted = $intDoc->delete($documents);
 
 dd($deleted);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 ### `getMoneyTransferDocuments()`
-Получить данные о платежах за определенный период
+Отримати дані про платежі за певний період
 
 ```php
 $intDoc = new InternetDocument;
 
-//можно переопределить API, иначе возьмет данные с конфига
-$intDoc->setAPI('c74***25'); //необязательно
+//можна перевизначити API, інакше візьме дані з конфігу
+$intDoc->setAPI('c74***25'); //не обов'язково
 
-$intDoc->setLimit(100); //необязательно
-$intDoc->setPage(2);    //необязательно
+$intDoc->setLimit(100); //не обов'язково
+$intDoc->setPage(2);    //не обов'язково
 
 $transfer = $intDoc->getMoneyTransferDocuments();
 
-//либо можно указать диапазон
+//або можна вказати діапазон
 $from = '2021-01-01 00:00:00'; //Carbon, string, date, null
 $from = '2021-02-01 00:00:00'; //Carbon, string, date, null
 $transfer = $intDoc->getMoneyTransferDocuments($from, $to);
 
 dd($transfer);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getDocumentDeliveryDate()`
-[Прогноз](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a941c714-8512-11ec-8ced-005056b2dbe1) даты доставки груза
+[Прогноз](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a941c714-8512-11ec-8ced-005056b2dbe1) дати доставки вантажу
 
 ```php
 $intDoc = new InternetDocument;
 
-$CitySender = '8d5a980d-391c-11dd-90d9-001a92567626'; //город отправителя
-$CityRecipient = 'db5c88f5-391c-11dd-90d9-001a92567626'; //город получателя
+$CitySender = '8d5a980d-391c-11dd-90d9-001a92567626'; //місто відправника
+$CityRecipient = 'db5c88f5-391c-11dd-90d9-001a92567626'; //місто одержувача
 
-//НЕОБЯЗАТЕЛЬНЫЕ ПАРАМЕТРЫ
-$intDoc->setDateTime('1/1/2028'); //Если не указать, посчитает с текущего дня и времени
-$intDoc->setServiceType('WarehouseDoors'); //Тип отправки (по умолчанию в конфиге `service_type`)
+//НЕОБОВ'ЯЗКОВІ ПАРАМЕТРИ
+$intDoc->setDateTime('1/1/2028'); //Якщо не вказати, порахує від поточного дня й часу
+$intDoc->setServiceType('WarehouseDoors'); //Тип відправлення (за замовчуванням у конфігу `service_type`)
 
 $forecast = $intDoc->getDocumentDeliveryDate($CitySender, $CityRecipient);
 
 dd($forecast);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getDocumentPrice()`
-[Прогноз](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a91f115b-8512-11ec-8ced-005056b2dbe1) стоимости доставки груза
+[Прогноз](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a91f115b-8512-11ec-8ced-005056b2dbe1) вартості доставки вантажу
 
 ```php
 $intDoc = new InternetDocument;
 
-$CitySender = '8d5a980d-391c-11dd-90d9-001a92567626'; //город отправителя
-$CityRecipient = 'db5c88f5-391c-11dd-90d9-001a92567626'; //город получателя
+$CitySender = '8d5a980d-391c-11dd-90d9-001a92567626'; //місто відправника
+$CityRecipient = 'db5c88f5-391c-11dd-90d9-001a92567626'; //місто одержувача
 
-//НЕОБЯЗАТЕЛЬНЫЕ ПАРАМЕТРЫ
-$intDoc->setDateTime('1/1/2028'); //Если не указать, посчитает с текущего дня
-$intDoc->setServiceType('WarehouseDoors'); //Тип отправки (по умолчанию в конфиге `service_type`)
-$intDoc->setWeight('3'); //Вес посылки (по умолчанию 1)
-$intDoc->setCargoType('Parcel'); //Тип посылки (по умолчанию в конфиге `cargo_type`)
-$adr->setCost(500); // Оценочная стоимость
+//НЕОБОВ'ЯЗКОВІ ПАРАМЕТРИ
+$intDoc->setDateTime('1/1/2028'); //Якщо не вказати, порахує від поточного дня
+$intDoc->setServiceType('WarehouseDoors'); //Тип відправлення (за замовчуванням у конфігу `service_type`)
+$intDoc->setWeight('3'); //Вага посилки (за замовчуванням 1)
+$intDoc->setCargoType('Parcel'); //Тип посилки (за замовчуванням у конфігу `cargo_type`)
+$adr->setCost(500); // Оціночна вартість
 
-//ЗЫ: Есть еще куча всяких условий у них, я добавил только популярные
+//P.S.: У НП є ще купа різних умов, я додав лише популярні
 
 $forecast = $intDoc->getDocumentPrice($CitySender, $CityRecipient);
 
 dd($forecast);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `edit()`
-[Редактирование](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a98a4354-8512-11ec-8ced-005056b2dbe1) экспресс-накладной
+[Редагування](https://developers.novaposhta.ua/view/model/a90d323c-8512-11ec-8ced-005056b2dbe1/method/a98a4354-8512-11ec-8ced-005056b2dbe1) експрес-накладної
 
-Редактирует накладную (если еще не поехала)
+Редагує накладну (якщо ще не поїхала)
 
 ```php
 $intDoc = new InternetDocument;
-$description = 'Изменение';
+$description = 'Зміна';
 $np->setAPI('c9********fd');
 $intDoc->setRef('123');
 
-// остальные параметры, такие же как и при создании накладной
+// інші параметри такі самі, як і під час створення накладної
 
 $edited = $intDoc->edit($description);
 
 dd($edited);
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***
 
 
 ### `getPDF()`
-Получение PDF по накладной или массиву накладных либо реестру
+Отримання PDF по накладній, масиву накладних або реєстру
 
-При большом кол-ве генерируемых PDF увеличивайте значение `config('novaposhta.http_retry_delay')`.
+За великої кількості PDF, що генеруються, збільшуйте значення `config('novaposhta.http_retry_delay')`.
 
 ```php
 $intDoc = new InternetDocument;
 $np->setAPI('c9********fd');
 
-// номер ТТН либо Ref
+// номер ТТН або Ref
 $ttns = '20450600000000';
-//либо массивом
+//або масивом
 $ttns = [
     '20450600000000',
     '00000000-0000-0000-0000-000000000000'
 ];
-// реестр тоже можно передавать как номером, так и Ref'ом
-$ttns = '105-00000000'; // Это номер реестра
+// реєстр теж можна передавати і номером, і Ref'ом
+$ttns = '105-00000000'; // Це номер реєстру
 
 
-// НЕ обязательные установки
-$np->setCopies(1); //кол-во копий (по умолчанию: 1)
-$np->setPrintForm('Marking_100x100'); // макет шаблона (по умолчанию: 'Document_new')
+// НЕобов'язкові налаштування
+$np->setCopies(1); //кількість копій (за замовчуванням: 1)
+$np->setPrintForm('Marking_100x100'); // макет шаблону (за замовчуванням: 'Document_new')
 
-// Установка, что данный Ref является реестром. Копия всегда одна.
+// Позначка, що цей Ref є реєстром. Копія завжди одна.
 $np->setThisIsScansheet();
-// Реестр создается по ориентации из конфига config('novaposhta.scan_sheet_orientation'), либо можно указать вручную
+// Реєстр створюється з орієнтацією з конфігу config('novaposhta.scan_sheet_orientation'), або її можна вказати вручну
 $np->setThisIsScansheet('portrait');
 
 
-// Установки, которые особо не нужны или автоматически подставляющиеся,
-// в зависимости от макета шаблона.
-$np->setPageFormat('A5'); // размер страницы (по умолчанию: 'A4')
-$np->setPosition(1); // установка позиции (по умолчанию: '1')
-$np->setType('pdf'); // установка позиции (по умолчанию: 'pdf')
+// Налаштування, які не дуже потрібні або підставляються автоматично
+// залежно від макета шаблону.
+$np->setPageFormat('A5'); // розмір сторінки (за замовчуванням: 'A4')
+$np->setPosition(1); // встановлення позиції (за замовчуванням: '1')
+$np->setType('pdf'); // тип файлу (за замовчуванням: 'pdf')
 
-// ответ массивом, где в ключе `$data['result']` тело PDF файла
-// файл получен и можно вывести, если `$data['success'] == true`, иначе в `$data['result']` пусто
+// відповідь масивом, де в ключі `$data['result']` тіло PDF-файлу
+// файл отримано і його можна вивести, якщо `$data['success'] == true`, інакше в `$data['result']` порожньо
 $data = $intDoc->getPDF($ttns, false);
 dd($data);
 
-// Сразу открытие (при `$data['success'] == true`) файла
+// Одразу відкриття файлу (при `$data['success'] == true`)
 $data = $intDoc->getPDF($ttns, true);
 return $data;
 
 ```
-[Содержание](#Содержание) [Методы модели](#Все-методы-модели)
+[Зміст](#Зміст) [Методи моделі](#Усі-методи-моделі)
 ***

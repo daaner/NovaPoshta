@@ -1,41 +1,151 @@
-<html>
+<!DOCTYPE html>
+<html lang="uk">
 <head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta charset="UTF-8">
-  <title>Нова Пошта Украина для Laravel 7+</title>
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Нова Пошта Україна для Laravel 7+</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Docsify v5: базова тема + аддон у стилі Vue -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@5.0.0/dist/themes/core.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@5.0.0/dist/themes/addons/vue.min.css">
+  <!-- Темна тема: media керується перемикачем (за замовчуванням - як у системі) -->
+  <link id="theme-dark" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@5.0.0/dist/themes/addons/core-dark.min.css" media="(prefers-color-scheme: dark)">
+
+  <script>
+    // Застосовуємо збережену тему до рендеру, щоб не було «мигання»
+    (function () {
+      var MEDIA = { light: 'not all', dark: 'all', system: '(prefers-color-scheme: dark)' };
+      var theme = 'system';
+      try { theme = localStorage.getItem('np-docs-theme') || 'system'; } catch (e) {}
+      if (!MEDIA[theme]) theme = 'system';
+      document.getElementById('theme-dark').media = MEDIA[theme];
+      window.npDocsTheme = { MEDIA: MEDIA, current: theme };
+    })();
+  </script>
+
+  <style>
+    .theme-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: .4em;
+      margin-left: 1em;
+      font-size: var(--font-size-s, .9em);
+    }
+    .theme-switch select {
+      font: inherit;
+      color: var(--color-text);
+      background: var(--color-bg);
+      border: 1px solid var(--border-color, currentColor);
+      border-radius: 4px;
+      padding: .15em .3em;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <div id="app">Загрузка...</div>
+  <div id="app">Завантаження...</div>
   <script>
+    // Перемикач теми: Світла / Темна / Системна (додається в навбар)
+    function themeSwitchPlugin(hook, vm) {
+      var LABELS = {
+        uk: { title: 'Тема', light: 'Світла', dark: 'Темна', system: 'Системна' },
+        ru: { title: 'Тема', light: 'Светлая', dark: 'Тёмная', system: 'Системная' },
+      };
+
+      function setTheme(theme) {
+        var t = window.npDocsTheme;
+        if (!t.MEDIA[theme]) theme = 'system';
+        t.current = theme;
+        document.getElementById('theme-dark').media = t.MEDIA[theme];
+        try { localStorage.setItem('np-docs-theme', theme); } catch (e) {}
+      }
+
+      function currentLang() {
+        var path = (vm.route && vm.route.path) || location.hash.replace(/^#/, '');
+        return /^\/ru(\/|$)/.test(path) ? 'ru' : 'uk';
+      }
+
+      // Додає перемикач у навбар, якщо його там немає або змінилась мова
+      function ensureSwitch() {
+        var nav = document.querySelector('.app-nav');
+        if (!nav) return;
+        var lang = currentLang();
+        var old = nav.querySelector('.theme-switch');
+        if (old && old.getAttribute('data-lang') === lang) return;
+        if (old) old.remove();
+
+        var l = LABELS[lang];
+        var wrap = document.createElement('label');
+        wrap.setAttribute('data-lang', lang);
+        wrap.className = 'theme-switch';
+        wrap.textContent = l.title + ':';
+
+        var select = document.createElement('select');
+        select.setAttribute('aria-label', l.title);
+        ['light', 'dark', 'system'].forEach(function (key) {
+          var o = document.createElement('option');
+          o.value = key;
+          o.textContent = l[key];
+          select.appendChild(o);
+        });
+        select.value = window.npDocsTheme.current;
+        select.addEventListener('change', function () { setTheme(select.value); });
+
+        wrap.appendChild(select);
+        nav.appendChild(wrap);
+      }
+
+      hook.doneEach(ensureSwitch);
+
+      // Навбар перемальовується асинхронно (при зміні мови/сторінки) - стежимо за ним
+      hook.ready(function () {
+        new MutationObserver(ensureSwitch).observe(document.body, { childList: true, subtree: true });
+        ensureSwitch();
+      });
+    }
+
     window.$docsify = {
       el: '#app',
+      // Сайдбар і навбар беруться з поточної папки мови (/_sidebar.md або /ru/_sidebar.md)
       loadSidebar: true,
       loadNavbar: true,
       repo: 'daaner/novaposhta',
       homepage: 'README.md',
       auto2top: true,
-      name: 'Новая Почта для Laravel',
-
-      search: 'auto',
+      name: 'Нова Пошта для Laravel',
+      nameLink: {
+        '/ru/': '#/ru/',
+        '/': '#/',
+      },
 
       search: {
         maxAge: 86400000, // Expiration time, the default one day
-        // paths: [], // or 'auto'
-        placeholder: 'Поиск',
-        noData: 'Нет данных!',
+        paths: 'auto',
+        placeholder: {
+          '/ru/': 'Поиск',
+          '/': 'Пошук',
+        },
+        noData: {
+          '/ru/': 'Нет данных!',
+          '/': 'Немає даних!',
+        },
 
         // Headline depth, 1 - 6
         depth: 2,
-        hideOtherSidebarContent: false, // whether or not to hide other sidebar content
         namespace: 'daaner-novaposhta',
-      }
+        // Окремий пошуковий індекс для кожної мови
+        pathNamespaces: ['/ru'],
+      },
+
+      plugins: [themeSwitchPlugin],
     }
   </script>
 
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@5.0.0/dist/docsify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@5.0.0/dist/plugins/search.min.js"></script>
+  <!-- Підсвітка PHP (prism-php залежить від markup-templating) -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-markup-templating.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-php.min.js"></script>
 </body>
 </html>
