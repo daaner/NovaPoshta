@@ -16,9 +16,9 @@ All notable changes to `NovaPoshta` will be documented in this file
 - [Docs] Docsify updated to v5, light/dark/system theme switcher, favicon
 
 ### 2025-11-23
-- [Add] Добавление метода `payEwByLoyaltyPoints` в `InternetDocument`
-- [Add] Добавление метода `registrationLoyaltyUserByPhone` в `LoyaltyUser`
-- [Add] Добавление метода `activationLoyaltyUserByPhone` в `LoyaltyUser`
+- [Add] Added method `payEwByLoyaltyPoints` to `InternetDocument`
+- [Add] Added method `registrationLoyaltyUserByPhone` to `LoyaltyUser`
+- [Add] Added method `activationLoyaltyUserByPhone` to `LoyaltyUser`
 
 ### 2024-07-04
 - [Add] Added method `ChangeAfterpaymentType` to `AdditionalService`
