@@ -30,6 +30,7 @@ return [
         '108' => 'Refusal to send (108)',
         '111' => 'Unsuccessful delivery attempt due to the absence of the recipient at the address or communication with him',
         '112' => 'Delivery date moved by recipient',
+        '124' => 'Destroyed as a result of an enemy attack',
 
         'sync' => 'Данные получены',
         '200' => 'Everything went well',
